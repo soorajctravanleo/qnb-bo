@@ -18,7 +18,4 @@ node(){
 
     // }
 
-    stage('Copy') {
-        sh "yes | sudo rsync -rltvz dist/ /var/www/html/qnb_angular"
-    }
 }
