@@ -9,7 +9,6 @@ node(){
             echo "Modules installed"
         }
     }
-
     stage('Build') {
         nodejs('nodejs') {
             sh 'npm run build'
