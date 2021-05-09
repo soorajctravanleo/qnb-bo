@@ -19,6 +19,7 @@ node(){
     // }
 
     stage('Package Build') {
-        sh "rsync -rltvz dist/ /var/www/html/qnb_angular"
+        sh "rm -Rf /var/www/html/qnb_angular && mkdir /var/www/html/qnb_angular"
+        sh "cp -Rf dist/ /var/www/html/qnb_angular"
     }
 }
