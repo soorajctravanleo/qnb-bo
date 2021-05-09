@@ -1,4 +1,4 @@
-node(){
+ongfinode(){
     //  stage('Cloning Git') {
     //     checkout scm
     // }
@@ -19,6 +19,6 @@ node(){
     // }
 
     stage('Package Build') {
-        sh "rsync -rltvz dist/ /var/www/html/qnb_angular"
+        sh "sudo rsync -rltvz dist/ /var/www/html/qnb_angular"
     }
 }
