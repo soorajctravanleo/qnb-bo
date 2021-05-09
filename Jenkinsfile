@@ -16,5 +16,4 @@ node(){
             echo "Build completed"
         }
     }
-
 }
