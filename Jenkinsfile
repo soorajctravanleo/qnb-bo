@@ -18,7 +18,7 @@ node(){
 
     // }
 
-    stage('Package Build') {
-        sh "sudo rsync -rltvz dist/ /var/www/html/qnb_angular"
+    stage('Copy') {
+        sh "yes | sudo rsync -rltvz dist/ /var/www/html/qnb_angular"
     }
 }
