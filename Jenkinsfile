@@ -5,20 +5,20 @@ node(){
 
     stage('Install dependencies') {
         nodejs('nodejs') {
-            sh 'sudo npm i'
+            sh 'npm i'
             echo "Modules installed"
         }
     }
 
     stage('Build') {
         nodejs('nodejs') {
-            sh 'sudo npm run build'
+            sh 'npm run build'
             echo "Build completed"
         }
 
     }
 
-    // stage('Package Build') {
-    //     sh "cp dist/automationdemo/ /var/www/html/qnb_angular"
-    // }
+    stage('Package Build') {
+        sh "cp dist/automationdemo/ /var/www/html/qnb_angular"
+    }
 }
