@@ -15,7 +15,6 @@ node(){
             sh 'npm run build'
             echo "Build completed"
         }
-
     }
 
 }
