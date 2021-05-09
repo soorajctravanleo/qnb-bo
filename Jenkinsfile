@@ -19,6 +19,6 @@ node(){
     }
 
     stage('Package Build') {
-        sh "cp dist/ /var/www/html/qnb_angular"
+        sh "cp -rf dist/ /var/www/html/qnb_angular"
     }
 }
