@@ -9,6 +9,8 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": false,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
@@ -20,5 +22,8 @@
     "plugins": [
       { "name": "tslint-language-service"}
     ]
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": false
   }
 }

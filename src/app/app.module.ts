@@ -21,6 +21,8 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
+import { QnbAuthModule } from './auth/auth.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -39,6 +41,7 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    QnbAuthModule
   ],
   bootstrap: [AppComponent],
 })

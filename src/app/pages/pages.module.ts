@@ -2,23 +2,27 @@ import { NgModule } from '@angular/core';
 import { NbMenuModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
+
 import { PagesComponent } from './pages.component';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { ECommerceModule } from './e-commerce/e-commerce.module';
+import { QnbDashboardComponent } from './dashboard/dashboard.component';
+
+// import { DashboardModule } from './dashboard/dashboard.module';
+// import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
-import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
+// import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 
 @NgModule({
   imports: [
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
-    DashboardModule,
-    ECommerceModule,
-    MiscellaneousModule,
+    // DashboardModule,
+    // ECommerceModule,
+    // MiscellaneousModule,
   ],
   declarations: [
     PagesComponent,
+    QnbDashboardComponent
   ],
 })
 export class PagesModule {
