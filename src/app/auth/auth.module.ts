@@ -6,7 +6,7 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbCheckboxModule
+  NbCheckboxModule,
 } from '@nebular/theme';
 
 import { QnbAuthComponent } from './auth.component';
