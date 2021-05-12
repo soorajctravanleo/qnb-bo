@@ -54,14 +54,14 @@ export const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: QnbLoginComponent
+        component: QnbLoginComponent,
       },
       {
         path: '',
         redirectTo: 'login',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   { path: '**', redirectTo: 'auth' },

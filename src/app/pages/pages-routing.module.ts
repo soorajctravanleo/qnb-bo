@@ -81,29 +81,30 @@ import { QnbDashboardComponent } from './dashboard/dashboard.component';
 //   ],
 // }];
 
-const routes: Routes = [{
-  path: '',
-  component: PagesComponent,
-  children: [
-    {
-      path: 'dashboard',
-      component: QnbDashboardComponent
-    },
-    {
-      path: 'access-control',
-      loadChildren: () => import('./access-control/access-control.module').then(m => m.QnbAccessControlModule)
-    },
-    {
-      path: '',
-      redirectTo: 'dashboard',
-      pathMatch: 'full'
-    }
-  ]
-}]
+const routes: Routes = [
+  {
+    path: '',
+    component: PagesComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: QnbDashboardComponent,
+      },
+      {
+        path: 'access-control',
+        loadChildren: () => import('./access-control/access-control.module').then(m => m.QnbAccessControlModule),
+      },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {
-}
+export class PagesRoutingModule { }

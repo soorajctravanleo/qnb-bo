@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 
-import { QnbServiceCatalogRoutingModule  } from './service-catalog-routing.module';
+import { QnbServiceCatalogRoutingModule } from './service-catalog-routing.module';
 import { QnbServiceCatalogComponent } from './service-catalog.component';
 
 @NgModule({
   declarations: [
-    QnbServiceCatalogComponent
+    QnbServiceCatalogComponent,
   ],
   imports: [
-    QnbServiceCatalogRoutingModule
-  ]
+    QnbServiceCatalogRoutingModule,
+  ],
 })
-export class QnbServiceCatalogModule {}
+export class QnbServiceCatalogModule { }

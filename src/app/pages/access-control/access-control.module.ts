@@ -6,10 +6,10 @@ import { QnbAccessControlComponent } from './access-control.component';
 
 @NgModule({
   declarations: [
-    QnbAccessControlComponent
+    QnbAccessControlComponent,
   ],
   imports: [
-    QnbAccessControlRoutingModule
-  ]
+    QnbAccessControlRoutingModule,
+  ],
 })
-export class QnbAccessControlModule {}
+export class QnbAccessControlModule { }

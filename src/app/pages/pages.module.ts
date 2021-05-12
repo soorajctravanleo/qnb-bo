@@ -22,8 +22,7 @@ import { PagesRoutingModule } from './pages-routing.module';
   ],
   declarations: [
     PagesComponent,
-    QnbDashboardComponent
+    QnbDashboardComponent,
   ],
 })
-export class PagesModule {
-}
+export class PagesModule { }

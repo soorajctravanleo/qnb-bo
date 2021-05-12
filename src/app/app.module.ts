@@ -41,7 +41,7 @@ import { QnbAuthModule } from './auth/auth.module';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    QnbAuthModule
+    QnbAuthModule,
   ],
   bootstrap: [AppComponent],
 })

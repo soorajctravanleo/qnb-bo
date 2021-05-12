@@ -6,16 +6,16 @@ import { QnbServiceCatalogComponent } from './service-catalog.component';
 const routes: Route[] = [
   {
     path: '',
-    component: QnbServiceCatalogComponent
-  }
+    component: QnbServiceCatalogComponent,
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   exports: [
-    RouterModule
-  ]
+    RouterModule,
+  ],
 })
-export class QnbServiceCatalogRoutingModule {}
+export class QnbServiceCatalogRoutingModule { }

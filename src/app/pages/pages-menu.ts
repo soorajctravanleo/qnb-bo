@@ -5,7 +5,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Dashboard',
     icon: '',
     link: '/pages/dashboard',
-    home: true
+    home: true,
   },
   {
     title: 'Access Control',
@@ -13,60 +13,60 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Service Catalog',
-        link: '/pages/access-control/service-catalog'
+        link: '/pages/access-control/service-catalog',
       },
       {
         title: 'Users',
-        link: ''
+        link: '',
       },
       {
         title: 'Roles',
-        link: ''
+        link: '',
       },
       {
         title: 'Access',
-        link: ''
+        link: '',
       },
       {
         title: 'User Types',
-        link: ''
+        link: '',
       },
       {
         title: 'User Entities',
-        link: ''
-      }
-    ]
+        link: '',
+      },
+    ],
   },
   {
     title: 'Transfers',
     icon: '',
     link: '',
-    children: []
+    children: [],
   },
   {
     title: 'Customer 360',
     icon: '',
     link: '',
-    children: []
+    children: [],
   },
   {
     title: 'Configuration',
     icon: '',
     link: '',
-    children: []
+    children: [],
   },
   {
     title: 'Global Config',
     icon: '',
     link: '',
-    children: []
+    children: [],
   },
   {
     title: 'IB Parameters',
     icon: '',
     link: '',
-    children: []
-  }
+    children: [],
+  },
 ];
 
 // export const MENU_ITEMS: NbMenuItem[] = [

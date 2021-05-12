@@ -10,18 +10,18 @@ const routes: Route[] = [
     children: [
       {
         path: 'service-catalog',
-        loadChildren: () => import('./service-catalog/service-catalog.module').then(m => m.QnbServiceCatalogModule)
-      }
-    ]
-  }
+        loadChildren: () => import('./service-catalog/service-catalog.module').then(m => m.QnbServiceCatalogModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   exports: [
-    RouterModule
-  ]
+    RouterModule,
+  ],
 })
-export class QnbAccessControlRoutingModule {}
+export class QnbAccessControlRoutingModule { }

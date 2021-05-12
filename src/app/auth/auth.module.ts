@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { 
+import {
   NbLayoutModule,
   NbCardModule,
   NbInputModule,
@@ -15,7 +15,7 @@ import { QnbLoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     QnbAuthComponent,
-    QnbLoginComponent
+    QnbLoginComponent,
   ],
   imports: [
     RouterModule,
@@ -23,10 +23,10 @@ import { QnbLoginComponent } from './login/login.component';
     NbCardModule,
     NbInputModule,
     NbButtonModule,
-    NbCheckboxModule
+    NbCheckboxModule,
   ],
   exports: [
-    QnbAuthComponent
-  ]
+    QnbAuthComponent,
+  ],
 })
-export class QnbAuthModule {}
+export class QnbAuthModule { }
