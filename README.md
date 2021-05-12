@@ -17,6 +17,6 @@ https://qnb.nintrivalabs.com/
 username: nintriva 
 
 ## FTP
-164.52.200.24:21
+ftp.nintriva.com:21
 
 username: nintriva
