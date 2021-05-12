@@ -9,4 +9,8 @@ Changes in dev server will be auto deployed in Demo App
 
 
 ## Demo App
-http://qnb.nintrivalabs.com/
+https://qnb.nintrivalabs.com/
+username: nintriva 
+
+## FTP
+164.52.200.24:21
