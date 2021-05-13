@@ -108,13 +108,15 @@
       true,
       "attribute",
       "ngx",
-      "camelCase"
+      "camelCase",
+      "qnb"
     ],
     "component-selector": [
       true,
       "element",
       "ngx",
-      "kebab-case"
+      "kebab-case",
+      "qnb"
     ],
     "ban": [
       true,
