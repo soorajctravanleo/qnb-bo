@@ -5,8 +5,8 @@ export class User {
     private usrname: string,
     private tkn: string,
     private fName: string,
-    private lName: string
-  ) {}
+    private lName: string,
+  ) { }
 
   get fullName() {
     return `${this.fName} ${this.lName}`.trim();

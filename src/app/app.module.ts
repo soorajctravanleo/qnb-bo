@@ -45,7 +45,7 @@ import { QnbLoginInterceptor } from './_helpers/interceptors';
     QnbAuthModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: QnbLoginInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: QnbLoginInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

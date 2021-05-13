@@ -6,4 +6,4 @@ export const generateHttpResponse = <T>(body?: T) => {
     status: 200,
     body,
   }));
-}
+};

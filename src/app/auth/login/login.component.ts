@@ -26,7 +26,7 @@ export class QnbLoginComponent {
       this.loginInProgress = true;
       this.hasError = false;
       const { username, password } = this.loginForm.value;
-  
+
       this.qnbAuthService
         .login(username, password)
         .subscribe(

@@ -7,7 +7,7 @@ import { User } from '../_helpers/models/frontend';
 import { LoginResponse } from '../_helpers/types/backend/index';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QnbAuthService {
   private readonly AUTH_KEY_KEY = 'ak';
@@ -15,7 +15,7 @@ export class QnbAuthService {
   currentUser?: User = null;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   login(username: string, password: string) {
@@ -26,7 +26,7 @@ export class QnbAuthService {
       })
       .pipe(
         mergeMap(data => {
-          const { id, username, token, firstName, lastName } = data as LoginResponse;
+          const { id, token, firstName, lastName } = data as LoginResponse;
           this.currentUser = new User(id, username, token, firstName, lastName);
           sessionStorage.setItem(this.AUTH_KEY_KEY, token);
           return of(this.currentUser);

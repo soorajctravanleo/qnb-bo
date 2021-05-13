@@ -17,6 +17,6 @@ export const generateError = (type: ErrorTypes, message: any) => {
 
   return throwError({
     status,
-    error: { message }
+    error: { message },
   });
 };
