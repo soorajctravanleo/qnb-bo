@@ -6,7 +6,7 @@ import { QnbUserTypesComponent } from './user-types.component';
 const routes: Route[] = [
   {
     path: '',
-    component: QnbUserTypesComponent
+    component: QnbUserTypesComponent,
   },
 ];
 
