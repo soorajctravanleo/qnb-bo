@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
+
 import { QnbUserEntitiesRoutingModule } from './user-entities-routing.module';
 import { QnbUserEntitiesComponent } from './user-entities.component';
 
@@ -9,6 +11,7 @@ import { QnbUserEntitiesComponent } from './user-entities.component';
   ],
   imports: [
     QnbUserEntitiesRoutingModule,
+    QnbCustomComponentsModule,
   ],
 })
 export class QnbUserEntitiesModule { }
