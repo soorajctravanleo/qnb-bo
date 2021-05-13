@@ -25,6 +25,11 @@ const routes: Route[] = [
         loadChildren: () => import('./users/users.module').then
           (m => m.QnbUsersModule),
       },
+      {
+        path: 'roles',
+        loadChildren: () => import('./roles/roles.module').then
+          (m => m.QnbRolesModule),
+      }
     ],
   },
 ];

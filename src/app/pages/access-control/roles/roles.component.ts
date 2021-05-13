@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.scss']
 })
-export class RolesComponent implements OnInit {
+export class QnbRolesComponent implements OnInit {
 
   constructor() { }
 

@@ -21,7 +21,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Roles',
-        link: '',
+        link: '/pages/access-control/roles',
       },
       {
         title: 'Access',

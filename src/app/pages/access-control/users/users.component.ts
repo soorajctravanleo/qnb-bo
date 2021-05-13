@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
+import { CreateUserComponent } from './create-user/create-user.component';
+
 
 @Component({
   selector: 'ngx-users',
@@ -6,11 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class QnbUsersComponent implements OnInit {
+  @ViewChild('disabledEsc', { read: TemplateRef }) disabledEscTemplate: TemplateRef<HTMLElement>;
+  data: Array<any>;
 
-  constructor() { }
+
+  constructor(private dialogService: NbDialogService) {
+    
+
+  }
 
   ngOnInit(): void {
-    console.log("i am here");
+
   }
+  open() {
+    this.dialogService.open(CreateUserComponent, {
+    });
+  }
+
+
+
 
 }
