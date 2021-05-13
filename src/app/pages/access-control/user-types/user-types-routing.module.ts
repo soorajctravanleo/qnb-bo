@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
-
 import { QnbUserTypesComponent } from './user-types.component';
 
 const routes: Route[] = [

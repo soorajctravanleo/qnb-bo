@@ -20,6 +20,11 @@ const routes: Route[] = [
         path: 'user-entities',
         loadChildren: () => import('./user-entities/user-entities.module').then(m => m.QnbUserEntitiesModule),
       },
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then
+          (m => m.QnbUsersModule),
+      },
     ],
   },
 ];

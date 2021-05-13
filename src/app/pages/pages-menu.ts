@@ -17,7 +17,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Users',
-        link: '',
+        link: '/pages/access-control/users',
       },
       {
         title: 'Roles',
