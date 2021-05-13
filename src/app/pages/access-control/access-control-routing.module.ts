@@ -16,6 +16,10 @@ const routes: Route[] = [
         path: 'user-types',
         loadChildren: () => import('./user-types/user-types.module').then(m => m.QnbUserTypesModule),
       },
+      {
+        path: 'user-entities',
+        loadChildren: () => import('./user-entities/user-entities.module').then(m => m.QnbUserEntitiesModule),
+      },
     ],
   },
 ];
