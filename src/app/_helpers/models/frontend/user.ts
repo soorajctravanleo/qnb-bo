@@ -1,4 +1,4 @@
-export class User {
+export class QnbUser {
 
   constructor(
     private _id: number,
@@ -6,6 +6,7 @@ export class User {
     private tkn: string,
     private fName: string,
     private lName: string,
+    private picture = 'assets/images/user.png',
   ) { }
 
   get fullName() {
@@ -30,5 +31,9 @@ export class User {
 
   get token() {
     return this.tkn;
+  }
+
+  get profilePicture() {
+    return this.picture;
   }
 }

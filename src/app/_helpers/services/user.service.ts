@@ -26,4 +26,20 @@ export class QnbUserService {
       lastName: user.getLastName(),
     });
   }
+
+  validateToken(token: string): Observable<HttpResponse<LoginResponse>> {
+    const user = MOCK_USERS.find(mockUser => mockUser.validateToken(token));
+
+    if (!user) {
+      return generateError('unauthorized', 'You are not authorized!');
+    }
+
+    return generateHttpResponse({
+      id: user.getId(),
+      username: user.getUsername(),
+      token: user.getToken(),
+      firstName: user.getFirstName(),
+      lastName: user.getLastName(),
+    });
+  }
 }

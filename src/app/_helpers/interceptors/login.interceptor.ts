@@ -21,9 +21,14 @@ export class QnbLoginInterceptor implements HttpInterceptor {
     const { url, method, headers, body } = req;
 
     const handleRoute = () => {
-      if (url.endsWith('/authenticate') && (method === 'POST')) {
+      if (url.endsWith('/login') && (method === 'POST')) {
         const { username, password } = body;
         return this.qnbUserService.validateLogin(username, password);
+      }
+
+      if (url.endsWith('/authenticate') && (method === 'POST')) {
+        const { token } = body;
+        return this.qnbUserService.validateToken(token);
       }
 
       return next.handle(req);
