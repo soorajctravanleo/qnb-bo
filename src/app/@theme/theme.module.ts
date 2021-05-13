@@ -21,7 +21,6 @@ import {
   HeaderComponent,
   SearchInputComponent,
   TinyMCEComponent,
-  QnbSectionHeaderComponent,
 } from './components';
 
 import {
@@ -66,7 +65,6 @@ const COMPONENTS = [
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
-  QnbSectionHeaderComponent,
 ];
 
 const PIPES = [

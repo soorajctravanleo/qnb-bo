@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ThemeModule } from '../../../@theme/theme.module';
+import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
 
 import { QnbServiceCatalogRoutingModule } from './service-catalog-routing.module';
 import { QnbServiceCatalogComponent } from './service-catalog.component';
@@ -11,7 +11,7 @@ import { QnbServiceCatalogComponent } from './service-catalog.component';
   ],
   imports: [
     QnbServiceCatalogRoutingModule,
-    ThemeModule,
+    QnbCustomComponentsModule,
   ],
 })
 export class QnbServiceCatalogModule { }
