@@ -1,7 +1,7 @@
-import { User } from '../models';
+import { MockUser } from '../models/backend';
 
-export const users: User[] = [
-  new User(
+export const MOCK_USERS: MockUser[] = [
+  new MockUser(
     1,
     'qnb',
     'qnb@123456',
@@ -9,7 +9,7 @@ export const users: User[] = [
     'Balakrishnan',
     'Kannan',
   ),
-  new User(
+  new MockUser(
     2,
     'qnb1',
     'qnb1@123456',

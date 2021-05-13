@@ -6,7 +6,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import {
 } from '@nebular/theme';
 
 import { QnbAuthModule } from './auth/auth.module';
+import { QnbLoginInterceptor } from './_helpers/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +43,9 @@ import { QnbAuthModule } from './auth/auth.module';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     QnbAuthModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: QnbLoginInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 })
