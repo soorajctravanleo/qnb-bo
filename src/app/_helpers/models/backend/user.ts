@@ -6,7 +6,7 @@ export class MockUser {
     private password: string,
     private token: string,
     private firstName: string,
-    private lastName: string
+    private lastName: string,
   ) {}
 
   validateLogin(username: string, password: string) {

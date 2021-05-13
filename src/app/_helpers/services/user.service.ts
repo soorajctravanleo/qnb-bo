@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class QnbUserService { 
+export class QnbUserService {
 
   validateLogin(username: string, password: string): Observable<HttpResponse<LoginResponse>> {
     const user = MOCK_USERS.find(mockUser => mockUser.validateLogin(username, password));
@@ -23,7 +23,7 @@ export class QnbUserService {
       username: user.getUsername(),
       token: user.getToken(),
       firstName: user.getFirstName(),
-      lastName: user.getLastName()
+      lastName: user.getLastName(),
     });
   }
 }
