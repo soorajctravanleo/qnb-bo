@@ -29,7 +29,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'User Types',
-        link: '',
+        link: '/pages/access-control/user-types',
       },
       {
         title: 'User Entities',
