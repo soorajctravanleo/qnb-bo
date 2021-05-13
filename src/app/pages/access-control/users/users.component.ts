@@ -14,7 +14,7 @@ export class QnbUsersComponent implements OnInit {
 
 
   constructor(private dialogService: NbDialogService) {
-    
+
 
   }
 
@@ -22,9 +22,10 @@ export class QnbUsersComponent implements OnInit {
 
   }
   open() {
-    this.dialogService.open(CreateUserComponent, {
+    const dialogRef = this.dialogService.open(CreateUserComponent, {
     });
   }
+
 
 
 

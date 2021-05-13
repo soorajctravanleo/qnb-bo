@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NbIconConfig } from '@nebular/theme';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'qnb-create-user',
@@ -9,9 +10,13 @@ import { NbIconConfig } from '@nebular/theme';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected ref: NbDialogRef<CreateUserComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  dismiss() {
+    this.ref.close();
   }
 
 }
