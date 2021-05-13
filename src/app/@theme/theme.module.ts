@@ -21,7 +21,9 @@ import {
   HeaderComponent,
   SearchInputComponent,
   TinyMCEComponent,
+  QnbSectionHeaderComponent,
 } from './components';
+
 import {
   CapitalizePipe,
   PluralPipe,
@@ -29,11 +31,13 @@ import {
   TimingPipe,
   NumberWithCommasPipe,
 } from './pipes';
+
 import {
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
 } from './layouts';
+
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
@@ -53,6 +57,7 @@ const NB_MODULES = [
   NbIconModule,
   NbEvaIconsModule,
 ];
+
 const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
@@ -61,7 +66,9 @@ const COMPONENTS = [
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
+  QnbSectionHeaderComponent,
 ];
+
 const PIPES = [
   CapitalizePipe,
   PluralPipe,
@@ -81,10 +88,8 @@ export class ThemeModule {
       ngModule: ThemeModule,
       providers: [
         ...NbThemeModule.forRoot(
-          {
-            name: 'default',
-          },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
+          { name: 'default', },
+          [DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME],
         ).providers,
       ],
     };
