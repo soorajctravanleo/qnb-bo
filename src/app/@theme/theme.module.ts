@@ -21,7 +21,6 @@ import {
   HeaderComponent,
   SearchInputComponent,
   TinyMCEComponent,
-  QnbSectionHeaderComponent,
 } from './components';
 
 import {
@@ -66,7 +65,6 @@ const COMPONENTS = [
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
-  QnbSectionHeaderComponent,
 ];
 
 const PIPES = [
@@ -88,7 +86,7 @@ export class ThemeModule {
       ngModule: ThemeModule,
       providers: [
         ...NbThemeModule.forRoot(
-          { name: 'default', },
+          { name: 'default' },
           [DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME],
         ).providers,
       ],

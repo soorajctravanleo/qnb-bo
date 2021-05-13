@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ThemeModule } from '../../../@theme/theme.module';
+import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
 
 import { QnbUserTypesRoutingModule } from './user-types-routing.module';
 import { QnbUserTypesComponent } from './user-types.component';
@@ -11,7 +11,7 @@ import { QnbUserTypesComponent } from './user-types.component';
   ],
   imports: [
     QnbUserTypesRoutingModule,
-    ThemeModule,
+    QnbCustomComponentsModule,
   ],
 })
 export class QnbUserTypesModule { }

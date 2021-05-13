@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NbMenuModule } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
+import { QnbCustomComponentsModule } from '../components/custom-components.module';
 
 import { PagesComponent } from './pages.component';
 import { QnbDashboardComponent } from './dashboard/dashboard.component';
@@ -19,6 +20,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     // DashboardModule,
     // ECommerceModule,
     // MiscellaneousModule,
+    QnbCustomComponentsModule,
   ],
   declarations: [
     PagesComponent,
