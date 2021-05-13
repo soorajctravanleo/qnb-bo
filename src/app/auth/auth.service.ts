@@ -31,10 +31,10 @@ export class QnbAuthService {
   }
 
   authenticateToken() {
-    const token = sessionStorage.getItem(this.AUTH_KEY_KEY);
+    const tokenFromStorage = sessionStorage.getItem(this.AUTH_KEY_KEY);
 
     return this.http
-      .post('/authenticate', { token })
+      .post('/authenticate', { token: tokenFromStorage })
       .pipe(
         mergeMap(data => {
           const { id, token, username, firstName, lastName } = data as LoginResponse;
