@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import {
+  NbSortDirection,
+  NbSortRequest,
+  NbTreeGridDataSource,
+  NbTreeGridDataSourceBuilder
+} from '@nebular/theme';
+import { NbDialogService } from '@nebular/theme';
+import { CreateRoleComponent } from './create-role/create-role.component';
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];
@@ -32,7 +39,7 @@ export class QnbRolesComponent implements OnInit {
   sortColumn: string = '';
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>) {
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>, private dialogService: NbDialogService) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
   ngOnInit(): void {
@@ -60,7 +67,7 @@ export class QnbRolesComponent implements OnInit {
         multi_login: 'YES',
         no_password_expiry: 'YES',
         maker_id: 'Francis',
-        maker_date: '14th May 2022'
+        maker_date: '14th May 2022',
       },
     },
     {
@@ -71,7 +78,7 @@ export class QnbRolesComponent implements OnInit {
         multi_login: 'YES',
         no_password_expiry: 'NO',
         maker_id: 'Francis',
-        maker_date: '16th May 2022'
+        maker_date: '16th May 2022',
       },
     },
     {
@@ -82,8 +89,12 @@ export class QnbRolesComponent implements OnInit {
         multi_login: 'YES',
         no_password_expiry: 'NO',
         maker_id: 'Francis',
-        maker_date: '18th May 2022'
+        maker_date: '18th May 2022',
       },
     },
   ];
+  open() {
+    const dialogRef = this.dialogService.open(CreateRoleComponent, {
+    });
+  }
 }

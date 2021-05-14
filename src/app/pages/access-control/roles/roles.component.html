@@ -1,7 +1,11 @@
+<h2>Roles</h2>
+<div align="right"> <button id="create-role-button" nbButton status="success" (click)="open()">Create Role </button>
+</div>
+
 <nb-card>
+
   <nb-card-body>
     <table [nbTreeGrid]="dataSource" nbSort (sort)="changeSort($event)" equalColumnsWidth>
-
       <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
       <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 
