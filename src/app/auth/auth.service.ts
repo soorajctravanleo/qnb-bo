@@ -63,7 +63,7 @@ export class QnbAuthService {
     const expiryTime = new Date().getTime() + sessionTime;
     this.cookieService.set(this.AUTH_KEY_KEY, token, {
       expires: new Date(expiryTime),
-      path: '/'
+      path: '/',
     });
   }
 }

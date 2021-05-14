@@ -58,7 +58,7 @@ const INTERCEPTORS = [
   ],
   providers: [
     ...SERVICES,
-    ...INTERCEPTORS
+    ...INTERCEPTORS,
   ],
   bootstrap: [AppComponent],
 })
