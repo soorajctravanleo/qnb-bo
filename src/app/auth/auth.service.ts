@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { QnbUser } from '../_helpers/models/frontend';
+import { QnbAccount } from '../_helpers/models/frontend';
 import { LoginResponse } from '../_helpers/types/backend/index';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { LoginResponse } from '../_helpers/types/backend/index';
 })
 export class QnbAuthService {
   private readonly AUTH_KEY_KEY = 'ak';
-  private currentUser?: QnbUser = null;
+  private currentAccount?: QnbAccount = null;
 
   constructor(
     private http: HttpClient,
@@ -23,9 +23,9 @@ export class QnbAuthService {
       .pipe(
         mergeMap(data => {
           const { id, token, firstName, lastName } = data as LoginResponse;
-          this.currentUser = new QnbUser(id, username, token, firstName, lastName);
+          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
           sessionStorage.setItem(this.AUTH_KEY_KEY, token);
-          return of(this.currentUser);
+          return of(this.currentAccount);
         }),
       );
   }
@@ -38,7 +38,7 @@ export class QnbAuthService {
       .pipe(
         mergeMap(data => {
           const { id, token, username, firstName, lastName } = data as LoginResponse;
-          this.currentUser = new QnbUser(id, username, token, firstName, lastName);
+          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
           sessionStorage.setItem(this.AUTH_KEY_KEY, token);
           return of(true);
         }),
@@ -49,7 +49,7 @@ export class QnbAuthService {
     sessionStorage.removeItem(this.AUTH_KEY_KEY);
   }
 
-  getCurrentUser() {
-    return this.currentUser;
+  getCurrentAccount() {
+    return this.currentAccount;
   }
 }

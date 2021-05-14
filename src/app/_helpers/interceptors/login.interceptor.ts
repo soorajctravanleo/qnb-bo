@@ -8,13 +8,13 @@ import {
 import { Observable, of } from 'rxjs';
 import { mergeMap, materialize, dematerialize, delay } from 'rxjs/operators';
 
-import { QnbUserService } from '../services/user.service';
+import { QnbAccountService } from '../services/account.service';
 
 @Injectable()
 export class QnbLoginInterceptor implements HttpInterceptor {
 
   constructor(
-    private qnbUserService: QnbUserService,
+    private qnbUserService: QnbAccountService,
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

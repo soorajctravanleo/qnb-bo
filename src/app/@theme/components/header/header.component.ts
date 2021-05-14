@@ -6,7 +6,7 @@ import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-import { QnbUser } from '../../../_helpers/models/frontend';
+import { QnbAccount } from '../../../_helpers/models/frontend';
 import { QnbAuthService } from '../../../auth/auth.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: QnbUser;
+  account: QnbAccount;
 
   themes = [
     {
@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe(themeName => this.currentTheme = themeName);
 
-    this.user = this.qnbAuthService.getCurrentUser();
+    this.account = this.qnbAuthService.getCurrentAccount();
   }
 
   ngOnDestroy() {

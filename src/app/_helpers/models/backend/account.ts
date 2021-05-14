@@ -1,4 +1,4 @@
-export class MockUser {
+export class MockAccount {
 
   constructor(
     private id: number,
