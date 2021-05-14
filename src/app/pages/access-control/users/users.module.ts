@@ -13,13 +13,15 @@ import {
   NbCheckboxModule,
   NbInputModule,
   NbRadioModule,
-  NbTabsetModule
+  NbTabsetModule,
 } from '@nebular/theme';
+
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserProfileTabComponent } from './create-user/user-profile-tab/user-profile-tab.component';
 import { AdditionalInfoTabComponent } from './create-user/additional-info-tab/additional-info-tab.component';
 import { LoginRestrictionTabComponent } from './create-user/login-restriction-tab/login-restriction-tab.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+
 @NgModule({
   declarations: [
     QnbUsersComponent,

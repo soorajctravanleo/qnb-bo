@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];
@@ -14,8 +15,8 @@ interface FSEntry {
   no_password_expiry: string;
   maker_id: string;
   maker_date: string;
-
 }
+
 @Component({
   selector: 'qnb-roles',
   templateUrl: './roles.component.html',
@@ -35,6 +36,7 @@ export class QnbRolesComponent implements OnInit {
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
+
   ngOnInit(): void {
   }
 
@@ -60,7 +62,7 @@ export class QnbRolesComponent implements OnInit {
         multi_login: 'YES',
         no_password_expiry: 'YES',
         maker_id: 'Francis',
-        maker_date: '14th May 2022'
+        maker_date: '14th May 2022',
       },
     },
     {
@@ -71,7 +73,7 @@ export class QnbRolesComponent implements OnInit {
         multi_login: 'YES',
         no_password_expiry: 'NO',
         maker_id: 'Francis',
-        maker_date: '16th May 2022'
+        maker_date: '16th May 2022',
       },
     },
     {
@@ -82,7 +84,7 @@ export class QnbRolesComponent implements OnInit {
         multi_login: 'YES',
         no_password_expiry: 'NO',
         maker_id: 'Francis',
-        maker_date: '18th May 2022'
+        maker_date: '18th May 2022',
       },
     },
   ];
