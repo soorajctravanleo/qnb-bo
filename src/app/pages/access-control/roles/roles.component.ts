@@ -16,7 +16,7 @@ export class QnbRolesComponent implements OnInit {
       nok_login: 'Yes',
       decent_login: 'Yes',
       no_password_expiry: 'Yes',
-      created_date: '13th May'
+      created_date: '13th May',
     },
     {
       role_name: 'Admin',
@@ -25,7 +25,7 @@ export class QnbRolesComponent implements OnInit {
       nok_login: 'Yes',
       decent_login: 'Yes',
       no_password_expiry: 'Yes',
-      created_date: 'No'
+      created_date: 'No',
     },
     {
       role_name: 'System',
@@ -34,7 +34,7 @@ export class QnbRolesComponent implements OnInit {
       nok_login: 'Yes',
       decent_login: 'Yes',
       no_password_expiry: 'Yes',
-      created_date: 'No'
+      created_date: 'No',
     },
 
   ];
