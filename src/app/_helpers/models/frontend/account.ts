@@ -1,4 +1,4 @@
-export class QnbUser {
+export class QnbAccount {
 
   constructor(
     private _id: number,

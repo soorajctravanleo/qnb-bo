@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { QnbUser } from '../_helpers/models/frontend';
+import { CookieService } from 'ngx-cookie-service';
+
+import { QnbAccount } from '../_helpers/models/frontend';
 import { LoginResponse } from '../_helpers/types/backend/index';
 
 @Injectable({
@@ -11,10 +13,11 @@ import { LoginResponse } from '../_helpers/types/backend/index';
 })
 export class QnbAuthService {
   private readonly AUTH_KEY_KEY = 'ak';
-  private currentUser?: QnbUser = null;
+  private currentAccount?: QnbAccount = null;
 
   constructor(
     private http: HttpClient,
+    private cookieService: CookieService,
   ) { }
 
   login(username: string, password: string) {
@@ -23,33 +26,44 @@ export class QnbAuthService {
       .pipe(
         mergeMap(data => {
           const { id, token, firstName, lastName } = data as LoginResponse;
-          this.currentUser = new QnbUser(id, username, token, firstName, lastName);
-          sessionStorage.setItem(this.AUTH_KEY_KEY, token);
-          return of(this.currentUser);
+          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
+          // sessionStorage.setItem(this.AUTH_KEY_KEY, token);
+          this.setAuthKey(token);
+          return of(this.currentAccount);
         }),
       );
   }
 
   authenticateToken() {
-    const tokenFromStorage = sessionStorage.getItem(this.AUTH_KEY_KEY);
+    // const tokenFromStorage = sessionStorage.getItem(this.AUTH_KEY_KEY);
+    const tokenFromStorage = this.cookieService.get(this.AUTH_KEY_KEY);
 
     return this.http
       .post('/authenticate', { token: tokenFromStorage })
       .pipe(
         mergeMap(data => {
           const { id, token, username, firstName, lastName } = data as LoginResponse;
-          this.currentUser = new QnbUser(id, username, token, firstName, lastName);
-          sessionStorage.setItem(this.AUTH_KEY_KEY, token);
+          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
           return of(true);
         }),
       );
   }
 
   logout() {
-    sessionStorage.removeItem(this.AUTH_KEY_KEY);
+    // sessionStorage.removeItem(this.AUTH_KEY_KEY);
+    this.cookieService.delete(this.AUTH_KEY_KEY);
   }
 
-  getCurrentUser() {
-    return this.currentUser;
+  getCurrentAccount() {
+    return this.currentAccount;
+  }
+
+  private setAuthKey(token: string) {
+    const sessionTime = 60 * 60 * 1000; // 1 hour in milliseconds
+    const expiryTime = new Date().getTime() + sessionTime;
+    this.cookieService.set(this.AUTH_KEY_KEY, token, {
+      expires: new Date(expiryTime),
+      path: '/',
+    });
   }
 }
