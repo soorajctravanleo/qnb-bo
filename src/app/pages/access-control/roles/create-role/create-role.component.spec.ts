@@ -8,9 +8,9 @@ describe('CreateRoleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateRoleComponent ]
+      declarations: [CreateRoleComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

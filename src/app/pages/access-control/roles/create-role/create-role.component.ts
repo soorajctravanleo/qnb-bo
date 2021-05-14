@@ -4,7 +4,7 @@ import { NbDialogRef } from '@nebular/theme';
 @Component({
   selector: 'ngx-create-role',
   templateUrl: './create-role.component.html',
-  styleUrls: ['./create-role.component.scss']
+  styleUrls: ['./create-role.component.scss'],
 })
 export class CreateRoleComponent implements OnInit {
 

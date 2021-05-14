@@ -3,7 +3,7 @@ import {
   NbSortDirection,
   NbSortRequest,
   NbTreeGridDataSource,
-  NbTreeGridDataSourceBuilder
+  NbTreeGridDataSourceBuilder,
 } from '@nebular/theme';
 import { NbDialogService } from '@nebular/theme';
 import { CreateRoleComponent } from './create-role/create-role.component';
