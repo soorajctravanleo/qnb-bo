@@ -22,8 +22,18 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { QnbAuthModule } from './auth/auth.module';
 import { QnbLoginInterceptor } from './_helpers/interceptors';
+
+const SERVICES = [
+  CookieService,
+];
+
+const INTERCEPTORS = [
+  { provide: HTTP_INTERCEPTORS, useClass: QnbLoginInterceptor, multi: true },
+];
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,7 +57,8 @@ import { QnbLoginInterceptor } from './_helpers/interceptors';
     QnbAuthModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: QnbLoginInterceptor, multi: true },
+    ...SERVICES,
+    ...INTERCEPTORS
   ],
   bootstrap: [AppComponent],
 })
