@@ -21,8 +21,8 @@ interface FSEntry {
   no_password_expiry: string;
   maker_id: string;
   maker_date: string;
-
 }
+
 @Component({
   selector: 'qnb-roles',
   templateUrl: './roles.component.html',
@@ -42,6 +42,7 @@ export class QnbRolesComponent implements OnInit {
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>, private dialogService: NbDialogService) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
+
   ngOnInit(): void {
   }
 

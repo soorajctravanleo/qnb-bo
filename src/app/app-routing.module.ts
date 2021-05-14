@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 // } from '@nebular/auth';
 
 import { CanLoadPages } from './pages/pages.guard';
+import { CanActivateLogin } from './auth/login/login.guard';
 
 import { QnbAuthComponent } from './auth/auth.component';
 import { QnbLoginComponent } from './auth/login/login.component';
@@ -57,6 +58,7 @@ export const routes: Routes = [
       {
         path: 'login',
         component: QnbLoginComponent,
+        canActivate: [CanActivateLogin],
       },
       {
         path: '',
