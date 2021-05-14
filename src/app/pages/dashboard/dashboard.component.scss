@@ -8,20 +8,47 @@ nb-card-body{
 
 .nav-tabs .nav-link{
   text-decoration: none;
+  margin-bottom: 0;
+  cursor: pointer;
 }
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+  font-weight: 600;
+}
+
 .flexTable{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  .tableRow{
 
-  .tableCell{
-    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    overflow: auto;
+    border-bottom: 1px solid #dee2e6;
+  
+    .tableCell{
+      padding: 15px;
+      flex: none;
 
-    :first-child{
+      p{
+        margin-bottom: 5px;
+        color: #656667;
+        b{
+          font-weight: 600;
+        }
+      }
+
+      .title{
+        color: #999;
+       p{
+        color: #999;
+       }
+      }
+    }
+    .tableCell:first-child{
       padding-left: 0;
     }
-    :last-child{
+    .tableCell:last-child{
       padding-right: 0;
     }
   }
+  
 }
