@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
-import { QnbUserTypesComponent } from './user-types.component';
+import { QnbUsersComponent } from './users.component';
 
 const routes: Route[] = [
   {
     path: '',
-    component: QnbUserTypesComponent,
+    component: QnbUsersComponent,
   },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
+
   ],
   exports: [
     RouterModule,
   ],
 })
-export class QnbUserTypesRoutingModule { }
+export class QnbUsersRoutingModule { }
