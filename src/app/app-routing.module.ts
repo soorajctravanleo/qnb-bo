@@ -9,14 +9,16 @@ import { NgModule } from '@angular/core';
 //   NbResetPasswordComponent,
 // } from '@nebular/auth';
 
+import { CanLoadPages } from './pages/pages.guard';
+
 import { QnbAuthComponent } from './auth/auth.component';
 import { QnbLoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
   {
     path: 'pages',
-    loadChildren: () => import('./pages/pages.module')
-      .then(m => m.PagesModule),
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+    canLoad: [CanLoadPages],
   },
   // {
   //   path: 'auth',

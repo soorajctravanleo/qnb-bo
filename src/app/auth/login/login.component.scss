@@ -1,3 +1,5 @@
+@import "../../@theme/styles/colors";
+
 .content {
   .header {
     text-align: center;
@@ -14,13 +16,29 @@
     .control {
       display: flex;
       flex-direction: column;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 1rem;
+      }
 
       label {
         &::after {
           content: ' *';
+          color: $red-one;
         }
       }
+
+      &.password {
+        .forgot {
+          margin-top: 0.5rem;
+          text-align: right;
+        }
+      }
+    }
+
+    .error_message {
+      margin-bottom: 1rem;
     }
   }
 }

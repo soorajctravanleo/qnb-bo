@@ -6,18 +6,28 @@
         <h6 class="title">BACK OFFICE MANAGEMENT</h6>
       </div>
 
-      <form>
+      <form #loginForm="ngForm" (ngSubmit)="loginHandler()">
         <div class="control">
           <label>Username</label>
-          <input nbInput placeholder="Enter your username" />
+          <input nbInput fullWidth placeholder="Enter your username" ngModel name="username" />
+        </div>
+
+        <div class="control password">
+          <label>Password</label>
+          <input type="password" nbInput fullWidth placeholder="Enter your password" ngModel name="password" />
+
+          <div class="forgot">
+            <span><a>Forgot your password?</a></span>
+          </div>
         </div>
 
         <div class="control">
-          <label>Password</label>
-          <input nbInput placeholder="Enter your password" />
+          <nb-checkbox status="success">Remember me</nb-checkbox>
         </div>
 
-        <nb-checkbox status="success">Remember me</nb-checkbox>
+        <div class="error_message qnb_error" *ngIf="hasError">
+          {{ errorMessage }}
+        </div>
 
         <button nbButton status="success">Login</button>
       </form>
