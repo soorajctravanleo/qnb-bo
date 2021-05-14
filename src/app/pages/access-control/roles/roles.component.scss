@@ -2,3 +2,21 @@
   margin: 10px 10px;
   display: block;
 }
+
+nb-card {
+  min-height: 400px;
+}
+
+@media all and (min-width: 768px) {
+  tr {
+    td {
+      vertical-align: middle !important;
+    }
+
+    span {
+      &:not([class]) {
+        padding: 1rem 1rem;
+      }
+    }
+  }
+}
