@@ -8,27 +8,30 @@ import {
 import { Observable, of } from 'rxjs';
 import { mergeMap, materialize, dematerialize, delay } from 'rxjs/operators';
 
-import { QnbAccountService } from '../services/account.service';
+import * as API from '../apis';
+import { MockAccountService } from '../services/account.service';
 
 @Injectable()
 export class QnbLoginInterceptor implements HttpInterceptor {
 
   constructor(
-    private qnbUserService: QnbAccountService,
+    private mockAccountService: MockAccountService,
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const { url, method, headers, body } = req;
+    const { url, method, body } = req;
 
     const handleRoute = () => {
-      if (url.endsWith('/login') && (method === 'POST')) {
-        const { username, password } = body;
-        return this.qnbUserService.validateLogin(username, password);
-      }
-
-      if (url.endsWith('/authenticate') && (method === 'POST')) {
-        const { token } = body;
-        return this.qnbUserService.validateToken(token);
+      if (method === 'POST') {
+        if (url.endsWith(API.LOGIN)) {
+          const { username, password } = body;
+          return this.mockAccountService.validateLogin(username, password);
+        }
+  
+        if (url.endsWith(API.AUTHENTICATE)) {
+          const { token } = body;
+          return this.mockAccountService.validateToken(token);
+        }
       }
 
       return next.handle(req);
