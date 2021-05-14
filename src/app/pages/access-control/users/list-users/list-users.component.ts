@@ -20,7 +20,7 @@ interface FSEntry {
 @Component({
   selector: 'qnb-list-users',
   templateUrl: './list-users.component.html',
-  styleUrls: ['./list-users.component.scss']
+  styleUrls: ['./list-users.component.scss'],
 })
 export class ListUsersComponent {
   customColumn = 'user_id';
@@ -51,13 +51,13 @@ export class ListUsersComponent {
 
   private data: TreeNode<FSEntry>[] = [
     {
-      data: { userid: '1', name: 'Mahesh EU', nickname: 'mahe', usertype: "test", primaryauth: 'LDAP', secondaryauth: 'OTP', expirydate: '14th May 2022' },
+      data: { userid: '1', name: 'Mahesh EU', nickname: 'mahe', usertype: 'test', primaryauth: 'LDAP', secondaryauth: 'OTP', expirydate: '14th May 2022' },
     },
     {
-      data: { userid: '2', name: 'Francis', nickname: 'paanchu', usertype: "test", primaryauth: 'LDAP', secondaryauth: 'security question', expirydate: '16th May 2022' },
+      data: { userid: '2', name: 'Francis', nickname: 'paanchu', usertype: 'test', primaryauth: 'LDAP', secondaryauth: 'security question', expirydate: '16th May 2022' },
     },
     {
-      data: { userid: '3', name: 'Bimal', nickname: 'pappan', usertype: "test", primaryauth: 'LDAP', secondaryauth: 'security question', expirydate: '18th May 2022' },
+      data: { userid: '3', name: 'Bimal', nickname: 'pappan', usertype: 'test', primaryauth: 'LDAP', secondaryauth: 'security question', expirydate: '18th May 2022' },
     },
   ];
 }

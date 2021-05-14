@@ -8,9 +8,9 @@ describe('LoginRestrictionTabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginRestrictionTabComponent ]
+      declarations: [LoginRestrictionTabComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

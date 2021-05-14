@@ -8,9 +8,9 @@ describe('UserProfileTabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserProfileTabComponent ]
+      declarations: [UserProfileTabComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

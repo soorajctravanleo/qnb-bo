@@ -6,7 +6,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 @Component({
   selector: 'ngx-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
 })
 export class QnbUsersComponent implements OnInit {
   @ViewChild('disabledEsc', { read: TemplateRef }) disabledEscTemplate: TemplateRef<HTMLElement>;

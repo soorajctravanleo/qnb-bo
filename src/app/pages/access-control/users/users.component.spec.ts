@@ -8,7 +8,7 @@ describe('QnbUsersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [QnbUsersComponent]
+      declarations: [QnbUsersComponent],
     })
       .compileComponents();
   });

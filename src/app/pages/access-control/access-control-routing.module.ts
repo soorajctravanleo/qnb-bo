@@ -28,8 +28,8 @@ const routes: Route[] = [
       {
         path: 'roles',
         loadChildren: () => import('./roles/roles.module').then
-          (m => m.QnbRolesModule)
-      }
+          (m => m.QnbRolesModule),
+      },
     ],
   },
 ];

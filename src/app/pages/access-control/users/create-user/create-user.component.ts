@@ -6,7 +6,7 @@ import { NbDialogRef } from '@nebular/theme';
   selector: 'qnb-create-user',
   templateUrl: './create-user.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./create-user.component.scss']
+  styleUrls: ['./create-user.component.scss'],
 })
 export class CreateUserComponent implements OnInit {
 

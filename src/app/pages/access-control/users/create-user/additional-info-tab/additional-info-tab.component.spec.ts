@@ -8,9 +8,9 @@ describe('AdditionalInfoTabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdditionalInfoTabComponent ]
+      declarations: [AdditionalInfoTabComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

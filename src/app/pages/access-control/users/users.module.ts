@@ -30,7 +30,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     NbTabsetModule,
     NbButtonModule,
     NbTreeGridModule,
-    QnbUsersRoutingModule
+    QnbUsersRoutingModule,
   ],
 })
 export class QnbUsersModule { }
