@@ -1,0 +1,21 @@
+<nb-card>
+  <nb-card-body>
+    <nb-tabset>
+      <nb-tab tabTitle="User Profile">
+        <qnb-user-profile-tab></qnb-user-profile-tab>
+      </nb-tab>
+      <nb-tab tabTitle="Additional Info">
+        <qnb-additional-info-tab></qnb-additional-info-tab>
+      </nb-tab>
+      <nb-tab tabTitle="Login Restrictions">
+        <qnb-login-restriction-tab></qnb-login-restriction-tab>
+      </nb-tab>
+    </nb-tabset>
+  </nb-card-body>
+  <nb-card-footer>
+    <div style="float:right">
+      <button nbButton hero status="normal" (click)="dismiss()">Discard</button>
+      <button nbButton hero status="success">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

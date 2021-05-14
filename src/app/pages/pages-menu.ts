@@ -17,11 +17,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Users',
-        link: '',
+        link: '/pages/access-control/users',
       },
       {
         title: 'Roles',
-        link: '',
+        link: '/pages/access-control/roles',
       },
       {
         title: 'Access',
