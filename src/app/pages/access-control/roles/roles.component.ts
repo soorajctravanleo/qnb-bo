@@ -53,13 +53,37 @@ export class QnbRolesComponent implements OnInit {
 
   private data: TreeNode<FSEntry>[] = [
     {
-      data: { role_name: 'system', description: 'system has access to all menus and features', status: 'ACTIVE', multi_login: 'YES', no_password_expiry: 'YES', maker_id: 'Francis', maker_date: '14th May 2022' },
+      data: {
+        role_name: 'system',
+        description: 'system has access to all menus and features',
+        status: 'ACTIVE',
+        multi_login: 'YES',
+        no_password_expiry: 'YES',
+        maker_id: 'Francis',
+        maker_date: '14th May 2022'
+      },
     },
     {
-      data: { role_name: 'admin', description: 'admin has limited access to all features', status: 'ACTIVE', multi_login: 'YES', no_password_expiry: 'NO', maker_id: 'Francis', maker_date: '16th May 2022' },
+      data: {
+        role_name: 'admin',
+        description: 'admin has limited access to all features',
+        status: 'ACTIVE',
+        multi_login: 'YES',
+        no_password_expiry: 'NO',
+        maker_id: 'Francis',
+        maker_date: '16th May 2022'
+      },
     },
     {
-      data: { role_name: 'viewer', description: 'viewer has access only readonly access', status: 'ACTIVE', multi_login: 'YES', no_password_expiry: 'NO', maker_id: 'Francis', maker_date: '18th May 2022' },
+      data: {
+        role_name: 'viewer',
+        description: 'viewer has access only readonly access',
+        status: 'ACTIVE',
+        multi_login: 'YES',
+        no_password_expiry: 'NO',
+        maker_id: 'Francis',
+        maker_date: '18th May 2022'
+      },
     },
   ];
 }
