@@ -1,0 +1,27 @@
+nb-card-body{
+  h3{
+    font-weight: 400;
+  }
+}
+
+// tabstyle
+
+.nav-tabs .nav-link{
+  text-decoration: none;
+}
+.flexTable{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .tableCell{
+    padding: 15px;
+
+    :first-child{
+      padding-left: 0;
+    }
+    :last-child{
+      padding-right: 0;
+    }
+  }
+}
