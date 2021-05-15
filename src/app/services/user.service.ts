@@ -20,7 +20,7 @@ export class QnbUserService {
   ) { }
 
   fetchUsers() {
-    return <Observable<MockUser[]>>(this.http.get(GET_USERS));
+    return this.http.get(GET_USERS) as Observable<MockUser[]>;
   }
 
   createUser(data: MockUserData) {
