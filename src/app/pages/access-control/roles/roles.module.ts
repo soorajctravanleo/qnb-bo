@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {
   NbButtonModule,
   NbTreeGridModule,
@@ -20,6 +21,7 @@ import { CreateRoleComponent } from './create-role/create-role.component';
     CreateRoleComponent,
   ],
   imports: [
+
     NbInputModule,
     CommonModule,
     NbButtonModule,
