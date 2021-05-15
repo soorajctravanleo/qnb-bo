@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 
 import { QnbUserService } from '../../../../services/user.service';
 import { QnbRoleService } from '../../../../services/role.service';
+import { MockUser } from '../../../../_helpers/models/backend';
+import { CreateUserComponent } from '../create-user/create-user.component';
 
 interface UserTableRow {
+  id: number;
   userId: number;
   nickName: string;
   name: string;
@@ -22,11 +26,12 @@ interface UserTableRow {
 export class ListUsersComponent implements OnInit {
 
   headElements = ['User ID', 'Nick Name', 'Name', 'Email', 'Phone', 'Dob', 'Role', 'Expiry'];
-  elements: UserTableRow[] = [];
+  users: UserTableRow[] = [];
 
   constructor(
     private qnbUserService: QnbUserService,
     private qnbRoleService: QnbRoleService,
+    private dialogService: NbDialogService,
   ) { }
 
   ngOnInit() {
@@ -37,13 +42,25 @@ export class ListUsersComponent implements OnInit {
     return this.qnbRoleService.getRoleById(id);
   }
 
+  onEditUser(id: number) {
+    this.qnbUserService
+      .fetchUser(id)
+      .subscribe(user => {
+        this.dialogService.open(CreateUserComponent, {
+          context: { user },
+        });
+      });
+  }
+
   private fetchUsers() {
     this.qnbUserService
       .fetchUsers()
       .subscribe(users => {
         for (const user of users) {
           const { profile } = user.data;
-          this.elements.push({
+
+          this.users.push({
+            id: user.id,
             userId: profile.userId,
             dob: profile.dob,
             email: profile.email,

@@ -9,17 +9,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr mdbTableCol *ngFor="let el of elements">
-          <th><i class="icons fa fa-edit"></i></th>
+        <tr mdbTableCol *ngFor="let user of users">
+          <th><i class="icons fa fa-edit" (click)="onEditUser(user.id)"></i></th>
           <th><i class="icons fa fa-trash-alt"></i></th>
-          <th scope="row">{{ el.userId }}</th>
-          <td>{{ el.nickName }}</td>
-          <td>{{ el.name }}</td>
-          <td>{{ el.email }}</td>
-          <td>{{ el.phone }}</td>
-          <td>{{ el.dob }}</td>
-          <td>{{ (getRole(el.role) | async)?.data.roleName }}</td>
-          <td>{{ el.expiryDate }}</td>
+          <th scope="row">{{ user.userId }}</th>
+          <td>{{ user.nickName }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.dob }}</td>
+          <td>{{ (getRole(user.role) | async)?.data.roleName }}</td>
+          <td>{{ user.expiryDate }}</td>
         </tr>
       </tbody>
     </table>

@@ -34,7 +34,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     ReactiveFormsModule,
     NbToggleModule,
     CommonModule,
-    NbDialogModule.forRoot(),
+    NbDialogModule.forChild(),
     NbDatepickerModule.forRoot(),
     NbSelectModule,
     NbInputModule,

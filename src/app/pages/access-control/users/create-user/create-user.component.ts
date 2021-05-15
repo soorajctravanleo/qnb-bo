@@ -1,8 +1,19 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { 
+  Component, 
+  OnInit, 
+  ChangeDetectionStrategy, 
+  Input
+} from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { 
+  FormControl, 
+  FormGroup, 
+  Validators, 
+} from '@angular/forms';
+
 import { QnbUserService } from '../../../../services/user.service';
+import { MockUser } from '../../../../_helpers/models/backend';
+
 @Component({
   selector: 'qnb-create-user',
   templateUrl: './create-user.component.html',
@@ -14,16 +25,16 @@ export class CreateUserComponent implements OnInit {
   userTypes = ['contract', 'permanent'];
   languages = ['Arabic', 'English', 'Spanish', 'Hindi'];
   roles = ['Viewer', 'Admin', 'System'];
-
-
   submitted = false;
-  constructor(protected ref: NbDialogRef<CreateUserComponent>, protected userService: QnbUserService) {
 
+  @Input() user: MockUser;
 
-  }
+  constructor(
+    protected ref: NbDialogRef<CreateUserComponent>,
+    private userService: QnbUserService,
+  ) { }
 
   ngOnInit(): void {
-
     this.signupForm = new FormGroup({
       'userData': new FormGroup({
         'userId': new FormControl(null, [Validators.required]),
@@ -40,7 +51,6 @@ export class CreateUserComponent implements OnInit {
         'timeZone': new FormControl(null),
         'language': new FormControl([]),
         'sendPassword': new FormControl(null),
-
       }),
       'additionalInfo': new FormGroup({
         'ttl': new FormControl(null),
@@ -51,27 +61,25 @@ export class CreateUserComponent implements OnInit {
         'attribute3': new FormControl(null),
         'attribute4': new FormControl(null),
         'macId': new FormControl(null),
-
       }),
       'loginRestriction': new FormGroup({
         'userId': new FormControl(null),
         'firstName': new FormControl(null),
         'loginRestriction': new FormControl(null),
-
       }),
-
     });
-
   }
 
   dismiss() {
     this.ref.close();
   }
-  onSubmit() {
 
+  onSubmit() {
     if (this.signupForm.valid) {
-      this.userService.createUser(this.signupForm.value).subscribe(res => {
-      });
+      this.userService
+        .createUser(this.signupForm.value)
+        .subscribe(res => {
+        });
     } else {
       this.validateAllFormFields(this.signupForm);
     }
@@ -86,6 +94,5 @@ export class CreateUserComponent implements OnInit {
         this.validateAllFormFields(control);
       }
     });
-
   }
 }
