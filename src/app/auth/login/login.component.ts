@@ -35,7 +35,6 @@ export class QnbLoginComponent {
             this.router.navigateByUrl('/pages');
           },
           err => {
-            console.log(err);
             this.loginInProgress = false;
             this.hasError = true;
             this.errorMessage = err.error.message;

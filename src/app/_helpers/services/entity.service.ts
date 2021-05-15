@@ -8,9 +8,8 @@ import { MockResponse } from '../types/backend';
   providedIn: 'root',
 })
 export class MockEntityService {
-  
+
   getEntities(): MockResponse {
-    // return generateHttpResponse([...MOCK_ENTITIES]);
     return {
       res: [...MOCK_ENTITIES],
     };

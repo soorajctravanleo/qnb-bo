@@ -41,7 +41,7 @@ export class QnbJwtInterceptor implements HttpInterceptor {
   }
 
   private shouldAddJWT(url: string) {
-    for (let exemption of EXEMPTIONS) {
+    for (const exemption of EXEMPTIONS) {
       if (url.endsWith(exemption)) {
         return false;
       }
