@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { QnbUsersRoutingModule } from './users-routing.module';
 import { QnbUsersComponent } from './users.component';
@@ -26,6 +27,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     ListUsersComponent,
   ],
   imports: [
+    FormsModule,
     NbToggleModule,
     CommonModule,
     NbDialogModule.forRoot(),
