@@ -3,13 +3,13 @@ import { NbMenuItem } from '@nebular/theme';
 export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dashboard',
-    icon: '',
+    icon: 'monitor-outline',
     link: '/pages/dashboard',
     home: true,
   },
   {
     title: 'Access Control',
-    icon: '',
+    icon: 'people-outline',
     children: [
       {
         title: 'Service Catalog',
@@ -39,31 +39,31 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Transfers',
-    icon: '',
+    icon: 'flip-2-outline',
     link: '',
     children: [],
   },
   {
     title: 'Customer 360',
-    icon: '',
+    icon: 'globe-outline',
     link: '',
     children: [],
   },
   {
     title: 'Configuration',
-    icon: '',
+    icon: 'settings-outline',
     link: '',
     children: [],
   },
   {
     title: 'Global Config',
-    icon: '',
+    icon: 'settings-2-outline',
     link: '',
     children: [],
   },
   {
     title: 'IB Parameters',
-    icon: '',
+    icon: 'wifi-outline',
     link: '',
     children: [],
   },
