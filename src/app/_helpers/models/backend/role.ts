@@ -3,16 +3,21 @@ export enum RoleStatus {
   ACTIVE,
 }
 
-export class MockRole {
+export interface MockRoleData {
+  roleName: string;
+  description: string;
+  multiLogin: boolean;
+  noPasswordExpiry: boolean;
+  nokLogin: boolean;
+  decentLogin: boolean;
+  makerId: number;
+}
 
+export class MockRole {
   constructor(
     public id: number,
-    public roleName: string,
-    public description: string,
-    public status: RoleStatus,
-    public multiLogin: boolean,
-    public noPasswordExpiry: boolean,
-    public makerId: number,
-    public makerDate: number,
-  ) {}
+    public data: MockRoleData,
+    public status = RoleStatus.ACTIVE,
+    public makerDate = new Date().getTime(),
+  ) { }
 }
