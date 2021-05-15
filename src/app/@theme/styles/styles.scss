@@ -34,3 +34,20 @@
 .text-success{
   color: #2ce69b !important;
 }
+.nb-theme-default nb-sidebar{
+  background-color: #000f33;
+  background: linear-gradient( 127deg, #000f33, #78014f);
+}
+.nb-theme-default nb-menu .menu-item {
+  border-bottom: 1px solid #4e4057;
+}
+.nb-theme-default nb-menu .menu-item a{
+  color: #dadada;
+}
+.nb-theme-default nb-menu .menu-item a.active, 
+.nb-theme-default nb-menu .menu-item a:hover, 
+.nb-theme-default nb-menu .menu-item > .menu-items > .menu-item a:hover,
+.nb-theme-default nb-menu .menu-item a.active .menu-icon,
+.nb-theme-default nb-menu .menu-item a:hover .menu-icon{
+  color: #fff;
+}

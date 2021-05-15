@@ -16,14 +16,14 @@ nb-card-body{
 }
 
 .flexTable{
+  overflow: auto;
   .tableRow{
 
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    overflow: auto;
     border-bottom: 1px solid #dee2e6;
-  
+    min-width: 90vh;
     .tableCell{
       padding: 15px;
       flex: none;
