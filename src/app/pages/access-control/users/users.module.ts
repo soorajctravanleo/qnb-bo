@@ -3,7 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { QnbUsersRoutingModule } from './users-routing.module';
 import { QnbUsersComponent } from './users.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import {
+
   NbTreeGridModule,
   NbToggleModule,
   NbDialogModule,
@@ -28,6 +31,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     NbToggleModule,
     CommonModule,
     NbDialogModule.forRoot(),
