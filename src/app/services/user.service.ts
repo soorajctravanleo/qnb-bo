@@ -57,7 +57,7 @@ export class QnbUserService {
   private updateUserList(user: MockUser) {
     if (user) {
       const index = this.users.findIndex(usr => usr.id === user.id);
-  
+
       if (index === -1) {
         this.users.push(user);
       } else {
