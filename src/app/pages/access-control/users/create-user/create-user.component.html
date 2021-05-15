@@ -1,27 +1,29 @@
-<nb-card>
-  <nb-card-body>
-    <nb-tabset>
-      <form>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <nb-card>
+    <nb-card-body>
+
+      <nb-tabset>
         <nb-tab tabTitle="User Profile">
           <div class="col-md-12">
             <div class="row new-row">
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="">User ID</label>
-                  <input type="text" nbInput fullWidth required>
+                  <input type="text" nbInput fullWidth ngModel name="userId" required #userId="ngModel">
+                  <span class="help-block" *ngIf="!userId.valid && userId.touched">This field is required</span>
 
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="">Nick Name</label>
-                  <input type="text" nbInput fullWidth>
+                  <input type="text" nbInput fullWidth ngModel name="nickName" required #nickName="ngModel">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="">First Name</label>
-                  <input type="text" nbInput fullWidth>
+                  <input type="text" nbInput fullWidth ngModel name="firstName" required #firstName="ngModel">
                 </div>
               </div>
               <div class="col-md-3">
@@ -205,13 +207,15 @@
             </div>
           </div>
         </nb-tab>
-      </form>
-    </nb-tabset>
-  </nb-card-body>
-  <nb-card-footer>
-    <div style="float:right">
-      <button nbButton hero status="normal" (click)="dismiss()">Discard</button>
-      <button nbButton hero status="success">Submit</button>
-    </div>
-  </nb-card-footer>
-</nb-card>
+
+      </nb-tabset>
+
+    </nb-card-body>
+    <nb-card-footer>
+      <div style="float:right">
+        <button nbButton hero status="normal" (click)="dismiss()">Discard</button>
+        <button type="submit" nbButton hero status="success">Submit</button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>
