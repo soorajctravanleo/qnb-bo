@@ -26,3 +26,11 @@ nb-card-body {
 button {
   margin: 0px 10px;
 }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.help-block {
+  color: red;
+}
