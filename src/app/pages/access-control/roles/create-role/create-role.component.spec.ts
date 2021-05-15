@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdditionalInfoTabComponent } from './additional-info-tab.component';
+import { CreateRoleComponent } from './create-role.component';
 
-describe('AdditionalInfoTabComponent', () => {
-  let component: AdditionalInfoTabComponent;
-  let fixture: ComponentFixture<AdditionalInfoTabComponent>;
+describe('CreateRoleComponent', () => {
+  let component: CreateRoleComponent;
+  let fixture: ComponentFixture<CreateRoleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdditionalInfoTabComponent],
+      declarations: [CreateRoleComponent],
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdditionalInfoTabComponent);
+    fixture = TestBed.createComponent(CreateRoleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

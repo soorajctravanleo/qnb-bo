@@ -1,0 +1,36 @@
+<nb-card>
+  <nb-card-header>Create / Modify Role</nb-card-header>
+  <nb-card-body>
+    <form class="form-inline">
+      <div class="col-md-12">
+        <div class="row new-row">
+          <div class="col-md-6"> <input type="text" nbInput fullWidth placeholder="Role Name"></div>
+          <div class="col-md-6">
+            <input type="text" nbInput fullWidth placeholder="Clone Role">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row new-row">
+            <div class="col-md-6">
+              <textarea type="text" nbInput fullWidth placeholder="Description"></textarea>
+            </div>
+            <div class="col-md-6">
+
+              <nb-checkbox (checkedChange)="toggle($event)">Multi Login</nb-checkbox>
+              <nb-checkbox (checkedChange)="toggle($event)">NOK Login</nb-checkbox>
+              <nb-checkbox (checkedChange)="toggle($event)">Decent Login</nb-checkbox>
+              <nb-checkbox (checkedChange)="toggle($event)">No Password Expiry</nb-checkbox>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <div style="float:right">
+      <button nbButton hero status="normal" (click)="dismiss()">Discard</button>
+      <button nbButton hero status="success">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

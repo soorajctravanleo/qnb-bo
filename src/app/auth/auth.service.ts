@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { QnbAccount } from '../_helpers/models/frontend';
 import { LoginResponse } from '../_helpers/types/backend/index';
+import * as API from '../_helpers/apis';
 
 @Injectable({
   providedIn: 'root',
@@ -22,12 +23,11 @@ export class QnbAuthService {
 
   login(username: string, password: string) {
     return this.http
-      .post('/login', { username, password })
+      .post(API.LOGIN, { username, password })
       .pipe(
         mergeMap(data => {
           const { id, token, firstName, lastName } = data as LoginResponse;
           this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
-          // sessionStorage.setItem(this.AUTH_KEY_KEY, token);
           this.setAuthKey(token);
           return of(this.currentAccount);
         }),
@@ -35,11 +35,10 @@ export class QnbAuthService {
   }
 
   authenticateToken() {
-    // const tokenFromStorage = sessionStorage.getItem(this.AUTH_KEY_KEY);
     const tokenFromStorage = this.cookieService.get(this.AUTH_KEY_KEY);
 
     return this.http
-      .post('/authenticate', { token: tokenFromStorage })
+      .post(API.AUTHENTICATE, { token: tokenFromStorage })
       .pipe(
         mergeMap(data => {
           const { id, token, username, firstName, lastName } = data as LoginResponse;
@@ -50,7 +49,6 @@ export class QnbAuthService {
   }
 
   logout() {
-    // sessionStorage.removeItem(this.AUTH_KEY_KEY);
     this.cookieService.delete(this.AUTH_KEY_KEY);
   }
 
@@ -58,8 +56,12 @@ export class QnbAuthService {
     return this.currentAccount;
   }
 
+  getToken() {
+    return this.cookieService.get(this.AUTH_KEY_KEY);
+  }
+
   private setAuthKey(token: string) {
-    const sessionTime = 60 * 60 * 1000; // 1 hour in milliseconds
+    const sessionTime = 60 * 60 * 10 * 1000; // 1 hour in milliseconds
     const expiryTime = new Date().getTime() + sessionTime;
     this.cookieService.set(this.AUTH_KEY_KEY, token, {
       expires: new Date(expiryTime),

@@ -1,6 +1,6 @@
 import { throwError } from 'rxjs';
 
-type ErrorTypes = ('unauthorized' | 'notFound' | 'general');
+import { ErrorTypes } from '../types/backend';
 
 export const generateError = (type: ErrorTypes, message: any) => {
   let status = 0;

@@ -1,45 +1,52 @@
 import { Injectable } from '@angular/core';
 
-import { MOCK_ACCOUNTS } from '../mock/accounts';
-import { generateError, generateHttpResponse } from '../utils';
-import { LoginResponse } from '../types/backend/index';
-import { Observable } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
+import { MOCK_ACCOUNTS } from '../mock';
+// import { generateError, generateHttpResponse } from '../utils';
+import { LoginResponse, MockResponse } from '../types/backend';
+import { MockAccount } from '../models/backend';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class QnbAccountService {
+export class MockAccountService {
 
-  validateLogin(username: string, password: string): Observable<HttpResponse<LoginResponse>> {
-    const user = MOCK_ACCOUNTS.find(mockAccount => mockAccount.validateLogin(username, password));
+  validateLogin(username: string, password: string): MockResponse {
+    const account = MOCK_ACCOUNTS.find(mockAccount => mockAccount.validateLogin(username, password));
 
-    if (!user) {
-      return generateError('general', 'Incorrect username or password!');
+    if (!account) {
+      // return generateError('general', 'Incorrect username or password!');
+      return {
+        errorType: 'general',
+        errorMessage: 'Incorrect username or password!',
+      };
     }
 
-    return generateHttpResponse({
-      id: user.getId(),
-      username: user.getUsername(),
-      token: user.getToken(),
-      firstName: user.getFirstName(),
-      lastName: user.getLastName(),
-    });
+    // return generateHttpResponse(this.getAccountObject(account));
+    return {
+      res: this.getAccountObject(account),
+    };
   }
 
-  validateToken(token: string): Observable<HttpResponse<LoginResponse>> {
-    const user = MOCK_ACCOUNTS.find(mockUser => mockUser.validateToken(token));
+  validateToken(token: string): MockResponse {
+    const account = MOCK_ACCOUNTS.find(mockAccount => mockAccount.validateToken(token));
 
-    if (!user) {
-      return generateError('unauthorized', 'You are not authorized!');
+    if (!account) {
+      // return generateError('unauthorized', 'You are not authorized!');
+      return {
+        errorType: 'unauthorized',
+        errorMessage: 'You are not authorized!',
+      };
     }
 
-    return generateHttpResponse({
-      id: user.getId(),
-      username: user.getUsername(),
-      token: user.getToken(),
-      firstName: user.getFirstName(),
-      lastName: user.getLastName(),
-    });
+    // return generateHttpResponse(this.getAccountObject(account));
+    return {
+      res: this.getAccountObject(account),
+    };
+  }
+
+  private getAccountObject(account: MockAccount): LoginResponse {
+    const { id, username, token, firstName, lastName } = account;
+    return { id, username, token, firstName, lastName };
   }
 }
