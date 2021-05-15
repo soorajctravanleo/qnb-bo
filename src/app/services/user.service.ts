@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import {  
+import {
   GET_USERS,
   CREATE_USER,
   EDIT_USER,
