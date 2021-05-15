@@ -3,7 +3,6 @@ import { NbDialogService } from '@nebular/theme';
 
 import { CreateUserComponent } from './create-user/create-user.component';
 
-
 @Component({
   selector: 'ngx-users',
   templateUrl: './users.component.html',
@@ -16,7 +15,7 @@ export class QnbUsersComponent implements OnInit {
   constructor(private dialogService: NbDialogService) { }
 
   ngOnInit(): void { }
-  
+
   open() {
     this.dialogService.open(CreateUserComponent);
   }

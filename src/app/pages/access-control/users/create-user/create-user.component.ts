@@ -1,14 +1,14 @@
-import { 
-  Component, 
-  OnInit, 
-  ChangeDetectionStrategy, 
-  Input
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
 } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
-import { 
-  FormControl, 
-  FormGroup, 
-  Validators, 
+import {
+  FormControl,
+  FormGroup,
+  Validators,
 } from '@angular/forms';
 
 import { QnbUserService } from '../../../../services/user.service';
