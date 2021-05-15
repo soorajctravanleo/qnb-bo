@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 
 import {
   GET_USERS,
+  GET_USER,
   EDIT_USER,
   DELETE_USER,
   CREATE_USER,
@@ -41,6 +42,11 @@ export class QnbUserInterceptor implements HttpInterceptor {
       if (method === 'GET') {
         if (url.endsWith(GET_USERS)) {
           outcome = this.mockUserService.getUsers();
+        }
+
+        if (url.endsWith(GET_USER)) {
+          const id = params.get('id');
+          outcome = this.mockUserService.getUserById(+id);
         }
       }
 

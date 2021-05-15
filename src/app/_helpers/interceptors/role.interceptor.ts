@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 
 import {
   GET_ROLES,
+  GET_ROLE,
   SEARCH_ROLES,
 } from '../apis';
 import { MockRoleService } from '../services/role.service';
@@ -39,6 +40,11 @@ export class QnbRoleInterceptor implements HttpInterceptor {
       if (method === 'GET') {
         if (url.endsWith(GET_ROLES)) {
           outcome = this.mockRoleService.getRoles();
+        }
+
+        if (url.endsWith(GET_ROLE)) {
+          const id = params.get('id');
+          outcome = this.mockRoleService.getRole(+id);
         }
 
         if (url.endsWith(SEARCH_ROLES)) {

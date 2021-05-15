@@ -12,6 +12,11 @@ export class MockRoleService {
     return { res: [...MOCK_ROLES] };
   }
 
+  getRole(id: number): MockResponse {
+    const role = MOCK_ROLES.find(mockRole => mockRole.id === id);
+    return { res: role };
+  }
+
   searchRole(name: string = ''): MockResponse {
     const roles = MOCK_ROLES.filter(mockRole => mockRole.data.roleName.toLowerCase().includes(name.toLowerCase()));
     return { res: roles };

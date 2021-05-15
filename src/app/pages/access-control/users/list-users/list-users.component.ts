@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { QnbUserService } from '../../../../services/user.service';
+import { QnbRoleService } from '../../../../services/role.service';
 
 interface UserTableRow {
   userId: number;
@@ -23,10 +24,17 @@ export class ListUsersComponent implements OnInit {
   headElements = ['User ID', 'Nick Name', 'Name', 'Email', 'Phone', 'Dob', 'Role', 'Expiry'];
   elements: UserTableRow[] = [];
 
-  constructor(private qnbUserService: QnbUserService) { }
+  constructor(
+    private qnbUserService: QnbUserService,
+    private qnbRoleService: QnbRoleService,
+  ) { }
 
   ngOnInit() {
     this.fetchUsers();
+  }
+
+  getRole(id: number) {
+    return this.qnbRoleService.getRoleById(id);
   }
 
   private fetchUsers() {
