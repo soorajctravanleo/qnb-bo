@@ -1,54 +1,51 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { QnbUserService } from '../../../../services/user.service';
 
+interface UserTableRow {
+  userId: number;
+  nickName: string;
+  name: string;
+  email: string;
+  phone: string;
+  dob: string;
+  role: number;
+  expiryDate: string;
+}
 
 @Component({
   selector: 'qnb-list-users',
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss'],
 })
-export class ListUsersComponent {
-
-
-  constructor() {
-
-  }
-  elements: any = [
-    {
-      userId: 'Mahesh Eu1',
-      nickName: 'mahesh',
-      name: 'Mahesh',
-      email: 'mahesheu@gmail.com',
-      phone: '999090879',
-      dob: '6 Oct 1986',
-      role: 'Admin',
-      expiryDate: '14th May 2022',
-    },
-    {
-      userId: 'Mahesh Eu2',
-      nickName: 'mahesh',
-      name: 'Mahesh',
-      email: 'mahesheu@gmail.com',
-      phone: '999090879',
-      dob: '6 Oct 1986',
-      role: 'Admin',
-      expiryDate: '14th May 2022',
-    },
-    {
-      userId: 'Mahesh Eu3',
-      nickName: 'mahesh',
-      name: 'Mahesh',
-      email: 'mahesheu@gmail.com',
-      phone: '999090879',
-      dob: '6 Oct 1986',
-      role: 'Admin',
-      expiryDate: '14th May 2022',
-    },
-
-  ];
+export class ListUsersComponent implements OnInit {
 
   headElements = ['User ID', 'Nick Name', 'Name', 'Email', 'Phone', 'Dob', 'Role', 'Expiry'];
+  elements: UserTableRow[] = [];
 
+  constructor(private qnbUserService: QnbUserService) { }
 
+  ngOnInit() {
+    this.fetchUsers();
+  }
 
+  private fetchUsers() {
+    this.qnbUserService
+      .fetchUsers()
+      .subscribe(users => {
+        for (const user of users) {
+          const { profile } = user.data;
+          this.elements.push({
+            userId: profile.userId,
+            dob: profile.dob,
+            email: profile.email,
+            expiryDate: profile.expiryDate,
+            name: `${profile.firstName} ${profile.lastName}`.trim(),
+            nickName: profile.nickName,
+            phone: profile.mobile,
+            role: profile.role,
+          });
+        }
+      });
+  }
 }
