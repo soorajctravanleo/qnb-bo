@@ -1,20 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
-interface TreeNode<T> {
-  data: T;
-  children?: TreeNode<T>[];
-  expanded?: boolean;
-}
+import { Component, OnInit } from '@angular/core';
 
-interface FSEntry {
-  userid: string;
+import { QnbUserService } from '../../../../services/user.service';
+
+interface UserTableRow {
+  userId: number;
+  nickName: string;
   name: string;
-  nickname: string;
-  usertype: string;
-  primaryauth: string;
-  secondaryauth: string;
-  expirydate: string;
-
+  email: string;
+  phone: string;
+  dob: string;
+  role: number;
+  expiryDate: string;
 }
 
 @Component({
@@ -22,42 +18,34 @@ interface FSEntry {
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss'],
 })
-export class ListUsersComponent {
-  customColumn = 'user_id';
-  defaultColumns = ['name', 'nickname', 'usertype', 'primaryauth', 'secondaryauth', 'expirydate'];
-  allColumns = [this.customColumn, ...this.defaultColumns];
+export class ListUsersComponent implements OnInit {
 
-  dataSource: NbTreeGridDataSource<any>;
+  headElements = ['User ID', 'Nick Name', 'Name', 'Email', 'Phone', 'Dob', 'Role', 'Expiry'];
+  elements: UserTableRow[] = [];
 
-  sortColumn: string = '';
-  sortDirection: NbSortDirection = NbSortDirection.NONE;
+  constructor(private qnbUserService: QnbUserService) { }
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>) {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+  ngOnInit() {
+    this.fetchUsers();
   }
 
-  changeSort(sortRequest: NbSortRequest): void {
-    this.dataSource.sort(sortRequest);
-    this.sortColumn = sortRequest.column;
-    this.sortDirection = sortRequest.direction;
+  private fetchUsers() {
+    this.qnbUserService
+      .fetchUsers()
+      .subscribe(users => {
+        for (const user of users) {
+          const { profile } = user.data;
+          this.elements.push({
+            userId: profile.userId,
+            dob: profile.dob,
+            email: profile.email,
+            expiryDate: profile.expiryDate,
+            name: `${profile.firstName} ${profile.lastName}`.trim(),
+            nickName: profile.nickName,
+            phone: profile.mobile,
+            role: profile.role,
+          });
+        }
+      });
   }
-
-  getDirection(column: string): NbSortDirection {
-    if (column === this.sortColumn) {
-      return this.sortDirection;
-    }
-    return NbSortDirection.NONE;
-  }
-
-  private data: TreeNode<FSEntry>[] = [
-    {
-      data: { userid: '1', name: 'Mahesh EU', nickname: 'mahe', usertype: 'test', primaryauth: 'LDAP', secondaryauth: 'OTP', expirydate: '14th May 2022' },
-    },
-    {
-      data: { userid: '2', name: 'Francis', nickname: 'paanchu', usertype: 'test', primaryauth: 'LDAP', secondaryauth: 'security question', expirydate: '16th May 2022' },
-    },
-    {
-      data: { userid: '3', name: 'Bimal', nickname: 'pappan', usertype: 'test', primaryauth: 'LDAP', secondaryauth: 'security question', expirydate: '18th May 2022' },
-    },
-  ];
 }

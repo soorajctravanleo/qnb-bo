@@ -1,33 +1,27 @@
 <nb-card>
   <nb-card-body>
-    <table [nbTreeGrid]="dataSource" nbSort (sort)="changeSort($event)" equalColumnsWidth>
-
-      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
-
-      <ng-container [nbTreeGridColumnDef]="customColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getDirection(customColumn)" *nbTreeGridHeaderCellDef>
-          {{customColumn}}
-        </th>
-
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-
-          <nb-tree-grid-row-toggle [expanded]="row.expanded" *ngIf="row.data.kind === 'dir'">
-          </nb-tree-grid-row-toggle>
-
-          {{row.data.name}}
-
-        </td>
-      </ng-container>
-
-      <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getDirection(column)" *nbTreeGridHeaderCellDef>
-          {{column}}
-        </th>
-
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
-      </ng-container>
-
+    <table mdbTable class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mdbTableCol *ngFor="let el of elements">
+          <th><i class="icons fa fa-edit" (click)="open()"></i></th>
+          <th><i class="icons fa fa-trash-alt" (click)="delete()"></i></th>
+          <th scope="row">{{el.userId}}</th>
+          <td>{{el.nickName}}</td>
+          <td>{{el.name}}</td>
+          <td>{{el.email}}</td>
+          <td>{{el.phone}}</td>
+          <td>{{el.dob}}</td>
+          <td>{{el.role}}</td>
+          <td>{{el.expiryDate}}</td>
+        </tr>
+      </tbody>
     </table>
 
   </nb-card-body>
