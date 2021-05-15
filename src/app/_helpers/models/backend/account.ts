@@ -1,12 +1,12 @@
 export class MockAccount {
 
   constructor(
-    private id: number,
-    private username: string,
-    private password: string,
-    private token: string,
-    private firstName: string,
-    private lastName: string,
+    public id: number,
+    public username: string,
+    public password: string,
+    public token: string,
+    public firstName: string,
+    public lastName: string,
   ) {}
 
   validateLogin(username: string, password: string) {
@@ -15,25 +15,5 @@ export class MockAccount {
 
   validateToken(token: string) {
     return this.token === token;
-  }
-
-  getUsername() {
-    return this.username;
-  }
-
-  getId() {
-    return this.id;
-  }
-
-  getFirstName() {
-    return this.firstName;
-  }
-
-  getLastName() {
-    return this.lastName;
-  }
-
-  getToken() {
-    return this.token;
   }
 }
