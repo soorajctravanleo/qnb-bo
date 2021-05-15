@@ -4,12 +4,13 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
+  HttpParams,
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { mergeMap, materialize, dematerialize, delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import * as API from '../apis';
+import { LOGIN, AUTHENTICATE } from '../apis';
 import { MockAccountService } from '../services/account.service';
+import { MockResponse } from '../types/backend';
 
 @Injectable()
 export class QnbLoginInterceptor implements HttpInterceptor {
@@ -20,27 +21,28 @@ export class QnbLoginInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url, method, body } = req;
+    let outcome: MockResponse;
 
-    const handleRoute = () => {
-      if (method === 'POST') {
-        if (url.endsWith(API.LOGIN)) {
-          const { username, password } = body;
-          return this.mockAccountService.validateLogin(username, password);
-        }
-  
-        if (url.endsWith(API.AUTHENTICATE)) {
-          const { token } = body;
-          return this.mockAccountService.validateToken(token);
-        }
+    if (method === 'POST') {
+      if (url.endsWith(LOGIN)) {
+        const { username, password } = body;
+        outcome = this.mockAccountService.validateLogin(username, password);
       }
 
-      return next.handle(req);
-    };
+      if (url.endsWith(AUTHENTICATE)) {
+        const { token } = body;
+        outcome = this.mockAccountService.validateToken(token);
+      }
+    }
 
-    return of(null)
-      .pipe(mergeMap(handleRoute))
-      .pipe(materialize())
-      .pipe(delay(500))
-      .pipe(dematerialize());
+    if (outcome) {
+      req = req.clone({
+        params: new HttpParams().appendAll({
+          outcome: JSON.stringify(outcome),
+        }),
+      });
+    }
+
+    return next.handle(req);
   }
 }

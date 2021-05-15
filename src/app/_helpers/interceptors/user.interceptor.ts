@@ -4,18 +4,18 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
+  HttpParams,
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { mergeMap, materialize, dematerialize, delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import { 
-  GET_USERS, 
-  EDIT_USER, 
-  DELETE_USER, 
+import {
+  GET_USERS,
+  EDIT_USER,
+  DELETE_USER,
   CREATE_USER,
 } from '../apis';
 import { MockUserService } from '../services/user.service';
-import { generateError } from '../utils';
+import { MockResponse } from '../types/backend';
 
 @Injectable()
 export class QnbUserInterceptor implements HttpInterceptor {
@@ -25,41 +25,49 @@ export class QnbUserInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const { url, method, body, headers } = req;
+    const { url, method, body, headers, params } = req;
+    let outcome: MockResponse;
 
-    const handleRoute = () => {
-      if (!headers.has('authorization')) {
-        return generateError('unauthorized', 'You are not authorized.');
-      }
+    if (params.has('outcome')) {
+      return next.handle(req);
+    }
 
+    if (!headers.has('authorization')) {
+      outcome = {
+        errorType: 'unauthorized',
+        errorMessage: 'You are not authorized.',
+      };
+    } else {
       if (method === 'GET') {
         if (url.endsWith(GET_USERS)) {
-          return this.mockUserService.getUsers();
+          outcome = this.mockUserService.getUsers();
         }
       }
 
       if (method === 'POST') {
         if (url.endsWith(CREATE_USER)) {
-          return this.mockUserService.createUser(body);
+          outcome = this.mockUserService.createUser(body);
         }
-  
+
         if (url.endsWith(EDIT_USER)) {
           const { id, data } = body;
-          return this.mockUserService.editUser(id, data);
+          outcome = this.mockUserService.editUser(id, data);
         }
 
         if (url.endsWith(DELETE_USER)) {
-          return this.mockUserService.deleteUser(body.id);
+          outcome = this.mockUserService.deleteUser(body.id);
         }
       }
+    }
 
-      return next.handle(req);
-    };
+    if (outcome) {
+      req = req.clone({
+        params: new HttpParams().appendAll({
+          outcome: JSON.stringify(outcome),
+        }),
+      });
+    }
 
-    return of(null)
-      .pipe(mergeMap(handleRoute))
-      .pipe(materialize())
-      .pipe(delay(500))
-      .pipe(dematerialize());
+    return next.handle(req);
   }
 }

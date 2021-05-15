@@ -5,8 +5,7 @@ import {
   HttpRequest,
   HttpEvent,
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { mergeMap, materialize, dematerialize, delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { QnbAuthService } from '../../auth/auth.service';
 
@@ -27,26 +26,18 @@ export class QnbJwtInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url } = req;
 
-    const handleRoute = () => {
-      if (this.shouldAddJWT(url)) {
-        const token = this.qnbAuthService.getToken();
-        if (token) {
-          req = req.clone({
-            setHeaders: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-        }
+    if (this.shouldAddJWT(url)) {
+      const token = this.qnbAuthService.getToken();
+      if (token) {
+        req = req.clone({
+          setHeaders: {
+            authorization: `Bearer ${token}`,
+          },
+        });
       }
+    }
 
-      return next.handle(req);
-    };
-
-    return of(null)
-      .pipe(mergeMap(handleRoute))
-      .pipe(materialize())
-      .pipe(delay(500))
-      .pipe(dematerialize());
+    return next.handle(req);
   }
 
   private shouldAddJWT(url: string) {

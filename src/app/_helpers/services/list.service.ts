@@ -6,27 +6,32 @@ import {
   MOCK_COUNTRIES,
 } from '../mock';
 import { generateHttpResponse } from '../utils';
+import { MockResponse } from '../types/backend';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MockListService {
 
-  getLanguages() {
-    return generateHttpResponse([...MOCK_LANGUAGES]);
+  getLanguages(): MockResponse {
+    // return generateHttpResponse([...MOCK_LANGUAGES]);
+    return { res: [...MOCK_LANGUAGES] };
   }
 
-  getTimezones() {
-    return generateHttpResponse([...MOCK_TIMEZONES]);
+  getTimezones(): MockResponse {
+    // return generateHttpResponse([...MOCK_TIMEZONES]);
+    return { res: [...MOCK_TIMEZONES] };
   }
 
-  getCountries() {
-    return generateHttpResponse([...MOCK_COUNTRIES]);
+  getCountries(): MockResponse {
+    // return generateHttpResponse([...MOCK_COUNTRIES]);
+    return { res: [...MOCK_COUNTRIES] };
   }
 
-  searchCountry(name: string = '') {
+  searchCountry(name: string = ''): MockResponse {
     console.log(name);
     const countries = MOCK_COUNTRIES.filter(mockCountry => mockCountry.name.toLowerCase().includes(name.toLowerCase()));
-    return generateHttpResponse(countries);
+    // return generateHttpResponse(countries);
+    return { res: countries };
   }
 }

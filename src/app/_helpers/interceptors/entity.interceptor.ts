@@ -8,15 +8,15 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import * as API from '../apis';
-import { MockListService } from '../services/list.service';
+import { GET_ENTITIES } from '../apis';
+import { MockEntityService } from '../services/entity.service';
 import { MockResponse } from '../types/backend';
 
 @Injectable()
-export class QnbListInterceptor implements HttpInterceptor {
+export class QnbEntityInterceptor implements HttpInterceptor {
 
   constructor(
-    private mockListService: MockListService,
+    private mockEntityService: MockEntityService,
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -34,21 +34,8 @@ export class QnbListInterceptor implements HttpInterceptor {
       };
     } else {
       if (method === 'GET') {
-        if (url.endsWith(API.GET_COUNTRIES)) {
-          outcome = this.mockListService.getCountries();
-        }
-
-        if (url.endsWith(API.GET_LANGUAGES)) {
-          outcome = this.mockListService.getLanguages();
-        }
-
-        if (url.endsWith(API.GET_TIMEZONES)) {
-          outcome = this.mockListService.getTimezones();
-        }
-
-        if (url.endsWith(API.SEARCH_COUNTRIES)) {
-          const searchTerm = params.get('search');
-          outcome = this.mockListService.searchCountry(searchTerm);
+        if (url.endsWith(GET_ENTITIES)) {
+          outcome = this.mockEntityService.getEntities();
         }
       }
     }
