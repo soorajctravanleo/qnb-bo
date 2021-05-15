@@ -15,7 +15,7 @@ export class CreateUserComponent implements OnInit {
   languages = ['Arabic', 'English', 'Spanish', 'Hindi'];
   roles = ['Viewer', 'Admin', 'System'];
 
-    user = {
+  user = {
     userId: '',
     nickName: '',
     firstName: '',
@@ -35,9 +35,6 @@ export class CreateUserComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    console.log("---");
-    console.log(this.userForm.value);
-
     this.userForm.reset();
   }
 
