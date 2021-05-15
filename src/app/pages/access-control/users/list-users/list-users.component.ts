@@ -52,6 +52,10 @@ export class ListUsersComponent implements OnInit {
       });
   }
 
+  onDeleteUser(id: number) {
+
+  }
+
   private fetchUsers() {
     this.qnbUserService
       .fetchUsers()
