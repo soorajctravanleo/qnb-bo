@@ -1,99 +1,211 @@
 <nb-card>
   <nb-card-body>
     <nb-tabset>
-      <nb-tab tabTitle="User Profile">
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="User ID"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Nick Name"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="First Name"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Last Name"></div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-3"> <input nbInput placeholder="Pick Date Range" [nbDatepicker]="formpicker">
-              <nb-datepicker #formpicker></nb-datepicker>
-            </div>
-            <div class="col-md-3">
-              <nb-select placeholder="User type" style="width: 100%;">
-                <nb-option value="1">Fulltime</nb-option>
-                <nb-option value="2">Contract</nb-option>
-              </nb-select>
-            </div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Entity"></div>
-            <div class="col-md-3">
-              <nb-select multiple placeholder="Select Role" style="width: 100%;">
-                <nb-option value="1">Admin</nb-option>
-                <nb-option value="2">System</nb-option>
-                <nb-option value="3">Viewer</nb-option>
+      <form>
+        <nb-tab tabTitle="User Profile">
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">User ID</label>
+                  <input type="text" nbInput fullWidth required>
 
-              </nb-select>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Mobile"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Email"></div>
-            <div class="col-md-3"> <input nbInput placeholder="Pick Date Range" [nbDatepicker]="formpicker2">
-              <nb-datepicker #formpicker2></nb-datepicker>
-            </div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Timezone"></div>
-          </div>
-        </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Nick Name</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">First Name</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Last Name</label>
+                  <input type="text" nbInput fullWidth>
 
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-5">
-              <nb-select multiple placeholder="Select Language" style="width: 100%;">
-                <nb-option value="1">Arabic</nb-option>
-                <nb-option value="2">English</nb-option>
-                <nb-option value="3">Hindi</nb-option>
-                <nb-option value="4">Spanish</nb-option>
-              </nb-select>
+                </div>
+              </div>
             </div>
-            <div class="col-md-7">
-              <nb-checkbox class="language-input" status="basic">Send Password on email</nb-checkbox>
+          </div>
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">DOB</label>
+                  <input nbInput [nbDatepicker]="formpicker">
+                  <nb-datepicker #formpicker></nb-datepicker>
+
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">User type</label>
+                  <nb-select style="width: 100%;">
+                    <nb-option value="1">Fulltime</nb-option>
+                    <nb-option value="2">Contract</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Entity</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Role</label>
+                  <nb-select multiple style="width: 100%;">
+                    <nb-option value="1">Admin</nb-option>
+                    <nb-option value="2">System</nb-option>
+                    <nb-option value="3">Viewer</nb-option>
+
+                  </nb-select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Mobile</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Expiry Date</label>
+                  <input nbInput [nbDatepicker]="formpicker2">
+                  <nb-datepicker #formpicker2></nb-datepicker>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Timezone</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
             </div>
           </div>
 
-        </div>
-      </nb-tab>
-      <nb-tab tabTitle="Additional Info">
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="TTL"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Nick Name"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="First Name"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Attribute1"></div>
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label for="">Select Language</label>
+                  <nb-select multiple style="width: 100%;">
+                    <nb-option value="1">Arabic</nb-option>
+                    <nb-option value="2">English</nb-option>
+                    <nb-option value="3">Hindi</nb-option>
+                    <nb-option value="4">Spanish</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <nb-checkbox class="language-input" status="basic">Send Password on email</nb-checkbox>
+              </div>
+            </div>
+
           </div>
-        </div>
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Attribute2"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Attribute3"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="Attribute4"></div>
-            <div class="col-md-3"> <input type="text" nbInput fullWidth placeholder="MAC ID"></div>
-          </div>
-        </div>
-      </nb-tab>
-      <nb-tab tabTitle="Login Restrictions">
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-6"> <input type="text" nbInput fullWidth placeholder="User ID"></div>
-            <div class="col-md-6"> <input type="text" nbInput fullWidth placeholder="First Name"></div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-6">Apply Restrictions</div>
-            <div class="col-md-6">
-              <nb-toggle status="danger"></nb-toggle>
+        </nb-tab>
+        <nb-tab tabTitle="Additional Info">
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">TTL</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Nick Name</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">First Name</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Attribute1</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </nb-tab>
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Attribute2</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Attribute3</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Attribute4</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">MAC ID</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Login Restrictions">
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">User ID</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">MAC ID</label>
+                  <input type="text" nbInput fullWidth>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row new-row">
+              <div class="col-md-6">Apply Restrictions</div>
+              <div class="col-md-6">
+                <nb-toggle status="danger"></nb-toggle>
+              </div>
+            </div>
+          </div>
+        </nb-tab>
+      </form>
     </nb-tabset>
   </nb-card-body>
   <nb-card-footer>
