@@ -27,7 +27,7 @@ import { CreateRoleComponent } from './create-role/create-role.component';
     NbButtonModule,
     QnbRolesRoutingModule,
     NbTreeGridModule,
-    NbDialogModule,
+    NbDialogModule.forChild(),
     NbSelectModule,
     NbCardModule,
     NbCheckboxModule,
