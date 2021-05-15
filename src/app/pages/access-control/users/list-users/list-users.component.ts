@@ -1,5 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { Component, OnInit } from '@angular/core';
+import {
+  NbSortDirection,
+  NbSortRequest,
+  NbTreeGridDataSource,
+  NbTreeGridDataSourceBuilder,
+} from '@nebular/theme';
+
+import { QnbUserService } from '../../../../services/user.service';
+import { MockUser } from '../../../../_helpers/models/backend';
+
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];
@@ -14,7 +23,6 @@ interface FSEntry {
   primaryauth: string;
   secondaryauth: string;
   expirydate: string;
-
 }
 
 @Component({
@@ -22,7 +30,7 @@ interface FSEntry {
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss'],
 })
-export class ListUsersComponent {
+export class ListUsersComponent implements OnInit {
   customColumn = 'user_id';
   defaultColumns = ['name', 'nickname', 'usertype', 'primaryauth', 'secondaryauth', 'expirydate'];
   allColumns = [this.customColumn, ...this.defaultColumns];
@@ -31,9 +39,17 @@ export class ListUsersComponent {
 
   sortColumn: string = '';
   sortDirection: NbSortDirection = NbSortDirection.NONE;
+  users: MockUser[] = [];
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>) {
+  constructor(
+    private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>,
+    private qnbUserService: QnbUserService,
+  ) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
+  }
+
+  ngOnInit() {
+    this.fetchUsers();
   }
 
   changeSort(sortRequest: NbSortRequest): void {
@@ -60,4 +76,12 @@ export class ListUsersComponent {
       data: { userid: '3', name: 'Bimal', nickname: 'pappan', usertype: 'test', primaryauth: 'LDAP', secondaryauth: 'security question', expirydate: '18th May 2022' },
     },
   ];
+
+  private fetchUsers() {
+    this.qnbUserService
+      .fetchUsers()
+      .subscribe(res => {
+        this.users = res;
+      });
+  }
 }

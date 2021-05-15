@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import {  
   GET_USERS,
@@ -7,7 +8,7 @@ import {
   EDIT_USER,
   DELETE_USER,
 } from '../_helpers/apis';
-import { MockUserData } from '../_helpers/models/backend';
+import { MockUserData, MockUser } from '../_helpers/models/backend';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class QnbUserService {
   ) { }
 
   fetchUsers() {
-    return this.http.get(GET_USERS);
+    return <Observable<MockUser[]>>(this.http.get(GET_USERS));
   }
 
   createUser(data: MockUserData) {
