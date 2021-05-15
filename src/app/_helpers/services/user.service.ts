@@ -15,6 +15,11 @@ export class MockUserService {
     return { res: this.users };
   }
 
+  getUserById(id: number): MockResponse {
+    const userWithId = this.users.find(user => user.id === id);
+    return { res: userWithId };
+  }
+
   createUser(data: MockUserData): MockResponse {
     const newUserId = this.lastUserId + 1;
     this.lastUserId = newUserId;
