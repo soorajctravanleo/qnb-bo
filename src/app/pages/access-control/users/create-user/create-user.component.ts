@@ -72,8 +72,6 @@ export class CreateUserComponent implements OnInit {
     if (this.signupForm.valid) {
       this.userService.createUser(this.signupForm.value).subscribe(res => {
       });
-
-      console.log(this.signupForm.value);
     } else {
       this.validateAllFormFields(this.signupForm);
     }
