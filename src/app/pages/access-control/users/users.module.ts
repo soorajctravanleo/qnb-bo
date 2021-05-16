@@ -6,6 +6,7 @@ import { QnbUsersComponent } from './users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
+  NbToastrModule,
   NbTreeGridModule,
   NbToggleModule,
   NbDialogModule,
@@ -34,6 +35,7 @@ import { QnbCustomComponentsModule } from '../../../components/custom-components
     ReactiveFormsModule,
     NbToggleModule,
     CommonModule,
+    NbToastrModule.forRoot(),
     NbDialogModule.forChild(),
     NbDatepickerModule.forRoot(),
     NbSelectModule,

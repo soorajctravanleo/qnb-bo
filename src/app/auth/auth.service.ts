@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -19,6 +20,7 @@ export class QnbAuthService {
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
+    private router: Router,
   ) { }
 
   login(username: string, password: string) {
@@ -50,6 +52,7 @@ export class QnbAuthService {
 
   logout() {
     this.cookieService.delete(this.AUTH_KEY_KEY);
+    this.router.navigateByUrl('/');
   }
 
   getCurrentAccount() {
