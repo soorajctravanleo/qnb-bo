@@ -33,7 +33,7 @@ export class QnbHttpInterceptor implements HttpInterceptor {
 
       req = req.clone({
         url: this.urlService.getHostURL() + url,
-      })
+      });
 
       return next.handle(req);
     };
