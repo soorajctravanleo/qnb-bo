@@ -3,16 +3,33 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
+  ViewChild,
+  QueryList,
 } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbSelectComponent } from '@nebular/theme';
 import {
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 
-import { QnbUserService } from '../../../../services/user.service';
-import { MockUser } from '../../../../_helpers/models/backend';
+import {
+  MockUser,
+  MockCountry,
+  MockLanguage,
+  MockTimezone,
+  MockRole,
+  MockUserType,
+} from '../../../../_helpers/models/backend';
+import {
+  QnbUserService,
+  QnbRoleService,
+  QnbListService,
+  QnbLanguage,
+  QnbTimezone,
+  QnbUserGroup,
+  QnbUser,
+} from '../../../../services';
 
 @Component({
   selector: 'qnb-create-user',
@@ -22,67 +39,39 @@ import { MockUser } from '../../../../_helpers/models/backend';
 })
 export class CreateUserComponent implements OnInit {
   signupForm: FormGroup;
-  userTypes = ['contract', 'permanent'];
-  languages = ['Arabic', 'English', 'Spanish', 'Hindi'];
-  roles = ['Viewer', 'Admin', 'System'];
+  // userTypes = ['contract', 'permanent'];
+  // languages = ['Arabic', 'English', 'Spanish', 'Hindi'];
+  // roles = ['Viewer', 'Admin', 'System'];
   submitted = false;
 
+  editMode = false;
+  countries: MockCountry[] = [];
+  languages: QnbLanguage[] = [];
+  timezones: QnbTimezone[] = [];
+  roles: QnbUserGroup[] = [];
+  userTypes: MockUserType[] = [];
+
   @Input() user: MockUser;
+  @ViewChild('ipt', { static: true }) languageSelector: NbSelectComponent;
 
   constructor(
     protected ref: NbDialogRef<CreateUserComponent>,
-    private userService: QnbUserService,
+    private qnbUserService: QnbUserService,
+    private qnbListService: QnbListService,
+    private qnbRoleService: QnbRoleService,
   ) { }
 
-  ngOnInit(): void {
-    this.signupForm = new FormGroup({
-      'userData': new FormGroup({
-        'userId': new FormControl(null, [Validators.required]),
-        'nickName': new FormControl(null, [Validators.required]),
-        'firstName': new FormControl(null, [Validators.required]),
-        'lastName': new FormControl(null, [Validators.required]),
-        'dob': new FormControl(null),
-        'userType': new FormControl(null, [Validators.required]),
-        'email': new FormControl(null, [Validators.required, Validators.email]),
-        'mobile': new FormControl(null, [Validators.required]),
-        'expiryDate': new FormControl(null),
-        'entity': new FormControl(null),
-        'role': new FormControl([]),
-        'timeZone': new FormControl(null),
-        'language': new FormControl([]),
-        'sendPassword': new FormControl(null),
-      }),
-      'additionalInfo': new FormGroup({
-        'ttl': new FormControl(null),
-        'nickName2': new FormControl(null),
-        'firstName2': new FormControl(null),
-        'attribute1': new FormControl(null),
-        'attribute2': new FormControl(null),
-        'attribute3': new FormControl(null),
-        'attribute4': new FormControl(null),
-        'macId': new FormControl(null),
-      }),
-      'loginRestriction': new FormGroup({
-        'userId': new FormControl(null),
-        'firstName': new FormControl(null),
-        'loginRestriction': new FormControl(null),
-      }),
-    });
+  ngOnInit() {
+    this.prepareForm();
+    this.fetchCountries();
+    this.fetchLanguages();
+    this.fetchTimezones();
+    this.fetchRoles();
+    this.fetchUserTypes();
   }
 
   dismiss() {
     this.ref.close();
-  }
-
-  onSubmit() {
-    if (this.signupForm.valid) {
-      this.userService
-        .createUser(this.signupForm.value)
-        .subscribe(res => {
-        });
-    } else {
-      this.validateAllFormFields(this.signupForm);
-    }
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -94,5 +83,128 @@ export class CreateUserComponent implements OnInit {
         this.validateAllFormFields(control);
       }
     });
+  }
+
+  private getFormattedDate(d: Date) {
+    return `${d.getDate()}-${(d.getMonth() + 1)}-${d.getFullYear()}`;
+  }
+
+  onSubmit() {
+    if (this.signupForm.valid) {
+      const { profile, additionalInfo, loginRestriction } = this.signupForm.value;
+      const formattedUser: QnbUser = {
+        userId: profile.userId,
+        nickName: profile.nickName,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        dob: this.getFormattedDate(profile.dob),
+        mobileNumber: profile.mobile,
+        userType: profile.userType,
+        userStatus: 'OPEN',
+        bankSubType: 'SUB',
+        corporateId: 'CORP1',
+        entity: profile.entity,
+        expiryDate: this.getFormattedDate(profile.expiryDate),
+        timeZoneId: profile.timezone,
+        language: profile.language,
+        emailId: profile.email,
+        sendPwdOnEmail: profile.sendPasswordOnEmail,
+        userBranchCode: '',
+        authTypePrimary: 'LDAP',
+        authTypeSecondary: 'DATABASE',
+        optAuthTypePrimary: 'optAuthTypeP',
+        optAuthTypeSecondary: 'ptAuthTypeS',
+        authTypeAttribute: 'authTypeA',
+        macId: additionalInfo.macId,
+        authApplyDayTimeBasedLogin: true,
+        groups: profile.role,
+      };
+
+      if (this.editMode) {
+        // this.qnbUserService
+        //   .editUser(this.user.id, this.signupForm.value)
+        //   .subscribe(res => {
+
+        //   });
+      } else {
+        this.qnbUserService
+          .createUser(formattedUser)
+          .subscribe(res => {
+            this.ref.close({ refreshList: true });
+          });
+      }
+    } else {
+      this.validateAllFormFields(this.signupForm);
+    }
+  }
+
+  private fetchCountries() {
+    this.qnbListService
+      .getCountries()
+      .subscribe(data => this.countries = data);
+  }
+
+  private fetchLanguages() {
+    this.qnbListService
+      .fetchLanguages()
+      .subscribe(data => this.languages = data);
+  }
+
+  private fetchTimezones() {
+    this.qnbListService
+      .fetchTimezones()
+      .subscribe(data => this.timezones = data);
+  }
+
+  private fetchRoles() {
+    this.qnbRoleService
+      .fetchRoles()
+      .subscribe(data => this.roles = data);
+  }
+
+  private fetchUserTypes() {
+    this.qnbUserService
+      .fetchUserTypes()
+      .subscribe(data => this.userTypes = data);
+  }
+
+  private prepareForm() {
+    this.signupForm = new FormGroup({
+      'profile': new FormGroup({
+        'userId': new FormControl(null, [Validators.required]),
+        'nickName': new FormControl(null, [Validators.required]),
+        'firstName': new FormControl(null, [Validators.required]),
+        'lastName': new FormControl(null, [Validators.required]),
+        'dob': new FormControl(null),
+        'userType': new FormControl(null, [Validators.required]),
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'mobile': new FormControl(null, [Validators.required]),
+        'expiryDate': new FormControl(null),
+        'entity': new FormControl(null),
+        'role': new FormControl([]),
+        'timezone': new FormControl(null),
+        'language': new FormControl(null),
+        'sendPasswordOnEmail': new FormControl(false),
+      }),
+      'additionalInfo': new FormGroup({
+        'ttl': new FormControl(null),
+        'country': new FormControl(null),
+        'startDate': new FormControl(null),
+        'attr1': new FormControl(null),
+        'attr2': new FormControl(null),
+        'attr3': new FormControl(null),
+        'attr4': new FormControl(null),
+        'macId': new FormControl(null),
+      }),
+      'loginRestriction': new FormGroup({
+        'userId': new FormControl(null),
+        'firstName': new FormControl(null),
+        'loginRestriction': new FormControl(null),
+      }),
+    });
+
+    if (this.user) {
+      this.editMode = true;
+    }
   }
 }

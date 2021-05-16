@@ -14,6 +14,7 @@ import {
   EDIT_USER,
   DELETE_USER,
   CREATE_USER,
+  GET_USER_TYPES,
 } from '../apis';
 import { MockUserService } from '../services/user.service';
 import { MockResponse } from '../types/backend';
@@ -40,13 +41,17 @@ export class QnbUserInterceptor implements HttpInterceptor {
       };
     } else {
       if (method === 'GET') {
-        if (url.endsWith(GET_USERS)) {
-          outcome = this.mockUserService.getUsers();
-        }
+        // if (url.endsWith(GET_USERS)) {
+        //   outcome = this.mockUserService.getUsers();
+        // }
 
         if (url.endsWith(GET_USER)) {
           const id = params.get('id');
           outcome = this.mockUserService.getUserById(+id);
+        }
+
+        if (url.endsWith(GET_USER_TYPES)) {
+          outcome = this.mockUserService.getUserTypes();
         }
       }
 

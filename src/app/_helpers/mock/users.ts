@@ -1,7 +1,14 @@
 import {
   MockUser,
   MockUserType,
+  MockUserTypeId,
 } from '../models/backend';
+
+export const MOCK_USER_TYPES: MockUserType[] = [
+  new MockUserType(1, 'BANK'),
+  new MockUserType(2, 'RETAIL'),
+  new MockUserType(3, 'CORPORATE'),
+];
 
 export const MOCK_USERS: MockUser[] = [
   new MockUser(
@@ -21,7 +28,7 @@ export const MOCK_USERS: MockUser[] = [
         sendPasswordOnEmail: false,
         timezone: 2,
         userId: 12371238712,
-        userType: MockUserType.FULLTIME,
+        userType: MockUserTypeId.FULLTIME,
       },
       additionalInfo: {
         attr1: '',
@@ -58,7 +65,7 @@ export const MOCK_USERS: MockUser[] = [
         sendPasswordOnEmail: false,
         timezone: 2,
         userId: 12371238661,
-        userType: MockUserType.CONTRACT,
+        userType: MockUserTypeId.CONTRACT,
       },
       additionalInfo: {
         attr1: '',

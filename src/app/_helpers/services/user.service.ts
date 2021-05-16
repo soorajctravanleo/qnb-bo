@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { MockUser, MockUserData } from '../models/backend';
-import { MOCK_USERS } from '../mock';
+import { MOCK_USERS, MOCK_USER_TYPES } from '../mock';
 import { MockResponse } from '../types/backend';
 
 @Injectable({
@@ -51,6 +51,10 @@ export class MockUserService {
     }
 
     return { res: null };
+  }
+
+  getUserTypes(): MockResponse {
+    return { res: [...MOCK_USER_TYPES] };
   }
 
   private getUserIndex(id: number) {

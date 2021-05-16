@@ -1,3 +1,7 @@
+<div align="right">
+  <button id="create-user-button" (click)="open()" nbButton status="success">Create User</button>
+</div>
+
 <nb-card>
   <nb-card-body>
     <table mdbTable class="table">
@@ -18,7 +22,7 @@
           <td>{{ user.email }}</td>
           <td>{{ user.phone }}</td>
           <td>{{ user.dob }}</td>
-          <td>{{ (getRole(user.role) | async)?.data.roleName }}</td>
+          <td>{{ user.role }}</td>
           <td>{{ user.expiryDate }}</td>
         </tr>
       </tbody>

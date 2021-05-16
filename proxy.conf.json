@@ -1,0 +1,8 @@
+{
+	"/bo/*": {
+		"target": "http://164.52.200.24:8081",
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	}
+}

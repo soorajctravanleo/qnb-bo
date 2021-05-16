@@ -6,11 +6,19 @@ import { tap, shareReplay } from 'rxjs/operators';
 import { GET_ROLES, GET_ROLE } from '../_helpers/apis';
 import { MockRole } from '../_helpers/models/backend';
 
+export interface QnbUserGroup {
+  groupCode: string;
+  groupDefinition: string;
+  createdBy: string;
+  createdTime: string;
+  lastModifiedBy: string;
+  lastModifiedTime: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class QnbRoleService {
-
   private roles: MockRole[] = [];
 
   constructor(
@@ -18,14 +26,15 @@ export class QnbRoleService {
   ) { }
 
   fetchRoles() {
-    return (this.http.get(GET_ROLES) as Observable<MockRole[]>)
-      .pipe(
-        tap(roles => {
-          for (const role of roles) {
-            this.updateRoleList(role);
-          }
-        }),
-      );
+    // return (this.http.get(GET_ROLES) as Observable<MockRole[]>)
+    //   .pipe(
+    //     tap(roles => {
+    //       for (const role of roles) {
+    //         this.updateRoleList(role);
+    //       }
+    //     }),
+    //   );
+    return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
 
   fetchRole(id: number) {
