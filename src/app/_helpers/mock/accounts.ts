@@ -6,8 +6,8 @@ export const MOCK_ACCOUNTS: MockAccount[] = [
     'qnb',
     'qnb@123456',
     'aWasdaEwdilihjfsjkh21312387sadhv',
+    'Sivanandi',
     'Raman',
-    'Shivanandi',
   ),
   new MockAccount(
     2,
@@ -15,6 +15,6 @@ export const MOCK_ACCOUNTS: MockAccount[] = [
     'qnb1@123456',
     'aWasdaEwdilisadashjfsjkh21312387sadhv',
     'Mahesh',
-    'EU',
+    'Eu',
   ),
 ];
