@@ -6,7 +6,7 @@ import {
   ViewChild,
   QueryList,
 } from '@angular/core';
-import { NbDialogRef, NbSelectComponent } from '@nebular/theme';
+import { NbDialogRef, NbSelectComponent, NbToastrService } from '@nebular/theme';
 import {
   FormControl,
   FormGroup,
@@ -43,6 +43,7 @@ export class CreateUserComponent implements OnInit {
   // languages = ['Arabic', 'English', 'Spanish', 'Hindi'];
   // roles = ['Viewer', 'Admin', 'System'];
   submitted = false;
+  private index: number = 0;
 
   editMode = false;
   countries: MockCountry[] = [];
@@ -55,6 +56,7 @@ export class CreateUserComponent implements OnInit {
   @ViewChild('ipt', { static: true }) languageSelector: NbSelectComponent;
 
   constructor(
+    private toastrService: NbToastrService,
     protected ref: NbDialogRef<CreateUserComponent>,
     private qnbUserService: QnbUserService,
     private qnbListService: QnbListService,
@@ -72,6 +74,13 @@ export class CreateUserComponent implements OnInit {
 
   dismiss() {
     this.ref.close();
+  }
+  showToast(position, status) {
+    this.index += 1;
+    this.toastrService.show(
+      status || 'Success',
+      `User Added`,
+      { position, status });
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -130,6 +139,7 @@ export class CreateUserComponent implements OnInit {
         this.qnbUserService
           .createUser(formattedUser)
           .subscribe(res => {
+            this.showToast('top-right', 'success');
             this.ref.close({ refreshList: true });
           });
       }
