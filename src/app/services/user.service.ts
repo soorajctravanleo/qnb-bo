@@ -25,7 +25,7 @@ export interface QnbUser {
   dob: string;
   mobileNumber: string;
   userType: string;
-  userStatus: string;
+  userStatus?: string;
   bankSubType: string;
   corporateId: string;
   entity: string;

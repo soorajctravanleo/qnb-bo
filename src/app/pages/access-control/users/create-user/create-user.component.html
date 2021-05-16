@@ -1,5 +1,5 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-  <nb-card>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()"  class="p-3">
+  <nb-card style="max-height: 94vh;">
     <nb-card-body>
       <nb-tabset>
         <nb-tab tabTitle="User Profile">
@@ -65,7 +65,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">DOB</label>
-                    <input nbInput [nbDatepicker]="formpicker" formControlName="dob">
+                    <input nbInput fullWidth [nbDatepicker]="formpicker" formControlName="dob">
                     <nb-datepicker #formpicker></nb-datepicker>
                     <span *ngIf="!signupForm.get('profile.dob').valid && signupForm.get('profile.dob').touched"
                       class="help-block">
@@ -78,7 +78,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">User type</label>
-                    <nb-select style="width: 100%;" formControlName="userType">
+                    <nb-select fullWidth style="width: 100%;" formControlName="userType">
                       <nb-option *ngFor="let userType of userTypes" [value]="userType.name">
                         {{ userType.name }}
                       </nb-option>
@@ -95,7 +95,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Entity</label>
-                    <nb-select style="width: 100%;" formControlName="entity">
+                    <nb-select fullWidth style="width: 100%;" formControlName="entity">
                       <nb-option value="BANK">BANK</nb-option>
                     </nb-select>
                     <span *ngIf="!signupForm.get('profile.entity').valid && signupForm.get('profile.entity').touched"
@@ -109,7 +109,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Role</label>
-                    <nb-select multiple style="width: 100%;" formControlName="role">
+                    <nb-select fullWidth multiple style="width: 100%;" formControlName="role">
                       <nb-option *ngFor="let role of roles" [value]="role.groupCode">
                         {{ role.groupCode }}
                       </nb-option>
@@ -149,17 +149,17 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Expiry Date</label>
-                    <input nbInput [nbDatepicker]="formpicker2" formControlName="expiryDate">
+                    <input nbInput fullWidth [nbDatepicker]="formpicker2" formControlName="expiryDate">
                     <nb-datepicker #formpicker2></nb-datepicker>
                   </div>
                 </div>
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label for="">Timezone</label>
-                    <nb-select style="width: 100%;" formControlName="timezone">
-                      <nb-option *ngFor="let timezone of timezones" [value]="timezone.code">
-                        {{ timezone.displayInfo }}
+                    <label for="">Select Language</label>
+                    <nb-select fullWidth  formControlName="language">
+                      <nb-option *ngFor="let language of languages" [value]="language.langCode">
+                        {{ language.langDisplay }}
                       </nb-option>
                     </nb-select>
                   </div>
@@ -169,18 +169,19 @@
 
             <div class="col-md-12">
               <div class="row new-row">
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Select Language</label>
-                    <nb-select style="width: 100%;" formControlName="language">
-                      <nb-option *ngFor="let language of languages" [value]="language.langCode">
-                        {{ language.langDisplay }}
+                    <label for="">Timezone</label>
+                    <nb-select fullWidth  formControlName="timezone">
+                      <nb-option *ngFor="let timezone of timezones" [value]="timezone.code">
+                        {{ timezone.displayInfo }}
                       </nb-option>
                     </nb-select>
                   </div>
+                  
                 </div>
 
-                <div class="col-md-7">
+                <div class="col-md-6" style="padding-top: 35px;">
                   <nb-checkbox class="language-input" status="basic" formControlName="sendPasswordOnEmail">Send Password
                     on email</nb-checkbox>
                 </div>

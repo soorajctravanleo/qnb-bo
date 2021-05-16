@@ -48,7 +48,9 @@
 .nb-theme-default nb-menu .menu-item a:hover, 
 .nb-theme-default nb-menu .menu-item > .menu-items > .menu-item a:hover,
 .nb-theme-default nb-menu .menu-item a.active .menu-icon,
-.nb-theme-default nb-menu .menu-item a:hover .menu-icon{
+.nb-theme-default nb-menu .menu-item a:hover .menu-icon,
+.nb-theme-default nb-menu .menu-item > .menu-items > .menu-item a.active,
+.nb-theme-default nb-menu .menu-item > .menu-items > .menu-item a.active:hover{
   color: #fff;
 }
 
@@ -64,4 +66,7 @@ nb-layout.modal-half.with-search .layout{
 }
 .modal-half .search input{
   font-size: 2vw !important;
+}
+.table th{
+  font-weight: 600;
 }

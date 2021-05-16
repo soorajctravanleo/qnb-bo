@@ -6,7 +6,6 @@ import { QnbUsersComponent } from './users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
-
   NbTreeGridModule,
   NbToggleModule,
   NbDialogModule,
@@ -22,6 +21,7 @@ import {
 
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +45,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     NbButtonModule,
     NbTreeGridModule,
     QnbUsersRoutingModule,
+    QnbCustomComponentsModule,
   ],
 })
 export class QnbUsersModule { }
