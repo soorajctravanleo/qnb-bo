@@ -184,7 +184,7 @@ export class CreateUserComponent implements OnInit {
         'role': new FormControl([]),
         'timezone': new FormControl(null),
         'language': new FormControl(null),
-        'sendPasswordOnEmail': new FormControl(true),
+        'sendPasswordOnEmail': new FormControl(false),
       }),
       'additionalInfo': new FormGroup({
         'ttl': new FormControl(null),

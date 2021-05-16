@@ -79,8 +79,6 @@
                   <div class="form-group">
                     <label for="">User type</label>
                     <nb-select style="width: 100%;" formControlName="userType">
-                      <!-- <nb-option value="1">Fulltime</nb-option>
-                      <nb-option value="2">Contract</nb-option> -->
                       <nb-option *ngFor="let userType of userTypes" [value]="userType.name">
                         {{ userType.name }}
                       </nb-option>
@@ -97,7 +95,9 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Entity</label>
-                    <input type="text" nbInput fullWidth formControlName="entity">
+                    <nb-select style="width: 100%;" formControlName="entity">
+                      <nb-option value="BANK">BANK</nb-option>
+                    </nb-select>
                     <span *ngIf="!signupForm.get('profile.entity').valid && signupForm.get('profile.entity').touched"
                       class="help-block">
                       <span *ngIf="signupForm.get('profile.entity').errors['required']">This field is
@@ -181,7 +181,8 @@
                 </div>
 
                 <div class="col-md-7">
-                  <nb-checkbox class="language-input" status="basic">Send Password on email</nb-checkbox>
+                  <nb-checkbox class="language-input" status="basic" formControlName="sendPasswordOnEmail">Send Password
+                    on email</nb-checkbox>
                 </div>
               </div>
             </div>
