@@ -11,7 +11,7 @@ export class UrlService {
         return '/bo';
 
       default:
-        return 'http://164.52.200.24:8081/bo';
+        return 'https://qnb.nintrivalabs.com/bo';
     }
   }
 }
