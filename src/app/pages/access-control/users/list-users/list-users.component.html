@@ -1,4 +1,4 @@
-<div align="right">
+<div align ="right" class="pb-3 ">
   <button id="create-user-button" (click)="open()" nbButton status="success">Create User</button>
 </div>
 
@@ -21,9 +21,9 @@
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.phone }}</td>
-          <td>{{ user.dob }}</td>
+          <td style="white-space: nowrap;">{{ user.dob }}</td>
           <td>{{ user.role }}</td>
-          <td>{{ user.expiryDate }}</td>
+          <td style="white-space: nowrap;">{{ user.expiryDate }}</td>
         </tr>
       </tbody>
     </table>

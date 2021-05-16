@@ -34,3 +34,12 @@ input.ng-invalid.ng-touched {
 .help-block {
   color: red;
 }
+
+nb-select.appearance-outline .select-button{
+  white-space: normal !important;
+}
+
+.form-group{
+  min-height: 88px;
+  margin-bottom: 0;
+}
