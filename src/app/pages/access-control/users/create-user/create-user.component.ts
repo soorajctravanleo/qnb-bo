@@ -3,8 +3,10 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
+  ViewChild,
+  QueryList,
 } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbSelectComponent } from '@nebular/theme';
 import {
   FormControl,
   FormGroup,
@@ -23,6 +25,10 @@ import {
   QnbUserService,
   QnbRoleService,
   QnbListService,
+  QnbLanguage,
+  QnbTimezone,
+  QnbUserGroup,
+  QnbUser,
 } from '../../../../services';
 
 @Component({
@@ -40,12 +46,13 @@ export class CreateUserComponent implements OnInit {
 
   editMode = false;
   countries: MockCountry[] = [];
-  languages: MockLanguage[] = [];
-  timezones: MockTimezone[] = [];
-  roles: MockRole[] = [];
+  languages: QnbLanguage[] = [];
+  timezones: QnbTimezone[] = [];
+  roles: QnbUserGroup[] = [];
   userTypes: MockUserType[] = [];
 
   @Input() user: MockUser;
+  @ViewChild('ipt', { static: true }) languageSelector: NbSelectComponent;
 
   constructor(
     protected ref: NbDialogRef<CreateUserComponent>,
@@ -80,6 +87,10 @@ export class CreateUserComponent implements OnInit {
 
   onSubmit() {
     if (this.signupForm.valid) {
+      // const formattedUser: QnbUser = {
+
+      // };
+
       if (this.editMode) {
         // this.qnbUserService
         //   .editUser(this.user.id, this.signupForm.value)
@@ -87,11 +98,13 @@ export class CreateUserComponent implements OnInit {
 
         //   });
       } else {
-        this.qnbUserService
-          .createUser(this.signupForm.value)
-          .subscribe(res => {
+        console.log(this.signupForm.value);
 
-          });
+        // this.qnbUserService
+        //   .createUser(this.signupForm.value)
+        //   .subscribe(res => {
+
+        //   });
       }
     } else {
       this.validateAllFormFields(this.signupForm);
@@ -105,15 +118,15 @@ export class CreateUserComponent implements OnInit {
   }
 
   private fetchLanguages() {
-    // this.qnbListService
-    //   .fetchLanguages()
-    //   .subscribe(data => this.languages = data);
+    this.qnbListService
+      .fetchLanguages()
+      .subscribe(data => this.languages = data);
   }
 
   private fetchTimezones() {
-    // this.qnbListService
-    //   .getTimezones()
-    //   .subscribe(data => this.timezones = data);
+    this.qnbListService
+      .fetchTimezones()
+      .subscribe(data => this.timezones = data);
   }
 
   private fetchRoles() {
@@ -143,7 +156,7 @@ export class CreateUserComponent implements OnInit {
         'entity': new FormControl(null),
         'role': new FormControl([]),
         'timezone': new FormControl(null),
-        'language': new FormControl([]),
+        'language': new FormControl(null),
         'sendPasswordOnEmail': new FormControl(null),
       }),
       'additionalInfo': new FormGroup({
