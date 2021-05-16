@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  logout(){
+  logout() {
     this.qnbAuthService.logout();
   }
 }
