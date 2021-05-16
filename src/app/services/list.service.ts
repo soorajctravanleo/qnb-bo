@@ -21,7 +21,7 @@ import {
 export class QnbListService {
 
   private languages: MockLanguage[] = [];
-  private timezones: MockTimezone[] = [];
+  private timezones = [];
   private countries: MockCountry[] = [];
 
   constructor(
@@ -29,38 +29,40 @@ export class QnbListService {
   ) { }
 
   fetchTimezones() {
-    return (this.http.get(GET_TIMEZONES) as Observable<MockTimezone[]>)
-      .pipe(
-        tap(timezones => {
-          this.timezones = timezones;
-        }),
-      );
+    // return (this.http.get(GET_TIMEZONES) as Observable<MockTimezone[]>)
+    //   .pipe(
+    //     tap(timezones => {
+    //       this.timezones = timezones;
+    //     }),
+    //   );
+    return this.http.get('/util/timezones');
   }
 
-  getTimezones() {
-    if (this.timezones.length === 0) {
-      return this.fetchTimezones();
-    }
+  // getTimezones() {
+  //   if (this.timezones.length === 0) {
+  //     return this.fetchTimezones();
+  //   }
 
-    return of(this.timezones);
-  }
+  //   return of(this.timezones);
+  // }
 
   fetchLanguages() {
-    return (this.http.get(GET_LANGUAGES) as Observable<MockLanguage[]>)
-      .pipe(
-        tap(languages => {
-          this.languages = languages;
-        }),
-      );
+    // return (this.http.get(GET_LANGUAGES) as Observable<MockLanguage[]>)
+    //   .pipe(
+    //     tap(languages => {
+    //       this.languages = languages;
+    //     }),
+    //   );
+    return this.http.get('/util/languages');
   }
 
-  getLanguages() {
-    if (this.languages.length === 0) {
-      return this.fetchLanguages();
-    }
+  // getLanguages() {
+  //   if (this.languages.length === 0) {
+  //     return this.fetchLanguages();
+  //   }
 
-    return of(this.languages);
-  }
+  //   return of(this.languages);
+  // }
 
   fetchCountries() {
     return (this.http.get(GET_COUNTRIES) as Observable<MockCountry[]>)

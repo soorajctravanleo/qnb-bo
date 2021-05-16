@@ -81,11 +81,11 @@ export class CreateUserComponent implements OnInit {
   onSubmit() {
     if (this.signupForm.valid) {
       if (this.editMode) {
-        this.qnbUserService
-          .editUser(this.user.id, this.signupForm.value)
-          .subscribe(res => {
+        // this.qnbUserService
+        //   .editUser(this.user.id, this.signupForm.value)
+        //   .subscribe(res => {
 
-          });
+        //   });
       } else {
         this.qnbUserService
           .createUser(this.signupForm.value)
@@ -105,15 +105,15 @@ export class CreateUserComponent implements OnInit {
   }
 
   private fetchLanguages() {
-    this.qnbListService
-      .getLanguages()
-      .subscribe(data => this.languages = data);
+    // this.qnbListService
+    //   .fetchLanguages()
+    //   .subscribe(data => this.languages = data);
   }
 
   private fetchTimezones() {
-    this.qnbListService
-      .getTimezones()
-      .subscribe(data => this.timezones = data);
+    // this.qnbListService
+    //   .getTimezones()
+    //   .subscribe(data => this.timezones = data);
   }
 
   private fetchRoles() {

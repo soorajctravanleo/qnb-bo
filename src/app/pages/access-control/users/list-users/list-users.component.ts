@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 
-import { QnbUserService } from '../../../../services/user.service';
-import { QnbRoleService } from '../../../../services/role.service';
+import { QnbUserService, QnbRoleService, QnbUser } from '../../../../services';
 import { MockUser } from '../../../../_helpers/models/backend';
 import { CreateUserComponent } from '../create-user/create-user.component';
 
 interface UserTableRow {
-  id: number;
-  userId: number;
+  userId: string;
   nickName: string;
   name: string;
   email: string;
   phone: string;
   dob: string;
-  role: number;
+  role: string;
   expiryDate: string;
 }
 
@@ -43,13 +41,13 @@ export class ListUsersComponent implements OnInit {
   }
 
   onEditUser(id: number) {
-    this.qnbUserService
-      .fetchUser(id)
-      .subscribe(user => {
-        this.dialogService.open(CreateUserComponent, {
-          context: { user },
-        });
-      });
+    // this.qnbUserService
+    //   .fetchUser(id)
+    //   .subscribe(user => {
+    //     this.dialogService.open(CreateUserComponent, {
+    //       context: { user },
+    //     });
+    //   });
   }
 
   onDeleteUser(id: number) {
@@ -60,21 +58,18 @@ export class ListUsersComponent implements OnInit {
     this.qnbUserService
       .fetchUsers()
       .subscribe(users => {
-        // for (const user of users) {
-        //   const { profile } = user.data;
-
-        //   this.users.push({
-        //     id: user.id,
-        //     userId: profile.userId,
-        //     dob: profile.dob,
-        //     email: profile.email,
-        //     expiryDate: profile.expiryDate,
-        //     name: `${profile.firstName} ${profile.lastName}`.trim(),
-        //     nickName: profile.nickName,
-        //     phone: profile.mobile,
-        //     role: profile.role,
-        //   });
-        // }
+        for (const user of users) {
+          this.users.push({
+            userId: user.userId,
+            dob: user.dob,
+            email: user.emailId,
+            expiryDate: user.expiryDate,
+            name: `${user.firstName} ${user.lastName}`.trim(),
+            nickName: user.nickName,
+            phone: user.mobileNumber,
+            role: user.groups.join(', '),
+          });
+        }
       });
   }
 }
