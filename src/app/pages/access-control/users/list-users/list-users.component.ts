@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 
 import { QnbUserService, QnbRoleService, QnbUser } from '../../../../services';
@@ -22,7 +22,7 @@ interface UserTableRow {
   styleUrls: ['./list-users.component.scss'],
 })
 export class ListUsersComponent implements OnInit {
-
+  @ViewChild('disabledEsc', { read: TemplateRef }) disabledEscTemplate: TemplateRef<HTMLElement>;
   headElements = ['User ID', 'Nick Name', 'Name', 'Email', 'Phone', 'Dob', 'Role', 'Expiry'];
   users: UserTableRow[] = [];
 
@@ -34,6 +34,17 @@ export class ListUsersComponent implements OnInit {
 
   ngOnInit() {
     this.fetchUsers();
+  }
+
+  open() {
+    this.dialogService
+      .open(CreateUserComponent)
+      .onClose
+      .subscribe(event => {
+        if (event?.refreshList) {
+          this.fetchUsers();
+        }
+      });
   }
 
   getRole(id: number) {
@@ -58,6 +69,8 @@ export class ListUsersComponent implements OnInit {
     this.qnbUserService
       .fetchUsers()
       .subscribe(users => {
+        this.users = [];
+
         for (const user of users) {
           this.users.push({
             userId: user.userId,

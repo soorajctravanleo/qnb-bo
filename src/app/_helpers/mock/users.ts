@@ -5,8 +5,9 @@ import {
 } from '../models/backend';
 
 export const MOCK_USER_TYPES: MockUserType[] = [
-  new MockUserType(1, 'Contract'),
-  new MockUserType(2, 'Fulltime'),
+  new MockUserType(1, 'BANK'),
+  new MockUserType(2, 'RETAIL'),
+  new MockUserType(3, 'CORPORATE'),
 ];
 
 export const MOCK_USERS: MockUser[] = [

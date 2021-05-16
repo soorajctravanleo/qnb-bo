@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 import {
   GET_TIMEZONES,
@@ -15,13 +15,24 @@ import {
   MockCountry,
 } from '../_helpers/models/backend';
 
+export interface QnbLanguage {
+  langCode: string;
+  langDisplay: string;
+}
+
+export interface QnbTimezone {
+  code: string;
+  type: string;
+  displayInfo: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class QnbListService {
 
-  private languages: MockLanguage[] = [];
-  private timezones = [];
+  // private languages: MockLanguage[] = [];
+  // private timezones = [];
   private countries: MockCountry[] = [];
 
   constructor(
@@ -35,7 +46,7 @@ export class QnbListService {
     //       this.timezones = timezones;
     //     }),
     //   );
-    return this.http.get('/util/timezones');
+    return this.http.get('/util/timezones') as Observable<QnbTimezone[]>;
   }
 
   // getTimezones() {
@@ -53,7 +64,7 @@ export class QnbListService {
     //       this.languages = languages;
     //     }),
     //   );
-    return this.http.get('/util/languages');
+    return (this.http.get('/util/languages') as Observable<QnbLanguage[]>);
   }
 
   // getLanguages() {

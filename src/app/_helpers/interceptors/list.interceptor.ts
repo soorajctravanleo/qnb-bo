@@ -38,13 +38,13 @@ export class QnbListInterceptor implements HttpInterceptor {
           outcome = this.mockListService.getCountries();
         }
 
-        if (url.endsWith(API.GET_LANGUAGES)) {
-          outcome = this.mockListService.getLanguages();
-        }
+        // if (url.endsWith(API.GET_LANGUAGES)) {
+        //   outcome = this.mockListService.getLanguages();
+        // }
 
-        if (url.endsWith(API.GET_TIMEZONES)) {
-          outcome = this.mockListService.getTimezones();
-        }
+        // if (url.endsWith(API.GET_TIMEZONES)) {
+        //   outcome = this.mockListService.getTimezones();
+        // }
 
         if (url.endsWith(API.SEARCH_COUNTRIES)) {
           const searchTerm = params.get('search');

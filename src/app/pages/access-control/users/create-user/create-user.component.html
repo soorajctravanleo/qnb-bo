@@ -1,7 +1,6 @@
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
   <nb-card>
     <nb-card-body>
-
       <nb-tabset>
         <nb-tab tabTitle="User Profile">
           <div formGroupName="profile">
@@ -18,6 +17,7 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Nick Name</label>
@@ -31,6 +31,7 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">First Name</label>
@@ -43,6 +44,7 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Last Name</label>
@@ -53,12 +55,11 @@
                       <span *ngIf="signupForm.get('profile.lastName').errors['required']">This field is
                         required!</span>
                     </span>
-
                   </div>
                 </div>
               </div>
-
             </div>
+
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-3">
@@ -73,12 +74,14 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">User type</label>
                     <nb-select style="width: 100%;" formControlName="userType">
-                      <nb-option value="1">Fulltime</nb-option>
-                      <nb-option value="2">Contract</nb-option>
+                      <nb-option *ngFor="let userType of userTypes" [value]="userType.name">
+                        {{ userType.name }}
+                      </nb-option>
                     </nb-select>
                     <span
                       *ngIf="!signupForm.get('profile.userType').valid && signupForm.get('profile.userType').touched"
@@ -88,10 +91,13 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Entity</label>
-                    <input type="text" nbInput fullWidth formControlName="entity">
+                    <nb-select style="width: 100%;" formControlName="entity">
+                      <nb-option value="BANK">BANK</nb-option>
+                    </nb-select>
                     <span *ngIf="!signupForm.get('profile.entity').valid && signupForm.get('profile.entity').touched"
                       class="help-block">
                       <span *ngIf="signupForm.get('profile.entity').errors['required']">This field is
@@ -99,21 +105,20 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Role</label>
                     <nb-select multiple style="width: 100%;" formControlName="role">
-                      <nb-option value="1">Admin</nb-option>
-                      <nb-option value="2">System</nb-option>
-                      <nb-option value="3">Viewer</nb-option>
-
+                      <nb-option *ngFor="let role of roles" [value]="role.groupCode">
+                        {{ role.groupCode }}
+                      </nb-option>
                     </nb-select>
-
-
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-3">
@@ -127,6 +132,7 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Email</label>
@@ -139,6 +145,7 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Expiry Date</label>
@@ -146,10 +153,15 @@
                     <nb-datepicker #formpicker2></nb-datepicker>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Timezone</label>
-                    <input type="text" nbInput fullWidth formControlName="timeZone">
+                    <nb-select style="width: 100%;" formControlName="timezone">
+                      <nb-option *ngFor="let timezone of timezones" [value]="timezone.code">
+                        {{ timezone.displayInfo }}
+                      </nb-option>
+                    </nb-select>
                   </div>
                 </div>
               </div>
@@ -160,22 +172,23 @@
                 <div class="col-md-5">
                   <div class="form-group">
                     <label for="">Select Language</label>
-                    <nb-select multiple style="width: 100%;" formControlName="language">
-                      <nb-option value="1">Arabic</nb-option>
-                      <nb-option value="2">English</nb-option>
-                      <nb-option value="3">Hindi</nb-option>
-                      <nb-option value="4">Spanish</nb-option>
+                    <nb-select style="width: 100%;" formControlName="language">
+                      <nb-option *ngFor="let language of languages" [value]="language.langCode">
+                        {{ language.langDisplay }}
+                      </nb-option>
                     </nb-select>
                   </div>
                 </div>
+
                 <div class="col-md-7">
-                  <nb-checkbox class="language-input" status="basic">Send Password on email</nb-checkbox>
+                  <nb-checkbox class="language-input" status="basic" formControlName="sendPasswordOnEmail">Send Password
+                    on email</nb-checkbox>
                 </div>
               </div>
-
             </div>
           </div>
         </nb-tab>
+
         <nb-tab tabTitle="Additional Info">
           <div formGroupName="additionalInfo">
             <div class="col-md-12">
@@ -192,46 +205,53 @@
                     </span>
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label for="">Nick Name</label>
-                    <input type="text" nbInput fullWidth formControlName="nickName2">
+                    <label for="">Country</label>
+                    <input type="text" nbInput fullWidth formControlName="country">
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label for="">First Name</label>
-                    <input type="text" nbInput fullWidth formControlName="firstName2">
+                    <label for="">Start Date</label>
+                    <input type="text" nbInput fullWidth formControlName="startDate">
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Attribute1</label>
-                    <input type="text" nbInput fullWidth formControlName="attribute1">
+                    <input type="text" nbInput fullWidth formControlName="attr1">
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Attribute2</label>
-                    <input type="text" nbInput fullWidth formControlName="attribute2">
+                    <input type="text" nbInput fullWidth formControlName="attr2">
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Attribute3</label>
-                    <input type="text" nbInput fullWidth formControlName="attribute3">
+                    <input type="text" nbInput fullWidth formControlName="attr3">
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">Attribute4</label>
-                    <input type="text" nbInput fullWidth formControlName="attribute4">
+                    <input type="text" nbInput fullWidth formControlName="attr4">
                   </div>
                 </div>
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">MAC ID</label>
@@ -253,14 +273,16 @@
                     <input type="text" nbInput fullWidth formControlName="userId">
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">MAC ID</label>
+                    <label for="">First name</label>
                     <input type="text" nbInput fullWidth formControlName="firstName">
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-6">Apply Restrictions</div>
@@ -271,10 +293,9 @@
             </div>
           </div>
         </nb-tab>
-
       </nb-tabset>
-
     </nb-card-body>
+
     <nb-card-footer>
       <div style="float:right">
         <button nbButton hero status="normal" (click)="dismiss()">Discard</button>

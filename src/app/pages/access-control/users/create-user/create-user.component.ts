@@ -3,8 +3,10 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
+  ViewChild,
+  QueryList,
 } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbSelectComponent } from '@nebular/theme';
 import {
   FormControl,
   FormGroup,
@@ -23,6 +25,10 @@ import {
   QnbUserService,
   QnbRoleService,
   QnbListService,
+  QnbLanguage,
+  QnbTimezone,
+  QnbUserGroup,
+  QnbUser,
 } from '../../../../services';
 
 @Component({
@@ -40,12 +46,13 @@ export class CreateUserComponent implements OnInit {
 
   editMode = false;
   countries: MockCountry[] = [];
-  languages: MockLanguage[] = [];
-  timezones: MockTimezone[] = [];
-  roles: MockRole[] = [];
+  languages: QnbLanguage[] = [];
+  timezones: QnbTimezone[] = [];
+  roles: QnbUserGroup[] = [];
   userTypes: MockUserType[] = [];
 
   @Input() user: MockUser;
+  @ViewChild('ipt', { static: true }) languageSelector: NbSelectComponent;
 
   constructor(
     protected ref: NbDialogRef<CreateUserComponent>,
@@ -78,8 +85,41 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
+  private getFormattedDate(d: Date) {
+    return `${d.getDate()}-${(d.getMonth() + 1)}-${d.getFullYear()}`;
+  }
+
   onSubmit() {
     if (this.signupForm.valid) {
+      const { profile, additionalInfo, loginRestriction } = this.signupForm.value;
+      const formattedUser: QnbUser = {
+        userId: profile.userId,
+        nickName: profile.nickName,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        dob: this.getFormattedDate(profile.dob),
+        mobileNumber: profile.mobile,
+        userType: profile.userType,
+        userStatus: 'OPEN',
+        bankSubType: 'SUB',
+        corporateId: 'CORP1',
+        entity: profile.entity,
+        expiryDate: this.getFormattedDate(profile.expiryDate),
+        timeZoneId: profile.timezone,
+        language: profile.language,
+        emailId: profile.email,
+        sendPwdOnEmail: profile.sendPasswordOnEmail,
+        userBranchCode: '',
+        authTypePrimary: 'LDAP',
+        authTypeSecondary: 'DATABASE',
+        optAuthTypePrimary: 'optAuthTypeP',
+        optAuthTypeSecondary: 'ptAuthTypeS',
+        authTypeAttribute: 'authTypeA',
+        macId: additionalInfo.macId,
+        authApplyDayTimeBasedLogin: true,
+        groups: profile.role,
+      };
+
       if (this.editMode) {
         // this.qnbUserService
         //   .editUser(this.user.id, this.signupForm.value)
@@ -88,9 +128,9 @@ export class CreateUserComponent implements OnInit {
         //   });
       } else {
         this.qnbUserService
-          .createUser(this.signupForm.value)
+          .createUser(formattedUser)
           .subscribe(res => {
-
+            this.ref.close({ refreshList: true });
           });
       }
     } else {
@@ -105,15 +145,15 @@ export class CreateUserComponent implements OnInit {
   }
 
   private fetchLanguages() {
-    // this.qnbListService
-    //   .fetchLanguages()
-    //   .subscribe(data => this.languages = data);
+    this.qnbListService
+      .fetchLanguages()
+      .subscribe(data => this.languages = data);
   }
 
   private fetchTimezones() {
-    // this.qnbListService
-    //   .getTimezones()
-    //   .subscribe(data => this.timezones = data);
+    this.qnbListService
+      .fetchTimezones()
+      .subscribe(data => this.timezones = data);
   }
 
   private fetchRoles() {
@@ -143,8 +183,8 @@ export class CreateUserComponent implements OnInit {
         'entity': new FormControl(null),
         'role': new FormControl([]),
         'timezone': new FormControl(null),
-        'language': new FormControl([]),
-        'sendPasswordOnEmail': new FormControl(null),
+        'language': new FormControl(null),
+        'sendPasswordOnEmail': new FormControl(false),
       }),
       'additionalInfo': new FormGroup({
         'ttl': new FormControl(null),
