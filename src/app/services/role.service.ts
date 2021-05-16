@@ -10,7 +10,6 @@ import { MockRole } from '../_helpers/models/backend';
   providedIn: 'root',
 })
 export class QnbRoleService {
-
   private roles: MockRole[] = [];
 
   constructor(

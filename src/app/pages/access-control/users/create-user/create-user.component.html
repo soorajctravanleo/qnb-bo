@@ -4,16 +4,16 @@
 
       <nb-tabset>
         <nb-tab tabTitle="User Profile">
-          <div formGroupName="userData">
+          <div formGroupName="profile">
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">User ID</label>
                     <input type="text" nbInput fullWidth ngModel formControlName="userId">
-                    <span *ngIf="!signupForm.get('userData.userId').valid && signupForm.get('userData.userId').touched"
+                    <span *ngIf="!signupForm.get('profile.userId').valid && signupForm.get('profile.userId').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.userId').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.userId').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -23,9 +23,9 @@
                     <label for="">Nick Name</label>
                     <input type="text" nbInput fullWidth formControlName="nickName">
                     <span
-                      *ngIf="!signupForm.get('userData.nickName').valid && signupForm.get('userData.nickName').touched"
+                      *ngIf="!signupForm.get('profile.nickName').valid && signupForm.get('profile.nickName').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.nickName').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.nickName').errors['required']">This field is
                         required!</span>
 
                     </span>
@@ -36,9 +36,9 @@
                     <label for="">First Name</label>
                     <input type="text" nbInput fullWidth formControlName="firstName" required>
                     <span
-                      *ngIf="!signupForm.get('userData.firstName').valid && signupForm.get('userData.firstName').touched"
+                      *ngIf="!signupForm.get('profile.firstName').valid && signupForm.get('profile.firstName').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.firstName').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.firstName').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -48,9 +48,9 @@
                     <label for="">Last Name</label>
                     <input type="text" nbInput fullWidth formControlName="lastName">
                     <span
-                      *ngIf="!signupForm.get('userData.lastName').valid && signupForm.get('userData.lastName').touched"
+                      *ngIf="!signupForm.get('profile.lastName').valid && signupForm.get('profile.lastName').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.lastName').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.lastName').errors['required']">This field is
                         required!</span>
                     </span>
 
@@ -66,9 +66,9 @@
                     <label for="">DOB</label>
                     <input nbInput [nbDatepicker]="formpicker" formControlName="dob">
                     <nb-datepicker #formpicker></nb-datepicker>
-                    <span *ngIf="!signupForm.get('userData.dob').valid && signupForm.get('userData.dob').touched"
+                    <span *ngIf="!signupForm.get('profile.dob').valid && signupForm.get('profile.dob').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.dob').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.dob').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -81,9 +81,9 @@
                       <nb-option value="2">Contract</nb-option>
                     </nb-select>
                     <span
-                      *ngIf="!signupForm.get('userData.userType').valid && signupForm.get('userData.userType').touched"
+                      *ngIf="!signupForm.get('profile.userType').valid && signupForm.get('profile.userType').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.userType').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.userType').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -92,9 +92,9 @@
                   <div class="form-group">
                     <label for="">Entity</label>
                     <input type="text" nbInput fullWidth formControlName="entity">
-                    <span *ngIf="!signupForm.get('userData.entity').valid && signupForm.get('userData.entity').touched"
+                    <span *ngIf="!signupForm.get('profile.entity').valid && signupForm.get('profile.entity').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.entity').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.entity').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -120,9 +120,9 @@
                   <div class="form-group">
                     <label for="">Mobile</label>
                     <input type="text" nbInput fullWidth formControlName="mobile">
-                    <span *ngIf="!signupForm.get('userData.mobile').valid && signupForm.get('userData.mobile').touched"
+                    <span *ngIf="!signupForm.get('profile.mobile').valid && signupForm.get('profile.mobile').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.mobile').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.mobile').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -131,11 +131,11 @@
                   <div class="form-group">
                     <label for="">Email</label>
                     <input type="text" nbInput fullWidth formControlName="email">
-                    <span *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched"
+                    <span *ngIf="!signupForm.get('profile.email').valid && signupForm.get('profile.email').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('userData.email').errors['required']">This field is
+                      <span *ngIf="signupForm.get('profile.email').errors['required']">This field is
                         required!</span>
-                      <span *ngIf="signupForm.get('userData.email').errors['email']">Not a valid email id</span>
+                      <span *ngIf="signupForm.get('profile.email').errors['email']">Not a valid email id</span>
                     </span>
                   </div>
                 </div>

@@ -10,11 +10,15 @@ import { mergeMap, materialize, dematerialize, delay } from 'rxjs/operators';
 
 import { MockResponse } from '../types/backend';
 import { generateError, generateHttpResponse } from '../utils';
+import { UrlService } from '../services/url.service';
 
 @Injectable()
 export class QnbHttpInterceptor implements HttpInterceptor {
+
+  constructor(private urlService: UrlService) {}
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const { params } = req;
+    const { params, url } = req;
 
     const handleRoute = () => {
       if (params.has('outcome')) {
@@ -27,13 +31,17 @@ export class QnbHttpInterceptor implements HttpInterceptor {
         return generateError(outcome.errorType, outcome.errorMessage);
       }
 
+      req = req.clone({
+        url: this.urlService.getHostURL() + url,
+      })
+
       return next.handle(req);
     };
 
     return of(null)
       .pipe(mergeMap(handleRoute))
       .pipe(materialize())
-      .pipe(delay(700))
+      .pipe(delay(500))
       .pipe(dematerialize());
   }
 }

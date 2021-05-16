@@ -60,21 +60,21 @@ export class ListUsersComponent implements OnInit {
     this.qnbUserService
       .fetchUsers()
       .subscribe(users => {
-        for (const user of users) {
-          const { profile } = user.data;
+        // for (const user of users) {
+        //   const { profile } = user.data;
 
-          this.users.push({
-            id: user.id,
-            userId: profile.userId,
-            dob: profile.dob,
-            email: profile.email,
-            expiryDate: profile.expiryDate,
-            name: `${profile.firstName} ${profile.lastName}`.trim(),
-            nickName: profile.nickName,
-            phone: profile.mobile,
-            role: profile.role,
-          });
-        }
+        //   this.users.push({
+        //     id: user.id,
+        //     userId: profile.userId,
+        //     dob: profile.dob,
+        //     email: profile.email,
+        //     expiryDate: profile.expiryDate,
+        //     name: `${profile.firstName} ${profile.lastName}`.trim(),
+        //     nickName: profile.nickName,
+        //     phone: profile.mobile,
+        //     role: profile.role,
+        //   });
+        // }
       });
   }
 }

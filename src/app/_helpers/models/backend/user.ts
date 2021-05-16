@@ -1,6 +1,6 @@
-export enum MockUserType {
+export enum MockUserTypeId {
+  CONTRACT = 1,
   FULLTIME,
-  CONTRACT,
 }
 
 export interface MockUserProfileData {
@@ -9,7 +9,7 @@ export interface MockUserProfileData {
   firstName: string;
   lastName: string;
   dob: string;
-  userType: MockUserType;
+  userType: MockUserTypeId;
   entity: number;
   role: number;
   mobile: string;
@@ -47,5 +47,12 @@ export class MockUser {
   constructor(
     public id: number,
     public data: MockUserData,
+  ) { }
+}
+
+export class MockUserType {
+  constructor(
+    public id: number,
+    public name: string,
   ) { }
 }

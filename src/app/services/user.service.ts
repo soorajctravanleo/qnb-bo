@@ -9,8 +9,13 @@ import {
   CREATE_USER,
   EDIT_USER,
   DELETE_USER,
+  GET_USER_TYPES,
 } from '../_helpers/apis';
-import { MockUserData, MockUser } from '../_helpers/models/backend';
+import {
+  MockUserData,
+  MockUser,
+  MockUserType,
+} from '../_helpers/models/backend';
 
 @Injectable({
   providedIn: 'root',
@@ -19,19 +24,18 @@ export class QnbUserService {
 
   private users: MockUser[] = [];
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
   fetchUsers() {
-    return (this.http.get(GET_USERS) as Observable<MockUser[]>)
-      .pipe(
-        tap(users => {
-          for (const user of users) {
-            this.updateUserList(user);
-          }
-        }),
-      );
+    // return (this.http.get(GET_USERS) as Observable<MockUser[]>)
+    //   .pipe(
+    //     tap(users => {
+    //       for (const user of users) {
+    //         this.updateUserList(user);
+    //       }
+    //     }),
+    //   );
+    return this.http.get('/users');
   }
 
   fetchUser(id: number) {
@@ -52,6 +56,10 @@ export class QnbUserService {
 
   deleteUser(id: number) {
     return this.http.post(DELETE_USER, { id });
+  }
+
+  fetchUserTypes() {
+    return this.http.get(GET_USER_TYPES) as Observable<MockUserType[]>;
   }
 
   private updateUserList(user: MockUser) {
