@@ -51,7 +51,7 @@ export class QnbAuthService {
   }
 
   logout() {
-    this.cookieService.delete(this.AUTH_KEY_KEY);
+    this.cookieService.delete(this.AUTH_KEY_KEY, '/');
     this.router.navigateByUrl('/');
   }
 
