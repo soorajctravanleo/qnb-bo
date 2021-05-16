@@ -85,11 +85,40 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
+  private getFormattedDate(d: Date) {
+    return `${d.getDate()}-${(d.getMonth() + 1)}-${d.getFullYear()}`;
+  }
+
   onSubmit() {
     if (this.signupForm.valid) {
-      // const formattedUser: QnbUser = {
-
-      // };
+      const { profile, additionalInfo, loginRestriction } = this.signupForm.value;
+      const formattedUser: QnbUser = {
+        userId: profile.userId,
+        nickName: profile.nickName,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        dob: this.getFormattedDate(profile.dob),
+        mobileNumber: profile.mobile,
+        userType: profile.userType,
+        userStatus: 'OPEN',
+        bankSubType: 'SUB',
+        corporateId: 'CORP1',
+        entity: profile.entity,
+        expiryDate: this.getFormattedDate(profile.expiryDate),
+        timeZoneId: profile.timezone,
+        language: profile.language,
+        emailId: profile.email,
+        sendPwdOnEmail: profile.sendPasswordOnEmail,
+        userBranchCode: '',
+        authTypePrimary: 'LDAP',
+        authTypeSecondary: 'DATABASE',
+        optAuthTypePrimary: 'optAuthTypeP',
+        optAuthTypeSecondary: 'ptAuthTypeS',
+        authTypeAttribute: 'authTypeA',
+        macId: additionalInfo.macId,
+        authApplyDayTimeBasedLogin: true,
+        groups: profile.role,
+      };
 
       if (this.editMode) {
         // this.qnbUserService
@@ -98,13 +127,11 @@ export class CreateUserComponent implements OnInit {
 
         //   });
       } else {
-        console.log(this.signupForm.value);
-
-        // this.qnbUserService
-        //   .createUser(this.signupForm.value)
-        //   .subscribe(res => {
-
-        //   });
+        this.qnbUserService
+          .createUser(formattedUser)
+          .subscribe(res => {
+            this.ref.close({ refreshList: true });
+          });
       }
     } else {
       this.validateAllFormFields(this.signupForm);
@@ -157,7 +184,7 @@ export class CreateUserComponent implements OnInit {
         'role': new FormControl([]),
         'timezone': new FormControl(null),
         'language': new FormControl(null),
-        'sendPasswordOnEmail': new FormControl(null),
+        'sendPasswordOnEmail': new FormControl(true),
       }),
       'additionalInfo': new FormGroup({
         'ttl': new FormControl(null),

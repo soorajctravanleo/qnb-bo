@@ -79,8 +79,11 @@
                   <div class="form-group">
                     <label for="">User type</label>
                     <nb-select style="width: 100%;" formControlName="userType">
-                      <nb-option value="1">Fulltime</nb-option>
-                      <nb-option value="2">Contract</nb-option>
+                      <!-- <nb-option value="1">Fulltime</nb-option>
+                      <nb-option value="2">Contract</nb-option> -->
+                      <nb-option *ngFor="let userType of userTypes" [value]="userType.name">
+                        {{ userType.name }}
+                      </nb-option>
                     </nb-select>
                     <span
                       *ngIf="!signupForm.get('profile.userType').valid && signupForm.get('profile.userType').touched"
