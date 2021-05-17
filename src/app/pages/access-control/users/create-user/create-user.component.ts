@@ -181,7 +181,7 @@ export class CreateUserComponent implements OnInit {
   private prepareForm() {
     this.signupForm = new FormGroup({
       'profile': new FormGroup({
-        'userId': new FormControl(null, [Validators.required, Validators.minLength(5)],),
+        'userId': new FormControl(null, [Validators.required, Validators.minLength(5)]),
         'nickName': new FormControl(null, [Validators.required]),
         'firstName': new FormControl(null, [Validators.required]),
         'lastName': new FormControl(null, [Validators.required]),
