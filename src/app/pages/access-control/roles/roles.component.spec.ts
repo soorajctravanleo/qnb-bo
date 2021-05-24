@@ -1,7 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { QnbRolesComponent } from './roles.component';
-
 describe('RolesComponent', () => {
   let component: QnbRolesComponent;
   let fixture: ComponentFixture<QnbRolesComponent>;

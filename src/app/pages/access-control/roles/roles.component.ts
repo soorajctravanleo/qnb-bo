@@ -1,55 +1,33 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { CreateRoleComponent } from './create-role/create-role.component';
-
+import { QnbRoleService } from '../../../services';
 @Component({
   selector: 'qnb-roles',
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.scss'],
 })
 export class QnbRolesComponent implements OnInit {
-  elements: any = [
-    {
-      role_name: 'Viewer',
-      description: 'Viewer has only view access',
-      multi_login: 'No',
-      nok_login: 'Yes',
-      decent_login: 'Yes',
-      no_password_expiry: 'Yes',
-      created_date: '13th May',
-    },
-    {
-      role_name: 'Admin',
-      description: 'Viewer has edit permissions',
-      multi_login: 'No',
-      nok_login: 'Yes',
-      decent_login: 'Yes',
-      no_password_expiry: 'Yes',
-      created_date: 'No',
-    },
-    {
-      role_name: 'System',
-      description: 'system has all previlages',
-      multi_login: 'No',
-      nok_login: 'Yes',
-      decent_login: 'Yes',
-      no_password_expiry: 'Yes',
-      created_date: 'No',
-    },
+  elements: any;
 
-  ];
-
-  headElements = ['Role Name', 'Description', 'Multi Login', 'Nok Login', 'Decent Login', 'No Password Expiry', 'Created Date'];
+  headElements = ['Group Code', 'Group Definition', 'Created By', 'Created At', 'Last Modified', 'Last Modified By'];
 
 
-  constructor(private dialogService: NbDialogService) {
+  constructor(private dialogService: NbDialogService, private QnbRoleService: QnbRoleService) {
 
   }
 
   ngOnInit(): void {
-
+    this.fetchRoles();
   }
-
+  private fetchRoles() {
+    this.QnbRoleService
+      .fetchRoles()
+      .subscribe(res => {
+        this.elements = res;
+        console.log(res);
+      });
+  }
 
   open() {
     const dialogRef = this.dialogService.open(CreateRoleComponent, {
