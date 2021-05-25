@@ -7,11 +7,11 @@ import { BeneficiaryAuthorizationComponent } from './beneficiary-authorization.c
 
 @NgModule({
   declarations: [
-    BeneficiaryAuthorizationComponent
+    BeneficiaryAuthorizationComponent,
   ],
   imports: [
     CommonModule,
-    BeneficiaryAuthorizationRoutingModule
-  ]
+    BeneficiaryAuthorizationRoutingModule,
+  ],
 })
 export class BeneficiaryAuthorizationModule { }

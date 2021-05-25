@@ -8,9 +8,9 @@ describe('TransfersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransfersComponent ]
+      declarations: [TransfersComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

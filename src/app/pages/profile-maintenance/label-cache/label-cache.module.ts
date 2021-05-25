@@ -7,11 +7,11 @@ import { LabelCacheComponent } from './label-cache.component';
 
 @NgModule({
   declarations: [
-    LabelCacheComponent
+    LabelCacheComponent,
   ],
   imports: [
     CommonModule,
-    LabelCacheRoutingModule
-  ]
+    LabelCacheRoutingModule,
+  ],
 })
 export class LabelCacheModule { }

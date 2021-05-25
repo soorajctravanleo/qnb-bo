@@ -7,11 +7,11 @@ import { TransferMakerComponent } from './transfer-maker.component';
 
 @NgModule({
   declarations: [
-    TransferMakerComponent
+    TransferMakerComponent,
   ],
   imports: [
     CommonModule,
-    TransferMakerRoutingModule
-  ]
+    TransferMakerRoutingModule,
+  ],
 })
 export class TransferMakerModule { }

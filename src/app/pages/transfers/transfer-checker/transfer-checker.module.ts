@@ -7,11 +7,11 @@ import { TransferCheckerComponent } from './transfer-checker.component';
 
 @NgModule({
   declarations: [
-    TransferCheckerComponent
+    TransferCheckerComponent,
   ],
   imports: [
     CommonModule,
-    TransferCheckerRoutingModule
-  ]
+    TransferCheckerRoutingModule,
+  ],
 })
 export class TransferCheckerModule { }

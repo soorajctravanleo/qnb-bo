@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: TransactionEntitlementComponent }
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TransactionEntitlementRoutingModule { }

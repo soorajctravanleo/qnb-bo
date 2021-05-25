@@ -7,11 +7,11 @@ import { TransactionEntitlementComponent } from './transaction-entitlement.compo
 
 @NgModule({
   declarations: [
-    TransactionEntitlementComponent
+    TransactionEntitlementComponent,
   ],
   imports: [
     CommonModule,
-    TransactionEntitlementRoutingModule
-  ]
+    TransactionEntitlementRoutingModule,
+  ],
 })
 export class TransactionEntitlementModule { }

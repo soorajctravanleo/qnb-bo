@@ -96,11 +96,13 @@ const routes: Routes = [
       },
       {
         path: 'transfers',
-        loadChildren: () => import('./transfers/transfers.module').then(m => m.TransfersModule)
+        loadChildren: () => import('./transfers/transfers.module').then(m => m.TransfersModule),
       },
       {
         path: 'profile-maintenance',
-        loadChildren: () => import('./profile-maintenance/profile-maintenance.module').then(m => m.ProfileMaintenanceModule)
+        loadChildren: () =>
+          import('./profile-maintenance/profile-maintenance.module').then(
+            m => m.ProfileMaintenanceModule),
       },
       {
         path: '',

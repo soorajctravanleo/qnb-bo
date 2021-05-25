@@ -8,9 +8,9 @@ describe('TransactionEntitlementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransactionEntitlementComponent ]
+      declarations: [TransactionEntitlementComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

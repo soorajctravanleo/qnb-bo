@@ -7,11 +7,11 @@ import { TransfersComponent } from './transfers.component';
 
 @NgModule({
   declarations: [
-    TransfersComponent
+    TransfersComponent,
   ],
   imports: [
     CommonModule,
-    TransfersRoutingModule
-  ]
+    TransfersRoutingModule,
+  ],
 })
 export class TransfersModule { }

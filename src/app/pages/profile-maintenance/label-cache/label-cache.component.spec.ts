@@ -8,9 +8,9 @@ describe('LabelCacheComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LabelCacheComponent ]
+      declarations: [LabelCacheComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

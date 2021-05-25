@@ -7,11 +7,11 @@ import { ProfileMaintenanceComponent } from './profile-maintenance.component';
 
 @NgModule({
   declarations: [
-    ProfileMaintenanceComponent
+    ProfileMaintenanceComponent,
   ],
   imports: [
     CommonModule,
-    ProfileMaintenanceRoutingModule
-  ]
+    ProfileMaintenanceRoutingModule,
+  ],
 })
 export class ProfileMaintenanceModule { }

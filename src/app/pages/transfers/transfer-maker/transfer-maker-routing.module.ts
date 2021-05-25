@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: TransferMakerComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TransferMakerRoutingModule { }
