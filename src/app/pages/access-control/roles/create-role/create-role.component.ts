@@ -8,7 +8,7 @@ import { QnbRoleService } from '../../../../services';
 })
 export class CreateRoleComponent implements OnInit {
   userRoles: any;
-  constructor(protected ref: NbDialogRef<CreateRoleComponent>, protected QnbRoleService: QnbRoleService) { }
+  constructor(protected ref: NbDialogRef<CreateRoleComponent>, private roleService: QnbRoleService) { }
 
   ngOnInit(): void {
     this.fetchRoles();
@@ -17,7 +17,7 @@ export class CreateRoleComponent implements OnInit {
     this.ref.close();
   }
   private fetchRoles() {
-    this.QnbRoleService.fetchRoles().subscribe(res => {
+    this.roleService.fetchRoles().subscribe(res => {
       this.userRoles = res;
     });
   }

@@ -13,7 +13,7 @@ export class QnbRolesComponent implements OnInit {
   headElements = ['Group Code', 'Group Definition', 'Created By', 'Created At', 'Last Modified', 'Last Modified By'];
 
 
-  constructor(private dialogService: NbDialogService, private QnbRoleService: QnbRoleService) {
+  constructor(private dialogService: NbDialogService, private roleService: QnbRoleService) {
 
   }
 
@@ -21,7 +21,7 @@ export class QnbRolesComponent implements OnInit {
     this.fetchRoles();
   }
   private fetchRoles() {
-    this.QnbRoleService
+    this.roleService
       .fetchRoles()
       .subscribe(res => {
         this.elements = res;
