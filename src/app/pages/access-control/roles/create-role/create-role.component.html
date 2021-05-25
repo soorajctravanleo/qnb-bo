@@ -6,7 +6,10 @@
         <div class="row new-row">
           <div class="col-md-6"> <input type="text" nbInput fullWidth placeholder="Role Name"></div>
           <div class="col-md-6">
-            <input type="text" nbInput fullWidth placeholder="Clone Role">
+            <nb-select fullWidth style="width: 100%;" formControlName="userType">
+              <nb-option *ngFor="let roles of userRoles" [value]="roles.groupCode">{{roles.groupCode}}
+              </nb-option>
+            </nb-select>
           </div>
         </div>
         <div class="col-md-12">

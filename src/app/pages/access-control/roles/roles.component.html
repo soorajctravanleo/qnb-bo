@@ -18,9 +18,9 @@
           <td>{{el.groupCode}}</td>
           <td>{{el.groupDefinition}}</td>
           <td>{{el.createdBy}}</td>
-          <td>{{el.createdTime}}</td>
+          <td>{{el.createdTime| date:'medium'}}</td>
           <td>{{el.lastModifiedBy}}</td>
-          <td>{{el.lastModifiedTime}}</td>
+          <td>{{el.lastModifiedTime| date:'medium'}}</td>
         </tr>
       </tbody>
     </table>

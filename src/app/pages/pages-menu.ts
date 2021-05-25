@@ -41,7 +41,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Transfers',
     icon: 'flip-2-outline',
     link: '',
-    children: [],
+    children: [{
+      title: 'HDFC Transfers',
+      link: '/pages/access-control/service-catalog',
+    },
+    {
+      title: 'HBTF Transfers',
+      link: '/pages/access-control/users',
+    },
+    {
+      title: 'Transaction Entitlement',
+      link: '/pages/access-control/users',
+    }, {
+      title: 'Refresh Label Cache',
+      link: '/pages/access-control/users',
+    }],
   },
   {
     title: 'Customer 360',
