@@ -42,19 +42,32 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'flip-2-outline',
     link: '',
     children: [{
-      title: 'HDFC Transfers',
-      link: '/pages/access-control/service-catalog',
+      title: 'Beneficiary Authorization',
+      link: '/pages/transfers/beneficiary-authorization',
     },
     {
-      title: 'HBTF Transfers',
-      link: '/pages/access-control/users',
+      title: 'Transfer Maker',
+      link: '/pages/transfers/transfer-maker',
     },
     {
-      title: 'Transaction Entitlement',
-      link: '/pages/access-control/users',
+      title: 'Transfer Checker',
+      link: '/pages/transfers/transfer-checker',
     }, {
-      title: 'Refresh Label Cache',
-      link: '/pages/access-control/users',
+      title: 'Payment Reports',
+      link: '/pages/transfers/payment-reports',
+    }],
+  },
+  {
+    title: 'Profile Maintainance',
+    icon: 'globe-outline',
+    link: '',
+    children: [{
+      title: 'Transaction Entitlement',
+      link: '/pages/profile-maintenance/transaction-entitlement',
+    },
+    {
+      title: 'Label Cache',
+      link: '/pages/profile-maintenance/label-cache',
     }],
   },
   {

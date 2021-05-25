@@ -95,12 +95,22 @@ const routes: Routes = [
         loadChildren: () => import('./access-control/access-control.module').then(m => m.QnbAccessControlModule),
       },
       {
+        path: 'transfers',
+        loadChildren: () => import('./transfers/transfers.module').then(m => m.TransfersModule)
+      },
+      {
+        path: 'profile-maintenance',
+        loadChildren: () => import('./profile-maintenance/profile-maintenance.module').then(m => m.ProfileMaintenanceModule)
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
       },
     ],
   },
+
+
 ];
 
 @NgModule({
