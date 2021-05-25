@@ -25,7 +25,6 @@ export class QnbRolesComponent implements OnInit {
       .fetchRoles()
       .subscribe(res => {
         this.elements = res;
-        console.log(res);
       });
   }
 
