@@ -53,11 +53,6 @@
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
-/******/ 	// object to store loaded CSS chunks
-/******/ 	var installedCssChunks = {
-/******/ 		"runtime": 0
-/******/ 	};
-/******/
 /******/ 	// object to store loaded and loading chunks
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// Promise = chunk loading, 0 = chunk loaded
@@ -69,7 +64,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"pages-pages-module":"pages-pages-module","charts-charts-module":"charts-charts-module","editors-editors-module":"editors-editors-module","extra-components-extra-components-module":"extra-components-extra-components-module","forms-forms-module":"forms-forms-module","layout-layout-module":"layout-layout-module","maps-maps-module":"maps-maps-module","modal-overlays-modal-overlays-module":"modal-overlays-modal-overlays-module","tables-tables-module":"tables-tables-module","ui-features-ui-features-module":"ui-features-ui-features-module"}[chunkId]||chunkId) +    "-es5.js"
+/******/ 		return __webpack_require__.p + "" + ({"pages-pages-module":"pages-pages-module","access-control-access-control-module":"access-control-access-control-module","common":"common","roles-roles-module":"roles-roles-module","users-users-module":"users-users-module","service-catalog-service-catalog-module":"service-catalog-service-catalog-module","user-entities-user-entities-module":"user-entities-user-entities-module","user-types-user-types-module":"user-types-user-types-module"}[chunkId]||chunkId) +    "-es5.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -101,53 +96,6 @@
 /******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
 /******/ 		var promises = [];
 /******/
-/******/
-/******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"maps-maps-module":1};
-/******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
-/******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
-/******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"pages-pages-module":"pages-pages-module","charts-charts-module":"charts-charts-module","editors-editors-module":"editors-editors-module","extra-components-extra-components-module":"extra-components-extra-components-module","forms-forms-module":"forms-forms-module","layout-layout-module":"layout-layout-module","maps-maps-module":"maps-maps-module","modal-overlays-modal-overlays-module":"modal-overlays-modal-overlays-module","tables-tables-module":"tables-tables-module","ui-features-ui-features-module":"ui-features-ui-features-module"}[chunkId]||chunkId) + ".css";
-/******/ 				var fullhref = __webpack_require__.p + href;
-/******/ 				var existingLinkTags = document.getElementsByTagName("link");
-/******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
-/******/ 					var tag = existingLinkTags[i];
-/******/ 					var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
-/******/ 					if(tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return resolve();
-/******/ 				}
-/******/ 				var existingStyleTags = document.getElementsByTagName("style");
-/******/ 				for(var i = 0; i < existingStyleTags.length; i++) {
-/******/ 					var tag = existingStyleTags[i];
-/******/ 					var dataHref = tag.getAttribute("data-href");
-/******/ 					if(dataHref === href || dataHref === fullhref) return resolve();
-/******/ 				}
-/******/ 				var linkTag = document.createElement("link");
-/******/
-/******/ 				linkTag.rel = "stylesheet";
-/******/ 				linkTag.type = "text/css";
-/******/ 				var onLinkComplete = function (event) {
-/******/ 					// avoid mem leaks.
-/******/ 					linkTag.onerror = linkTag.onload = null;
-/******/ 					if (event.type === 'load') {
-/******/ 						resolve();
-/******/ 					} else {
-/******/ 						var request = event && event.target && event.target.href || fullhref;
-/******/ 						var err = new Error("Loading CSS chunk " + chunkId + " failed.\n(" + request + ")");
-/******/ 						err.code = "CSS_CHUNK_LOAD_FAILED";
-/******/ 						err.request = request;
-/******/ 						delete installedCssChunks[chunkId]
-/******/ 						linkTag.parentNode.removeChild(linkTag)
-/******/ 						reject(err);
-/******/ 					}
-/******/ 				};
-/******/ 				linkTag.onerror = linkTag.onload = onLinkComplete;
-/******/ 				linkTag.href = fullhref;
-/******/
-/******/ 				document.head.appendChild(linkTag);
-/******/ 			}).then(function() {
-/******/ 				installedCssChunks[chunkId] = 0;
-/******/ 			}));
-/******/ 		}
 /******/
 /******/ 		// JSONP chunk loading for javascript
 /******/

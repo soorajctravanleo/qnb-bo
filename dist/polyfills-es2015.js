@@ -124,7 +124,7 @@ module.exports = function (done, value) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mahesheu/Downloads/ngx-admin-master/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/qnb-bo/src/polyfills.ts */"hN/g");
 
 
 /***/ }),
