@@ -25,6 +25,6 @@ const routes: Routes = [{ path: '', component: TransfersComponent },
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TransfersRoutingModule { }
