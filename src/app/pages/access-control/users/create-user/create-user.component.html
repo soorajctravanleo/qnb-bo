@@ -256,7 +256,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">MAC ID</label>
-                    <input type="text" nbInput fullWidthformControlName="macId">
+                    <input type="text" nbInput fullWidth formControlName="macId">
                   </div>
                 </div>
               </div>
@@ -268,35 +268,30 @@
           <div formGroupName="loginRestriction">
             <div class="col-md-12">
               <div class="row new-row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">User ID</label>
                     <input type="text" nbInput fullWidth formControlName="userId">
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">First name</label>
                     <input type="text" nbInput fullWidth formControlName="firstName">
                   </div>
                 </div>
-                <div class="col-md-3">
-                </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 pt-3">
+                  Apply Restrictions
                 </div>
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="row new-row">
-                <div class="col-md-6">Apply Restrictions</div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <nb-toggle status="danger" formControlName="loginRestriction"></nb-toggle>
                 </div>
               </div>
             </div>
+
+            
           </div>
         </nb-tab>
       </nb-tabset>
