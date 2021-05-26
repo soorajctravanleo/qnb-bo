@@ -21,7 +21,7 @@ export class TransactionEntitlementComponent implements OnInit {
   private transactionEntitlementForm(){
     this.transactionEntitlement = this.fb.group({
       'unit': new FormControl('', [Validators.required]),
-      'profile': new FormControl('', [Validators.required])
-    })
+      'profile': new FormControl('', [Validators.required]),
+    });
   }
 }
