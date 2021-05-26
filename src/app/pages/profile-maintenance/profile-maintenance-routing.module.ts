@@ -10,7 +10,8 @@ const routes: Routes = [
     path: 'transaction-entitlement',
     loadChildren: () => import('./transaction-entitlement/transaction-entitlement.module').then(
       m => m.TransactionEntitlementModule),
-  }, {
+  },
+  {
     path: 'label-cache',
     loadChildren: () => import('./label-cache/label-cache.module').then(m => m.LabelCacheModule),
   }];
