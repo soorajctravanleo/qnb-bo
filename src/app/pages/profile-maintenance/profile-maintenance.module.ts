@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileMaintenanceRoutingModule } from './profile-maintenance-routing.module';
 import { ProfileMaintenanceComponent } from './profile-maintenance.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ProfileMaintenanceComponent } from './profile-maintenance.component';
   imports: [
     CommonModule,
     ProfileMaintenanceRoutingModule,
+    ReactiveFormsModule
   ],
 })
 export class ProfileMaintenanceModule { }

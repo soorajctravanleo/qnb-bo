@@ -1,1 +1,51 @@
-<p>transaction-entitlement works!</p>
+<qnb-section-header title="Transaction Entitlement"></qnb-section-header>
+
+<form [formGroup]="transactionEntitlement" (ngSubmit)="onSubmit()">
+	<nb-card>
+		<nb-card-body>
+			<div class="col-md-12">
+				<div class="row new-raw">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="unit">Unit</label>
+							<nb-select fullwidth style="width: 100%;" placeholder="Select" [(selected)]="selectedItem" formControlName="unit">
+								<nb-option value="1">QATAR--PRD-Qutar</nb-option>
+							</nb-select>
+							<span class="help-block" *ngIf="!transactionEntitlement.get('unit').valid && transactionEntitlement.get('unit').touched">
+								<span *ngIf="transactionEntitlement.get('unit').errors['required']">
+									This field is required!
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="row new-row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="profile">Profile</label>
+							<nb-select fullwidth style="width: 100%;" placeholder="Select" [(selected)]="selectedItem" formControlName="profile">
+								<nb-option value="0">Default</nb-option>
+							</nb-select>
+							<span class="help-block" *ngIf="!transactionEntitlement.get('profile').valid && transactionEntitlement.get('profile').touched">
+								<span *ngIf="transactionEntitlement.get('profile').errors['required']">
+									This field is required!
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nb-card-body>
+		<nb-card-footer>
+			<div style="float:right">
+			  <button nbButton hero status="normal">Reset</button>
+			  <button type="submit" nbButton hero status="success" [disabled]="!transactionEntitlement.valid">Save</button>
+			</div>
+		  </nb-card-footer>
+	</nb-card>
+</form>
+
+
+
