@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { QnbUnitService } from '../../../services'
+import { MockUnit } from '../../../_helpers/models/backend';
+
 @Component({
   selector: 'qnb-transaction-entitlement',
   templateUrl: './transaction-entitlement.component.html',
@@ -9,13 +12,32 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class TransactionEntitlementComponent implements OnInit {
   transactionEntitlement: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  units: MockUnit[] = [];
+
+  constructor(
+    private fb: FormBuilder,
+    private qnbUnitService: QnbUnitService,
+  ) { }
 
   ngOnInit(): void {
     this.transactionEntitlementForm();
+    this.fetchUnits();
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if(this.transactionEntitlement.valid){
+      console.log(this.transactionEntitlement.value);
+    }
+  }
+
+  private fetchUnits() {
+    this.qnbUnitService
+    .getUnits()
+    .subscribe( data => {
+      this.units = data;
+      console.log(data);
+    })
+  }
 
   private transactionEntitlementForm() {
     this.transactionEntitlement = this.fb.group({
@@ -27,4 +49,6 @@ export class TransactionEntitlementComponent implements OnInit {
       'channel': new FormControl('', [Validators.required]),
     });
   }
+
+ 
 }

@@ -9,7 +9,9 @@
 						<div class="form-group">
 							<label for="">Unit</label>
 							<nb-select fullWidth style="width: 100%;" formControlName="unit" placeholder="Select">
-								<nb-option value="1">Qutar</nb-option>
+								<nb-option *ngFor= "let unit of units" [value]="unit.name">
+									{{unit.name}}
+								</nb-option>
 							</nb-select>
 							<span class="help-block" *ngIf="!transactionEntitlement.get('unit').valid && transactionEntitlement.get('unit').touched">
 							<span *ngIf="transactionEntitlement.get('unit').errors['required']">

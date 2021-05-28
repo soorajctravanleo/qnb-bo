@@ -5,3 +5,4 @@ export * from './user.interceptor';
 export * from './entity.interceptor';
 export * from './http.interceptor';
 export * from './role.interceptor';
+export * from './unit.interceptor';
