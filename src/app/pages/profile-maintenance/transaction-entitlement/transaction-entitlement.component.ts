@@ -7,7 +7,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./transaction-entitlement.component.scss'],
 })
 export class TransactionEntitlementComponent implements OnInit {
-  selectedItem;
   transactionEntitlement: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -21,7 +20,11 @@ export class TransactionEntitlementComponent implements OnInit {
   private transactionEntitlementForm() {
     this.transactionEntitlement = this.fb.group({
       'unit': new FormControl('', [Validators.required]),
-      'profile': new FormControl('', [Validators.required]),
+      'dateAndTime' : this.fb.group({
+        'date': new FormControl('', [Validators.required]),
+        'time': new FormControl('', [Validators.required]),
+      }),
+      'channel': new FormControl('', [Validators.required]),
     });
   }
 }

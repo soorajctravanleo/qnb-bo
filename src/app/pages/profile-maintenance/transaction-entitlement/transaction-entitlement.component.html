@@ -4,40 +4,329 @@
 	<nb-card>
 		<nb-card-body>
 			<div class="col-md-12">
-				<div class="row new-raw">
-					<div class="col-md-4">
+				<div class="row new-row">
+					<div class="col-md-6">
 						<div class="form-group">
-							<label for="unit">Unit</label>
-							<nb-select fullwidth style="width: 100%;" placeholder="Select" [(selected)]="selectedItem" formControlName="unit">
-								<nb-option value="1">QATAR--PRD-Qutar</nb-option>
+							<label for="">Unit</label>
+							<nb-select fullWidth style="width: 100%;" formControlName="unit" placeholder="Select">
+								<nb-option value="1">Qutar</nb-option>
 							</nb-select>
 							<span class="help-block" *ngIf="!transactionEntitlement.get('unit').valid && transactionEntitlement.get('unit').touched">
-								<span *ngIf="transactionEntitlement.get('unit').errors['required']">
+							<span *ngIf="transactionEntitlement.get('unit').errors['required']">
+								This field is required!
+							</span>
+						</span>
+						</div>
+					</div>
+	
+					<div class="col-md-6">
+					<div class="form-group">
+						<label for="">Channel</label>
+						<nb-select fullWidth style="width: 100%;" formControlName="channel" placeholder="Select">
+							<nb-option value="1">IB</nb-option>
+							<nb-option value="2">MB</nb-option>
+							<nb-option value="2">IB & MB</nb-option>
+						</nb-select>
+						<span class="help-block" *ngIf="!transactionEntitlement.get('channel').valid && transactionEntitlement.get('channel').touched">
+							<span *ngIf="transactionEntitlement.get('channel').errors['required']">
+								This field is required!
+							</span>
+						</span>
+					</div>
+					</div>
+	
+				</div>
+			</div>
+			<div formGroupName="dateAndTime">
+				<div class="col-md-12">
+					<div class="row new-row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="">Date</label>
+								<input nbInput fullWidth [nbDatepicker]="datepicker" formControlName="date" placeholder="Date">
+								<nb-datepicker #datepicker></nb-datepicker>
+								<span class="help-block" *ngIf="!transactionEntitlement.get('dateAndTime.date').valid && transactionEntitlement.get('dateAndTime.date').touched">
+								<span *ngIf="transactionEntitlement.get('dateAndTime.date').errors['required']">
 									This field is required!
 								</span>
 							</span>
+							</div>
 						</div>
+		
+						<div class="col-md-6">
+						<div class="form-group">
+							<label for="">Time</label>
+							<input nbInput fullWidth [nbTimepicker]="timepicker">
+							<nb-timepicker #timepicker twelveHoursFormat></nb-timepicker>
+							<!-- <span class="help-block" *ngIf="!transactionEntitlement.get('dateAndTime.time').valid && transactionEntitlement.get('dateAndTime.time').touched">
+								<span *ngIf="transactionEntitlement.get('dateAndTime.time').errors['required']">
+									This field is required!
+								</span>
+							</span> -->
+						</div>
+						</div>
+		
 					</div>
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="row new-row">
-					<div class="col-md-4">
+					<div class="col-md-12">
 						<div class="form-group">
-							<label for="profile">Profile</label>
-							<nb-select fullwidth style="width: 100%;" placeholder="Select" [(selected)]="selectedItem" formControlName="profile">
-								<nb-option value="0">Default</nb-option>
-							</nb-select>
-							<span class="help-block" *ngIf="!transactionEntitlement.get('profile').valid && transactionEntitlement.get('profile').touched">
-								<span *ngIf="transactionEntitlement.get('profile').errors['required']">
-									This field is required!
-								</span>
-							</span>
+							<label for="">Comments</label>
+							<textarea nbInput fullWidth style="width: 100%;" placeholder="Comments"></textarea>
 						</div>
 					</div>
 				</div>
 			</div>
+			<br>
+			<table mdbTable class="table">
+				<tbody>
+					<tr mdbTableCol>
+						<th>Model Name</th>
+						<th>Transaction Description</th>
+					</tr>
+					<tr mdbTableCol>
+						<th>Accounts</th>
+						<td>
+							<nb-checkbox status="basic">Account Statement</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Account Summery</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Account Delegation</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Cancel Auto Renew Fixed</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Cheque Book Request</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Cheque Book Request Statement</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Cheque History</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Delete Account Delegatioin</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">E-statement</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Open E-saving Account</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Open a New Deposit</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Pay Bill</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Transfer money</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">View more than 6 month transactions</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td></td>
+					</tr>
+					<tr mdbTableCol>
+						<th>Cheques</th>
+						<td>
+							<nb-checkbox status="basic">Cheque Book Request</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<td>
+							<nb-checkbox status="basic">Cheque Book Request Status</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th>Cheques</th>
+						<td>
+							<nb-checkbox status="basic">Cheque History</nb-checkbox>
+						</td>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr mdbTableCol>
+						<th>Contact Bank</th>
+						<th>
+							<nb-checkbox status="basic">Apply for Product</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Contact Bank</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Flexi</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Hala Top Up</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Kahramaa</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Kahramaa Bill Payment</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Mobile Broadband</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Ocard</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Ooredoo</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Ooredoo Bills</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">QCool</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Qcool Bills</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Qpost Bills</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Save Bill</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">School</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">School Payment</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">School Payment Soft Launch</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Test New Partner</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">School</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th></th>
+						<th>
+							<nb-checkbox status="basic">Pre-Paid</nb-checkbox>
+						</th>
+					</tr>
+					<tr mdbTableCol>
+						<th>IPO</th>
+						<td>
+							<nb-checkbox status="basic">IPO Subscription</nb-checkbox>
+						</td>
+					</tr>
+				</tbody>
+			</table> 
+			<br>
 		</nb-card-body>
+
 		<nb-card-footer>
 			<div style="float:right">
 			  <button nbButton hero status="normal">Reset</button>
@@ -45,6 +334,7 @@
 			</div>
 		  </nb-card-footer>
 	</nb-card>
+	
 </form>
 
 
