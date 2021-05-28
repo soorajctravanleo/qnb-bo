@@ -4,7 +4,7 @@ import { MOCK_UNITS } from '../mock';
 import { MockResponse } from '../types/backend';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class MockUnitService {

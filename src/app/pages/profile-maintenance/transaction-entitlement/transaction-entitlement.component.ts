@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { QnbUnitService } from '../../../services'
+import { QnbUnitService } from '../../../services';
 import { MockUnit } from '../../../_helpers/models/backend';
 
 @Component({
@@ -25,9 +25,7 @@ export class TransactionEntitlementComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.transactionEntitlement.valid){
-      console.log(this.transactionEntitlement.value);
-    }
+    if (this.transactionEntitlement.valid) {}
   }
 
   private fetchUnits() {
@@ -35,8 +33,7 @@ export class TransactionEntitlementComponent implements OnInit {
     .getUnits()
     .subscribe( data => {
       this.units = data;
-      console.log(data);
-    })
+    });
   }
 
   private transactionEntitlementForm() {
@@ -44,11 +41,9 @@ export class TransactionEntitlementComponent implements OnInit {
       'unit': new FormControl('', [Validators.required]),
       'dateAndTime' : this.fb.group({
         'date': new FormControl('', [Validators.required]),
-        'time': new FormControl('', [Validators.required]),
+        // 'time': new FormControl('', [Validators.required]),
       }),
       'channel': new FormControl('', [Validators.required]),
     });
   }
-
- 
 }

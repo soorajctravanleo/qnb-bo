@@ -1,1 +1,1 @@
-export const GET_UNITS = '/units'
+export const GET_UNITS = '/units';

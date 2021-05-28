@@ -5,5 +5,5 @@ export const MOCK_UNITS: MockUnit[] = [
   new MockUnit('US', 'United States'),
   new MockUnit('QA', 'Qatar'),
   new MockUnit('FR', 'France'),
-  new MockUnit('AE', 'United Arab Emirates')
-]
+  new MockUnit('AE', 'United Arab Emirates'),
+];

@@ -6,34 +6,28 @@ import { tap } from 'rxjs/operators';
 import { GET_UNITS } from '../_helpers/apis';
 import { MockUnit } from '../_helpers/models/backend';
 
-
-// export interface QnbUnit {
-//   code: string;
-//   name: string;
-// }
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class QnbUnitService {
   private units: MockUnit[] = [];
 
   constructor(
-    private http: HttpClient
-  ){ }
+    private http: HttpClient,
+  ) { }
 
-  fetchUnits(){
+  fetchUnits() {
     return (this.http.get(GET_UNITS) as Observable<MockUnit[]>)
     .pipe(
-      tap(units =>{
+      tap(units => {
         this.units = units;
       }),
     );
   }
 
-  getUnits(){
-    if(this.units.length === 0){
+  getUnits() {
+    if (this.units.length === 0) {
       return this.fetchUnits();
     }
     return of(this.units);
