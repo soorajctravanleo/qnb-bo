@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbTabsetModule, NbCardModule, } from '@nebular/theme';
+import { NbTabsetModule, NbCardModule } from '@nebular/theme';
 import { PendingRequestsRoutingModule } from './pending-requests-routing.module';
 import { PendingRequestsComponent } from './pending-requests.component';
 
@@ -13,7 +13,7 @@ import { PendingRequestsComponent } from './pending-requests.component';
     CommonModule,
     NbTabsetModule,
     NbCardModule,
-    PendingRequestsRoutingModule
-  ]
+    PendingRequestsRoutingModule,
+  ],
 })
 export class PendingRequestsModule { }

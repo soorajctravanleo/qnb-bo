@@ -31,7 +31,9 @@ const routes: Route[] = [
           (m => m.QnbRolesModule),
       },
       {
-        path: 'pending-requests', loadChildren: () => import('./pending-requests/pending-requests.module').then(m => m.PendingRequestsModule)
+        path: 'pending-requests', loadChildren: () =>
+          import('./pending-requests/pending-requests.module').then(m =>
+            m.PendingRequestsModule),
       },
     ],
   },

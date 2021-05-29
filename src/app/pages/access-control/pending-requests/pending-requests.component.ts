@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pending-requests.component.scss']
 })
 export class PendingRequestsComponent implements OnInit {
-  headElements: any = ["Request No.", "Type", "Access Level", "Role/userid", "Entity", "Application Type", "Maker Id", "Maker Date"];
+  headElements: any = ['Request No.', 'Type', 'Access Level', 'Role/userid', 'Entity', 'Application Type', 'Maker Id', 'Maker Date'];
   users = [];
   constructor() { }
 
