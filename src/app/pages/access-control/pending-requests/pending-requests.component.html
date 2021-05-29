@@ -1,0 +1,42 @@
+<nb-card>
+  <nb-card-body>
+
+    <nb-tabset>
+      <nb-tab tabTitle="Pending Users" badgeText="13" badgeStatus="danger">
+        <p>List of <strong>users</strong>.</p>
+      </nb-tab>
+      <nb-tab tabTitle="Pening Roles" badgeText="14" badgeStatus="danger">
+        <p>List of <strong>roles</strong>.</p>
+      </nb-tab>
+      <nb-tab tabTitle="Pending Access" badgeText="14" badgeStatus="danger">
+        <p>List of <strong>access</strong>.</p>
+
+        <table mdbTable class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th *ngFor="let head of headElements" scope="col">{{ head }} </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let user of users">
+              <th class="px-1"><i class="icons fa fa-edit" (click)="onEditUser(user.id)"></i></th>
+              <th><i class="icons fa fa-trash-alt" (click)="onDeleteUser(user.id)"></i></th>
+              <th class="px-1"><i class="icons fa fa-ban" (click)="onEditUser(user.id)"></i></th>
+              <th scope="row">{{ user.userId }}</th>
+              <td>{{ user.nickName }}</td>
+
+              <td>{{ user.role }}</td>
+              <td>Maker</td>
+              <td style="white-space: nowrap;">{{ user.expiryDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </nb-tab>
+    </nb-tabset>
+
+  </nb-card-body>
+</nb-card>
