@@ -5,7 +5,16 @@ import { BeneficiaryAuthorizationRoutingModule } from './beneficiary-authorizati
 import { BeneficiaryAuthorizationComponent } from './beneficiary-authorization.component';
 
 import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
-import { NbCardModule, NbSelectModule, NbDatepickerModule, NbInputModule, NbButtonModule, NbRadioModule, NbTreeGridModule, NbTimepickerModule } from '@nebular/theme';
+import { 
+  NbCardModule, 
+  NbSelectModule, 
+  NbDatepickerModule, 
+  NbInputModule, 
+  NbButtonModule, 
+  NbRadioModule, 
+  NbTreeGridModule, 
+  NbTimepickerModule 
+} from '@nebular/theme';
 import { NbIconModule } from '@nebular/theme';
 
 @NgModule({
