@@ -23,7 +23,7 @@ interface UserTableRow {
 })
 export class ListUsersComponent implements OnInit {
   @ViewChild('disabledEsc', { read: TemplateRef }) disabledEscTemplate: TemplateRef<HTMLElement>;
-  headElements = ['User ID', 'Nick Name', 'Name', 'Email', 'Phone', 'Dob', 'Role', 'Expiry'];
+  headElements = ['User ID', 'Nick Name', 'Role', 'UserType', 'Expiry'];
   users: UserTableRow[] = [];
 
   constructor(
