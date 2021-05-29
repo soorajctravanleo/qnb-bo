@@ -11,7 +11,7 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NbMenuModule, NbSidebarModule } from '@nebular/theme';
+import { NbMenuModule, NbSidebarModule, NbDatepickerModule, NbTimepickerModule } from '@nebular/theme';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -33,6 +33,8 @@ const SERVICES: Provider[] = [
     NbMenuModule.forRoot(),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+    NbTimepickerModule.forRoot(),
     QnbAuthModule,
   ],
   providers: [

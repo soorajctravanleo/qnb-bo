@@ -64,7 +64,7 @@ export class QnbAuthService {
   }
 
   private setAuthKey(token: string) {
-    const sessionTime = 60 * 60 * 1000; // 1 hour in milliseconds
+    const sessionTime = 5 * 60 * 60 * 1000; // 1 hour in milliseconds
     const expiryTime = new Date().getTime() + sessionTime;
     this.cookieService.set(this.AUTH_KEY_KEY, token, {
       expires: new Date(expiryTime),
