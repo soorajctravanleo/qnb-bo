@@ -33,7 +33,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       // },
       {
         title: 'Pending Requests',
-        link: '/pages/access-control/user-entities',
+        link: '/pages/access-control/pending-requests',
       },
     ],
   },
