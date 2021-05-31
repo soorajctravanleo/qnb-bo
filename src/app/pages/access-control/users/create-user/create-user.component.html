@@ -6,7 +6,7 @@
           <div formGroupName="profile">
             <div class="col-md-12">
               <div class="row new-row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">User ID</label>
                     <input type="text" nbInput fullWidth ngModel formControlName="userId">
@@ -18,9 +18,9 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Nick Name</label>
+                    <label for="">User Name</label>
                     <input type="text" nbInput fullWidth formControlName="nickName">
                     <span
                       *ngIf="!signupForm.get('profile.nickName').valid && signupForm.get('profile.nickName').touched"
@@ -32,7 +32,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <!-- <div class="col-md-6">
                   <div class="form-group">
                     <label for="">First Name</label>
                     <input type="text" nbInput fullWidth formControlName="firstName" required>
@@ -45,7 +45,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Last Name</label>
                     <input type="text" nbInput fullWidth formControlName="lastName">
@@ -56,14 +56,14 @@
                         required!</span>
                     </span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 
             <div class="col-md-12">
               <div class="row new-row">
-                <div class="col-md-3">
-                  <div class="form-group">
+                <div class="col-md-6">
+                  <!-- <div class="form-group">
                     <label for="">DOB</label>
                     <input nbInput fullWidth [nbDatepicker]="formpicker" formControlName="dob">
                     <nb-datepicker #formpicker></nb-datepicker>
@@ -72,10 +72,18 @@
                       <span *ngIf="signupForm.get('profile.dob').errors['required']">This field is
                         required!</span>
                     </span>
+                  </div> -->
+                  <div class="form-group">
+                    <label for="">Role</label>
+                    <nb-select fullWidth multiple style="width: 100%;" formControlName="role">
+                      <nb-option *ngFor="let role of roles" [value]="role.groupCode">
+                        {{ role.groupCode }}
+                      </nb-option>
+                    </nb-select>
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">User type</label>
                     <nb-select fullWidth style="width: 100%;" formControlName="userType">
@@ -92,7 +100,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <!-- <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Entity</label>
                     <nb-select fullWidth style="width: 100%;" formControlName="entity">
@@ -106,7 +114,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Role</label>
                     <nb-select fullWidth multiple style="width: 100%;" formControlName="role">
@@ -115,13 +123,13 @@
                       </nb-option>
                     </nb-select>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
               <div class="row new-row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Mobile</label>
                     <input type="text" nbInput fullWidth formControlName="mobile">
@@ -133,7 +141,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Email</label>
                     <input type="text" nbInput fullWidth formControlName="email">
@@ -146,7 +154,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Expiry Date</label>
                     <input nbInput fullWidth [nbDatepicker]="formpicker2" formControlName="expiryDate">
@@ -154,7 +162,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Select Language</label>
                     <nb-select fullWidth  formControlName="language">
@@ -165,32 +173,50 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-6">
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="">Timezone</label>
                     <nb-select fullWidth  formControlName="timezone">
                       <nb-option *ngFor="let timezone of timezones" [value]="timezone.code">
                         {{ timezone.displayInfo }}
                       </nb-option>
                     </nb-select>
+                  </div> -->
+                  <div class="form-group">
+                    <label for="">Expiry Date</label>
+                    <input nbInput fullWidth [nbDatepicker]="formpicker" formControlName="dob">
+                    <nb-datepicker #formpicker></nb-datepicker>
+                    <span *ngIf="!signupForm.get('profile.dob').valid && signupForm.get('profile.dob').touched"
+                      class="help-block">
+                      <span *ngIf="signupForm.get('profile.dob').errors['required']">This field is
+                        required!</span>
+                    </span>
                   </div>
-                  
+
                 </div>
 
-                <div class="col-md-6" style="padding-top: 35px;">
-                  <nb-checkbox class="language-input" status="basic" formControlName="sendPasswordOnEmail">Send Password
-                    on email</nb-checkbox>
+                <div class="col-md-6" >
+                  <div class="form-group">
+                    <label for="">Maker Comments</label>
+                    <input type="text" nbInput fullWidth formControlName="ttl">
+                    <span
+                      *ngIf="!signupForm.get('additionalInfo.ttl').valid && signupForm.get('additionalInfo.ttl').touched"
+                      class="help-block">
+                      <span *ngIf="signupForm.get('additionalInfo.ttl').errors['required']">This field is
+                        required!</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </nb-tab>
 
-        <nb-tab tabTitle="Additional Info">
+        <!-- <nb-tab tabTitle="Additional Info">
           <div formGroupName="additionalInfo">
             <div class="col-md-12">
               <div class="row new-row">
@@ -293,13 +319,15 @@
 
             
           </div>
-        </nb-tab>
+        </nb-tab> -->
       </nb-tabset>
     </nb-card-body>
 
     <nb-card-footer>
       <div style="float:right">
-        <button nbButton hero status="normal" (click)="dismiss()">Discard</button>
+        <button nbButton hero status="danger" style="background-color: #FE5578;" (click)="dismiss()" >Cancel</button>
+        <button nbButton hero status="normal" (click)="dismiss()">Reset</button>
+
         <button type="submit" nbButton hero status="success">Submit</button>
       </div>
     </nb-card-footer>

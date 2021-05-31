@@ -11,29 +11,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Access Control',
     icon: 'people-outline',
     children: [
+      // {
+      //   title: 'Service Catalog',
+      //   link: '/pages/access-control/service-catalog',
+      // },
       {
-        title: 'Service Catalog',
-        link: '/pages/access-control/service-catalog',
-      },
-      {
-        title: 'Users',
+        title: 'User Management',
         link: '/pages/access-control/users',
       },
       {
-        title: 'Roles',
+        title: 'Role Managment',
         link: '/pages/access-control/roles',
       },
+      // {
+      //   title: 'Access',
+      //   link: '',
+      // },
+      // {
+      //   title: 'User Types',
+      //   link: '/pages/access-control/user-types',
+      // },
       {
-        title: 'Access',
-        link: '',
-      },
-      {
-        title: 'User Types',
-        link: '/pages/access-control/user-types',
-      },
-      {
-        title: 'User Entities',
-        link: '/pages/access-control/user-entities',
+        title: 'Pending Requests',
+        link: '/pages/access-control/pending-requests',
       },
     ],
   },

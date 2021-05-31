@@ -30,8 +30,14 @@ const routes: Route[] = [
         loadChildren: () => import('./roles/roles.module').then
           (m => m.QnbRolesModule),
       },
+      {
+        path: 'pending-requests', loadChildren: () =>
+          import('./pending-requests/pending-requests.module').then(m =>
+            m.PendingRequestsModule),
+      },
     ],
   },
+
 ];
 
 @NgModule({
