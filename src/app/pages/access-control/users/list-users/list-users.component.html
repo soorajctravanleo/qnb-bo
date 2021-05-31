@@ -1,23 +1,26 @@
-<div align ="right" class="pb-3 ">
-  <button id="create-user-button" (click)="open()" nbButton status="success">Create User</button>
+<div align="right" class="pb-3 ">
+  <button id="create-user-button" (click)="open()" nbButton status="success">Add User</button>
 </div>
 
 <nb-card>
   <nb-card-body>
+    <button nbButton class="m-3" style="float:right">
+      <nb-icon icon="printer-outline"></nb-icon> Export
+    </button>
     <table mdbTable class="table">
       <thead>
         <tr>
           <th></th>
           <th></th>
           <th></th>
-          <th *ngFor="let head of headElements" scope="col">{{ head }} </th>
+          <th *ngFor="let head of headElements" scope="col">{{ head }} <i class="fas fa-sort"></i> </th>
         </tr>
       </thead>
       <tbody>
         <tr mdbTableCol *ngFor="let user of users">
           <th class="px-1"><i class="icons fa fa-edit" (click)="onEditUser(user.id)"></i></th>
           <th><i class="icons fa fa-trash-alt" (click)="onDeleteUser(user.id)"></i></th>
-          <th class="px-1"><i class="icons fa fa-ban" (click)="onEditUser(user.id)"></i></th>
+          <th class="px-1"><i class="icons fa fa-ban" (click)="onEditUserStatus(user.id)"></i></th>
           <th scope="row">{{ user.userId }}</th>
           <td>{{ user.nickName }}</td>
           <!-- <td>{{ user.name }}</td>
@@ -25,8 +28,9 @@
           <td>{{ user.phone }}</td>
           <td style="white-space: nowrap;">{{ user.dob }}</td> -->
           <td>{{ user.role }}</td>
-         <td>Maker</td>
+          <td>Maker</td>
           <td style="white-space: nowrap;">{{ user.expiryDate }}</td>
+          <td>ENABLED</td>
         </tr>
       </tbody>
     </table>

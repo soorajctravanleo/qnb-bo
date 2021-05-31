@@ -14,6 +14,11 @@
   float: right;
 }
 
+textarea {
+  height: 120px;
+  resize: none;
+}
+
 // nb-card {
 //   width: 1000px;
 //   height: 620px;
@@ -35,11 +40,11 @@ input.ng-invalid.ng-touched {
   color: red;
 }
 
-nb-select.appearance-outline .select-button{
+nb-select.appearance-outline .select-button {
   white-space: normal !important;
 }
 
-.form-group{
+.form-group {
   min-height: 88px;
   margin-bottom: 0;
 }

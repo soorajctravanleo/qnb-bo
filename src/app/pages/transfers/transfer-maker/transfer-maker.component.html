@@ -1,1 +1,60 @@
-<p>transfer-maker works!</p>
+<div class="col-md-12">
+  <div class="row">
+    <nb-card>
+      <nb-card-body>
+        <div class="col-12">
+          <div class="select-type">
+
+            <nb-radio-group class="d-flex">
+              <nb-radio class="col-md-3 col-md-push-4 mx-2" value="search" checked (valueChange)="onChange($event)">
+                Search
+              </nb-radio>
+              <nb-radio class="col-md-3 mx-2" value="rejected" checked="true" (valueChange)="onChange($event)">Rejected
+              </nb-radio>
+            </nb-radio-group>
+          </div>
+          <div class="search-row" *ngIf="showSearchBar">
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+              <div formGroupName="search">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <nb-select full-width id="hbtfUnit" placeholder="Search by" class="w-100"
+                        formControlName="searchKey">
+                        <nb-option value="0" selected>National Id</nb-option>
+                        <nb-option value="1">Reference Id</nb-option>
+                      </nb-select>
+                    </div>
+                    <div class="col-md-3"><input nbInput formControlName="searchValue" placeholder="Search Value"></div>
+                    <div class="col-md-3">
+                      <button nbButton hero status="success" type="submit">Search</button>
+                      <button nbButton hero status="default" (click)="resetForm()" type="button">Reset</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="response-table">
+            <table class="table" *ngIf="showRejectedTable">
+              <thead>
+                <th *ngFor="let headings of rejectedHeadArray">{{headings}}</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="9" align="center">No records found!!</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table" *ngIf="showSearchTable">
+              <thead>
+                <th *ngFor="let headings of rejectedHeadArray">{{headings}}</th>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
