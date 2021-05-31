@@ -11,10 +11,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Access Control',
     icon: 'people-outline',
     children: [
-      // {
-      //   title: 'Service Catalog',
-      //   link: '/pages/access-control/service-catalog',
-      // },
       {
         title: 'User Management',
         link: '/pages/access-control/users',
@@ -23,17 +19,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Role Managment',
         link: '/pages/access-control/roles',
       },
-      // {
-      //   title: 'Access',
-      //   link: '',
-      // },
-      // {
-      //   title: 'User Types',
-      //   link: '/pages/access-control/user-types',
-      // },
       {
-        title: 'Pending Requests',
+        title: 'My Pending Requests',
         link: '/pages/access-control/pending-requests',
+      },
+      {
+        title: 'Pending Approvals',
+        link: '/pages/access-control/pending-approvals',
       },
     ],
   },

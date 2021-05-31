@@ -1,30 +1,53 @@
 <nb-card>
-  <nb-card-header>Create / Modify Role</nb-card-header>
+  <nb-card-header>Update Role</nb-card-header>
   <nb-card-body>
     <form class="form-inline">
       <div class="col-md-12">
         <div class="row new-row">
-          <div class="col-md-6"> <input type="text" nbInput fullWidth placeholder="Role Name"></div>
           <div class="col-md-6">
-            <nb-select fullWidth style="width: 100%;" formControlName="userType">
-              <nb-option *ngFor="let roles of userRoles" [value]="roles.groupCode">{{roles.groupCode}}
-              </nb-option>
-            </nb-select>
+            <div class="form-group">
+              <label for="">Role Name*</label>
+              <input type="text" nbInput fullWidth placeholder="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Unit*</label>
+              <nb-select fullWidth>
+                <nb-option value="qnb-qatar">Qnb Qatar</nb-option>
+                <nb-option value="qnb-france">Qnb France</nb-option>
+                <nb-option value="qnb-uae">Qnb UAE</nb-option>
+              </nb-select>
+            </div>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="row new-row">
-            <div class="col-md-6">
-              <textarea type="text" nbInput fullWidth placeholder="Description"></textarea>
+      </div>
+      <div class="col-md-12">
+        <div class="row new-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Role Description*</label>
+              <textarea type="text" nbInput fullWidth placeholder=""></textarea>
             </div>
-            <div class="col-md-6">
-
-              <nb-checkbox (checkedChange)="toggle($event)">Multi Login</nb-checkbox>
-              <nb-checkbox (checkedChange)="toggle($event)">NOK Login</nb-checkbox>
-              <nb-checkbox (checkedChange)="toggle($event)">Decent Login</nb-checkbox>
-              <nb-checkbox (checkedChange)="toggle($event)">No Password Expiry</nb-checkbox>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Role Type*</label>
+              <nb-select fullWidth placeholder="">
+                <nb-option value="maker">Maker</nb-option>
+                <nb-option value="checker">Checker</nb-option>
+                <nb-option value="makerchecker">Maker & Checker</nb-option>
+              </nb-select>
             </div>
-
+            <div class="new-row">
+              <div class="form-group">
+                <label for="">Access To*</label>
+                <nb-select fullWidth style="width: 100%;" formControlName="userType" multiple placeholder="">
+                  <nb-option *ngFor="let roles of userRoles" [value]="roles.groupCode">{{roles.groupCode}}
+                  </nb-option>
+                </nb-select>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -32,7 +55,8 @@
   </nb-card-body>
   <nb-card-footer>
     <div style="float:right">
-      <button nbButton hero status="normal" (click)="dismiss()">Discard</button>
+      <button nbButton hero status="danger" style="background-color: #FE5578;" (click)="dismiss()">Cancel</button>
+      <button nbButton hero status="normal" (click)="dismiss()">Reset</button>
       <button nbButton hero status="success">Submit</button>
     </div>
   </nb-card-footer>

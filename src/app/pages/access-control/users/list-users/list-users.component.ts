@@ -4,6 +4,8 @@ import { NbDialogService } from '@nebular/theme';
 import { QnbUserService, QnbRoleService, QnbUser } from '../../../../services';
 import { MockUser } from '../../../../_helpers/models/backend';
 import { CreateUserComponent } from '../create-user/create-user.component';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
+import { ChangeUserStatusComponent } from '../change-user-status/change-user-status.component';
 
 interface UserTableRow {
   userId: string;
@@ -23,7 +25,7 @@ interface UserTableRow {
 })
 export class ListUsersComponent implements OnInit {
   @ViewChild('disabledEsc', { read: TemplateRef }) disabledEscTemplate: TemplateRef<HTMLElement>;
-  headElements = ['User ID', 'Nick Name', 'Role', 'UserType', 'Expiry'];
+  headElements = ['User Id', 'UserName', 'Role', 'UserType', 'Expiry', 'Status'];
   users: UserTableRow[] = [];
 
   constructor(
@@ -51,17 +53,17 @@ export class ListUsersComponent implements OnInit {
     return this.qnbRoleService.getRoleById(id);
   }
 
-  onEditUser(id: number) {
-    // this.qnbUserService
-    //   .fetchUser(id)
-    //   .subscribe(user => {
-    //     this.dialogService.open(CreateUserComponent, {
-    //       context: { user },
-    //     });
-    //   });
+  onEditUserStatus(id: any) {
+
+    this.dialogService.open(ChangeUserStatusComponent, {
+      context: { user: id },
+    });
   }
 
   onDeleteUser(id: number) {
+    this.dialogService.open(DeleteUserComponent, {
+      context: { user: id },
+    });
 
   }
 

@@ -6,6 +6,7 @@ import { QnbUsersComponent } from './users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
+  NbIconModule,
   NbToastrModule,
   NbTreeGridModule,
   NbToggleModule,
@@ -23,14 +24,19 @@ import {
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { ChangeUserStatusComponent } from './change-user-status/change-user-status.component';
 
 @NgModule({
   declarations: [
     QnbUsersComponent,
     CreateUserComponent,
     ListUsersComponent,
+    DeleteUserComponent,
+    ChangeUserStatusComponent,
   ],
   imports: [
+    NbIconModule,
     FormsModule,
     ReactiveFormsModule,
     NbToggleModule,
