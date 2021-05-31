@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { QnbUnitService } from '../../../services';
-import { MockUnit } from '../../../_helpers/models/backend';
+import { 
+  MockUnit,
+  // MockUnitModule,
+  MockAccountsTransactionDesc,
+  MockChequesTransactionDesc,
+  MockContactBankTransactionDesc,
+  MockIPOTransactionDesc
+} from '../../../_helpers/models/backend';
 
 @Component({
   selector: 'qnb-transaction-entitlement',
@@ -11,8 +18,14 @@ import { MockUnit } from '../../../_helpers/models/backend';
 })
 export class TransactionEntitlementComponent implements OnInit {
   transactionEntitlement: FormGroup;
-
+  headElements = ['Model Name', 'Transaction Description'];
   units: MockUnit[] = [];
+  // moduleNames: MockUnitModule[] = [];
+  accountTransactionDescs: MockAccountsTransactionDesc[] = [];
+  chequeTransactionDescs: MockChequesTransactionDesc[] = [];
+  contactBankTransactionDescs: MockContactBankTransactionDesc[] = [];
+  ipoTransactionDescs: MockIPOTransactionDesc[] = [];
+
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +35,10 @@ export class TransactionEntitlementComponent implements OnInit {
   ngOnInit(): void {
     this.transactionEntitlementForm();
     this.fetchUnits();
+    this.fetchAccountTransactionDescs();
+    this.fetchChequesTransactionDescs();
+    this.fetchContactBankTransactionDescs();
+    this.fetchIPOTransactionDescs();
   }
 
   onSubmit() {
@@ -36,14 +53,44 @@ export class TransactionEntitlementComponent implements OnInit {
     });
   }
 
+  private fetchAccountTransactionDescs() {
+    this.qnbUnitService
+    .getAccountTransactionDescs()
+    .subscribe( data => {
+      this.accountTransactionDescs = data
+    })
+  }
+
+  private fetchChequesTransactionDescs() {
+    this.qnbUnitService
+    .getChequesTransactionDescs()
+    .subscribe( data => {
+      this.chequeTransactionDescs = data
+      console.log(data);
+    })
+  }
+
+  private fetchContactBankTransactionDescs() {
+    this.qnbUnitService
+    .getContactBankTransactionDescs()
+    .subscribe( data => {
+      this.contactBankTransactionDescs = data
+      console.log(data);
+    })
+  }
+
+  private fetchIPOTransactionDescs() {
+    this.qnbUnitService
+    .getIPOTransactionDescs()
+    .subscribe( data => {
+      this.ipoTransactionDescs = data
+      console.log(data);
+    })
+  }
+
   private transactionEntitlementForm() {
     this.transactionEntitlement = this.fb.group({
       'unit': new FormControl('', [Validators.required]),
-      'dateAndTime' : this.fb.group({
-        'date': new FormControl('', [Validators.required]),
-        // 'time': new FormControl('', [Validators.required]),
-      }),
-      'channel': new FormControl('', [Validators.required]),
     });
   }
 }
