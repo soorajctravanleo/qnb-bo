@@ -66,7 +66,7 @@ export class PendingRequestsComponent implements OnInit {
       .open(RequestDetailsComponent, {
         context: {
           data: data,
-        }
+        },
       })
       .onClose
       .subscribe(event => {
@@ -82,7 +82,7 @@ export class PendingRequestsComponent implements OnInit {
       .open(RequestRoleDetailsComponent, {
         context: {
           data: data,
-        }
+        },
       })
       .onClose
       .subscribe(event => {

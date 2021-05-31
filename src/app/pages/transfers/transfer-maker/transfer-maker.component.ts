@@ -32,7 +32,7 @@ export class TransferMakerComponent implements OnInit {
     });
   }
   onChange(event) {
-    if (event == 'search') {
+    if (event === 'search') {
       this.showSearchBar = true;
       this.showSearchTable = false;
       this.showRejectedTable = false;
@@ -44,11 +44,10 @@ export class TransferMakerComponent implements OnInit {
     }
   }
   onSubmit() {
-    console.log(this.searchForm.value);
     this.showSearchTable = true;
   }
   resetForm() {
-    console.log("here");
+
     this.showSearchTable = false;
     this.showRejectedTable = false;
     this.searchForm.reset();

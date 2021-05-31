@@ -23,7 +23,11 @@ const routes: Route[] = [
           import('./pending-requests/pending-requests.module').then(m =>
             m.PendingRequestsModule),
       },
-      { path: 'pending-approvals', loadChildren: () => import('./pending-approvals/pending-approvals.module').then(m => m.PendingApprovalsModule) },
+      {
+        path: 'pending-approvals', loadChildren: () =>
+          import('./pending-approvals/pending-approvals.module').then(
+            m => m.PendingApprovalsModule)
+      },
     ],
   },
 
