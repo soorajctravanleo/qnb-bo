@@ -26,7 +26,7 @@ const routes: Route[] = [
       {
         path: 'pending-approvals', loadChildren: () =>
           import('./pending-approvals/pending-approvals.module').then(
-            m => m.PendingApprovalsModule)
+            m => m.PendingApprovalsModule),
       },
     ],
   },
