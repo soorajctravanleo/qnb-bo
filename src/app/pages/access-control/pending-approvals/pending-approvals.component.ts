@@ -21,7 +21,7 @@ export class PendingApprovalsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-    requestDate: '29-12-2020',
+    requestDate: '29/12/2020 08:20 PM',
     makerId: 'UD1001',
     comments: 'test comment',
     requestStatus: 'PENDING',
@@ -33,7 +33,7 @@ export class PendingApprovalsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-    requestDate: '29-12-2020',
+    requestDate: '29/12/2020 08:15 PM',
     makerId: 'UD1001',
     comments: 'test comment',
     requestStatus: 'PENDING',
@@ -47,7 +47,7 @@ export class PendingApprovalsComponent implements OnInit {
     expiryDate: '29/12/2021',
     status: 'Enabled',
     requestType: 'ADD',
-    requestedDate: '29/12/2020',
+    requestedDate: '29/12/2020 08:15 AM',
     makerId: 'UD1001',
     comments: 'test comment3',
   }, {
@@ -59,7 +59,7 @@ export class PendingApprovalsComponent implements OnInit {
     expiryDate: '29/12/2021',
     status: 'Enabled',
     requestType: 'MODIFY',
-    requestedDate: '29/12/2020',
+    requestedDate: '29/12/2020 08:15 PM',
     makerId: 'UD1001',
     comments: 'test comment 4',
   }];
@@ -94,7 +94,7 @@ export class PendingApprovalsComponent implements OnInit {
       .subscribe(event => {
         if (event?.refreshList) {
 
-        },
+        }
       });
 
   }

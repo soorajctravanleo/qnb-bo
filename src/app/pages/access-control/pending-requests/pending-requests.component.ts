@@ -19,7 +19,7 @@ export class PendingRequestsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-    requestDate: '29/12/2020',
+    requestDate: '29/12/2020 12:40 PM',
     makerId: 'UD1001',
     requestStatus: 'PENDING',
   }, {
@@ -30,7 +30,7 @@ export class PendingRequestsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-    requestDate: '29/12/2020',
+    requestDate: '29/12/2020 07:15 AM',
     makerId: 'UD1001',
     requestStatus: 'RETURNED',
   }];
@@ -42,7 +42,7 @@ export class PendingRequestsComponent implements OnInit {
     expiryDate: '29/12/2020',
     status: 'Enabled',
     requestType: 'ADD',
-    requestedDate: '29/12/2020',
+    requestedDate: '29/12/2020 08:15 PM',
     makerId: 'UD1001',
     requestStatus: 'PENDING',
   }, {
@@ -53,7 +53,7 @@ export class PendingRequestsComponent implements OnInit {
     expiryDate: '29/12/2020',
     status: 'Enabled',
     requestType: 'MODIFY',
-    requestedDate: '29/12/2020',
+    requestedDate: '29/12/2020 09:30 PM',
     makerId: 'UD1001',
     requestStatus: 'RETURNED',
   }];
