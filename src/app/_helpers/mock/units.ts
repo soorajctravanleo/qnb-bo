@@ -1,10 +1,10 @@
-import { 
-  MockUnit, 
-  // MockUnitModule, 
-  MockAccountsTransactionDesc, 
+import {
+  MockUnit,
+  // MockUnitModule,
+  MockAccountsTransactionDesc,
   MockChequesTransactionDesc,
   MockContactBankTransactionDesc,
-  MockIPOTransactionDesc
+  MockIPOTransactionDesc,
 } from '../models/backend';
 
 export const MOCK_UNITS: MockUnit[] = [

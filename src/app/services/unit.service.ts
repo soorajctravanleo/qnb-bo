@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { 
+import {
   GET_ACCOUNT_TRANSACTION_DESCS,
   GET_UNITS,
   GET_CHEQUES_TRANSACTION_DESCS,
   GET_CONTACT_BANK_TRANSACTION_DESCS,
-  GET_IPO_TRANSACTION_DESCS
+  GET_IPO_TRANSACTION_DESCS,
 } from '../_helpers/apis';
-import { 
+import {
   MockUnit,
   MockIPOTransactionDesc,
   MockContactBankTransactionDesc,
@@ -53,7 +53,7 @@ export class QnbUnitService {
     return (this.http.get(GET_ACCOUNT_TRANSACTION_DESCS) as Observable<MockAccountsTransactionDesc[]>)
     .pipe(
       tap(transactionDescs => {
-        this.accountsTransactionDescs = transactionDescs
+        this.accountsTransactionDescs = transactionDescs;
       }),
     );
   }
@@ -69,7 +69,7 @@ export class QnbUnitService {
     return (this.http.get(GET_CHEQUES_TRANSACTION_DESCS) as Observable<MockChequesTransactionDesc[]>)
     .pipe(
       tap(transactionDescs => {
-        this.chequesTransactionDescs = transactionDescs
+        this.chequesTransactionDescs = transactionDescs;
       }),
     );
   }
@@ -85,7 +85,7 @@ export class QnbUnitService {
     return (this.http.get(GET_CONTACT_BANK_TRANSACTION_DESCS) as Observable<MockContactBankTransactionDesc[]>)
     .pipe(
       tap(transactionDescs => {
-        this.contactBankTransactionDescs = transactionDescs
+        this.contactBankTransactionDescs = transactionDescs;
       }),
     );
   }
@@ -101,7 +101,7 @@ export class QnbUnitService {
     return (this.http.get(GET_IPO_TRANSACTION_DESCS) as Observable<MockIPOTransactionDesc[]>)
     .pipe(
       tap(transactionDescs => {
-        this.ipoTransactionDescs = transactionDescs
+        this.ipoTransactionDescs = transactionDescs;
       }),
     );
   }

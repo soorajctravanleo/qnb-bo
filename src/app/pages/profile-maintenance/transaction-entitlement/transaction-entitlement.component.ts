@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { QnbUnitService } from '../../../services';
-import { 
+import {
   MockUnit,
   // MockUnitModule,
   MockAccountsTransactionDesc,
   MockChequesTransactionDesc,
   MockContactBankTransactionDesc,
-  MockIPOTransactionDesc
+  MockIPOTransactionDesc,
 } from '../../../_helpers/models/backend';
 
 @Component({
@@ -57,35 +57,32 @@ export class TransactionEntitlementComponent implements OnInit {
     this.qnbUnitService
     .getAccountTransactionDescs()
     .subscribe( data => {
-      this.accountTransactionDescs = data
-    })
+      this.accountTransactionDescs = data;
+    });
   }
 
   private fetchChequesTransactionDescs() {
     this.qnbUnitService
     .getChequesTransactionDescs()
     .subscribe( data => {
-      this.chequeTransactionDescs = data
-      console.log(data);
-    })
+      this.chequeTransactionDescs = data;
+    });
   }
 
   private fetchContactBankTransactionDescs() {
     this.qnbUnitService
     .getContactBankTransactionDescs()
     .subscribe( data => {
-      this.contactBankTransactionDescs = data
-      console.log(data);
-    })
+      this.contactBankTransactionDescs = data;
+    });
   }
 
   private fetchIPOTransactionDescs() {
     this.qnbUnitService
     .getIPOTransactionDescs()
     .subscribe( data => {
-      this.ipoTransactionDescs = data
-      console.log(data);
-    })
+      this.ipoTransactionDescs = data;
+    });
   }
 
   private transactionEntitlementForm() {
