@@ -20,7 +20,7 @@ describe('RolesComponent', () => {
         declarations: [QnbRolesComponent],
 
         providers: [
-          { provide: NbDialogService, useValue: '', },
+          { provide: NbDialogService, useValue: '' },
         ],
       })
       .compileComponents();
