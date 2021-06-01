@@ -30,6 +30,22 @@ export class QnbUnitInterceptor implements HttpInterceptor {
         if (url.endsWith(API.GET_UNITS)) {
           outcome = this.mockUnitService.getUnits();
         }
+
+        if (url.endsWith(API.GET_ACCOUNT_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getAccountTransactionDescs();
+        }
+
+        if (url.endsWith(API.GET_CHEQUES_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getChequesTransactionDescs();
+        }
+
+        if (url.endsWith(API.GET_CONTACT_BANK_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getContactBankTransactionDescs();
+        }
+
+        if (url.endsWith(API.GET_IPO_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getIPOTransactionDescs();
+        }
       }
     }
 
