@@ -1,15 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { TransactionEntitlementComponent } from './transaction-entitlement.component';
-
-import { FormBuilder } from '@angular/forms';
-
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 import { QnbUnitService } from '../../../services';
-
-import { HttpClient,HttpHandler } from '@angular/common/http';
-
 
 describe('TransactionEntitlementComponent', () => {
   let component: TransactionEntitlementComponent;
@@ -18,20 +13,20 @@ describe('TransactionEntitlementComponent', () => {
   let _httpHandler: HttpHandler;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports:[
-        HttpClientTestingModule,
-      ],
-      declarations: [TransactionEntitlementComponent],
-      providers:[
-        FormBuilder,
-        QnbUnitService,
-      ],
-    })
+    await TestBed
+      .configureTestingModule({
+        imports: [
+          HttpClientTestingModule,
+        ],
+        declarations: [TransactionEntitlementComponent],
+        providers: [
+          FormBuilder,
+          QnbUnitService,
+        ],
+      })
       .compileComponents();
-      
-      UnitService = new QnbUnitService(new HttpClient(_httpHandler));
 
+    UnitService = new QnbUnitService(new HttpClient(_httpHandler));
   });
 
   beforeEach(() => {
@@ -41,24 +36,19 @@ describe('TransactionEntitlementComponent', () => {
   });
 
   it('should create', () => {
-    if (fixture===undefined || component===undefined){
+    if (fixture === undefined || component === undefined) {
       fixture = TestBed.createComponent(TransactionEntitlementComponent);
       component = fixture.componentInstance;
     }
-       expect(component).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it("should fetch unit list ", () => {
+  it('should fetch unit list', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-
       UnitService.fetchUnits().subscribe(res => {
         expect(res.length).toBeGreaterThanOrEqual(1);
-      }); 
-    });  
-
+      });
+    });
   });
-
-
-
 });
