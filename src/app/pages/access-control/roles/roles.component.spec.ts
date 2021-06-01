@@ -3,9 +3,20 @@ import { QnbRolesComponent } from './roles.component';
 import { NbDialogService } from '@nebular/theme';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
+import { HttpClient,HttpHandler } from '@angular/common/http';
+
+import {
+
+  QnbRoleService,
+ 
+} from '../../../services';
+
+
 describe('RolesComponent', () => {
   let component: QnbRolesComponent;
   let fixture: ComponentFixture<QnbRolesComponent>;
+  let RoleService: QnbRoleService;
+  let _httpHandler: HttpHandler;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -17,6 +28,7 @@ describe('RolesComponent', () => {
       ],
     })
       .compileComponents();
+      RoleService = new QnbRoleService(new HttpClient(_httpHandler));
   });
 
   beforeEach(() => {
@@ -28,4 +40,27 @@ describe('RolesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render "Create Role" button', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('button').textContent).toContain('Create Role');
+
+  });
+
+  it("should fetch user roles from RoleService on ngOnInit()", () => {
+  
+    fixture.whenStable().then(() => {
+      expect(component.elements.length).toBeGreaterThanOrEqual(1);
+    });
+  
+  });
+
+  it("test RoleService.fetchRoles() ", () => {
+
+    RoleService.fetchRoles().subscribe(res => {
+       expect(res.length).toBeGreaterThanOrEqual(1);
+    });
+
+  });
+
 });

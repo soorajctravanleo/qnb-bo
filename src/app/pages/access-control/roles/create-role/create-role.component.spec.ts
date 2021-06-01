@@ -10,7 +10,9 @@ import {
  
 } from '../../../../services';
 
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+
+import { HttpClient,HttpHandler } from '@angular/common/http';
 
 
 
@@ -18,6 +20,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('CreateRoleComponent', () => {
   let component: CreateRoleComponent;
   let fixture: ComponentFixture<CreateRoleComponent>;
+  let RoleService: QnbRoleService;
+  let _httpHandler: HttpHandler;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -29,6 +33,9 @@ describe('CreateRoleComponent', () => {
       ],
     })
       .compileComponents();
+
+       
+      RoleService = new QnbRoleService(new HttpClient(_httpHandler));
   });
 
   beforeEach(() => {
@@ -40,4 +47,29 @@ describe('CreateRoleComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render "Create / Modify Role" in nb-card-header', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('nb-card-header').textContent).toContain('Create / Modify Role');
+
+  });
+
+
+  it("should fetech user roles ", () => {
+
+    RoleService.fetchRoles().subscribe(res => {
+       expect(res.length).toBeGreaterThanOrEqual(1);
+    });
+
+  });
+
+
+  
+  it("should mark checked=true/false", () => {
+    component.toggle(true);
+    expect(component.checked).toEqual(true);
+    component.toggle(false);
+    expect(component.checked).toEqual(false);
+  });
+  
 });
