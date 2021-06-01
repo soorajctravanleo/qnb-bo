@@ -20,10 +20,7 @@ describe('ProfileMaintenanceComponent', () => {
   });
 
   it('should create', () => {
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
 
       expect(component).toBeTruthy();
-    });  
   });
 });

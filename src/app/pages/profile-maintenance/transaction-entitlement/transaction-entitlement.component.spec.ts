@@ -41,11 +41,11 @@ describe('TransactionEntitlementComponent', () => {
   });
 
   it('should create', () => {
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      
+    if (fixture===undefined || component===undefined){
+      fixture = TestBed.createComponent(TransactionEntitlementComponent);
+      component = fixture.componentInstance;
+    }
        expect(component).toBeTruthy();
-    });
   });
 
   it("should fetch unit list ", () => {

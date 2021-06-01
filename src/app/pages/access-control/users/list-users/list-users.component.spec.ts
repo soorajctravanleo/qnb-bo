@@ -40,12 +40,18 @@ describe('ListUsersComponent', () => {
   });
 
   it('should create', () => {
+    if (fixture===undefined || component===undefined){
+      fixture = TestBed.createComponent(ListUsersComponent);
+      component = fixture.componentInstance;
+      
+    }
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-
-       expect(component).toBeTruthy();
-
+     fixture.whenStable().then(() => {
+      expect(component).toBeTruthy()
     });
+
+   ;
+
   });
   
   it("should fetch users list ", () => {
@@ -53,9 +59,9 @@ describe('ListUsersComponent', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
 
-      UserService.fetchUsers().subscribe(res => {
-        expect(res.length).toBeGreaterThanOrEqual(1);
-      });
+        UserService.fetchUsers().subscribe(res => {
+          expect(res.length).toBeGreaterThanOrEqual(1);
+        });
     });
   });
 

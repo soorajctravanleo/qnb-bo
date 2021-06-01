@@ -45,20 +45,37 @@ describe('CreateRoleComponent', () => {
   });
 
   it('should create', () => {
+    if (fixture===undefined || component===undefined){
+      fixture = TestBed.createComponent(CreateRoleComponent);
+      component = fixture.componentInstance;
+    }
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
   });
 
-  it('should render "Create / Modify Role" in nb-card-header', () => {
+  it('should render "Create / Modify Role" in nb-card-header',() => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('nb-card-header').textContent).toContain('Create / Modify Role');
+    /*
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
 
+       expect(compiled.querySelector('nb-card-header').textContent).toContain('Create / Modify Role');
+    });
+    */
   });
 
 
   it("should fetech user roles ", () => {
 
-    RoleService.fetchRoles().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+
+
+      RoleService.fetchRoles().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+      });
     });
 
   });
@@ -66,10 +83,14 @@ describe('CreateRoleComponent', () => {
 
   
   it("should mark checked=true/false", () => {
-    component.toggle(true);
-    expect(component.checked).toEqual(true);
-    component.toggle(false);
-    expect(component.checked).toEqual(false);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      component.toggle(true);
+      expect(component.checked).toEqual(true);
+      component.toggle(false);
+      expect(component.checked).toEqual(false);
+
+    });
   });
   
 });

@@ -57,22 +57,25 @@ describe('CreateUserComponent', () => {
   });
 
   it('should create', () => {
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
+    if (fixture===undefined || component===undefined){
+      fixture = TestBed.createComponent(CreateUserComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }
+
       expect(component).toBeTruthy();
-    });
   });
 
   
   it("should fetch countries list ", () => {
     fixture.detectChanges();
-  fixture.whenStable().then(() => {
+    fixture.whenStable().then(() => {
 
-    ListService.fetchCountries().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
+      ListService.fetchCountries().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+      });
+
     });
-
-  });
 
   });
    
@@ -88,6 +91,7 @@ describe('CreateUserComponent', () => {
 
   });
     
+  
   it("should fetch languages", () => {
 
     fixture.detectChanges();
@@ -98,6 +102,7 @@ describe('CreateUserComponent', () => {
       });
     });
   });
+  
 
 
   it("should fetch timezones", () => {
@@ -109,7 +114,7 @@ describe('CreateUserComponent', () => {
         expect(res.length).toBeGreaterThanOrEqual(1);
      });
 
-  });
+    });
     
   });
   

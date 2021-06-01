@@ -38,21 +38,34 @@ describe('RolesComponent', () => {
   });
 
   it('should create', () => {
+    if (fixture===undefined || component===undefined){
+      fixture = TestBed.createComponent(QnbRolesComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }
     expect(component).toBeTruthy();
   });
 
   it('should render "Create Role" button', () => {
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('button').textContent).toContain('Create Role');
 
+    const compiled = fixture.nativeElement;
+
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+       expect(compiled.querySelector('button').textContent).toContain('Create Role');
+    });
   });
 
 
   it("shoudl fetch roles", () => {
     fixture.detectChanges();
-    RoleService.fetchRoles().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
+ 
+    fixture.whenStable().then(() => {
+
+      RoleService.fetchRoles().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+      });
+
     });
 
   });
