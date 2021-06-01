@@ -1,16 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { QnbRolesComponent } from './roles.component';
-import { NbDialogService } from '@nebular/theme';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
-import { HttpClient,HttpHandler } from '@angular/common/http';
+import { NbDialogService } from '@nebular/theme';
 
-import {
-
-  QnbRoleService,
- 
-} from '../../../services';
-
+import { QnbRolesComponent } from './roles.component';
+import { QnbRoleService } from '../../../services';
 
 describe('RolesComponent', () => {
   let component: QnbRolesComponent;
@@ -19,16 +14,18 @@ describe('RolesComponent', () => {
   let _httpHandler: HttpHandler;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule],
-      declarations: [QnbRolesComponent],
+    await TestBed
+      .configureTestingModule({
+        imports: [HttpClientTestingModule],
+        declarations: [QnbRolesComponent],
 
-      providers:[
-        {provide:NbDialogService,useValue:'',},
-      ],
-    })
+        providers: [
+          { provide: NbDialogService, useValue: '', },
+        ],
+      })
       .compileComponents();
-      RoleService = new QnbRoleService(new HttpClient(_httpHandler));
+
+    RoleService = new QnbRoleService(new HttpClient(_httpHandler));
   });
 
   beforeEach(() => {
@@ -38,7 +35,7 @@ describe('RolesComponent', () => {
   });
 
   it('should create', () => {
-    if (fixture===undefined || component===undefined){
+    if (fixture === undefined || component === undefined) {
       fixture = TestBed.createComponent(QnbRolesComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
@@ -47,27 +44,19 @@ describe('RolesComponent', () => {
   });
 
   it('should render "Create Role" button', () => {
-
     const compiled = fixture.nativeElement;
-
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-       expect(compiled.querySelector('button').textContent).toContain('Create Role');
+      expect(compiled.querySelector('button').textContent).toContain('Create Role');
     });
   });
 
-
-  it("shoudl fetch roles", () => {
+  it('shoudl fetch roles', () => {
     fixture.detectChanges();
- 
     fixture.whenStable().then(() => {
-
       RoleService.fetchRoles().subscribe(res => {
         expect(res.length).toBeGreaterThanOrEqual(1);
       });
-
     });
-
   });
-
 });
