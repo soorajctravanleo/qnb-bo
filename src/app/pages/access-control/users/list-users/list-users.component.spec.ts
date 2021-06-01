@@ -43,14 +43,10 @@ describe('ListUsersComponent', () => {
     if (fixture===undefined || component===undefined){
       fixture = TestBed.createComponent(ListUsersComponent);
       component = fixture.componentInstance;
-      
+      fixture.detectChanges();   
     }
-    fixture.detectChanges();
-     fixture.whenStable().then(() => {
-      expect(component).toBeTruthy()
-    });
-
-   ;
+  
+      expect(component).toBeTruthy();
 
   });
   

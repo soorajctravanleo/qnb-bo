@@ -48,8 +48,9 @@ describe('CreateRoleComponent', () => {
     if (fixture===undefined || component===undefined){
       fixture = TestBed.createComponent(CreateRoleComponent);
       component = fixture.componentInstance;
+      fixture.detectChanges();
     }
-    fixture.detectChanges();
+  
 
     expect(component).toBeTruthy();
   });
