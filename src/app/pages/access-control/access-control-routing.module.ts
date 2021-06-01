@@ -9,18 +9,6 @@ const routes: Route[] = [
     component: QnbAccessControlComponent,
     children: [
       {
-        path: 'service-catalog',
-        loadChildren: () => import('./service-catalog/service-catalog.module').then(m => m.QnbServiceCatalogModule),
-      },
-      {
-        path: 'user-types',
-        loadChildren: () => import('./user-types/user-types.module').then(m => m.QnbUserTypesModule),
-      },
-      {
-        path: 'user-entities',
-        loadChildren: () => import('./user-entities/user-entities.module').then(m => m.QnbUserEntitiesModule),
-      },
-      {
         path: 'users',
         loadChildren: () => import('./users/users.module').then
           (m => m.QnbUsersModule),
@@ -35,8 +23,14 @@ const routes: Route[] = [
           import('./pending-requests/pending-requests.module').then(m =>
             m.PendingRequestsModule),
       },
+      {
+        path: 'pending-approvals', loadChildren: () =>
+          import('./pending-approvals/pending-approvals.module').then(
+            m => m.PendingApprovalsModule),
+      },
     ],
   },
+
 
 ];
 

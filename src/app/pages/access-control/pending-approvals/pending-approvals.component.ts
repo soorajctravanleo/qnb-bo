@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-import { RequestDetailsComponent } from './request-details/request-details.component';
-import { RequestRoleDetailsComponent } from './request-role-details/request-role-details.component';
+import { ApprovalDetailsComponent } from '../pending-approvals/approval-details/approval-details.component';
+import { ApprovalRoleDetailsComponent } from '../pending-approvals/approval-role-details/approval-role-details.component';
 
 @Component({
-  selector: 'qnb-pending-requests',
-  templateUrl: './pending-requests.component.html',
-  styleUrls: ['./pending-requests.component.scss'],
+  selector: 'qnb-pending-approvals',
+  templateUrl: './pending-approvals.component.html',
+  styleUrls: ['./pending-approvals.component.scss'],
 })
-export class PendingRequestsComponent implements OnInit {
-  headElements: any = ['Ref No.', 'User Id', 'Username', 'Role', 'Expiry Date', 'Status', 'Request Type', 'Requested Date', 'Maker Id', 'Request Status'];
-  roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
+
+export class PendingApprovalsComponent implements OnInit {
+  headElements: any = ['Ref No.', 'User Id', 'Username', 'Role', 'User Type', 'Expiry Date', 'Status', 'Req Type', 'Req Date', 'Maker Id', 'Maker Comments'];
+  roleHeadElements = ['Ref No', 'Role Name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Comments', 'Req Status'];
+
   roles = [{
     requestNo: 'qb12489914',
     roleName: 'Test1',
@@ -19,8 +21,9 @@ export class PendingRequestsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-    requestDate: '29/12/2020',
+    requestDate: '29-12-2020',
     makerId: 'UD1001',
+    comments: 'test comment',
     requestStatus: 'PENDING',
   }, {
     requestNo: 'qb12489914',
@@ -30,40 +33,44 @@ export class PendingRequestsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-    requestDate: '29/12/2020',
+    requestDate: '29-12-2020',
     makerId: 'UD1001',
-    requestStatus: 'RETURNED',
+    comments: 'test comment',
+    requestStatus: 'PENDING',
   }];
   users = [{
     requestNo: 'qb12489912',
     userId: '131asp',
     userName: 'Mahesh',
     role: 'Maker',
-    expiryDate: '29/12/2020',
+    type: 'Test',
+    expiryDate: '29/12/2021',
     status: 'Enabled',
     requestType: 'ADD',
     requestedDate: '29/12/2020',
     makerId: 'UD1001',
-    requestStatus: 'PENDING',
+    comments: 'test comment3',
   }, {
     requestNo: 'qb12489914',
     userId: '131asp',
     userName: 'Francis',
     role: 'Maker',
-    expiryDate: '29/12/2020',
+    type: 'Test',
+    expiryDate: '29/12/2021',
     status: 'Enabled',
     requestType: 'MODIFY',
     requestedDate: '29/12/2020',
     makerId: 'UD1001',
-    requestStatus: 'RETURNED',
+    comments: 'test comment 4',
   }];
+  selectedOption = 1;
   constructor(private dialogService: NbDialogService) { }
 
   ngOnInit(): void {
   }
-  openDetails(data) {
+  showDetails(data) {
     this.dialogService
-      .open(RequestDetailsComponent, {
+      .open(ApprovalDetailsComponent, {
         context: {
           data: data,
         },
@@ -76,10 +83,9 @@ export class PendingRequestsComponent implements OnInit {
       });
 
   }
-
   openRoleDetails(data) {
     this.dialogService
-      .open(RequestRoleDetailsComponent, {
+      .open(ApprovalRoleDetailsComponent, {
         context: {
           data: data,
         },
@@ -88,7 +94,7 @@ export class PendingRequestsComponent implements OnInit {
       .subscribe(event => {
         if (event?.refreshList) {
 
-        }
+        },
       });
 
   }
