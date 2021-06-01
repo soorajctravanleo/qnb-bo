@@ -23,7 +23,11 @@ describe('CreateUserComponent', () => {
   let RoleService: QnbRoleService;
   let _httpHandler: HttpHandler;
 
+
   beforeEach(async () => {
+
+ 
+
     await TestBed.configureTestingModule({
       imports:[HttpClientTestingModule],
       declarations: [CreateUserComponent],
@@ -37,9 +41,13 @@ describe('CreateUserComponent', () => {
     })
       .compileComponents();
 
-      ListService = new QnbListService(new HttpClient(_httpHandler));
-      UserService = new QnbUserService(new HttpClient(_httpHandler));
-      RoleService = new QnbRoleService(new HttpClient(_httpHandler));
+
+
+  ListService = new QnbListService(new HttpClient(_httpHandler));
+  UserService = new QnbUserService(new HttpClient(_httpHandler));
+  RoleService = new QnbRoleService(new HttpClient(_httpHandler));
+
+     
   });
 
   beforeEach(() => {
@@ -49,10 +57,16 @@ describe('CreateUserComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component).toBeTruthy();
+    });
   });
 
+  
   it("should fetch countries list ", () => {
+    fixture.detectChanges();
+  fixture.whenStable().then(() => {
 
     ListService.fetchCountries().subscribe(res => {
        expect(res.length).toBeGreaterThanOrEqual(1);
@@ -60,39 +74,44 @@ describe('CreateUserComponent', () => {
 
   });
 
+  });
+   
   
   it("should fetch users list ", () => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
 
-    UserService.fetchUsers().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
-    });
+      UserService.fetchUsers().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+      });
+    });  
 
   });
     
   it("should fetch languages", () => {
 
-    ListService.fetchLanguages().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
-    });
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
 
+      ListService.fetchLanguages().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+      });
+    });
   });
+
 
   it("should fetch timezones", () => {
 
-    ListService.fetchTimezones().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
-    });
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+
+     ListService.fetchTimezones().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+     });
 
   });
-
-  /*
-  it("should fetch user types", () => {
-
-    UserService.fetchUserTypes().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
-    });
-
+    
   });
-    */
+  
   
 });

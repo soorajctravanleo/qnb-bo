@@ -41,14 +41,21 @@ describe('TransactionEntitlementComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      
+       expect(component).toBeTruthy();
+    });
   });
 
   it("should fetch unit list ", () => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
 
-    UnitService.fetchUnits().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
-    });
+      UnitService.fetchUnits().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+      }); 
+    });  
 
   });
 

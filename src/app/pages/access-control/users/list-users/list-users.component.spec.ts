@@ -40,15 +40,23 @@ describe('ListUsersComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+
+       expect(component).toBeTruthy();
+
+    });
   });
   
   it("should fetch users list ", () => {
 
-    UserService.fetchUsers().subscribe(res => {
-       expect(res.length).toBeGreaterThanOrEqual(1);
-    });
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
 
+      UserService.fetchUsers().subscribe(res => {
+        expect(res.length).toBeGreaterThanOrEqual(1);
+      });
+    });
   });
 
 });

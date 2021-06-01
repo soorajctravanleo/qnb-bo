@@ -42,21 +42,15 @@ describe('RolesComponent', () => {
   });
 
   it('should render "Create Role" button', () => {
+    fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('button').textContent).toContain('Create Role');
 
   });
 
-  it("should fetch user roles from RoleService on ngOnInit()", () => {
-  
-    fixture.whenStable().then(() => {
-      expect(component.elements.length).toBeGreaterThanOrEqual(1);
-    });
-  
-  });
 
-  it("test RoleService.fetchRoles() ", () => {
-
+  it("shoudl fetch roles", () => {
+    fixture.detectChanges();
     RoleService.fetchRoles().subscribe(res => {
        expect(res.length).toBeGreaterThanOrEqual(1);
     });

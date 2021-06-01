@@ -20,6 +20,10 @@ describe('LabelCacheComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+
+      expect(component).toBeTruthy();
+    });  
   });
 });
