@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="row new-row" *ngIf="transactionEntitlement.get('unit').valid">
-					<div class="col-md-12">
+					<!-- <div class="col-md-12">
 						<div class="form-group">
 							<table mdbTable class="table">
 								<tbody>
@@ -57,16 +57,16 @@
 								</tbody>
 							</table> 
 						</div>
-					</div>
+					</div> -->
 					<div class="col-md-12">
 						<div class="row new-row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="">Date</label>
-									<input nbInput fullWidth [nbDatepicker]="datepicker" placeholder="Date">
-									<nb-datepicker #datepicker></nb-datepicker>
+									<label>Date & Time</label>
+									<input nbInput fullWidth [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time">
+									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+									<ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
 								</div>
-								
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -96,7 +96,7 @@
 
 		<nb-card-footer>
 			<div style="float:right">
-			  <button nbButton hero status="normal">Reset</button>
+			  <button nbButton hero status="normal" (click)="onClear()">Reset</button>
 			  <button type="submit" nbButton hero status="success" [disabled]="!transactionEntitlement.valid">Save</button>
 			</div>
 		  </nb-card-footer>
