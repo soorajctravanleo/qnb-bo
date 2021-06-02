@@ -6,6 +6,15 @@
 			<div class="col-md-12">
 				<div class="row new-row">
 					<div class="col-md-12">
+							<nb-alert outline="success" *ngIf="showMsg">
+								Success. Transaction Entitlement request has been sent for checker approval!
+							</nb-alert>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="row new-row">
+					<div class="col-md-12">
 						<div class="form-group">
 							<label for="">Unit</label>
 							<nb-select fullWidth style="width: 100%;" formControlName="unit" placeholder="Select">

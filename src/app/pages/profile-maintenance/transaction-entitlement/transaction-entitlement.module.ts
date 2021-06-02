@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
+  NbAlertModule,
   NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbInputModule, NbSelectModule,
   NbTimepickerModule, NbTreeGridModule } from '@nebular/theme';
 
@@ -32,6 +33,7 @@ import { QnbCustomComponentsModule } from '../../../components/custom-components
     NbTimepickerModule,
     NbDatepickerModule,
     NbInputModule,
+    NbAlertModule,
     MatDatepickerModule,
     MatInputModule,
     NgxMatDatetimePickerModule,
