@@ -34,3 +34,16 @@ nb-checkbox {
 table {
   margin-bottom: 0;
 }
+
+mat-datepicker-toggle{
+  position: absolute;
+  right: 15px;
+}
+
+::ng-deep table tbody{
+  .mat-calendar-body-cell-content{
+    width: 100%;
+    height: 100%;
+    border-radius: 0.275rem;
+  }
+}
