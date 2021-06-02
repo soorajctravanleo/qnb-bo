@@ -1,0 +1,14 @@
+{
+  "license": "MIT",
+  "name": "nebular",
+  "scripts": {
+    "build": "node ./src/scripts/build"
+  },
+  "version": "7.0.0",
+  "dependencies": {
+    "@nebular/auth": "file:auth",
+    "@nebular/eva-icons": "file:eva-icons",
+    "@nebular/security": "file:security",
+    "@nebular/theme": "file:theme"
+  }
+}
