@@ -45,6 +45,7 @@ export class TransactionEntitlementComponent implements OnInit {
   onSubmit() {
     if (this.transactionEntitlement.valid) {
       this.showMsg = true;
+      this.transactionEntitlement.reset();
     }
   }
 
