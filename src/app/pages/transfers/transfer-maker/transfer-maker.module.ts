@@ -23,7 +23,7 @@ import { QnbCustomComponentsModule } from '../../../components/custom-components
     NbInputModule,
     TransferMakerRoutingModule,
     QnbCustomComponentsModule,
-    NbDialogModule,
+    NbDialogModule
   ],
 })
 export class TransferMakerModule { }
