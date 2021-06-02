@@ -42,9 +42,7 @@ export class TransactionEntitlementComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.transactionEntitlement.valid) {
-    //  
-    }
+    if (this.transactionEntitlement.valid) {}
   }
 
   onClear() {

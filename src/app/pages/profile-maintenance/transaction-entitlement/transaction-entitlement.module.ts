@@ -36,7 +36,7 @@ import { QnbCustomComponentsModule } from '../../../components/custom-components
     MatInputModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
   ],
 })
 export class TransactionEntitlementModule { }
