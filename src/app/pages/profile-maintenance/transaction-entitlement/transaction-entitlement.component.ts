@@ -26,6 +26,7 @@ export class TransactionEntitlementComponent implements OnInit {
   contactBankTransactionDescs: MockContactBankTransactionDesc[] = [];
   ipoTransactionDescs: MockIPOTransactionDesc[] = [];
 
+  showMsg: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -42,7 +43,16 @@ export class TransactionEntitlementComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.transactionEntitlement.valid) {}
+    if (this.transactionEntitlement.valid) {
+      this.showMsg = true;
+      this.transactionEntitlement.reset();
+    }
+  }
+
+  onClear() {
+    if (this.transactionEntitlement.valid) {
+      this.transactionEntitlement.reset();
+    }
   }
 
   private fetchUnits() {
