@@ -1,0 +1,66 @@
+{
+  "_from": "@nebular/eva-icons@7.0.0",
+  "_id": "@nebular/eva-icons@7.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-u3dJgIF97lufaRod4bf/OZcTG3Arne+/M9z+WDI8bU/3sVtlYVyPDE4508tkBjFp2P1XUDSXZnK5NLJ9a/+5tA==",
+  "_location": "/@nebular/eva-icons",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@nebular/eva-icons@7.0.0",
+    "name": "@nebular/eva-icons",
+    "escapedName": "@nebular%2feva-icons",
+    "scope": "@nebular",
+    "rawSpec": "7.0.0",
+    "saveSpec": null,
+    "fetchSpec": "7.0.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@nebular/eva-icons/-/eva-icons-7.0.0.tgz",
+  "_shasum": "08034bfb8a2c0778ca4a52517e5e56896f2c51ab",
+  "_spec": "@nebular/eva-icons@7.0.0",
+  "_where": "/Applications/MAMP/htdocs/test01",
+  "author": {
+    "name": "akveo"
+  },
+  "bugs": {
+    "url": "https://github.com/akveo/nebular/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "@nebular/eva-icons",
+  "es2015": "fesm2015/index.js",
+  "esm2015": "esm2015/index.js",
+  "fesm2015": "fesm2015/index.js",
+  "homepage": "https://github.com/akveo/nebular#readme",
+  "keywords": [
+    "angular",
+    "typescript",
+    "ng2-admin",
+    "ngx-admin",
+    "icons",
+    "theme",
+    "nebular",
+    "eva-icons"
+  ],
+  "license": "MIT",
+  "main": "bundles/eva-icons.umd.js",
+  "metadata": "index.metadata.json",
+  "module": "fesm2015/index.js",
+  "name": "@nebular/eva-icons",
+  "peerDependencies": {
+    "@nebular/theme": "7.0.0",
+    "eva-icons": "^1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akveo/nebular.git"
+  },
+  "sideEffects": false,
+  "typings": "index.d.ts",
+  "version": "7.0.0"
+}
