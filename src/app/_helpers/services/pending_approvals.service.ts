@@ -1,20 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 import {
-  MOCK_PENDING_ROLE_APPROVALS,
-  MOCK_PENDING_USER_APPROVALS,
-} from "../mock";
-import { MockResponse } from "../types/backend";
+  MOCKPENDINGROLEAPPROVALS,
+  MOCKPENDINGUSERAPPROVALS,
+} from '../mock';
+import { MockResponse } from '../types/backend';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class MockPendingApprovalsService {
   getpendingRoles(): MockResponse {
-    return { res: [...MOCK_PENDING_ROLE_APPROVALS] };
+    return { res: [...MOCKPENDINGROLEAPPROVALS] };
   }
 
   getpendingUsers(): MockResponse {
-    return { res: [...MOCK_PENDING_USER_APPROVALS] };
+    return { res: [...MOCKPENDINGUSERAPPROVALS] };
   }
 }

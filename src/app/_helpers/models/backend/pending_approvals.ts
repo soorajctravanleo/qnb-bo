@@ -1,4 +1,4 @@
-export class Mock_Pending_Role_Approvals {
+export class MockPendingRoleApprovals {
   constructor(
     public requestNo: string,
     public roleName: string,
@@ -10,11 +10,11 @@ export class Mock_Pending_Role_Approvals {
     public requestDate: string,
     public makerId: string,
     public comments: string,
-    public requestStatus: string
+    public requestStatus: string,
   ) {}
 }
 
-export class Mock_Pending_User_Approvals {
+export class MockPendingUserApprovals {
   constructor(
     public requestNo: string,
     public userId: string,
@@ -26,6 +26,6 @@ export class Mock_Pending_User_Approvals {
     public requestType: string,
     public requestedDate: string,
     public makerId: string,
-    public comments: string
+    public comments: string,
   ) {}
 }

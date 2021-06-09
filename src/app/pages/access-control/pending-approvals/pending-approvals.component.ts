@@ -1,44 +1,40 @@
-import { Component, OnInit } from "@angular/core";
-import { NbDialogService } from "@nebular/theme";
-import { ApprovalDetailsComponent } from "../pending-approvals/approval-details/approval-details.component";
-import { ApprovalRoleDetailsComponent } from "../pending-approvals/approval-role-details/approval-role-details.component";
-import {
-  Mock_Pending_Role_Approvals,
-  Mock_Pending_User_Approvals,
-} from "../../../_helpers/models/backend";
-import { QnbPendingApprovalService } from "../../../services";
+import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
+import { ApprovalDetailsComponent } from '../pending-approvals/approval-details/approval-details.component';
+import { ApprovalRoleDetailsComponent } from '../pending-approvals/approval-role-details/approval-role-details.component';
+import { QnbPendingApprovalService } from '../../../services';
 
 @Component({
-  selector: "qnb-pending-approvals",
-  templateUrl: "./pending-approvals.component.html",
-  styleUrls: ["./pending-approvals.component.scss"],
+  selector: 'qnb-pending-approvals',
+  templateUrl: './pending-approvals.component.html',
+  styleUrls: ['./pending-approvals.component.scss'],
 })
 export class PendingApprovalsComponent implements OnInit {
   headElements: any = [
-    "Ref No.",
-    "User Id",
-    "Username",
-    "Role",
-    "User Type",
-    "Expiry Date",
-    "Status",
-    "Req Type",
-    "Req Date",
-    "Maker Id",
-    "Maker Comments",
+    'Ref No.',
+    'User Id',
+    'Username',
+    'Role',
+    'User Type',
+    'Expiry Date',
+    'Status',
+    'Req Type',
+    'Req Date',
+    'Maker Id',
+    'Maker Comments',
   ];
   roleHeadElements = [
-    "Ref No",
-    "Role Name",
-    "Description",
-    "Unit",
-    "Role Type",
-    "Access",
-    "Req Type",
-    "Req Date",
-    "Maker Id",
-    "Comments",
-    "Req Status",
+    'Ref No',
+    'Role Name',
+    'Description',
+    'Unit',
+    'Role Type',
+    'Access',
+    'Req Type',
+    'Req Date',
+    'Maker Id',
+    'Comments',
+    'Req Status',
   ];
 
   roles = [
@@ -98,7 +94,7 @@ export class PendingApprovalsComponent implements OnInit {
   selectedOption = 1;
   constructor(
     private dialogService: NbDialogService,
-    private pending_approval_service: QnbPendingApprovalService
+    private pending_approval_service: QnbPendingApprovalService,
   ) {}
 
   ngOnInit(): void {
