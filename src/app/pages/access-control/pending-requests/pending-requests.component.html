@@ -2,40 +2,60 @@
   <nb-card-body>
 
     <nb-tabset>
-      <nb-tab tabTitle="Pending Users" badgeText="13" badgeStatus="danger">
-        <p>List of <strong>users</strong>.</p>
-      </nb-tab>
-      <nb-tab tabTitle="Pending Roles" badgeText="14" badgeStatus="danger">
-        <p>List of <strong>roles</strong>.</p>
-      </nb-tab>
-      <nb-tab tabTitle="Pending Access" badgeText="14" badgeStatus="danger">
-        <p>List of <strong>access</strong>.</p>
-
+      <nb-tab tabTitle="User" badgeText="2" badgeStatus="danger">
+        <button nbButton class="m-3" style="float:right">
+          <nb-icon icon="printer-outline"></nb-icon> Export
+        </button>
         <table mdbTable class="table">
           <thead>
             <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th *ngFor="let head of headElements" scope="col">{{ head }} </th>
+              <th *ngFor="let head of headElements" scope="col">{{ head }}
+                <i class="fas fa-sort"></i> </th>
             </tr>
           </thead>
           <tbody>
             <tr mdbTableCol *ngFor="let user of users">
-              <th class="px-1"><i class="icons fa fa-edit" (click)="onEditUser(user.id)"></i></th>
-              <th><i class="icons fa fa-trash-alt" (click)="onDeleteUser(user.id)"></i></th>
-              <th class="px-1"><i class="icons fa fa-ban" (click)="onEditUser(user.id)"></i></th>
-              <th scope="row">{{ user.userId }}</th>
-              <td>{{ user.nickName }}</td>
-
+              <th scope="row" (click)="openDetails(user)">{{ user.requestNo }}</th>
+              <td>{{ user.userId }}</td>
+              <td>{{ user.userName }}</td>
               <td>{{ user.role }}</td>
-              <td>Maker</td>
-              <td style="white-space: nowrap;">{{ user.expiryDate }}</td>
+              <td>{{ user.expiryDate }}</td>
+              <td>{{ user.status }}</td>
+              <td>{{ user.requestType }}</td>
+              <td>{{ user.requestedDate }}</td>
+              <td>{{ user.makerId }}</td>
+              <td style="white-space: nowrap;">{{ user.requestStatus }}</td>
             </tr>
           </tbody>
         </table>
-
       </nb-tab>
+      <nb-tab tabTitle="Role" badgeText="2" badgeStatus="danger">
+        <button nbButton class="m-3" style="float:right">
+          <nb-icon icon="printer-outline"></nb-icon> Export
+        </button>
+        <table mdbTable class="table">
+          <thead>
+            <tr>
+              <th *ngFor="let head of roleHeadElements" scope="col">{{ head }} <i class="fas fa-sort"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let role of roles">
+              <th scope="row" (click)="openRoleDetails(role)">{{ role.requestNo }}</th>
+              <td>{{ role.roleName }}</td>
+              <td>{{ role.roleDescription }}</td>
+              <td>{{ role.unit }}</td>
+              <td>{{ role.roleType }}</td>
+              <td>{{ role.access }}</td>
+              <td>{{ role.requestType }}</td>
+              <td>{{ role.requestDate }}</td>
+              <td>{{ role.makerId }}</td>
+              <td style="white-space: nowrap;">{{ role.requestStatus }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-tab>
+
     </nb-tabset>
 
   </nb-card-body>

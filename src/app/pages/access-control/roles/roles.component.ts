@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { CreateRoleComponent } from './create-role/create-role.component';
+import { DeleteRoleComponent } from './delete-role/delete-role.component';
 import { QnbRoleService } from '../../../services';
+
 @Component({
   selector: 'qnb-roles',
   templateUrl: './roles.component.html',
@@ -10,7 +12,7 @@ import { QnbRoleService } from '../../../services';
 export class QnbRolesComponent implements OnInit {
   elements: any;
 
-  headElements = ['Group Code', 'Group Definition', 'Created By', 'Created At', 'Last Modified', 'Last Modified By'];
+  headElements = ['Role Name', 'Role Desciption', 'Role Type', 'Unit', 'Access To'];
 
 
   constructor(private dialogService: NbDialogService, private roleService: QnbRoleService) {
@@ -32,6 +34,9 @@ export class QnbRolesComponent implements OnInit {
     const dialogRef = this.dialogService.open(CreateRoleComponent, {
     });
   }
-
+  onDeleteRole() {
+    const dialogRef = this.dialogService.open(DeleteRoleComponent, {
+    });
+  }
 
 }
