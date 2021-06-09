@@ -10,6 +10,7 @@ import {
   QnbHttpInterceptor,
   QnbRoleInterceptor,
   QnbUnitInterceptor,
+  QnbPendingApprovalInterceptor,
 } from './_helpers/interceptors';
 
 export const INTERCEPTORS: Provider[] = [
@@ -20,5 +21,6 @@ export const INTERCEPTORS: Provider[] = [
   { provide: HTTP_INTERCEPTORS, useClass: QnbEntityInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: QnbRoleInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: QnbUnitInterceptor, multi: true},
+  { provide: HTTP_INTERCEPTORS, useClass: QnbPendingApprovalInterceptor, multi: true},
   { provide: HTTP_INTERCEPTORS, useClass: QnbHttpInterceptor, multi: true },
 ];
