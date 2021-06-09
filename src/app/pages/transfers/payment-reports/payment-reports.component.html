@@ -1,1 +1,135 @@
-<p>payment-reports works!</p>
+<qnb-section-header title="HBTF B2B Payments Report"></qnb-section-header>
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <div class="col-12">
+          <nb-radio-group class="d-flex">
+            <nb-radio class="col-md-3 mx-2" value="1" checked>Summary Report</nb-radio>
+            <nb-radio class="col-md-3 mx-2" value="2">Detailed Report</nb-radio>
+          </nb-radio-group>
+        </div>
+
+        <div class="col-md-12 row mt-3 mx-auto">
+          <div class="col-md-6 pb-3">
+            <div class="row g-3 align-items-center">
+              
+              <div class="col-4">
+                <label for="hbtfUnit" class="col-form-label">Unit</label>
+              </div>
+              <div class="col-8">
+                <nb-select full-width id="hbtfUnit" placeholder="Select Showcase" class="w-100">
+                  <nb-option value="">Option empty </nb-option>
+                  <nb-option value="0">Option 0</nb-option>
+                  <nb-option value="1">Option 1</nb-option>
+                  <nb-option value="2">Option 2</nb-option>
+                  <nb-option value="3">Option 3</nb-option>
+                  <nb-option value="4">Option 4</nb-option>
+                </nb-select>
+                <span class="text-danger ng-star-inserted d-block">This field is required!</span>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-6 pb-3">
+            <div class="row g-3 align-items-center">
+              <div class="col-4">
+                <label for="hbtfUnit" class="col-form-label">Criteria</label>
+              </div>
+              <div class="col-8">
+                <nb-select full-width id="hbtfUnit" placeholder="Select Criteria" class="w-100">
+                  <nb-option value="0">All</nb-option>
+                  <nb-option value="1">Payment Reversals</nb-option>
+                  <nb-option value="2">Pending</nb-option>
+                  <nb-option value="3">Success</nb-option>
+                </nb-select>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="col-md-6 pb-3">
+            <div class="row g-3 ">
+              <div class="col-4">
+                <label for="">From Date</label>
+              </div>
+              <div class="col-8 p-0">
+                <div class="col pb-3 d-flex">
+                  <div class="col p-0" style="display: contents;">
+                    <input nbInput [nbDatepicker]="datepickerFrom" class="w-100">
+                    <nb-datepicker #datepickerFrom></nb-datepicker>
+                  </div>
+                  <div class="col p-0" style="display: contents;">
+                    <nb-icon icon="calendar-outline"class="m-2"></nb-icon>   
+                  </div>
+                </div>
+
+                <div class="col pb-3 d-flex">
+                  <div class="col p-0" style="display: contents;">
+                    <input nbInput [nbTimepicker]="timepicker" class="w-100">
+                    <nb-timepicker #timepicker></nb-timepicker>
+                  </div>
+                  <div class="col p-0" style="display: contents;">
+                    <nb-icon icon="clock-outline"class="m-2"></nb-icon>   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 pb-3">
+            <div class="row g-3 align-items-center">
+              <div class="col-4">
+                <label for="">To Date</label>
+              </div>
+              <div class="col-8">
+                <div class="form-group">
+                  <input nbInput [nbDatepicker]="datepickerTo" class="w-100">
+                  <nb-datepicker #datepickerTo></nb-datepicker>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <button nbButton hero status="success">Submit</button>
+          </div>
+
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-body>
+
+        <div class="row justify-content-end">
+          <button nbButton class="m-3"><img src="../../../../assets/images/qnb/excel_icon.png" height="30"> &nbsp; Export</button>
+          <button nbButton class="m-3"><img src="../../../../assets/images/qnb/pdf_icon.png" height="30"> &nbsp; Download</button>
+        </div>
+      
+        <table mdbTable class="table">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Tranction Type</th>
+              <th>Total Number of Transfers</th>
+              <th>Total Volume of Transfers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol >
+              <td>1</td>
+              <td>Payment Reversal</td>
+              <td>23</td>
+              <td>34563.50</td>
+            </tr>
+          </tbody>
+        </table>
+    
+
+      </nb-card-body>
+    </nb-card>  
+  </div>
+</div>

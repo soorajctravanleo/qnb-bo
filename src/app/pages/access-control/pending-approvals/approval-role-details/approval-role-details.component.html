@@ -1,0 +1,67 @@
+<nb-card>
+  <nb-card-body>
+    <table class="table">
+      <thead></thead>
+      <tbody>
+        <!-- <tr *ngFor="let item of data | keyvalue">
+          <td>{{item.key}}</td>
+          <td>{{item.value}}</td>
+        </tr> -->
+        <tr>
+          <td>Reference Number</td>
+          <td>{{data.requestNo}}</td>
+        </tr>
+        <tr>
+          <td>Role Name</td>
+          <td>{{data.roleName}}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{data.roleDescription}}</td>
+        </tr>
+        <tr>
+          <td>Unit</td>
+          <td>{{data.unit}}</td>
+        </tr>
+        <tr>
+          <td>Role Type</td>
+          <td>{{data.roleType}}</td>
+        </tr>
+        <tr>
+          <td>Access</td>
+          <td>{{data.access}}</td>
+        </tr>
+        <tr>
+          <td>Request Type</td>
+          <td>{{data.requestType}}</td>
+        </tr>
+        <tr>
+          <td>Requested Date</td>
+          <td>{{data.requestDate}}</td>
+        </tr>
+        <tr>
+          <td>Maker Id</td>
+          <td>{{data.makerId}}</td>
+        </tr>
+        <tr>
+          <td>Request Status</td>
+          <td>{{data.requestStatus}}</td>
+        </tr>
+        <tr *ngIf="data.requestStatus!='PENDING'">
+          <td>Checker Comments</td>
+          <td>Are you sure you want to add this role?</td>
+        </tr>
+        <tr>
+          <td>Checker Comments</td>
+          <td><textarea></textarea></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="buttons-group">
+      <button nbButton hero status="danger" style="background-color: #FE5578;">Decline</button>
+      <button nbButton hero status="normal">Return</button>
+
+      <button type="submit" nbButton hero status="success">Approve</button>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
+import { RequestDetailsComponent } from './request-details/request-details.component';
+import { RequestRoleDetailsComponent } from './request-role-details/request-role-details.component';
 
 @Component({
   selector: 'qnb-pending-requests',
@@ -6,11 +9,88 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pending-requests.component.scss'],
 })
 export class PendingRequestsComponent implements OnInit {
-  headElements: any = ['Request No.', 'Type', 'Access Level', 'Role/userid', 'Entity', 'Application Type', 'Maker Id', 'Maker Date'];
-  users = [];
-  constructor() { }
+  headElements: any = ['Ref No.', 'User Id', 'Username', 'Role', 'Expiry Date', 'Status', 'Request Type', 'Requested Date', 'Maker Id', 'Request Status'];
+  roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
+  roles = [{
+    requestNo: 'qb12489914',
+    roleName: 'Test1',
+    roleDescription: 'This is a test Role',
+    unit: 'QATAR',
+    roleType: 'MAKER',
+    access: 'Enabled',
+    requestType: 'ADD',
+    requestDate: '29/12/2020 12:40 PM',
+    makerId: 'UD1001',
+    requestStatus: 'PENDING',
+  }, {
+    requestNo: 'qb12489914',
+    roleName: 'Test2',
+    roleDescription: 'This is a another test',
+    unit: 'QATAR',
+    roleType: 'MAKER',
+    access: 'Enabled',
+    requestType: 'ADD',
+    requestDate: '29/12/2020 07:15 AM',
+    makerId: 'UD1001',
+    requestStatus: 'RETURNED',
+  }];
+  users = [{
+    requestNo: 'qb12489912',
+    userId: '131asp',
+    userName: 'Mahesh',
+    role: 'Maker',
+    expiryDate: '29/12/2020',
+    status: 'Enabled',
+    requestType: 'ADD',
+    requestedDate: '29/12/2020 08:15 PM',
+    makerId: 'UD1001',
+    requestStatus: 'PENDING',
+  }, {
+    requestNo: 'qb12489914',
+    userId: '131asp',
+    userName: 'Francis',
+    role: 'Maker',
+    expiryDate: '29/12/2020',
+    status: 'Enabled',
+    requestType: 'MODIFY',
+    requestedDate: '29/12/2020 09:30 PM',
+    makerId: 'UD1001',
+    requestStatus: 'RETURNED',
+  }];
+  constructor(private dialogService: NbDialogService) { }
 
   ngOnInit(): void {
+  }
+  openDetails(data) {
+    this.dialogService
+      .open(RequestDetailsComponent, {
+        context: {
+          data: data,
+        },
+      })
+      .onClose
+      .subscribe(event => {
+        if (event?.refreshList) {
+
+        }
+      });
+
+  }
+
+  openRoleDetails(data) {
+    this.dialogService
+      .open(RequestRoleDetailsComponent, {
+        context: {
+          data: data,
+        },
+      })
+      .onClose
+      .subscribe(event => {
+        if (event?.refreshList) {
+
+        }
+      });
+
   }
 
 }

@@ -1,0 +1,84 @@
+<nb-card>
+  <nb-card-body>
+    <nb-tabset>
+      <nb-tab tabTitle="User" badgeText="2" badgeStatus="danger">
+        <button nbButton class="m-3" style="float:right">
+          <nb-icon icon="printer-outline"></nb-icon> Export
+        </button>
+        <table mdbTable class="table">
+          <thead>
+            <tr>
+
+              <th *ngFor="let head of headElements" scope="col">{{ head }} <i class="fas fa-sort"></i> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let user of users">
+              <!-- <td>
+                <nb-radio class="col-md-3 col-md-push-4 mx-2" value="search" checked (valueChange)="onChange($event)">
+                </nb-radio>
+              </td> -->
+              <th scope="row" (click)="showDetails(user)">{{ user.requestNo }}</th>
+              <td>{{ user.userId }}</td>
+              <td>{{ user.userName }}</td>
+              <td>{{ user.role }}</td>
+              <td>{{ user.type }}</td>
+              <td>{{ user.expiryDate }}</td>
+              <td>{{ user.status }}</td>
+              <td>{{ user.requestType }}</td>
+              <td>{{ user.requestedDate }}</td>
+              <td>{{ user.makerId }}</td>
+              <td style="white-space: nowrap;">{{ user.comments }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <div class="buttons-group">
+          <button nbButton hero status="danger" style="background-color: #FE5578;">Decline</button>
+          <button nbButton hero status="normal">Return</button>
+
+          <button type="submit" nbButton hero status="success">Approve</button>
+        </div> -->
+      </nb-tab>
+      <nb-tab tabTitle="Role" badgeText="2" badgeStatus="danger">
+        <button nbButton class="m-3" style="float:right">
+          <nb-icon icon="printer-outline"></nb-icon> Export
+        </button>
+        <table mdbTable class="table">
+          <thead>
+            <tr>
+              <!-- <th></th> -->
+              <th *ngFor="let head of roleHeadElements" scope="col">{{ head }} <i class="fas fa-sort"></i> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let role of roles">
+              <!-- <td>
+                <nb-radio class="col-md-3 col-md-push-4 mx-2" value="search" checked (valueChange)="onChange($event)">
+                </nb-radio>
+              </td> -->
+              <th scope="row" (click)="openRoleDetails(role)">{{ role.requestNo }}</th>
+              <td>{{ role.roleName }}</td>
+              <td>{{ role.roleDescription }}</td>
+              <td>{{ role.unit }}</td>
+              <td>{{ role.roleType }}</td>
+              <td>{{ role.access }}</td>
+              <td>{{ role.requestType }}</td>
+              <td>{{ role.requestDate }}</td>
+              <td>{{ role.makerId }}</td>
+              <td>{{ role.comments }}</td>
+              <td style="white-space: nowrap;">{{ role.requestStatus }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <div class="buttons-group">
+          <button nbButton hero status="danger" style="background-color: #FE5578;">Decline</button>
+          <button nbButton hero status="normal">Return</button>
+
+          <button type="submit" nbButton hero status="success">Approve</button>
+        </div> -->
+      </nb-tab>
+
+    </nb-tabset>
+
+  </nb-card-body>
+</nb-card>
