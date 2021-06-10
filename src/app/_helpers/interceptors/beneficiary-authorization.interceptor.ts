@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { MockResponse } from '../types/backend';
-import * as API from '../apis'; 
+import * as API from '../apis';
 import { MockBeneficiaryAuthorizationService } from '../services/beneficiary-authorization.service';
 
 @Injectable()
 export class QnbBeneficiaryAuthorizationInterceptor implements HttpInterceptor {
   constructor(
-    private mockBeneficiaryAuth: MockBeneficiaryAuthorizationService
+    private mockBeneficiaryAuth: MockBeneficiaryAuthorizationService,
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -20,14 +20,14 @@ export class QnbBeneficiaryAuthorizationInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    if(!headers.has('authorization')) {
+    if (!headers.has('authorization')) {
       outcome = {
         errorType: 'unauthorized',
         errorMessage: 'You are not authorized.',
       };
     } else {
       if (method === 'GET') {
-        if(url.endsWith(API.GET_BENEFICIARY_AUTHORIZATION)) {
+        if (url.endsWith(API.GET_BENEFICIARY_AUTHORIZATION)) {
           outcome = this.mockBeneficiaryAuth.getBeneficiaryAuthorizations();
         }
       }

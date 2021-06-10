@@ -27,7 +27,7 @@ export class QnbBeneficiaryAuthorizationService {
   }
 
   getBeneficiaryAuths() {
-    if(this.beneficiaryAuths.length === 0) {
+    if (this.beneficiaryAuths.length === 0) {
       return this.fetchBeneficiaryAuths();
     }
     return of(this.beneficiaryAuths);
