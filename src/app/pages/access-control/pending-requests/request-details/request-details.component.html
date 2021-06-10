@@ -61,7 +61,11 @@
       <button nbButton hero status="danger" style="background-color: #FE5578;">Cancel Request</button>
       <button nbButton hero status="normal">Cancel</button>
 
+<<<<<<< HEAD
       <button type="submit" nbButton hero status="success">Edit Request</button>
+=======
+      <button type="submit" nbButton hero status="success" *ngIf="data.requestStatus!='PENDING'">Edit Request</button>
+>>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
     </div>
   </nb-card-body>
 </nb-card>

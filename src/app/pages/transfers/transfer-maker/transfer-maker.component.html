@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+=======
+<qnb-section-header title="HBTF B2B Transfer Maker"></qnb-section-header>
+>>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
 <div class="col-md-12">
   <div class="row">
     <nb-card>
       <nb-card-body>
         <div class="col-12">
+<<<<<<< HEAD
           <div class="select-type">
 
             <nb-radio-group class="d-flex">
@@ -13,6 +18,14 @@
               </nb-radio>
             </nb-radio-group>
           </div>
+=======
+          <nb-radio-group class="d-flex">
+            <nb-radio class="col-md-3 mx-2" value="search" checked (valueChange)="onChange($event)">Search</nb-radio>
+            <nb-radio class="col-md-3 mx-2"  value="rejected" checked="true" (valueChange)="onChange($event)">Rejected</nb-radio>
+          </nb-radio-group>
+        </div>
+        <div class="col-12">
+>>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
           <div class="search-row" *ngIf="showSearchBar">
             <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
               <div formGroupName="search">
@@ -25,7 +38,11 @@
                         <nb-option value="1">Reference Id</nb-option>
                       </nb-select>
                     </div>
+<<<<<<< HEAD
                     <div class="col-md-3"><input nbInput formControlName="searchValue" placeholder="Search Value"></div>
+=======
+                    <div class="col-md-3"><input nbInput formControlName="searchValue" placeholder="Search Value" class="w-100"></div>
+>>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
                     <div class="col-md-3">
                       <button nbButton hero status="success" type="submit">Search</button>
                       <button nbButton hero status="default" (click)="resetForm()" type="button">Reset</button>
