@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 
+import { BeneficiaryAuthorizationDetailsComponent } from './beneficiary-authorization-details/beneficiary-authorization-details.component';
 import { QnbBeneficiaryAuthorizationService } from '../../../services/beneficiary-authorization.service';
 import { MockBeneficiaryAuthorization } from '../../../_helpers/models/backend';
 
@@ -15,6 +17,7 @@ export class BeneficiaryAuthorizationComponent implements OnInit {
 
   constructor(
     private qnbBeneficiaryAuthService: QnbBeneficiaryAuthorizationService,
+    private dialogService: NbDialogService,
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +29,21 @@ export class BeneficiaryAuthorizationComponent implements OnInit {
     .getBeneficiaryAuths()
     .subscribe(data => {
       this.beneficiaryAuths = data;
+    });
+  }
+
+  openBeneficiaryAuthDetails(data){
+    this.dialogService
+    .open(BeneficiaryAuthorizationDetailsComponent, {
+      context: {
+        data: data,
+      },
+    })
+    .onClose
+    .subscribe(event => {
+      if (event?.refreshList) {
+
+      }
     });
   }
 

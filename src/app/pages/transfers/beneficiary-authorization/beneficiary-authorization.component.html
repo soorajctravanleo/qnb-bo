@@ -19,7 +19,7 @@
           <tbody>
             <tr mdbTableCol *ngFor="let beneficiaryAuth of beneficiaryAuths">
               <td>{{ beneficiaryAuth.requestDate }}</td>
-              <td>{{ beneficiaryAuth.customerName }}</td>
+              <td (click)="openBeneficiaryAuthDetails(beneficiaryAuth)" style="font-weight: 600;">{{ beneficiaryAuth.customerName }}</td>
               <td>{{ beneficiaryAuth.transactionName }}</td>
               <td>{{ beneficiaryAuth.unit }}</td>
               <td>{{ beneficiaryAuth.profile }}</td>
