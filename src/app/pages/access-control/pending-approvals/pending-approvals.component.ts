@@ -21,11 +21,7 @@ export class PendingApprovalsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-<<<<<<< HEAD
-    requestDate: '29-12-2020',
-=======
     requestDate: '29/12/2020 08:20 PM',
->>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
     makerId: 'UD1001',
     comments: 'test comment',
     requestStatus: 'PENDING',
@@ -37,11 +33,7 @@ export class PendingApprovalsComponent implements OnInit {
     roleType: 'MAKER',
     access: 'Enabled',
     requestType: 'ADD',
-<<<<<<< HEAD
-    requestDate: '29-12-2020',
-=======
     requestDate: '29/12/2020 08:15 PM',
->>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
     makerId: 'UD1001',
     comments: 'test comment',
     requestStatus: 'PENDING',
@@ -55,11 +47,7 @@ export class PendingApprovalsComponent implements OnInit {
     expiryDate: '29/12/2021',
     status: 'Enabled',
     requestType: 'ADD',
-<<<<<<< HEAD
-    requestedDate: '29/12/2020',
-=======
     requestedDate: '29/12/2020 08:15 AM',
->>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
     makerId: 'UD1001',
     comments: 'test comment3',
   }, {
@@ -71,11 +59,7 @@ export class PendingApprovalsComponent implements OnInit {
     expiryDate: '29/12/2021',
     status: 'Enabled',
     requestType: 'MODIFY',
-<<<<<<< HEAD
-    requestedDate: '29/12/2020',
-=======
     requestedDate: '29/12/2020 08:15 PM',
->>>>>>> 1a5eabf918bfbf6b866a4e3bd0145bbc44f1d429
     makerId: 'UD1001',
     comments: 'test comment 4',
   }];
