@@ -11,10 +11,9 @@ export const MOCK_PENDING_REQEUST_ROLES: MockPRRole[] = [
     'ADD',
     '29/12/2020',
     'UD1001',
-    'PENDING'
+    'PENDING',
   ),
   new MockPRRole(
-    
     'qb12489914',
     'Test2',
     'This is a another test',
@@ -23,8 +22,8 @@ export const MOCK_PENDING_REQEUST_ROLES: MockPRRole[] = [
     'Enabled',
     'ADD',
     '29/12/2020',
-    'UD1001', 
-    'RETURNED'
+    'UD1001',
+    'RETURNED',
   ),
 ];
 

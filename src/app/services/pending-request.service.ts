@@ -1,10 +1,10 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { tap } from "rxjs/operators";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
-import { GET_PENDING_REQUEST_ROLES, GET_PENDING_REQUEST_USERS } from "../_helpers/apis";
-import { MockPRRole, MockPRUser } from "../_helpers/models/backend";
+import { GET_PENDING_REQUEST_ROLES, GET_PENDING_REQUEST_USERS } from '../_helpers/apis';
+import { MockPRRole, MockPRUser } from '../_helpers/models/backend';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +22,7 @@ export class QnbPendingRequestService {
     return (this.http.get(GET_PENDING_REQUEST_ROLES) as Observable<MockPRRole[]>)
     .pipe(
       tap(roles => {
-        this.pendingRequestRoles = roles
+        this.pendingRequestRoles = roles;
       }),
     );
   }
@@ -38,7 +38,7 @@ export class QnbPendingRequestService {
     return (this.http.get(GET_PENDING_REQUEST_USERS) as Observable<MockPRUser[]>)
     .pipe(
       tap(users => {
-        this.pendingRequestUsers = users
+        this.pendingRequestUsers = users;
       }),
     );
   }

@@ -37,7 +37,6 @@ export class PendingRequestsComponent implements OnInit {
   //   makerId: 'UD1001',
   //   requestStatus: 'RETURNED',
   // }];
-  
   // users = [{
   //   requestNo: 'qb12489912',
   //   userId: '131asp',
@@ -67,21 +66,20 @@ export class PendingRequestsComponent implements OnInit {
 
   constructor(
     private dialogService: NbDialogService,
-    private qnbPrService: QnbPendingRequestService
+    private qnbPrService: QnbPendingRequestService,
   ) { }
 
   ngOnInit(): void {
     this.fetchPRRoles();
     this.fetchPRUsers();
   }
-  
+
   private fetchPRRoles() {
     this.qnbPrService
     .getPendingRequestRoles()
     .subscribe(data => {
       this.roles = data;
-      console.log(data)
-    })
+    });
   }
 
   private fetchPRUsers() {
@@ -89,8 +87,7 @@ export class PendingRequestsComponent implements OnInit {
     .getPendingRequestUsers()
     .subscribe(data => {
       this.users = data;
-      console.log(data)
-    })
+    });
   }
 
   openDetails(data) {

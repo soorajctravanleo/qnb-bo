@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {
   MOCK_PENDING_REQEUST_ROLES,
-  MOCK_PENDING_REQEUST_USERS
+  MOCK_PENDING_REQEUST_USERS,
 } from '../mock';
 import { MockResponse } from '../types/backend';
 
