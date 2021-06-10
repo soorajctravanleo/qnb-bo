@@ -7,3 +7,4 @@ export * from './http.interceptor';
 export * from './role.interceptor';
 export * from './unit.interceptor';
 export * from './pending-request.interceptor';
+export * from './beneficiary-authorization.interceptor';

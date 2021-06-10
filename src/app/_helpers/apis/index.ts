@@ -5,3 +5,4 @@ export * from './entity';
 export * from './role';
 export * from './unit';
 export * from './pending-request';
+export * from './beneficiary-authorization';

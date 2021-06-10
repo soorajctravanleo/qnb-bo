@@ -7,3 +7,4 @@ export * from './countries';
 export * from './entities';
 export * from './units';
 export * from './pending-requests';
+export * from './beneficiary-authorizations';

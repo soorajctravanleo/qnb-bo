@@ -1,22 +1,16 @@
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpParams,
-} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import * as API from '../apis';
-import { MockPendingRequestService } from '../services/pending-request.service';
 import { MockResponse } from '../types/backend';
+import * as API from '../apis'; 
+import { MockBeneficiaryAuthorizationService } from '../services/beneficiary-authorization.service';
 
 @Injectable()
-export class QnbPendingRequestInterceptor implements HttpInterceptor {
+export class QnbBeneficiaryAuthorizationInterceptor implements HttpInterceptor {
   constructor(
-    private mockPrService: MockPendingRequestService,
-  ) { }
+    private mockBeneficiaryAuth: MockBeneficiaryAuthorizationService
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url, params, method, headers } = req;
@@ -26,22 +20,19 @@ export class QnbPendingRequestInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    if (!headers.has('authorization')) {
+    if(!headers.has('authorization')) {
       outcome = {
         errorType: 'unauthorized',
         errorMessage: 'You are not authorized.',
       };
     } else {
       if (method === 'GET') {
-        if (url.endsWith(API.GET_PENDING_REQUEST_ROLES)) {
-          outcome = this.mockPrService.getPendingRequestRoles();
-        }
-
-        if (url.endsWith(API.GET_PENDING_REQUEST_USERS)) {
-          outcome = this.mockPrService.getPendingRequestUsers();
+        if(url.endsWith(API.GET_BENEFICIARY_AUTHORIZATION)) {
+          outcome = this.mockBeneficiaryAuth.getBeneficiaryAuthorizations();
         }
       }
     }
+
     if (outcome) {
       req = req.clone({
         params: new HttpParams().appendAll({

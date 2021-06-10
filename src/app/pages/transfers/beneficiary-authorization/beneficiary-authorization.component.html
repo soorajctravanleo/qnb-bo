@@ -1,1 +1,35 @@
-<p>beneficiary-authorization works!</p>
+<qnb-section-header title="Beneficiary Authorization"></qnb-section-header>
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <button nbButton class="m-3" style="float:right">
+          <nb-icon icon="printer-outline"></nb-icon> Export
+        </button>
+        <table mdbTable class="table">
+          <thead>
+            <tr>
+              <th *ngFor="let head of headElements" scope="col">
+                {{ head }}
+                <i class="fas fa-sort"></i>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let beneficiaryAuth of beneficiaryAuths">
+              <td>{{ beneficiaryAuth.requestDate }}</td>
+              <td>{{ beneficiaryAuth.customerName }}</td>
+              <td>{{ beneficiaryAuth.transactionName }}</td>
+              <td>{{ beneficiaryAuth.unit }}</td>
+              <td>{{ beneficiaryAuth.profile }}</td>
+              <td>{{ beneficiaryAuth.lastViewedBy }}</td>
+              <td>{{ beneficiaryAuth.lastViewedDateOrTime }}</td>
+              <td style="white-space: nowrap;">{{ beneficiaryAuth.channel }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
