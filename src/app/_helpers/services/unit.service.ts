@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import {
   MOCK_UNITS,
   MOCK_ACCOUNT_TRANSACTION_DESCS,
@@ -6,7 +7,6 @@ import {
   MOCK_CONTACT_BANK_TRANSACTION_DESCS,
   MOCK_IPO_TRANSACTION_DESCS,
 } from '../mock';
-
 import { MockResponse } from '../types/backend';
 
 @Injectable({
