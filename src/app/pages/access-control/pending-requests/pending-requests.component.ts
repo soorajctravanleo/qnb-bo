@@ -91,7 +91,7 @@ export class PendingRequestsComponent implements OnInit {
       this.users = data;
     });
   }
- 
+  
   openRoleDetails(data) {
     this.dialogService
       .open(RequestRoleDetailsComponent, {
