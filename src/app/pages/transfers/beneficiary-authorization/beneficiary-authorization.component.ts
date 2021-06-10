@@ -31,8 +31,8 @@ export class BeneficiaryAuthorizationComponent implements OnInit {
       this.beneficiaryAuths = data;
     });
   }
-  
-  openBeneficiaryAuthDetails(data){
+
+  openBeneficiaryAuthDetails(data) {
     this.dialogService
     .open(BeneficiaryAuthorizationDetailsComponent, {
       context: {
