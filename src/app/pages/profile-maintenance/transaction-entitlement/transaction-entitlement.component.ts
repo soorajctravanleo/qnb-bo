@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { } from 'moment';
+import { ThemePalette } from '@angular/material/core';
 
 import { QnbUnitService } from '../../../services';
 import {
@@ -27,6 +29,18 @@ export class TransactionEntitlementComponent implements OnInit {
   ipoTransactionDescs: MockIPOTransactionDesc[] = [];
 
   showMsg: boolean = false;
+
+  // public date: moment.Moment;
+  // public disabled = false;
+  public showSpinners = true;
+  public showSeconds = false;
+  public enableMeridian = true;
+  // public minDate: moment.Moment;
+  // public maxDate: moment.Moment;
+  public stepHour = 1;
+  public stepMinute = 1;
+  public stepSecond = 1;
+  public color: ThemePalette = 'primary';
 
   constructor(
     private fb: FormBuilder,
@@ -98,6 +112,7 @@ export class TransactionEntitlementComponent implements OnInit {
   private transactionEntitlementForm() {
     this.transactionEntitlement = this.fb.group({
       'unit': new FormControl('', [Validators.required]),
+      'dateControl': new FormControl(new Date()),
     });
   }
 }
