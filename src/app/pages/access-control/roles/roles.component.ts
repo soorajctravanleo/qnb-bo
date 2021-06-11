@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { NbDialogService } from "@nebular/theme";
-import { CreateRoleComponent } from "./create-role/create-role.component";
-import { DeleteRoleComponent } from "./delete-role/delete-role.component";
-import { QnbRoleService } from "../../../services";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
+import { CreateRoleComponent } from './create-role/create-role.component';
+import { DeleteRoleComponent } from './delete-role/delete-role.component';
+import { QnbRoleService } from '../../../services';
 
 @Component({
-  selector: "qnb-roles",
-  templateUrl: "./roles.component.html",
-  styleUrls: ["./roles.component.scss"],
+  selector: 'qnb-roles',
+  templateUrl: './roles.component.html',
+  styleUrls: ['./roles.component.scss'],
 })
 export class QnbRolesComponent implements OnInit {
   elements: any;

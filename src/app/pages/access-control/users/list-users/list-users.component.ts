@@ -13,7 +13,7 @@ interface UserTableRow {
   nickName: string;
   name: string;
   email: string;
-  ttl:string;
+  ttl: string;
   mobile: string;
   dob: string;
   role: any;
@@ -63,7 +63,7 @@ export class ListUsersComponent implements OnInit {
     });
   }
 
-  onEditUser(data){
+  onEditUser(data) {
     this.dialogService
       .open(CreateUserComponent, {
         context: { user: data },
@@ -90,14 +90,14 @@ export class ListUsersComponent implements OnInit {
         this.users = [];
 
         for (const user of users) {
-          const parts =user.expiryDate.split('-');
-          user.expiryDate=parts[1].concat('-'+parts[0]+'-',parts[2])
+          const parts = user.expiryDate.split('-');
+          user.expiryDate = parts[1].concat( '-' + parts[0] + '-' , parts[2] );
           this.users.push({
             userId: user.userId,
             userType: user.userType,
             dob: user.dob,
             email: user.emailId,
-            ttl:'',
+            ttl: '',
             expiryDate: user.expiryDate,
             name: `${user.firstName} ${user.lastName}`.trim(),
             nickName: user.nickName,

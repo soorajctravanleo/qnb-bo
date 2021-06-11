@@ -33,22 +33,17 @@ export class CreateRoleComponent implements OnInit {
     this.checked = checked;
   }
 
-  private prepareForm(){
+  private prepareForm() {
     this.roleForm = new FormGroup({
-      role : new FormControl(null,[Validators.required]),
-      unit : new FormControl(null,[Validators.required]),
-      description : new FormControl(null,[Validators.required]),
-      type : new FormControl(null,[Validators.required]),
-      access_to : new FormControl([],[Validators.required]),
-    })
+      role : new FormControl(null, [Validators.required]),
+      unit : new FormControl(null, [Validators.required]),
+      description : new FormControl(null, [Validators.required]),
+      type : new FormControl(null, [Validators.required]),
+      access_to : new FormControl([], [Validators.required]),
+    });
   }
 
-  reset(){
-    this.roleForm.reset();
-  }
+  reset() { this.roleForm.reset(); }
 
-  onSubmit(){
-    // console.log(this.roleForm.controls);  
-  }
-
+  onSubmit(){}
 }

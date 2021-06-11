@@ -61,27 +61,19 @@ export class CreateUserComponent implements OnInit {
     private qnbUserService: QnbUserService,
     private qnbListService: QnbListService,
     private qnbRoleService: QnbRoleService,
-  ) {
-    
-   }
+  ) { }
 
   ngOnInit() {
-    console.log(this.user);
     this.prepareForm();
     this.fetchCountries();
     this.fetchLanguages();
     this.fetchTimezones();
     this.fetchRoles();
-    this.fetchUserTypes()
-   
+    this.fetchUserTypes();
   }
 
-  dismiss() {
-    this.ref.close();
-    console.log(this.signupForm);
-    
-    
-  }
+  dismiss() { this.ref.close(); }
+
   showToast(position, status) {
     this.index += 1;
     this.toastrService.show(
@@ -107,10 +99,7 @@ export class CreateUserComponent implements OnInit {
 
   reset(){
     // this.signupForm.value['role']=[]
-    console.log(this.signupForm);
-    this.signupForm.reset({role:[]})
-    console.log(this.signupForm);
-    
+    this.signupForm.reset({role:[]});
   }
 
   onSubmit() {
@@ -213,7 +202,6 @@ export class CreateUserComponent implements OnInit {
         // 'timezone': new FormControl(null),
         // 'language': new FormControl(null, [Validators.required]),
         // 'sendPasswordOnEmail': new FormControl(false),
-
       // }),
       // 'additionalInfo': new FormGroup({
       //   'ttl': new FormControl(null),
@@ -237,9 +225,8 @@ export class CreateUserComponent implements OnInit {
       // if(typeof(this.user.role)=='string'){
       // this.user.role=this.user.role.split(', ');
       // }
-      this.user.expiry_Date=new Date(this.user.expiryDate)
+      this.user.expiry_Date = new Date(this.user.expiryDate);
       this.signupForm.setValue(this.user);
-      
     }
   }
 }
