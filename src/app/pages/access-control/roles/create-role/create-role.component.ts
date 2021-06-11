@@ -43,7 +43,12 @@ export class CreateRoleComponent implements OnInit {
     });
   }
 
-  reset() { this.roleForm.reset(); }
+  reset() { this.roleForm.reset( { access_to: [] } ); }
 
-  onSubmit() { }
+  onSubmit() { 
+    console.log(this.roleForm);
+    this.roleService.addRole(this.roleForm.value).subscribe(res => {
+      console.log(res);
+    })
+  }
 }

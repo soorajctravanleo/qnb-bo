@@ -24,7 +24,7 @@ export class QnbRoleInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const { url, method, headers, params } = req;
+    const { url, body, method, headers, params } = req;
     let outcome: MockResponse;
 
     if (params.has('outcome')) {
@@ -50,6 +50,11 @@ export class QnbRoleInterceptor implements HttpInterceptor {
         if (url.endsWith(SEARCH_ROLES)) {
           const searchTerm = params.get('search');
           outcome = this.mockRoleService.searchRole(searchTerm);
+        }
+      }
+      if (method==='POST') {
+        if (url.endsWith(GET_ROLE)) {
+          outcome = this.mockRoleService.addRole(body)          
         }
       }
     }
