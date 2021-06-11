@@ -5,6 +5,7 @@ import {
   Input,
   ViewChild,
   QueryList,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { NbDialogRef, NbSelectComponent, NbToastrService } from '@nebular/theme';
 import {
@@ -61,6 +62,7 @@ export class CreateUserComponent implements OnInit {
     private qnbUserService: QnbUserService,
     private qnbListService: QnbListService,
     private qnbRoleService: QnbRoleService,
+    private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
@@ -227,6 +229,12 @@ export class CreateUserComponent implements OnInit {
       // }
       this.user.expiry_Date = new Date(this.user.expiryDate);
       this.signupForm.setValue(this.user);
+
+      // <nb-select> element is not updating the view.
+      // Hence, run the change detection cycle once more.
+      setTimeout(() => {
+        this.cdr.detectChanges();
+      }, 700);
     }
   }
 }
