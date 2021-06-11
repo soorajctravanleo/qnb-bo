@@ -97,10 +97,7 @@ export class CreateUserComponent implements OnInit {
     return `${d.getDate()}-${(d.getMonth() + 1)}-${d.getFullYear()}`;
   }
 
-  reset(){
-    // this.signupForm.value['role']=[]
-    this.signupForm.reset({role:[]});
-  }
+  reset() { this.signupForm.reset( { role: [] } ); }
 
   onSubmit() {
     if (this.signupForm.valid) {
@@ -180,7 +177,6 @@ export class CreateUserComponent implements OnInit {
     this.qnbUserService
       .fetchUserTypes()
       .subscribe(data => this.userTypes = data);
-     
   }
 
   private prepareForm() {

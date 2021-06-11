@@ -45,5 +45,5 @@ export class CreateRoleComponent implements OnInit {
 
   reset() { this.roleForm.reset(); }
 
-  onSubmit(){}
+  onSubmit() { }
 }
