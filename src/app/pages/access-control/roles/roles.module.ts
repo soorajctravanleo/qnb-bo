@@ -16,6 +16,7 @@ import { QnbRolesRoutingModule } from './roles-routing.module';
 import { QnbRolesComponent } from './roles.component';
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { DeleteRoleComponent } from './delete-role/delete-role.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DeleteRoleComponent } from './delete-role/delete-role.component';
     NbSelectModule,
     NbCardModule,
     NbCheckboxModule,
+    ReactiveFormsModule,
   ],
 })
 export class QnbRolesModule { }

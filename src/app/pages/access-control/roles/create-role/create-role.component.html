@@ -1,19 +1,19 @@
+<form class="form-inline" [formGroup]="roleForm" (ngSubmit)="onSubmit()">
 <nb-card>
   <nb-card-header>Update Role</nb-card-header>
   <nb-card-body>
-    <form class="form-inline">
       <div class="col-md-12">
         <div class="row new-row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="">Role Name*</label>
-              <input type="text" nbInput fullWidth placeholder="">
+              <input type="text" nbInput fullWidth placeholder="" formControlName="role">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="">Unit*</label>
-              <nb-select fullWidth>
+              <nb-select fullWidth formControlName="unit">
                 <nb-option value="qnb-qatar">Qnb Qatar</nb-option>
                 <nb-option value="qnb-france">Qnb France</nb-option>
                 <nb-option value="qnb-uae">Qnb UAE</nb-option>
@@ -27,13 +27,13 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="">Role Description*</label>
-              <textarea type="text" nbInput fullWidth placeholder=""></textarea>
+              <textarea type="text" nbInput fullWidth placeholder="" formControlName="description"></textarea>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="">Role Type*</label>
-              <nb-select fullWidth placeholder="">
+              <nb-select fullWidth placeholder="" formControlName="type">
                 <nb-option value="maker">Maker</nb-option>
                 <nb-option value="checker">Checker</nb-option>
                 <nb-option value="makerchecker">Maker & Checker</nb-option>
@@ -42,7 +42,7 @@
             <div class="new-row">
               <div class="form-group">
                 <label for="">Access To*</label>
-                <nb-select fullWidth style="width: 100%;" formControlName="userType" multiple placeholder="">
+                <nb-select fullWidth style="width: 100%;" formControlName="access_to" multiple placeholder="">
                   <nb-option *ngFor="let roles of userRoles" [value]="roles.groupCode">{{roles.groupCode}}
                   </nb-option>
                 </nb-select>
@@ -51,13 +51,14 @@
           </div>
         </div>
       </div>
-    </form>
   </nb-card-body>
   <nb-card-footer>
     <div style="float:right">
       <button nbButton hero status="danger" style="background-color: #FE5578;" (click)="dismiss()">Cancel</button>
-      <button nbButton hero status="normal" (click)="dismiss()">Reset</button>
+      <button nbButton hero status="normal" (click)="reset()">Reset</button>
       <button nbButton hero status="success">Submit</button>
     </div>
   </nb-card-footer>
 </nb-card>
+</form>
+

@@ -14,7 +14,7 @@ import {
 } from '@angular/forms';
 
 import {
-  MockUser,
+  MockUserProfileData,
   MockCountry,
   MockLanguage,
   MockTimezone,
@@ -52,7 +52,7 @@ export class CreateUserComponent implements OnInit {
   roles: QnbUserGroup[] = [];
   userTypes: MockUserType[] = [];
 
-  @Input() user: MockUser;
+  @Input() user: MockUserProfileData;
   @ViewChild('ipt', { static: true }) languageSelector: NbSelectComponent;
 
   constructor(
@@ -61,19 +61,26 @@ export class CreateUserComponent implements OnInit {
     private qnbUserService: QnbUserService,
     private qnbListService: QnbListService,
     private qnbRoleService: QnbRoleService,
-  ) { }
+  ) {
+    
+   }
 
   ngOnInit() {
+    console.log(this.user);
     this.prepareForm();
     this.fetchCountries();
     this.fetchLanguages();
     this.fetchTimezones();
     this.fetchRoles();
-    this.fetchUserTypes();
+    this.fetchUserTypes()
+   
   }
 
   dismiss() {
     this.ref.close();
+    console.log(this.signupForm);
+    
+    
   }
   showToast(position, status) {
     this.index += 1;
@@ -96,6 +103,14 @@ export class CreateUserComponent implements OnInit {
 
   private getFormattedDate(d: Date) {
     return `${d.getDate()}-${(d.getMonth() + 1)}-${d.getFullYear()}`;
+  }
+
+  reset(){
+    // this.signupForm.value['role']=[]
+    console.log(this.signupForm);
+    this.signupForm.reset({role:[]})
+    console.log(this.signupForm);
+    
   }
 
   onSubmit() {
@@ -176,45 +191,55 @@ export class CreateUserComponent implements OnInit {
     this.qnbUserService
       .fetchUserTypes()
       .subscribe(data => this.userTypes = data);
+     
   }
 
   private prepareForm() {
     this.signupForm = new FormGroup({
-      'profile': new FormGroup({
+      // 'profile': new FormGroup({
         'userId': new FormControl(null, [Validators.required, Validators.minLength(5)]),
         'nickName': new FormControl(null, [Validators.required]),
-        'firstName': new FormControl(null, [Validators.required]),
-        'lastName': new FormControl(null, [Validators.required]),
+        // 'firstName': new FormControl(null, [Validators.required]),
+        'name': new FormControl(null, [Validators.required]),
         'dob': new FormControl(null, [Validators.required]),
         'userType': new FormControl(null, [Validators.required]),
         'email': new FormControl(null, [Validators.required, Validators.email]),
         'mobile': new FormControl(null, [Validators.required]),
         'expiryDate': new FormControl(null, [Validators.required]),
-        'entity': new FormControl(null, [Validators.required]),
         'role': new FormControl([]),
-        'timezone': new FormControl(null),
-        'language': new FormControl(null, [Validators.required]),
-        'sendPasswordOnEmail': new FormControl(false),
-      }),
-      'additionalInfo': new FormGroup({
+        'expiry_Date': new FormControl(null, [Validators.required]),
         'ttl': new FormControl(null),
-        'country': new FormControl(null),
-        'startDate': new FormControl(null),
-        'attr1': new FormControl(null),
-        'attr2': new FormControl(null),
-        'attr3': new FormControl(null),
-        'attr4': new FormControl(null),
-        'macId': new FormControl('-'),
-      }),
-      'loginRestriction': new FormGroup({
-        'userId': new FormControl(null),
-        'firstName': new FormControl(null),
-        'loginRestriction': new FormControl(null),
-      }),
+        // 'entity': new FormControl(null, [Validators.required]),
+        // 'timezone': new FormControl(null),
+        // 'language': new FormControl(null, [Validators.required]),
+        // 'sendPasswordOnEmail': new FormControl(false),
+
+      // }),
+      // 'additionalInfo': new FormGroup({
+      //   'ttl': new FormControl(null),
+      //   'country': new FormControl(null),
+      //   'startDate': new FormControl(null),
+      //   'attr1': new FormControl(null),
+      //   'attr2': new FormControl(null),
+      //   'attr3': new FormControl(null),
+      //   'attr4': new FormControl(null),
+      //   'macId': new FormControl('-'),
+      // }),
+      // 'loginRestriction': new FormGroup({
+      //   'userId': new FormControl(null),
+      //   'firstName': new FormControl(null),
+      //   'loginRestriction': new FormControl(null),
+      // }),
     });
 
     if (this.user) {
       this.editMode = true;
+      // if(typeof(this.user.role)=='string'){
+      // this.user.role=this.user.role.split(', ');
+      // }
+      this.user.expiry_Date=new Date(this.user.expiryDate)
+      this.signupForm.setValue(this.user);
+      
     }
   }
 }

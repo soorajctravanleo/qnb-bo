@@ -2,17 +2,18 @@
   <nb-card style="max-height: 94vh;">
     <nb-card-body>
       <nb-tabset>
-        <nb-tab tabTitle="Create User">
-          <div formGroupName="profile">
+        <nb-tab [tabTitle]="user?'Update User':'Create User'">
+          <!-- <div formGroupName="profile"> -->
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">User Id*</label>
-                    <input type="text" nbInput fullWidth ngModel formControlName="userId">
-                    <span *ngIf="!signupForm.get('profile.userId').valid && signupForm.get('profile.userId').touched"
+                    <input *ngIf="user==undefined" type="text" nbInput fullWidth formControlName="userId">
+                    <input *ngIf="user!==undefined" type="text" nbInput fullWidth formControlName="userId" readonly>
+                    <span *ngIf="!signupForm.get('userId').valid && signupForm.get('userId').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('profile.userId').errors['required']">This field is
+                      <span *ngIf="signupForm.get('userId').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -21,58 +22,22 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Name*</label>
-                    <input type="text" nbInput fullWidth formControlName="nickName">
+                    <input type="text" nbInput fullWidth formControlName="name">
                     <span
-                      *ngIf="!signupForm.get('profile.nickName').valid && signupForm.get('profile.nickName').touched"
+                      *ngIf="!signupForm.get('name').valid && signupForm.get('name').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('profile.nickName').errors['required']">This field is
+                      <span *ngIf="signupForm.get('name').errors['required']">This field is
                         required!</span>
 
                     </span>
                   </div>
                 </div>
-
-                <!-- <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">First Name</label>
-                    <input type="text" nbInput fullWidth formControlName="firstName" required>
-                    <span
-                      *ngIf="!signupForm.get('profile.firstName').valid && signupForm.get('profile.firstName').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.firstName').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Last Name</label>
-                    <input type="text" nbInput fullWidth formControlName="lastName">
-                    <span
-                      *ngIf="!signupForm.get('profile.lastName').valid && signupForm.get('profile.lastName').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.lastName').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div>
-                </div> -->
               </div>
             </div>
 
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-6">
-                  <!-- <div class="form-group">
-                    <label for="">DOB</label>
-                    <input nbInput fullWidth [nbDatepicker]="formpicker" formControlName="dob">
-                    <nb-datepicker #formpicker></nb-datepicker>
-                    <span *ngIf="!signupForm.get('profile.dob').valid && signupForm.get('profile.dob').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.dob').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div> -->
                   <div class="form-group">
                     <label for="">Role*</label>
                     <nb-select fullWidth multiple style="width: 100%;" formControlName="role">
@@ -83,11 +48,11 @@
                   </div>
                   <div class="form-group">
                     <label for="">Expiry Date*</label>
-                    <input nbInput fullWidth [nbDatepicker]="formpicker" formControlName="dob">
+                    <input nbInput fullWidth [nbDatepicker]="formpicker"  [formControlName]="'expiry_Date'">
                     <nb-datepicker #formpicker></nb-datepicker>
-                    <span *ngIf="!signupForm.get('profile.dob').valid && signupForm.get('profile.dob').touched"
+                    <span *ngIf="!signupForm.get('expiry_Date').valid && signupForm.get('expiry_Date').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('profile.dob').errors['required']">This field is
+                      <span *ngIf="signupForm.get('expiry_Date').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
@@ -95,259 +60,40 @@
                 </div>
 
                 <div class="col-md-6">
-                  <!-- <div class="form-group">
-                    <label for="">User type</label>
-                    <nb-select fullWidth style="width: 100%;" formControlName="userType">
-                      <nb-option *ngFor="let userType of userTypes" [value]="userType.name">
-                        {{ userType.name }}
-                      </nb-option>
-                    </nb-select>
-                    <span
-                      *ngIf="!signupForm.get('profile.userType').valid && signupForm.get('profile.userType').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.userType').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div> -->
                   <div class="form-group">
                     <label for="">Maker Comments</label>
                     <textarea type="text" nbInput fullWidth formControlName="ttl"></textarea>
                     <span
-                      *ngIf="!signupForm.get('additionalInfo.ttl').valid && signupForm.get('additionalInfo.ttl').touched"
+                      *ngIf="!signupForm.get('ttl').valid && signupForm.get('ttl').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('additionalInfo.ttl').errors['required']">This field is
+                      <span *ngIf="signupForm.get('ttl').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>
                 </div>
 
-                <!-- <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Entity</label>
-                    <nb-select fullWidth style="width: 100%;" formControlName="entity">
-                      <nb-option value="BANK">BANK</nb-option>
-                    </nb-select>
-                    <span *ngIf="!signupForm.get('profile.entity').valid && signupForm.get('profile.entity').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.entity').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Role</label>
-                    <nb-select fullWidth multiple style="width: 100%;" formControlName="role">
-                      <nb-option *ngFor="let role of roles" [value]="role.groupCode">
-                        {{ role.groupCode }}
-                      </nb-option>
-                    </nb-select>
-                  </div>
-                </div> -->
               </div>
             </div>
-
-            <!-- <div class="col-md-12">
-              <div class="row new-row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Mobile</label>
-                    <input type="text" nbInput fullWidth formControlName="mobile">
-                    <span *ngIf="!signupForm.get('profile.mobile').valid && signupForm.get('profile.mobile').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.mobile').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="text" nbInput fullWidth formControlName="email">
-                    <span *ngIf="!signupForm.get('profile.email').valid && signupForm.get('profile.email').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.email').errors['required']">This field is
-                        required!</span>
-                      <span *ngIf="signupForm.get('profile.email').errors['email']">Not a valid email id</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Expiry Date</label>
-                    <input nbInput fullWidth [nbDatepicker]="formpicker2" formControlName="expiryDate">
-                    <nb-datepicker #formpicker2></nb-datepicker>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Select Language</label>
-                    <nb-select fullWidth  formControlName="language">
-                      <nb-option *ngFor="let language of languages" [value]="language.langCode">
-                        {{ language.langDisplay }}
-                      </nb-option>
-                    </nb-select>
-                  </div>
-                </div>
-              </div>
-            </div> -->
 
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-6">
-                  <!-- <div class="form-group">
-                    <label for="">Timezone</label>
-                    <nb-select fullWidth  formControlName="timezone">
-                      <nb-option *ngFor="let timezone of timezones" [value]="timezone.code">
-                        {{ timezone.displayInfo }}
-                      </nb-option>
-                    </nb-select>
-                  </div> -->
-                  <!-- <div class="form-group">
-                    <label for="">Expiry Date</label>
-                    <input nbInput fullWidth [nbDatepicker]="formpicker" formControlName="dob">
-                    <nb-datepicker #formpicker></nb-datepicker>
-                    <span *ngIf="!signupForm.get('profile.dob').valid && signupForm.get('profile.dob').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('profile.dob').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div> -->
-
                 </div>
 
                 <div class="col-md-6">
-                  <!-- <div class="form-group">
-                    <label for="">Maker Comments</label>
-                    <input type="text" nbInput fullWidth formControlName="ttl">
-                    <span
-                      *ngIf="!signupForm.get('additionalInfo.ttl').valid && signupForm.get('additionalInfo.ttl').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('additionalInfo.ttl').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div> -->
                 </div>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
         </nb-tab>
 
-        <!-- <nb-tab tabTitle="Additional Info">
-          <div formGroupName="additionalInfo">
-            <div class="col-md-12">
-              <div class="row new-row">
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">TTL</label>
-                    <input type="text" nbInput fullWidth formControlName="ttl">
-                    <span
-                      *ngIf="!signupForm.get('additionalInfo.ttl').valid && signupForm.get('additionalInfo.ttl').touched"
-                      class="help-block">
-                      <span *ngIf="signupForm.get('additionalInfo.ttl').errors['required']">This field is
-                        required!</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">Country</label>
-                    <input type="text" nbInput fullWidth formControlName="country">
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">Start Date</label>
-                    <input type="text" nbInput fullWidth formControlName="startDate">
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">Attribute1</label>
-                    <input type="text" nbInput fullWidth formControlName="attr1">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="row new-row">
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">Attribute2</label>
-                    <input type="text" nbInput fullWidth formControlName="attr2">
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">Attribute3</label>
-                    <input type="text" nbInput fullWidth formControlName="attr3">
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">Attribute4</label>
-                    <input type="text" nbInput fullWidth formControlName="attr4">
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="">MAC ID</label>
-                    <input type="text" nbInput fullWidth formControlName="macId">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nb-tab>
-
-        <nb-tab tabTitle="Login Restrictions">
-          <div formGroupName="loginRestriction">
-            <div class="col-md-12">
-              <div class="row new-row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">User ID</label>
-                    <input type="text" nbInput fullWidth formControlName="userId">
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">First name</label>
-                    <input type="text" nbInput fullWidth formControlName="firstName">
-                  </div>
-                </div>
-
-                <div class="col-md-3 pt-3">
-                  Apply Restrictions
-                </div>
-                <div class="col-md-3">
-                  <nb-toggle status="danger" formControlName="loginRestriction"></nb-toggle>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </nb-tab> -->
       </nb-tabset>
     </nb-card-body>
 
     <nb-card-footer>
       <div style="float:right">
         <button nbButton hero status="danger" style="background-color: #FE5578;" (click)="dismiss()">Cancel</button>
-        <button nbButton hero status="normal" (click)="dismiss()">Reset</button>
+        <button nbButton hero status="normal" (click)="reset()">Reset</button>
 
         <button type="submit" nbButton hero status="success">Submit</button>
       </div>
