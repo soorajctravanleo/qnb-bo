@@ -10,7 +10,6 @@ import { ChangeUserStatusComponent } from '../change-user-status/change-user-sta
 interface UserTableRow {
   userId: string;
   userType: string;
-  nickName: string;
   name: string;
   email: string;
   ttl: string;
@@ -100,7 +99,6 @@ export class ListUsersComponent implements OnInit {
             ttl: '',
             expiryDate: user.expiryDate,
             name: `${user.firstName} ${user.lastName}`.trim(),
-            nickName: user.nickName,
             mobile: user.mobileNumber,
             role: user.groups,
           });

@@ -1,48 +1,30 @@
-import { MockRole, RoleStatus } from '../models/backend';
+import { MmockRole, RoleStatus } from "../models/backend";
 
-export const MOCK_ROLES: MockRole[] = [
-  new MockRole(
+export const MOCK_ROLES: MmockRole[] = [
+  new MmockRole(
     1,
-    {
-      roleName: 'system',
-      description: 'system has access to all menus and features',
-      multiLogin: true,
-      noPasswordExpiry: true,
-      nokLogin: true,
-      decentLogin: true,
-      makerId: 1,
-    },
-    RoleStatus.ACTIVE,
-    1620782520,
+    "system",
+    "qnb-qatar",
+    "system has access to all menus and features",
+    "maker",
+    ["ADMGRP"],
   ),
 
-  new MockRole(
+  new MmockRole(
     2,
-    {
-      roleName: 'admin',
-      description: 'admin has limited access to all features',
-      multiLogin: true,
-      noPasswordExpiry: true,
-      nokLogin: true,
-      decentLogin: true,
-      makerId: 1,
-    },
-    RoleStatus.ACTIVE,
-    1620882520,
+    "n-system",
+    "qnb-france",
+    "system has access to all menus and features",
+    "checker",
+    ["ARMMPLGRP"],
   ),
 
-  new MockRole(
+  new MmockRole(
     3,
-    {
-      roleName: 'viewer',
-      description: 'viewer has access only readonly access',
-      multiLogin: true,
-      noPasswordExpiry: true,
-      nokLogin: true,
-      decentLogin: true,
-      makerId: 1,
-    },
-    RoleStatus.ACTIVE,
-    1620984520,
+    "u-system",
+    "qnb-uae",
+    "system has access to all menus and features",
+    "makerchecker",
+    ["ACCOUNT_DELETE"],
   ),
 ];

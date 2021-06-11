@@ -19,7 +19,7 @@ import {
 
 export interface QnbUser {
   userId: string;
-  nickName: string;
+  name: string;
   firstName: string;
   lastName: string;
   dob: string;
@@ -40,7 +40,7 @@ export interface QnbUser {
   optAuthTypePrimary: string;
   optAuthTypeSecondary: string;
   authTypeAttribute: string;
-  macId: string;
+  // macId: string;
   authApplyDayTimeBasedLogin: true;
   groups: string[];
 }

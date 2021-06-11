@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MockRole } from '../models/backend'
+import { MmockRole } from '../models/backend'
 import { MOCK_ROLES } from '../mock';
 import { MockResponse } from '../types/backend';
 
@@ -16,10 +16,8 @@ export class MockRoleService {
 
   addRole(data): MockResponse {
     const newRoleId = this.lastRoleId + 1;
-    this.lastRoleId = newRoleId;
-    const newRole = new MockRole(newRoleId, data, 1,new Date().getTime());
-    this.roles.push(newRole);
-    return { res: newRole };
+    this.roles.push(data);
+    return { res: data };
   }
 
   getRole(id: number): MockResponse {
@@ -28,7 +26,7 @@ export class MockRoleService {
   }
 
   searchRole(name: string = ''): MockResponse {
-    const roles = MOCK_ROLES.filter(mockRole => mockRole.data.roleName.toLowerCase().includes(name.toLowerCase()));
+    const roles = MOCK_ROLES.filter(mockRole => mockRole.role.toLowerCase().includes(name.toLowerCase()));
     return { res: roles };
   }
 }

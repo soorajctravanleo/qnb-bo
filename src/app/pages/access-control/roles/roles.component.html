@@ -18,11 +18,11 @@
         <tr mdbTableCol *ngFor="let el of elements;let i = index">
           <th class="px-1"><i class="icons fa fa-edit" (click)="onEditUser(el)"></i></th>
           <th><i class="icons fa fa-trash-alt" (click)="onDeleteRole(np)"></i></th>
-          <td>{{el.groupDefinition}}{{i}}</td>
-          <td>This is a test description</td>
-          <td>Maker</td>
-          <td>Qatar </td>
-          <td>{{el.groupCode}}</td>
+          <td>{{el.role}}</td>
+          <td>{{el.description}}</td>
+          <td>{{el.type}}</td>
+          <td>{{el.unit}} </td>
+          <td>{{el.access_to}}</td>
 
           <!-- <td>{{el.lastModifiedTime| date:'medium'}}</td> -->
         </tr>
