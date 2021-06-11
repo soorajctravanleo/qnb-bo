@@ -22,3 +22,4 @@ import { RequestRoleDetailsComponent } from './request-role-details/request-role
   ],
 })
 export class PendingRequestsModule { }
+
