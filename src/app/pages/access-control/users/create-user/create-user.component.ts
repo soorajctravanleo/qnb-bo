@@ -5,6 +5,7 @@ import {
   Input,
   ViewChild,
   QueryList,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { NbDialogRef, NbSelectComponent, NbToastrService } from '@nebular/theme';
 import {
@@ -61,6 +62,7 @@ export class CreateUserComponent implements OnInit {
     private qnbUserService: QnbUserService,
     private qnbListService: QnbListService,
     private qnbRoleService: QnbRoleService,
+    private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
@@ -182,22 +184,22 @@ export class CreateUserComponent implements OnInit {
   private prepareForm() {
     this.signupForm = new FormGroup({
       // 'profile': new FormGroup({
-        'userId': new FormControl(null, [Validators.required, Validators.minLength(5)]),
-        'nickName': new FormControl(null, [Validators.required]),
-        // 'firstName': new FormControl(null, [Validators.required]),
-        'name': new FormControl(null, [Validators.required]),
-        'dob': new FormControl(null, [Validators.required]),
-        'userType': new FormControl(null, [Validators.required]),
-        'email': new FormControl(null, [Validators.required, Validators.email]),
-        'mobile': new FormControl(null, [Validators.required]),
-        'expiryDate': new FormControl(null, [Validators.required]),
-        'role': new FormControl([]),
-        'expiry_Date': new FormControl(null, [Validators.required]),
-        'ttl': new FormControl(null),
-        // 'entity': new FormControl(null, [Validators.required]),
-        // 'timezone': new FormControl(null),
-        // 'language': new FormControl(null, [Validators.required]),
-        // 'sendPasswordOnEmail': new FormControl(false),
+      'userId': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      'nickName': new FormControl(null, [Validators.required]),
+      // 'firstName': new FormControl(null, [Validators.required]),
+      'name': new FormControl(null, [Validators.required]),
+      'dob': new FormControl(null, [Validators.required]),
+      'userType': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'mobile': new FormControl(null, [Validators.required]),
+      'expiryDate': new FormControl(null, [Validators.required]),
+      'role': new FormControl([]),
+      'expiry_Date': new FormControl(null, [Validators.required]),
+      'ttl': new FormControl(null),
+      // 'entity': new FormControl(null, [Validators.required]),
+      // 'timezone': new FormControl(null),
+      // 'language': new FormControl(null, [Validators.required]),
+      // 'sendPasswordOnEmail': new FormControl(false),
       // }),
       // 'additionalInfo': new FormGroup({
       //   'ttl': new FormControl(null),
@@ -223,6 +225,12 @@ export class CreateUserComponent implements OnInit {
       // }
       this.user.expiry_Date = new Date(this.user.expiryDate);
       this.signupForm.setValue(this.user);
+
+      // <nb-select> element is not updating the view.
+      // Hence, run the change detection cycle once more.
+      setTimeout(() => {
+        this.cdr.detectChanges();
+      }, 700);
     }
   }
 }
