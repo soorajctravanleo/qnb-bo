@@ -13,16 +13,16 @@ export class QnbRolesComponent implements OnInit {
   elements: any;
 
   headElements = [
-    "Role Name",
-    "Role Desciption",
-    "Role Type",
-    "Unit",
-    "Access To",
+    'Role Name',
+    'Role Desciption',
+    'Role Type',
+    'Unit',
+    'Access To',
   ];
 
-  constructor(
+  constructor (
     private dialogService: NbDialogService,
-    private roleService: QnbRoleService
+    private roleService: QnbRoleService,
   ) {}
 
   ngOnInit(): void {
@@ -31,8 +31,7 @@ export class QnbRolesComponent implements OnInit {
   private fetchRoles() {
     this.roleService.fetchRoles().subscribe((res) => {
       this.elements = res;
-      console.log(this.elements);
-      
+      // console.log(this.elements);
     });
   }
 
@@ -40,7 +39,7 @@ export class QnbRolesComponent implements OnInit {
     const dialogRef = this.dialogService.open(CreateRoleComponent);
   }
   onEditUser(data) {
-    console.log(data)
+    // console.log(data)
     const dialogRef = this.dialogService.open(CreateRoleComponent, {
       context: { user: data },
     });

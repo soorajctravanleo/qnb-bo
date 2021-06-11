@@ -22,12 +22,12 @@ export class MockRole {
   ) { }
 }
 
-export class MmockRole{
+export class MmockRole {
   constructor(
-    public role:string,
-    public unit:string,
-    public description:string,
-    public type:string,
-    public access_to:string,
-  ){}
+    public role: string,
+    public unit: string,
+    public description: string,
+    public type: string,
+    public access_to: string,
+  ) { }
 }

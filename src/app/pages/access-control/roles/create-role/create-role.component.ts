@@ -9,15 +9,14 @@ import { MockRoleData } from '../../../../_helpers/models/backend';
   styleUrls: ['./create-role.component.scss'],
 })
 export class CreateRoleComponent implements OnInit {
-  roleForm:FormGroup;
+  roleForm: FormGroup;
   @Input() user;
   userRoles: any;
   constructor(protected ref: NbDialogRef<CreateRoleComponent>, private roleService: QnbRoleService) { }
 
   ngOnInit(): void {
-    this.prepareForm()
-    console.log(this.user);
-    
+    this.prepareForm();
+    // console.log(this.user);
     this.fetchRoles();
   }
   dismiss() {
@@ -35,22 +34,21 @@ export class CreateRoleComponent implements OnInit {
   }
 
   private prepareForm(){
-    this.roleForm=new FormGroup({
-      role:new FormControl(null,[Validators.required]),
-      unit:new FormControl(null,[Validators.required]),
-      description:new FormControl(null,[Validators.required]),
-      type:new FormControl(null,[Validators.required]),
-      access_to:new FormControl([],[Validators.required]),
+    this.roleForm = new FormGroup({
+      role : new FormControl(null,[Validators.required]),
+      unit : new FormControl(null,[Validators.required]),
+      description : new FormControl(null,[Validators.required]),
+      type : new FormControl(null,[Validators.required]),
+      access_to : new FormControl([],[Validators.required]),
     })
   }
 
   reset(){
-    this.roleForm.reset()
+    this.roleForm.reset();
   }
 
   onSubmit(){
-    console.log(this.roleForm.controls);
-    
+    // console.log(this.roleForm.controls);  
   }
 
 }
