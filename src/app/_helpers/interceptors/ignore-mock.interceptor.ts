@@ -25,9 +25,9 @@ export class QnbIgnoreMockInterceptor implements HttpInterceptor {
     if (this.shouldIgnoreMock(url)) {
       req = req.clone({
         params: new HttpParams().appendAll({
-          ignoreMock: 'true'
+          ignoreMock: 'true',
         }),
-      })
+      });
     }
 
     return next.handle(req);
