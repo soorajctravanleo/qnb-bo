@@ -13,7 +13,40 @@ import { RequestRoleDetailsComponent } from './request-role-details/request-role
   styleUrls: ['./pending-requests.component.scss'],
 })
 export class PendingRequestsComponent implements OnInit {
-  headElements: any = ['Ref No.', 'User Id', 'Username', 'Role', 'Expiry Date', 'Status', 'Request Type', 'Requested Date', 'Maker Id', 'Request Status'];
+  headElements: any = [
+    {
+      heading :'Ref No.',
+      key: 'requestNo',
+    },{
+      heading :'User Id',
+      key: 'userId',
+    },{
+      heading :'Username',
+      key: 'userName',
+    },{
+      heading :'Role',
+      key: 'role',
+    },{
+      heading :'Expiry Date',
+      key: 'expiryDate',
+    },{
+      heading :'Status',
+      key: 'status',
+    },{
+      heading :'Request Type',
+      key: 'requestType',
+    },{
+      heading :'Requested Date',
+      key: 'requestedDate',
+    }      
+    ,{
+      heading :'Maker Id',
+      key: 'makerId',
+    },{
+      heading :'Request Status',
+      key: 'requestStatus',
+    } 
+  ];
   roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
 
   // roles = [{
