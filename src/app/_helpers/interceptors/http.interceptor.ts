@@ -35,6 +35,12 @@ export class QnbHttpInterceptor implements HttpInterceptor {
         url: this.urlService.getHostURL() + url,
       });
 
+      if (params.has('ignoreMock')) {
+        req = req.clone({
+          params: req.params.delete('ignoreMock'),
+        });
+      }
+
       return next.handle(req);
     };
 

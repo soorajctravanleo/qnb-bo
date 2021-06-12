@@ -13,11 +13,13 @@ import {
   QnbPendingApprovalInterceptor,
   QnbPendingRequestInterceptor,
   QnbBeneficiaryAuthorizationInterceptor,
+  QnbIgnoreMockInterceptor,
 } from './_helpers/interceptors';
 
 export const INTERCEPTORS: Provider[] = [
-  { provide: HTTP_INTERCEPTORS, useClass: QnbLoginInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: QnbIgnoreMockInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: QnbJwtInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: QnbLoginInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: QnbListInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: QnbUserInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: QnbEntityInterceptor, multi: true },

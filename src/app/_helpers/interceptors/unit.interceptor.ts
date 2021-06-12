@@ -16,11 +16,14 @@ export class QnbUnitInterceptor implements HttpInterceptor {
     const { url, params, method, headers } = req;
     let outcome: MockResponse;
 
-    if (params.has('outcome')) {
+    if (
+      params.has('outcome')
+      || params.has('ignoreMock')
+    ) {
       return next.handle(req);
     }
 
-    if (!headers.has('authorization')) {
+    if (!headers.has('Authorization')) {
       outcome = {
         errorType: 'unauthorized',
         errorMessage: 'You are not authorized.',
