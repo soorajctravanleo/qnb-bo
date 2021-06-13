@@ -47,9 +47,9 @@ export class MockAccountService {
 
   private getAccountObject(account: MockAccount): LoginResponse {
     const { token } = account;
-    return { 
+    return {
       jti: 'dummyjti',
-      access_token: token,  
+      access_token: token,
       refresh_token: 'dummytoken',
       expires_in: 30000,
       token_type: 'bearer',
