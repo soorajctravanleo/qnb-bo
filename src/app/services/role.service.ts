@@ -44,9 +44,11 @@ export class QnbRoleService {
     //   );
     return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
+
   createRole(role: QnbUserGroup) {
     return this.http.post('/auth/userGroups', role);
   }
+
   fetchRole(id: number) {
     const params = new HttpParams().append('id', id.toString());
     return (this.http.get(GET_ROLE, { params }) as Observable<MockRole>)
@@ -54,6 +56,11 @@ export class QnbRoleService {
         tap(role => this.updateRoleList(role)),
       );
   }
+
+  deleteRole(id: number) {
+    return this.http.post('/auth/userGroups/delete', id);
+  }
+
 
   getRoleById(id: number): Observable<MockRole> {
     const role = this.roles.find(rl => rl.id === id);
@@ -76,4 +83,5 @@ export class QnbRoleService {
       }
     }
   }
+
 }
