@@ -44,7 +44,7 @@ export class PendingRequestsComponent implements OnInit {
     }, {
       heading: 'Request Status',
       key: 'requestStatus',
-    }
+    },
   ];
   roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
 
