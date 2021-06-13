@@ -15,37 +15,36 @@ import { RequestRoleDetailsComponent } from './request-role-details/request-role
 export class PendingRequestsComponent implements OnInit {
   headElements: any = [
     {
-      heading :'Ref No.',
+      heading: 'Ref No.',
       key: 'requestNo',
-    },{
-      heading :'User Id',
+    }, {
+      heading: 'User Id',
       key: 'userId',
-    },{
-      heading :'Username',
+    }, {
+      heading: 'Username',
       key: 'userName',
-    },{
-      heading :'Role',
+    }, {
+      heading: 'Role',
       key: 'role',
-    },{
-      heading :'Expiry Date',
+    }, {
+      heading: 'Expiry Date',
       key: 'expiryDate',
-    },{
-      heading :'Status',
+    }, {
+      heading: 'Status',
       key: 'status',
-    },{
-      heading :'Request Type',
+    }, {
+      heading: 'Request Type',
       key: 'requestType',
-    },{
-      heading :'Requested Date',
+    }, {
+      heading: 'Requested Date',
       key: 'requestedDate',
-    }      
-    ,{
-      heading :'Maker Id',
+    }, {
+      heading: 'Maker Id',
       key: 'makerId',
-    },{
-      heading :'Request Status',
+    }, {
+      heading: 'Request Status',
       key: 'requestStatus',
-    } 
+    }
   ];
   roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
 
@@ -111,18 +110,18 @@ export class PendingRequestsComponent implements OnInit {
 
   private fetchPRRoles() {
     this.qnbPrService
-    .getPendingRequestRoles()
-    .subscribe(data => {
-      this.roles = data;
-    });
+      .getPendingRequestRoles()
+      .subscribe(data => {
+        this.roles = data;
+      });
   }
 
   private fetchPRUsers() {
     this.qnbPrService
-    .getPendingRequestUsers()
-    .subscribe(data => {
-      this.users = data;
-    });
+      .getPendingRequestUsers()
+      .subscribe(data => {
+        this.users = data;
+      });
   }
 
   openRoleDetails(data) {
