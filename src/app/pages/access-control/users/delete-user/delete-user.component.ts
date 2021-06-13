@@ -10,8 +10,8 @@ import { QnbUserService } from '../../../../services';
 export class DeleteUserComponent implements OnInit {
   user: any;
   comment: string;
-  constructor( private userService:QnbUserService, 
-    protected ref: NbDialogRef<DeleteUserComponent>, ) { }
+  constructor( private userService: QnbUserService,
+  protected ref: NbDialogRef<DeleteUserComponent>) { }
 
   ngOnInit(): void {
   }
@@ -22,9 +22,9 @@ export class DeleteUserComponent implements OnInit {
     const data = {
       userId: this.user,
       comment: this.comment,
-    }
+    };
     this.userService.deleteUser(data).subscribe(res => {
-    })
+    });
   }
 
 }

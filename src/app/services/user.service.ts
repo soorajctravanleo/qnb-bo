@@ -73,7 +73,7 @@ export class QnbUserService {
 
   deleteUser(id) {
     return this.http.post('/usrMngmt/users/terminate', id);
-  } 
+  }
 
   editUser(data) {
     return this.http.post('/usrMngmt/users/modify', data);

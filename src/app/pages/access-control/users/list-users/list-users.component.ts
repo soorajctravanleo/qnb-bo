@@ -55,11 +55,11 @@ export class ListUsersComponent implements OnInit {
     return this.qnbRoleService.getRoleById(id);
   }
 
-  onEditUserStatus(id: any, status:any) {
+  onEditUserStatus(id: any, status: any) {
 
     this.dialogService
     .open(ChangeUserStatusComponent, {
-      context: { user: {userId: id, action:status} },
+      context: { user: {userId: id, action: status} },
     });
   }
 

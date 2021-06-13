@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MmockRole } from '../models/backend'
+import { MmockRole } from '../models/backend';
 import { MOCK_ROLES } from '../mock';
 import { MockResponse } from '../types/backend';
 

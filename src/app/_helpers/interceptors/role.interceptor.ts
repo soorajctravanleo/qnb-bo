@@ -55,9 +55,9 @@ export class QnbRoleInterceptor implements HttpInterceptor {
           outcome = this.mockRoleService.searchRole(searchTerm);
         }
       }
-      if (method==='POST') {
+      if (method === 'POST') {
         if (url.endsWith(GET_ROLE)) {
-          outcome = this.mockRoleService.addRole(body)          
+          outcome = this.mockRoleService.addRole(body);
         }
       }
     }

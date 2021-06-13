@@ -29,6 +29,6 @@ export class MmockRole {
     public unit: string,
     public description: string,
     public type: string,
-    public access_to:any= [],
+    public access_to: any= [],
   ) { }
 }
