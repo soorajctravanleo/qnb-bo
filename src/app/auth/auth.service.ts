@@ -39,8 +39,8 @@ export class QnbAuthService {
       })
       .pipe(
         mergeMap(data => {
-          const { id, access_token } = data as LoginResponse;
-          this.currentAccount = new QnbAccount(id, 'sysadmin', access_token, 'System', 'admin');
+          const { access_token } = data as LoginResponse;
+          this.currentAccount = new QnbAccount(1, 'sysadmin', access_token, 'System', 'admin');
           this.setAuthKey(access_token);
           return of(this.currentAccount);
         }),
@@ -50,15 +50,21 @@ export class QnbAuthService {
   authenticateToken() {
     const tokenFromStorage = this.cookieService.get(this.AUTH_KEY_KEY);
 
-    return this.http
-      .post(API.AUTHENTICATE, { token: tokenFromStorage })
-      .pipe(
-        mergeMap(data => {
-          const { id, access_token } = data as LoginResponse;
-          this.currentAccount = new QnbAccount(id, 'sysadmin', access_token, 'System', 'admin');
-          return of(true);
-        }),
-      );
+    // return this.http
+    //   .post(API.AUTHENTICATE, { token: tokenFromStorage })
+    //   .pipe(
+    //     mergeMap(data => {
+    //       const { access_token } = data as LoginResponse;
+    //       this.currentAccount = new QnbAccount(1, 'sysadmin', access_token, 'System', 'admin');
+    //       return of(true);
+    //     }),
+    //   );
+
+    if (tokenFromStorage) {
+      this.currentAccount = new QnbAccount(1, 'sysadmin', tokenFromStorage, 'System', 'admin');
+    }
+
+    return of(tokenFromStorage ? true : false);
   }
 
   logout() {

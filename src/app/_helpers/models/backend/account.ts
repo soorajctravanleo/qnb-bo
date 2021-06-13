@@ -4,7 +4,7 @@ export class MockAccount {
     public id: number,
     public username: string,
     public password: string,
-    public access_token: string,
+    public token: string,
     public firstName: string,
     public lastName: string,
   ) { }

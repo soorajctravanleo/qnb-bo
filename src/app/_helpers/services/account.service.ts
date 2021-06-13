@@ -46,7 +46,14 @@ export class MockAccountService {
   }
 
   private getAccountObject(account: MockAccount): LoginResponse {
-    const { id, username, access_token, firstName, lastName } = account;
-    return { id, username, access_token, 'System', 'Admin' };
+    const { token } = account;
+    return { 
+      jti: 'dummyjti',
+      access_token: token,  
+      refresh_token: 'dummytoken',
+      expires_in: 30000,
+      token_type: 'bearer',
+      scope: 'read write trust',
+    };
   }
 }
