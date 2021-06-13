@@ -42,7 +42,7 @@ export class QnbRoleService {
     //       }
     //     }),
     //   );
-    return this.http.get('/auth/appRoles') as Observable<QnbUserGroup[]>;
+    return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
   createRole(role: QnbUserGroup) {
     return this.http.post('/auth/userGroups', role);

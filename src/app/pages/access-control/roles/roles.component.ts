@@ -24,10 +24,10 @@ export class QnbRolesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fetchRoles();
+    this.fetchGroups();
   }
-  private fetchRoles() {
-    this.roleService.fetchRoles().subscribe((res) => {
+  private fetchGroups() {
+    this.roleService.fetchGroups().subscribe((res) => {
       this.elements = res;
       // console.log(this.elements);
     });
