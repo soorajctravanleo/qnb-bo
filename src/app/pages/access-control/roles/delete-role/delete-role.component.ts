@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-role.component.scss'],
 })
 export class DeleteRoleComponent implements OnInit {
-
+  groupCode: string;
+  groupId: string;
   constructor() { }
 
   ngOnInit(): void {

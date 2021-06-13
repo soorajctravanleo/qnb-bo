@@ -34,7 +34,12 @@ export class QnbRolesComponent implements OnInit {
   }
 
   open() {
-    const dialogRef = this.dialogService.open(CreateRoleComponent);
+    const dialogRef = this.dialogService.open(CreateRoleComponent).onClose
+      .subscribe(event => {
+        if (event?.refreshList) {
+          this.fetchGroups();
+        }
+      });;
   }
   onEditUser(data) {
     // console.log(data)
@@ -42,7 +47,10 @@ export class QnbRolesComponent implements OnInit {
       context: { user: data },
     });
   }
-  onDeleteRole() {
-    const dialogRef = this.dialogService.open(DeleteRoleComponent, {});
+  onDeleteRole(el) {
+    console.log(el);
+    const dialogRef = this.dialogService.open(DeleteRoleComponent, {
+      context: { groupCode: el.groupCode, groupId: el.groupId }
+    });
   }
 }
