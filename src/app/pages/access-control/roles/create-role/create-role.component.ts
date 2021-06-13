@@ -11,9 +11,9 @@ import { QnbUserGroup } from '../../../../services';
 })
 export class CreateRoleComponent implements OnInit {
   roleForm: FormGroup;
-  @Input() user;
+  @Input() userRoles;
+  private role = [];
   private index: number = 0;
-  userRoles: any;
   constructor(protected ref: NbDialogRef<CreateRoleComponent>,
     private roleService: QnbRoleService,
     private toastrService: NbToastrService) { }
@@ -39,11 +39,15 @@ export class CreateRoleComponent implements OnInit {
   }
 
   private prepareForm() {
+
     this.roleForm = new FormGroup({
       role: new FormControl(null, [Validators.required]),
       description: new FormControl(null, [Validators.required]),
       access_to: new FormControl([], [Validators.required]),
     });
+    if (this.userRoles) {
+      
+    }
   }
 
   reset() {
@@ -63,7 +67,7 @@ export class CreateRoleComponent implements OnInit {
       };
       this.roleService.createRole(formattedRole).subscribe(res => {
         this.showToast('top-right', 'success');
-        this.fetchRoles();
+        // this.fetchRoles();
         this.ref.close({ refreshList: true });
       });
     } else {

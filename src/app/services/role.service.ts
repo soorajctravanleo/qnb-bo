@@ -44,6 +44,9 @@ export class QnbRoleService {
     //   );
     return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
+  deleteRole(role_id: string) {
+    return this.http.post('/auth/userGroups/delete/' + role_id, {});
+  }
   createRole(role: QnbUserGroup) {
     return this.http.post('/auth/userGroups', role);
   }

@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <tr mdbTableCol *ngFor="let el of elements;let i = index">
-          <th class="px-1"><i class="icons fa fa-edit" (click)="onEditUser(el)"></i></th>
+          <th class="px-1"><i class="icons fa fa-edit" (click)="onEditRole(el)"></i></th>
           <th><i class="icons fa fa-trash-alt" (click)="onDeleteRole(el)"></i></th>
           <td>{{el.groupCode}}</td>
           <td>{{el.groupDefinition}}</td>
