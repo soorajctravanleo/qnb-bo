@@ -11,8 +11,8 @@ import { RequestRoleDetailsComponent } from './request-role-details/request-role
   styleUrls: ['./pending-requests.component.scss'],
 })
 export class PendingRequestsComponent implements OnInit {
-  key = "requestNo";
-  order = "asc";
+  key = 'requestNo';
+  order = 'asc';
   headElements: any = [
     {
       heading: 'Ref No.',

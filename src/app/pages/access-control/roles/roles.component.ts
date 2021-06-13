@@ -39,7 +39,7 @@ export class QnbRolesComponent implements OnInit {
         if (event?.refreshList) {
           this.fetchGroups();
         }
-      });;
+      });
   }
   onEditUser(data) {
     // console.log(data)
@@ -48,9 +48,8 @@ export class QnbRolesComponent implements OnInit {
     });
   }
   onDeleteRole(el) {
-    console.log(el);
     const dialogRef = this.dialogService.open(DeleteRoleComponent, {
-      context: { groupCode: el.groupCode, groupId: el.groupId }
+      context: { groupCode: el.groupCode, groupId: el.groupId },
     });
   }
 }
