@@ -16,11 +16,14 @@ export class QnbUnitInterceptor implements HttpInterceptor {
     const { url, params, method, headers } = req;
     let outcome: MockResponse;
 
-    if (params.has('outcome')) {
+    if (
+      params.has('outcome')
+      || params.has('ignoreMock')
+    ) {
       return next.handle(req);
     }
 
-    if (!headers.has('authorization')) {
+    if (!headers.has('Authorization')) {
       outcome = {
         errorType: 'unauthorized',
         errorMessage: 'You are not authorized.',
@@ -29,6 +32,22 @@ export class QnbUnitInterceptor implements HttpInterceptor {
       if (method === 'GET') {
         if (url.endsWith(API.GET_UNITS)) {
           outcome = this.mockUnitService.getUnits();
+        }
+
+        if (url.endsWith(API.GET_ACCOUNT_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getAccountTransactionDescs();
+        }
+
+        if (url.endsWith(API.GET_CHEQUES_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getChequesTransactionDescs();
+        }
+
+        if (url.endsWith(API.GET_CONTACT_BANK_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getContactBankTransactionDescs();
+        }
+
+        if (url.endsWith(API.GET_IPO_TRANSACTION_DESCS)) {
+          outcome = this.mockUnitService.getIPOTransactionDescs();
         }
       }
     }

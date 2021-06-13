@@ -20,6 +20,12 @@ describe('QnbUsersComponent', () => {
   });
 
   it('should create', () => {
+    if (fixture === undefined || component === undefined) {
+      fixture = TestBed.createComponent(QnbUsersComponent);
+      component = fixture.componentInstance;
+    }
+
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

@@ -1,0 +1,94 @@
+<nb-card size="giant">
+  <nb-card-body>
+    <table class="table">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <th>Transaction Name</th>
+          <td>{{ data.transactionName }}</td>
+        </tr>
+        <tr>
+          <th>Request Date</th>
+          <td>{{ data.requestDate }}</td>
+        </tr>
+        <tr>
+          <th>Country Name</th>
+          <td>{{data.unit}}</td>
+        </tr>
+        <tr>
+          <th>Bank Name</th>
+          <td>ADIB UK Limited</td>
+        </tr>
+        <tr>
+          <th>Branch</th>
+          <td>_</td>
+        </tr>
+        <tr>
+          <th>City</th>
+          <td>_</td>
+        </tr>
+        <tr>
+          <th>Beneficiary Name</th>
+          <td>Francis</td>
+        </tr>
+        <tr>
+          <th>Beneficiary Account Number/IBAN Name</th>
+          <td>GB59BARC20740950590924 / -</td>
+        </tr>
+        <tr>
+          <th>Currency Of Beneficiary's Account</th>
+          <td>_</td>
+        </tr>
+        <tr>
+          <th>Intermediary Bank SWIFT Code</th>
+          <td>_</td>
+        </tr>
+        <tr>
+          <th>SWIFT Code</th>
+          <td>
+            <label style="font-weight: 600;">ABDI</label>
+            <input nbInput type="text" value="GB2LXXX">
+          </td>
+        </tr>
+        <tr>
+          <th>Routing</th>
+          <td>_</td>
+        </tr>
+        <tr>
+          <th>SORT/CHIPS</th>
+          <td>657657</td>
+        </tr>
+        <tr>
+          <th>Customer Name</th>
+          <td>{{ data.customerName }}</td>
+        </tr>
+        <tr>
+          <th>Customer Mobile Number</th>
+          <td>789456456</td>
+        </tr>
+        <tr>
+          <th>Customer National ID</th>
+          <td>D007227</td>
+        </tr>
+        <tr>
+          <th>Rejection Remarks</th>
+          <td>
+            <input nbInput type="text">
+          </td>
+        </tr>
+        <tr>
+          <th>Channel Name</th>
+          <td>{{ data.channel }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="buttons-group">
+      <button nbButton hero status="danger" style="background-color: #FE5578;">Reject</button>
+      <button nbButton hero status="normal" >Back</button>
+
+      <button type="submit" nbButton hero status="success">Accept</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

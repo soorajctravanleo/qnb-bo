@@ -6,3 +6,6 @@ export * from './timezone';
 export * from './country';
 export * from './entity';
 export * from './unit';
+export * from './pending_approvals';
+export * from './pending-request';
+export * from './beneficiary-authorization';

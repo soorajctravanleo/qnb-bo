@@ -1,7 +1,7 @@
 <nb-card>
   <nb-card-body>
     <nb-tabset>
-      <nb-tab tabTitle="User" badgeText="2" badgeStatus="danger">
+      <nb-tab tabTitle="User" badgeText="{{users.length}}" badgeStatus="danger">
         <button nbButton class="m-3" style="float:right">
           <nb-icon icon="printer-outline"></nb-icon> Export
         </button>
@@ -39,7 +39,7 @@
           <button type="submit" nbButton hero status="success">Approve</button>
         </div> -->
       </nb-tab>
-      <nb-tab tabTitle="Role" badgeText="2" badgeStatus="danger">
+      <nb-tab tabTitle="Role" badgeText="{{roles.length}}" badgeStatus="danger">
         <button nbButton class="m-3" style="float:right">
           <nb-icon icon="printer-outline"></nb-icon> Export
         </button>

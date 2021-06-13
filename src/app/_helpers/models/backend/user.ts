@@ -5,19 +5,21 @@ export enum MockUserTypeId {
 
 export interface MockUserProfileData {
   userId: number;
-  nickName: string;
-  firstName: string;
-  lastName: string;
-  dob: string;
-  userType: MockUserTypeId;
-  entity: number;
-  role: number;
-  mobile: string;
-  email: string;
-  expiryDate: string;
-  timezone: number;
-  language: number;
-  sendPasswordOnEmail: boolean;
+  name?: string;
+  nickName?: string;
+  firstName?: string;
+  lastName?: string;
+  dob?: string;
+  userType?: MockUserTypeId;
+  entity?: number;
+  role: any;
+  mobile?: string;
+  email?: string;
+  expiryDate?: string;
+  expiry_Date?: any;
+  timezone?: number;
+  language?: number;
+  sendPasswordOnEmail?: boolean;
 }
 
 export interface MockUserAdditionalInfoData {

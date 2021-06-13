@@ -9,13 +9,15 @@ import { ChangeUserStatusComponent } from '../change-user-status/change-user-sta
 
 interface UserTableRow {
   userId: string;
+  userType: string;
   nickName: string;
   name: string;
   email: string;
-  phone: string;
+  ttl: string;
+  mobile: string;
   dob: string;
-  role: string;
-  expiryDate: string;
+  role: any;
+  expiryDate: any;
 }
 
 @Component({
@@ -55,9 +57,23 @@ export class ListUsersComponent implements OnInit {
 
   onEditUserStatus(id: any) {
 
-    this.dialogService.open(ChangeUserStatusComponent, {
+    this.dialogService
+    .open(ChangeUserStatusComponent, {
       context: { user: id },
     });
+  }
+
+  onEditUser(data) {
+    this.dialogService
+      .open(CreateUserComponent, {
+        context: { user: data },
+      })
+      .onClose
+      .subscribe(event => {
+        if (event?.refreshList) {
+          this.fetchUsers();
+        }
+      });
   }
 
   onDeleteUser(id: number) {
@@ -74,15 +90,19 @@ export class ListUsersComponent implements OnInit {
         this.users = [];
 
         for (const user of users) {
+          const parts = user.expiryDate.split('-');
+          user.expiryDate = parts[1].concat( '-' + parts[0] + '-' , parts[2] );
           this.users.push({
             userId: user.userId,
+            userType: user.userType,
             dob: user.dob,
             email: user.emailId,
+            ttl: '',
             expiryDate: user.expiryDate,
             name: `${user.firstName} ${user.lastName}`.trim(),
             nickName: user.nickName,
-            phone: user.mobileNumber,
-            role: user.groups.join(', '),
+            mobile: user.mobileNumber,
+            role: user.groups,
           });
         }
       });

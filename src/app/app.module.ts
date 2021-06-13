@@ -12,12 +12,14 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NbDatepickerModule, NbMenuModule, NbSidebarModule, NbTimepickerModule } from '@nebular/theme';
+import { NbDatepickerModule, NbMenuModule, NbSidebarModule, NbTimepickerModule, NbDialogModule } from '@nebular/theme';
 
 import { CookieService } from 'ngx-cookie-service';
 
 import { QnbAuthModule } from './auth/auth.module';
 import { INTERCEPTORS } from './app-interceptors';
+import { PipeModule } from './_helpers/pipe/pipe.module';
+
 
 const SERVICES: Provider[] = [
   CookieService,
@@ -38,8 +40,8 @@ const SERVICES: Provider[] = [
     NbDatepickerModule.forRoot(),
     NbTimepickerModule.forRoot(),
     QnbAuthModule,
-    NbTimepickerModule.forRoot(),
-    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
+    PipeModule.forRoot(),
   ],
   providers: [
     ...SERVICES,

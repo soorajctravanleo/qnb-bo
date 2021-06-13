@@ -18,9 +18,9 @@
       </thead>
       <tbody>
         <tr mdbTableCol *ngFor="let user of users">
-          <th class="px-1"><i class="icons fa fa-edit" (click)="onEditUser(user.id)"></i></th>
-          <th><i class="icons fa fa-trash-alt" (click)="onDeleteUser(user.id)"></i></th>
-          <th class="px-1"><i class="icons fa fa-ban" (click)="onEditUserStatus(user.id)"></i></th>
+          <th class="px-1"><i class="icons fa fa-edit" (click)="onEditUser(user)"></i></th>
+          <th><i class="icons fa fa-trash-alt" (click)="onDeleteUser(user.userId)"></i></th>
+          <th class="px-1"><i class="icons fa fa-ban" (click)="onEditUserStatus(user.userId)"></i></th>
           <th scope="row">{{ user.userId }}</th>
           <td>{{ user.nickName }}</td>
           <!-- <td>{{ user.name }}</td>
@@ -28,7 +28,7 @@
           <td>{{ user.phone }}</td>
           <td style="white-space: nowrap;">{{ user.dob }}</td> -->
           <td>{{ user.role }}</td>
-          <td>Maker</td>
+          <td>{{user.userType}}</td>
           <td style="white-space: nowrap;">{{ user.expiryDate }}</td>
           <td>ENABLED</td>
         </tr>

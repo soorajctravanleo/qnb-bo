@@ -8,11 +8,8 @@ import { MockRole } from '../_helpers/models/backend';
 
 export interface QnbUserGroup {
   groupCode: string;
-  groupDefinition: string;
-  createdBy: string;
-  createdTime: string;
-  lastModifiedBy: string;
-  lastModifiedTime: string;
+  groupDescription: string;
+  roles: [];
 }
 
 @Injectable({
@@ -34,9 +31,22 @@ export class QnbRoleService {
     //       }
     //     }),
     //   );
+    return this.http.get('/auth/appRoles') as Observable<QnbUserGroup[]>;
+  }
+  fetchGroups() {
+    // return (this.http.get(GET_ROLES) as Observable<MockRole[]>)
+    //   .pipe(
+    //     tap(roles => {
+    //       for (const role of roles) {
+    //         this.updateRoleList(role);
+    //       }
+    //     }),
+    //   );
     return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
-
+  createRole(role: QnbUserGroup) {
+    return this.http.post('/auth/userGroups', role);
+  }
   fetchRole(id: number) {
     const params = new HttpParams().append('id', id.toString());
     return (this.http.get(GET_ROLE, { params }) as Observable<MockRole>)
