@@ -94,7 +94,7 @@ export class PendingApprovalsComponent implements OnInit {
       .subscribe(event => {
         if (event?.refreshList) {
 
-        },
+        }
       });
 
   }
