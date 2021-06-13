@@ -6,7 +6,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 import { QnbAuthService } from '../auth.service';
 
@@ -24,11 +24,13 @@ export class CanActivateLogin implements CanActivate {
     return this.qnbAuthService
       .authenticateToken()
       .pipe(
-        tap(isAuthenticated => {
+        map(isAuthenticated => {
           if (isAuthenticated) {
             this.router.navigateByUrl('/pages');
-            return of(false);
+            return false;
           }
+
+          return true;
         }),
         catchError(_ => {
           return of(true);
