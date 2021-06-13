@@ -24,6 +24,7 @@ export class QnbAuthService {
   ) { }
 
   login(username: string, password: string) {
+    // return this.http.post('/auth/token', { username, password });
     return this.http
       .post(API.LOGIN, { username, password })
       .pipe(

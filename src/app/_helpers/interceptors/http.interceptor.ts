@@ -23,14 +23,12 @@ export class QnbHttpInterceptor implements HttpInterceptor {
     const handleRoute = () => {
       if (params.has('outcome')) {
         const outcome = JSON.parse(params.get('outcome')) as MockResponse;
-
         if (outcome.res !== undefined) {
           return generateHttpResponse(outcome.res);
         }
 
         return generateError(outcome.errorType, outcome.errorMessage);
       }
-
       req = req.clone({
         url: this.urlService.getHostURL() + url,
       });

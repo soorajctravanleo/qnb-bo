@@ -22,7 +22,6 @@ export class QnbLoginInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url, method, body } = req;
     let outcome: MockResponse;
-
     if (method === 'POST') {
       if (url.endsWith(LOGIN)) {
         const { username, password } = body;

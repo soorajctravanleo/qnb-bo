@@ -41,18 +41,18 @@
                   <div class="form-group">
                     <label for="">Role*</label>
                     <nb-select fullWidth multiple style="width: 100%;" formControlName="role">
-                      <nb-option *ngFor="let role of roles" [value]="role.groupCode">
+                      <nb-option *ngFor="let role of roles" [value]="role.groupId">
                         {{ role.groupCode }}
                       </nb-option>
                     </nb-select>
                   </div>
                   <div class="form-group">
                     <label for="">Expiry Date*</label>
-                    <input nbInput fullWidth [nbDatepicker]="formpicker"  [formControlName]="'expiry_Date'">
+                    <input nbInput fullWidth [nbDatepicker]="formpicker"  [formControlName]="'expiryDate'">
                     <nb-datepicker #formpicker></nb-datepicker>
-                    <span *ngIf="!signupForm.get('expiry_Date').valid && signupForm.get('expiry_Date').touched"
+                    <span *ngIf="!signupForm.get('expiryDate').valid && signupForm.get('expiryDate').touched"
                       class="help-block">
-                      <span *ngIf="signupForm.get('expiry_Date').errors['required']">This field is
+                      <span *ngIf="signupForm.get('expiryDate').errors['required']">This field is
                         required!</span>
                     </span>
                   </div>

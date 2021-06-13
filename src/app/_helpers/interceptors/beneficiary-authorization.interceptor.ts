@@ -15,7 +15,6 @@ export class QnbBeneficiaryAuthorizationInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url, params, method, headers } = req;
     let outcome: MockResponse;
-
     if (params.has('outcome')) {
       return next.handle(req);
     }

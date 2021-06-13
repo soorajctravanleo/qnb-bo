@@ -19,29 +19,30 @@ import {
 
 export interface QnbUser {
   userId: string;
-  name: string;
+  // name: string;
   firstName: string;
-  lastName: string;
+  lastName?: string;
   dob: string;
-  mobileNumber: string;
-  userType: string;
+  // mobileNumber: string;
+  // userType: string;
   userStatus?: string;
-  bankSubType: string;
-  corporateId: string;
-  entity: string;
+  // bankSubType: string;
+  // corporateId: string;
+  // entity: string;
   expiryDate: string;
-  timeZoneId: string;
-  language: string;
-  emailId: string;
-  sendPwdOnEmail: true;
-  userBranchCode: string;
-  authTypePrimary: string;
-  authTypeSecondary: string;
-  optAuthTypePrimary: string;
-  optAuthTypeSecondary: string;
-  authTypeAttribute: string;
-  // macId: string;
-  authApplyDayTimeBasedLogin: true;
+  comment: string;
+  // timeZoneId: string;
+  // language: string;
+  // emailId: string;
+  // sendPwdOnEmail: true;
+  // userBranchCode: string;
+  // authTypePrimary: string;
+  // authTypeSecondary: string;
+  // optAuthTypePrimary: string;
+  // optAuthTypeSecondary: string;
+  // authTypeAttribute: string;
+  macId: string;
+  // authApplyDayTimeBasedLogin: true;
   groups: string[];
 }
 
@@ -64,6 +65,18 @@ export class QnbUserService {
     //     }),
     //   );
     return this.http.get('/usrMngmt/users') as Observable<QnbUser[]>;
+  }
+
+  changeStatus( data ) {
+    return this.http.post('/usrMngmt/users/enableDisable', data);
+  }
+
+  deleteUser(id) {
+    return this.http.post('/usrMngmt/users/terminate', id);
+  } 
+
+  editUser(data) {
+    return this.http.post('/usrMngmt/users/modify', data);
   }
 
   // fetchUser(id: number) {

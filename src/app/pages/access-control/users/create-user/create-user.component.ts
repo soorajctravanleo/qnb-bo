@@ -102,43 +102,48 @@ export class CreateUserComponent implements OnInit {
   reset() { this.signupForm.reset( { role: [] } ); }
 
   onSubmit() {
+    console.log(this.signupForm.value)
     if (this.signupForm.valid) {
-      const { profile } = this.signupForm.value;
+      const profile  = this.signupForm.value;
+      console.log(profile)
       const formattedUser: QnbUser = {
         userId: profile.userId,
-        name: profile.name,
-        firstName: profile.firstName,
-        lastName: profile.lastName,
-        dob: this.getFormattedDate(profile.dob),
-        mobileNumber: profile.mobile,
-        userType: profile.userType,
-        // userStatus: 'OPEN',
-        bankSubType: 'SUB',
-        corporateId: 'CORP1',
-        entity: profile.entity,
+        firstName: profile.name,
+        // firstName: profile.firstName,
+        lastName: '',
+        dob: '12-1-1999',
+        // mobileNumber: profile.mobile,
+        // userType: profile.userType,
+        userStatus: profile.userStatus,
+        // bankSubType: 'SUB',
+        // corporateId: 'CORP1',
+        // entity: profile.entity,
         expiryDate: this.getFormattedDate(profile.expiryDate),
-        timeZoneId: profile.timezone,
-        language: profile.language,
-        emailId: profile.email,
-        sendPwdOnEmail: profile.sendPasswordOnEmail,
-        userBranchCode: '-',
-        authTypePrimary: 'LDAP',
-        authTypeSecondary: 'DATABASE',
-        optAuthTypePrimary: 'optAuthTypeP',
-        optAuthTypeSecondary: 'ptAuthTypeS',
-        authTypeAttribute: 'authTypeA',
-        // macId: additionalInfo.macId,
-        authApplyDayTimeBasedLogin: true,
+        // timeZoneId: profile.timezone,
+        // language: profile.language,
+        // emailId: profile.email,
+        // sendPwdOnEmail: profile.sendPasswordOnEmail,
+        // userBranchCode: '-',
+        // authTypePrimary: 'LDAP',
+        // authTypeSecondary: 'DATABASE',
+        // optAuthTypePrimary: 'optAuthTypeP',
+        // optAuthTypeSecondary: 'ptAuthTypeS',
+        // authTypeAttribute: 'authTypeA',
+        macId: 'id1',
+        // authApplyDayTimeBasedLogin: true,
+        comment: profile.ttl,
         groups: profile.role,
       };
 
       if (this.editMode) {
-        // this.qnbUserService
-        //   .editUser(this.user.id, this.signupForm.value)
-        //   .subscribe(res => {
-
-        //   });
+        this.qnbUserService
+          .editUser( this.signupForm.value)
+          .subscribe(res => {
+            this.showToast('top-right', 'success');
+            this.ref.close({ refreshList: true });
+          });
       } else {
+        console.log(formattedUser)
         this.qnbUserService
           .createUser(formattedUser)
           .subscribe(res => {
@@ -185,19 +190,20 @@ export class CreateUserComponent implements OnInit {
     this.signupForm = new FormGroup({
       'userId': new FormControl(null, [Validators.required, Validators.minLength(5)]),
       'name': new FormControl(null, [Validators.required]),
-      'dob': new FormControl(null, [Validators.required]),
-      'userType': new FormControl(null, [Validators.required]),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'mobile': new FormControl(null, [Validators.required]),
+      // 'dob': new FormControl(null, [Validators.required]),
+      'userStatus': new FormControl('ENABLED', [Validators.required]),
+      // 'email': new FormControl(null, [Validators.required, Validators.email]),
+      // 'mobile': new FormControl(null, [Validators.required]),
       'expiryDate': new FormControl(null, [Validators.required]),
       'role': new FormControl([]),
-      'expiry_Date': new FormControl(null, [Validators.required]),
+      // 'expiry_Date': new FormControl(null, [Validators.required]),
       'ttl': new FormControl(null),
     });
 
     if (this.user) {
+      console.log(this.user)
       this.editMode = true;
-      this.user.expiry_Date = new Date(this.user.expiryDate);
+      // this.user.expiry_Date = new Date(this.user.expiryDate);
       this.signupForm.setValue(this.user);
 
       // <nb-select> element is not updating the view.

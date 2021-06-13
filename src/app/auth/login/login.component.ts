@@ -26,15 +26,17 @@ export class QnbLoginComponent {
       this.loginInProgress = true;
       this.hasError = false;
       const { username, password } = this.loginForm.value;
-
       this.qnbAuthService
         .login(username, password)
         .subscribe(
           res => {
+            console.log(res);
+            
             this.loginInProgress = false;
             this.router.navigateByUrl('/pages');
           },
           err => {
+            console.log(err)
             this.loginInProgress = false;
             this.hasError = true;
             this.errorMessage = err.error.message;

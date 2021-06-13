@@ -10,6 +10,7 @@ export interface MockUserProfileData {
   firstName?: string;
   lastName?: string;
   dob?: string;
+  userStatus?: string;
   userType?: MockUserTypeId;
   entity?: number;
   role: any;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QnbUserService } from '../../../../services';
 
 @Component({
   selector: 'qnb-delete-user',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteUserComponent implements OnInit {
   user: any;
-  constructor() { }
+  constructor( private userService:QnbUserService ) { }
 
   ngOnInit(): void {
+  }
+
+  delete() {
+    this.userService.deleteUser(this.user).subscribe(res => {
+      console.log(res)
+    })
   }
 
 }

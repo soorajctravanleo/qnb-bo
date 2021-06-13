@@ -25,8 +25,12 @@ export class QnbRoleService {
     private http: HttpClient,
   ) { }
 
-  fetchRoles() {
+  fetchMockRoles() {
     return (this.http.get(GET_ROLES) as Observable<MockRole[]>);
+  }
+
+  fetchRoles() {
+    // return (this.http.get(GET_ROLES) as Observable<MockRole[]>);
     //   .pipe(
     //     tap(roles => {
     //       for (const role of roles) {
@@ -34,7 +38,7 @@ export class QnbRoleService {
     //       }
     //     }),
     //   );
-    // return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
+    return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
 
   addRole( data ) {
