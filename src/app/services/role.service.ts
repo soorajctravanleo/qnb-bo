@@ -45,7 +45,6 @@ export class QnbRoleService {
     return this.http.get('/auth/appRoles') as Observable<QnbUserGroup[]>;
   }
   createRole(role: QnbUserGroup) {
-    console.log(role);
     return this.http.post('/auth/userGroups', role);
   }
   fetchRole(id: number) {

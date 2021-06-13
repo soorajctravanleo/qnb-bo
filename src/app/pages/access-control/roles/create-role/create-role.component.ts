@@ -59,7 +59,7 @@ export class CreateRoleComponent implements OnInit {
         groupCode: formValue.role,
         groupDescription: formValue.description,
         roles: formValue.access_to,
-      }
+      };
       this.roleService.createRole(formattedRole).subscribe(res => {
         this.showToast('top-right', 'success');
       });
