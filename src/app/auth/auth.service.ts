@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -24,13 +24,24 @@ export class QnbAuthService {
   ) { }
 
   login(username: string, password: string) {
+    // let body = new URLSearchParams();
+    const head = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', 'Basic cW5iX2NsaWVudF9pZDpzZWNyZXRfa2V5X2hramg0NEA2OQ==');
+
+    const body = new HttpParams()
+      .set('grant_type', 'password')
+      .set('username', username)
+      .set('password', password);
     return this.http
-      .post(API.LOGIN, { username, password })
+      .post(API.LOGIN, body, {
+        headers: head,
+      })
       .pipe(
         mergeMap(data => {
-          const { id, token, firstName, lastName } = data as LoginResponse;
-          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
-          this.setAuthKey(token);
+          const { access_token } = data as LoginResponse;
+          this.currentAccount = new QnbAccount(1, 'sysadmin', access_token, 'System', 'admin');
+          this.setAuthKey(access_token);
           return of(this.currentAccount);
         }),
       );
@@ -39,15 +50,21 @@ export class QnbAuthService {
   authenticateToken() {
     const tokenFromStorage = this.cookieService.get(this.AUTH_KEY_KEY);
 
-    return this.http
-      .post(API.AUTHENTICATE, { token: tokenFromStorage })
-      .pipe(
-        mergeMap(data => {
-          const { id, token, username, firstName, lastName } = data as LoginResponse;
-          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
-          return of(true);
-        }),
-      );
+    // return this.http
+    //   .post(API.AUTHENTICATE, { token: tokenFromStorage })
+    //   .pipe(
+    //     mergeMap(data => {
+    //       const { access_token } = data as LoginResponse;
+    //       this.currentAccount = new QnbAccount(1, 'sysadmin', access_token, 'System', 'admin');
+    //       return of(true);
+    //     }),
+    //   );
+
+    if (tokenFromStorage) {
+      this.currentAccount = new QnbAccount(1, 'sysadmin', tokenFromStorage, 'System', 'admin');
+    }
+
+    return of(tokenFromStorage ? true : false);
   }
 
   logout() {

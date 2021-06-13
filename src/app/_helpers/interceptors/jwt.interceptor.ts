@@ -31,7 +31,7 @@ export class QnbJwtInterceptor implements HttpInterceptor {
       if (token) {
         req = req.clone({
           setHeaders: {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
       }
