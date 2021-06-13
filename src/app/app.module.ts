@@ -18,6 +18,8 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { QnbAuthModule } from './auth/auth.module';
 import { INTERCEPTORS } from './app-interceptors';
+import { PipeModule } from './_helpers/pipe/pipe.module';
+
 
 const SERVICES: Provider[] = [
   CookieService,
@@ -39,6 +41,7 @@ const SERVICES: Provider[] = [
     NbTimepickerModule.forRoot(),
     QnbAuthModule,
     NbDialogModule.forRoot(),
+    PipeModule.forRoot(),
   ],
   providers: [
     ...SERVICES,

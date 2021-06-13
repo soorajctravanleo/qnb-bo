@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
-
 import { QnbAccessControlComponent } from './access-control.component';
 
 const routes: Route[] = [

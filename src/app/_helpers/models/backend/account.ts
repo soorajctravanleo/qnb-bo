@@ -7,7 +7,7 @@ export class MockAccount {
     public token: string,
     public firstName: string,
     public lastName: string,
-  ) {}
+  ) { }
 
   validateLogin(username: string, password: string) {
     return ((this.username === username) && (this.password === password));
