@@ -15,15 +15,13 @@ export class QnbRolesComponent implements OnInit {
   headElements = [
     'Role Name',
     'Role Desciption',
-    'Role Type',
-    'Unit',
     'Access To',
   ];
 
-  constructor (
+  constructor(
     private dialogService: NbDialogService,
     private roleService: QnbRoleService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.fetchRoles();

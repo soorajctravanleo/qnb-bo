@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {
   NbIconModule,
   NbButtonModule,
+  NbToastrModule,
   NbTreeGridModule,
   NbDialogModule,
   NbSelectModule,
@@ -27,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     NbIconModule,
     NbInputModule,
+    NbToastrModule.forRoot(),
     CommonModule,
     NbButtonModule,
     QnbRolesRoutingModule,

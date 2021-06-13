@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -24,10 +24,20 @@ export class QnbAuthService {
   ) { }
 
   login(username: string, password: string) {
+    //let body = new URLSearchParams();
+    const body = new HttpParams()
+    body.set('username', username);
+    body.set('password', password);
+    body.set('grant_type', 'password')
+    // let body = { grant_type: 'password' }
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic cW5iX2NsaWVudF9pZDpzZWNyZXRfa2V5X2hramg0NEA2OQ==', });
     return this.http
-      .post(API.LOGIN, { username, password })
+      .post(API.LOGIN, body, {
+        headers
+      })
       .pipe(
         mergeMap(data => {
+          console.log(data);
           const { id, token, firstName, lastName } = data as LoginResponse;
           this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
           this.setAuthKey(token);
