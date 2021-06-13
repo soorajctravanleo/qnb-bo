@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-
 import { QnbPendingRequestService } from '../../../services';
 import { MockPRRole, MockPRUser } from '../../../_helpers/models/backend';
-
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import { RequestRoleDetailsComponent } from './request-role-details/request-role-details.component';
 
@@ -13,6 +11,8 @@ import { RequestRoleDetailsComponent } from './request-role-details/request-role
   styleUrls: ['./pending-requests.component.scss'],
 })
 export class PendingRequestsComponent implements OnInit {
+  key = 'requestNo';
+  order = 'asc';
   headElements: any = [
     {
       heading: 'Ref No.',
