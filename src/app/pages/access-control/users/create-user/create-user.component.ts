@@ -102,15 +102,13 @@ export class CreateUserComponent implements OnInit {
   reset() { this.signupForm.reset( { role: [] } ); }
 
   onSubmit() {
-    console.log(this.signupForm.value)
     if (this.signupForm.valid) {
       const profile  = this.signupForm.value;
-      console.log(profile)
       const formattedUser: QnbUser = {
         userId: profile.userId,
         firstName: profile.name,
         // firstName: profile.firstName,
-        lastName: '',
+        lastName: 'Name',
         dob: '12-1-1999',
         // mobileNumber: profile.mobile,
         // userType: profile.userType,
@@ -137,13 +135,12 @@ export class CreateUserComponent implements OnInit {
 
       if (this.editMode) {
         this.qnbUserService
-          .editUser( this.signupForm.value)
+          .editUser( formattedUser)
           .subscribe(res => {
             this.showToast('top-right', 'success');
             this.ref.close({ refreshList: true });
           });
       } else {
-        console.log(formattedUser)
         this.qnbUserService
           .createUser(formattedUser)
           .subscribe(res => {
@@ -176,7 +173,7 @@ export class CreateUserComponent implements OnInit {
 
   private fetchRoles() {
     this.qnbRoleService
-      .fetchRoles()
+      .fetchGroups()
       .subscribe(data => this.roles = data);
   }
 
@@ -196,14 +193,13 @@ export class CreateUserComponent implements OnInit {
       // 'mobile': new FormControl(null, [Validators.required]),
       'expiryDate': new FormControl(null, [Validators.required]),
       'role': new FormControl([]),
-      // 'expiry_Date': new FormControl(null, [Validators.required]),
+      'expiry_Date': new FormControl('not mandatory', [Validators.required]),
       'ttl': new FormControl(null),
     });
 
     if (this.user) {
-      console.log(this.user)
       this.editMode = true;
-      // this.user.expiry_Date = new Date(this.user.expiryDate);
+      this.user.expiryDate = new Date(this.user.expiryDate);
       this.signupForm.setValue(this.user);
 
       // <nb-select> element is not updating the view.

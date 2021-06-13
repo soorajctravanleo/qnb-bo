@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
 import { Console } from 'console';
 import { QnbUserService } from '../../../../services';
 
@@ -9,15 +10,19 @@ import { QnbUserService } from '../../../../services';
 })
 export class ChangeUserStatusComponent implements OnInit {
   user: any;
-  constructor( private userService:QnbUserService ) { }
+  comment: string;
+    constructor( private userService:QnbUserService,
+      protected ref: NbDialogRef<ChangeUserStatusComponent>,  ) { }
 
   ngOnInit(): void {
   }
 
+  dismiss() { this.ref.close(); }
+
   change_status() {
     this.user.action == 'ENABLED' ? this.user.action = 'DISABLED' : this.user.action = 'ENABLED';
-    this.userService.changeStatus(this.user).subscribe(res=> {
-      console.log(res)
+    this.user.comments = this.comment;
+    this.userService.changeStatus(this.user).subscribe(res => {
     })
   }
 

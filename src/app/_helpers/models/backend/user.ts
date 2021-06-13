@@ -16,7 +16,7 @@ export interface MockUserProfileData {
   role: any;
   mobile?: string;
   email?: string;
-  expiryDate?: string;
+  expiryDate?: any;
   expiry_Date?: any;
   timezone?: number;
   language?: number;

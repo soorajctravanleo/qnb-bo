@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { QnbRoleService } from '../../../../services';
@@ -11,11 +11,12 @@ import { QnbUserGroup } from '../../../../services';
 })
 export class CreateRoleComponent implements OnInit {
   roleForm: FormGroup;
+  editMode = false;
   @Input() user;
   private index: number = 0;
   userRoles: any;
   constructor(protected ref: NbDialogRef<CreateRoleComponent>,
-    private roleService: QnbRoleService,
+    private roleService: QnbRoleService, private cdr: ChangeDetectorRef,
     private toastrService: NbToastrService) { }
 
   ngOnInit(): void {
