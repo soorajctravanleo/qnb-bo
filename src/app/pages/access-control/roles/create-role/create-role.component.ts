@@ -27,6 +27,7 @@ export class CreateRoleComponent implements OnInit {
     this.ref.close();
   }
   private fetchRoles() {
+
     this.roleService.fetchRoles().subscribe(res => {
       this.userRoles = res;
     });
@@ -62,6 +63,8 @@ export class CreateRoleComponent implements OnInit {
       };
       this.roleService.createRole(formattedRole).subscribe(res => {
         this.showToast('top-right', 'success');
+        this.fetchRoles();
+        this.ref.close({ refreshList: true });
       });
     } else {
       this.validateAllFormFields(this.roleForm);
@@ -81,7 +84,7 @@ export class CreateRoleComponent implements OnInit {
     this.index += 1;
     this.toastrService.show(
       status || 'Success',
-      `User Added`,
+      `Role Added`,
       { position, status });
   }
 }
