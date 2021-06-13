@@ -4,10 +4,10 @@ export class MockAccount {
     public id: number,
     public username: string,
     public password: string,
-    public token: string,
+    public access_token: string,
     public firstName: string,
     public lastName: string,
-  ) {}
+  ) { }
 
   validateLogin(username: string, password: string) {
     return ((this.username === username) && (this.password === password));

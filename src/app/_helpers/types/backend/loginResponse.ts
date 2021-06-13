@@ -1,7 +1,7 @@
 export interface LoginResponse {
   id: number;
   username: string;
-  token: string;
-  firstName: string;
-  lastName: string;
+  refresh_token: string;
+  access_token: string;
+  expiry: string;
 }

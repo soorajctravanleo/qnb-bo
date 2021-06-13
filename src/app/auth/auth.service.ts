@@ -25,22 +25,25 @@ export class QnbAuthService {
 
   login(username: string, password: string) {
     //let body = new URLSearchParams();
+    const head = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', 'Basic cW5iX2NsaWVudF9pZDpzZWNyZXRfa2V5X2hramg0NEA2OQ==');
+
     const body = new HttpParams()
-    body.set('username', username);
-    body.set('password', password);
-    body.set('grant_type', 'password')
-    // let body = { grant_type: 'password' }
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic cW5iX2NsaWVudF9pZDpzZWNyZXRfa2V5X2hramg0NEA2OQ==', });
+      .set('grant_type', 'password')
+      .set('username', username)
+      .set('password', password);
     return this.http
       .post(API.LOGIN, body, {
-        headers
+        headers: head
       })
       .pipe(
         mergeMap(data => {
           console.log(data);
-          const { id, token, firstName, lastName } = data as LoginResponse;
-          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
-          this.setAuthKey(token);
+          const { id, access_token } = data as LoginResponse;
+          console.log(access_token)
+          this.currentAccount = new QnbAccount(id, "sysadmin", access_token, "System", "admin");
+          this.setAuthKey(access_token);
           return of(this.currentAccount);
         }),
       );
@@ -53,8 +56,8 @@ export class QnbAuthService {
       .post(API.AUTHENTICATE, { token: tokenFromStorage })
       .pipe(
         mergeMap(data => {
-          const { id, token, username, firstName, lastName } = data as LoginResponse;
-          this.currentAccount = new QnbAccount(id, username, token, firstName, lastName);
+          const { id, access_token } = data as LoginResponse;
+          this.currentAccount = new QnbAccount(id, "sysadmin", access_token, "System", "admin");
           return of(true);
         }),
       );
