@@ -57,8 +57,12 @@ export class QnbRoleService {
       );
   }
 
-  deleteRole(id: number) {
-    return this.http.post('/auth/userGroups/delete', id);
+  deleteRole(groupId: string) {
+    return this.http.post('/auth/userGroups/delete/'+groupId, {});
+  }
+
+  updateRole(role: QnbUserGroup) {
+    return this.http.post('/auth/userGroups/modify', role);
   }
 
 

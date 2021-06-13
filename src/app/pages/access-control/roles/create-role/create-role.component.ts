@@ -11,12 +11,16 @@ import { QnbUserGroup } from '../../../../services';
 })
 export class CreateRoleComponent implements OnInit {
   roleForm: FormGroup;
+  editMode= false;
   @Input() user;
+ 
   private index: number = 0;
   userRoles: any;
+  
   constructor(protected ref: NbDialogRef<CreateRoleComponent>,
     private roleService: QnbRoleService,
-    private toastrService: NbToastrService) { }
+    private toastrService: NbToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.prepareForm();
@@ -61,15 +65,27 @@ export class CreateRoleComponent implements OnInit {
         groupDescription: formValue.description,
         roles: formValue.access_to,
       };
-      this.roleService.createRole(formattedRole).subscribe(res => {
-        this.showToast('top-right', 'success');
-        this.fetchRoles();
-        this.ref.close({ refreshList: true });
-      });
+      if(this.editMode){
+        // this.roleService.updateRole(this.user).subscribe( _ => {
+        //   this.showToast('top-right', 'success');
+        //   this.ref.close({ refreshList: true });
+        // })
+      } else {
+        this.roleService.createRole(formattedRole).subscribe(res => {
+          this.showToast('top-right', 'success');
+          this.fetchRoles();
+          this.ref.close({ refreshList: true });
+        });
+      }
+      
     } else {
       this.validateAllFormFields(this.roleForm);
     }
   }
+  onUpdate(){
+
+  }
+
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
