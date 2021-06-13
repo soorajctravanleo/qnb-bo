@@ -14,7 +14,9 @@ export class CreateRoleComponent implements OnInit {
   @Input() user;
   private index: number = 0;
   userRoles: any;
-  constructor(protected ref: NbDialogRef<CreateRoleComponent>, private roleService: QnbRoleService, private toastrService: NbToastrService) { }
+  constructor(protected ref: NbDialogRef<CreateRoleComponent>,
+    private roleService: QnbRoleService,
+    private toastrService: NbToastrService) { }
 
   ngOnInit(): void {
     this.prepareForm();
@@ -51,19 +53,18 @@ export class CreateRoleComponent implements OnInit {
   onSubmit() {
     if (this.roleForm.valid) {
       let formValue = this.roleForm.value;
-      console.log(formValue);
+
       // let fields = this.roleForm.values;
       const formattedRole: QnbUserGroup = {
         groupCode: formValue.role,
         groupDescription: formValue.description,
         roles: formValue.access_to,
       }
-      console.log(formattedRole);
       this.roleService.createRole(formattedRole).subscribe(res => {
         this.showToast('top-right', 'success');
-      })
+      });
     } else {
-      this.validateAllFormFields(this.roleForm)
+      this.validateAllFormFields(this.roleForm);
     }
   }
   validateAllFormFields(formGroup: FormGroup) {

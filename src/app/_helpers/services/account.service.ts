@@ -47,6 +47,6 @@ export class MockAccountService {
 
   private getAccountObject(account: MockAccount): LoginResponse {
     const { id, username, access_token, firstName, lastName } = account;
-    return { id, username, access_token, "System", "Admin" };
+    return { id, username, access_token, 'System', 'Admin' };
   }
 }
