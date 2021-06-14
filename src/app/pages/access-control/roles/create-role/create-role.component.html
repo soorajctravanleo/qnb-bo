@@ -1,6 +1,7 @@
 <form class="form-inline" [formGroup]="roleForm" (ngSubmit)="onSubmit()">
   <nb-card>
-    <nb-card-header>Update Role</nb-card-header>
+    <nb-card-header *ngIf="editMode">Edit Role</nb-card-header>
+    <nb-card-header *ngIf="!editMode">Create Role</nb-card-header>
     <nb-card-body>
       <div class="col-md-12">
         <div class="row new-row">
@@ -8,6 +9,8 @@
             <div class="form-group">
               <label for="">Role Name*</label>
               <input type="text" nbInput fullWidth placeholder="" formControlName="role">
+
+              <input type="hidden" nbInput fullWidth placeholder="" formControlName="group_id">
               <span *ngIf="!roleForm.get('role').valid && roleForm.get('role').touched" class="help-block">
                 <span *ngIf="roleForm.get('role').errors['required']">This field is
                   required!</span>

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { QnbRoleService } from '../../../../services';
 import { MockRoleData } from '../../../../_helpers/models/backend';
-import { QnbUserGroup } from '../../../../services';
+import { QnbUserGroup, QnbEditUserGroup } from '../../../../services';
 @Component({
   selector: 'ngx-create-role',
   templateUrl: './create-role.component.html',
@@ -12,9 +12,10 @@ import { QnbUserGroup } from '../../../../services';
 export class CreateRoleComponent implements OnInit {
   roleForm: FormGroup;
   editMode = false;
-  @Input() user;
+  userRoles = [];
+  @Input() role;
+
   private index: number = 0;
-  userRoles: any;
   constructor(protected ref: NbDialogRef<CreateRoleComponent>,
     private roleService: QnbRoleService, private cdr: ChangeDetectorRef,
     private toastrService: NbToastrService) { }
@@ -39,16 +40,22 @@ export class CreateRoleComponent implements OnInit {
   }
 
   private prepareForm() {
+
     this.roleForm = new FormGroup({
       role: new FormControl(null, [Validators.required]),
+      group_id: new FormControl(''),
       description: new FormControl(null, [Validators.required]),
       access_to: new FormControl([], [Validators.required]),
     });
 
-    if (this.user) {
+    if (this.role) {
       this.editMode = true;
-      this.roleForm.setValue(this.user);
-
+      this.roleForm.setValue({
+        role: this.role.groupCode,
+        description: this.role.groupDefinition,
+        access_to: this.role.roles,
+        group_id: this.role.groupId,
+      });
       // <nb-select> element is not updating the view.
       // Hence, run the change detection cycle once more.
       setTimeout(() => {
@@ -65,18 +72,33 @@ export class CreateRoleComponent implements OnInit {
   onSubmit() {
     if (this.roleForm.valid) {
       let formValue = this.roleForm.value;
-
       // let fields = this.roleForm.values;
-      const formattedRole: QnbUserGroup = {
-        groupCode: formValue.role,
-        groupDescription: formValue.description,
-        roles: formValue.access_to,
-      };
-      this.roleService.createRole(formattedRole).subscribe(res => {
-        this.showToast('top-right', 'success');
-        this.fetchRoles();
-        this.ref.close({ refreshList: true });
-      });
+
+
+      if (!this.editMode) {
+        const formattedRole: QnbUserGroup = {
+          groupCode: formValue.role,
+          groupDescription: formValue.description,
+          roles: formValue.access_to,
+        };
+        this.roleService.createRole(formattedRole).subscribe(res => {
+          this.showToast('top-right', 'success');
+          // this.fetchRoles();
+          this.ref.close({ refreshList: true });
+        });
+      } else {
+        const formattedRole: QnbEditUserGroup = {
+          groupId: formValue.group_id,
+          groupCode: formValue.role,
+          groupDescription: formValue.description,
+          roles: formValue.access_to,
+        };
+        this.roleService.updateRole(formattedRole).subscribe(res => {
+          this.showToast('top-right', 'success');
+          // this.fetchRoles();
+          this.ref.close({ refreshList: true });
+        });
+      }
     } else {
       this.validateAllFormFields(this.roleForm);
     }
