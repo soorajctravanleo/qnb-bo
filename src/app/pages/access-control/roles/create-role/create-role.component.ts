@@ -45,7 +45,6 @@ export class CreateRoleComponent implements OnInit {
 
     this.roleForm = new FormGroup({
       role: new FormControl(null, [Validators.required]),
-      group_id: new FormControl(''),
       description: new FormControl(null, [Validators.required]),
       access_to: new FormControl([], [Validators.required]),
       group_id: new FormControl(''),
@@ -98,7 +97,7 @@ export class CreateRoleComponent implements OnInit {
           groupDescription: formValue.description,
           roles: formValue.access_to,
         };
-        
+
         this.roleService.updateRole(formattedRole).subscribe(res => {
           this.showToast('top-right', 'success');
           // this.fetchRoles();
