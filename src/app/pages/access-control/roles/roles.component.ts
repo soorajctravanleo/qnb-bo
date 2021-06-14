@@ -15,28 +15,31 @@ export class QnbRolesComponent implements OnInit {
   headElements = [
     'Role Name',
     'Role Desciption',
-    'Role Type',
-    'Unit',
     'Access To',
   ];
 
-  constructor (
+  constructor(
     private dialogService: NbDialogService,
     private roleService: QnbRoleService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.fetchRoles();
+    this.fetchGroups();
   }
-  private fetchRoles() {
-    this.roleService.fetchRoles().subscribe((res) => {
+  private fetchGroups() {
+    this.roleService.fetchGroups().subscribe((res) => {
       this.elements = res;
       // console.log(this.elements);
     });
   }
 
   open() {
-    const dialogRef = this.dialogService.open(CreateRoleComponent);
+    const dialogRef = this.dialogService.open(CreateRoleComponent).onClose
+      .subscribe(event => {
+        if (event?.refreshList) {
+          this.fetchGroups();
+        }
+      });
   }
   onEditUser(data) {
     // console.log(data)
@@ -44,7 +47,9 @@ export class QnbRolesComponent implements OnInit {
       context: { user: data },
     });
   }
-  onDeleteRole() {
-    const dialogRef = this.dialogService.open(DeleteRoleComponent, {});
+  onDeleteRole(el) {
+    const dialogRef = this.dialogService.open(DeleteRoleComponent, {
+      context: { groupCode: el.groupCode, groupId: el.groupId },
+    });
   }
 }

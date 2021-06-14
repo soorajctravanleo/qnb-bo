@@ -25,4 +25,4 @@ import { PipeModule } from '../../../_helpers/pipe/pipe.module';
     PipeModule.forRoot(),
   ],
 })
-export class PendingRequestsModule {}
+export class PendingRequestsModule { }

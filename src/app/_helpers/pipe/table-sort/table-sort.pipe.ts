@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import * as moment from "moment";
 @Pipe({
-  name: "tableSort",
+  name: 'tableSort',
   pure: false,
 })
 export class TableSortPipe implements PipeTransform {
