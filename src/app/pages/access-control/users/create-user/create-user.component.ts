@@ -40,9 +40,6 @@ import {
 })
 export class CreateUserComponent implements OnInit {
   signupForm: FormGroup;
-  // userTypes = ['contract', 'permanent'];
-  // languages = ['Arabic', 'English', 'Spanish', 'Hindi'];
-  // roles = ['Viewer', 'Admin', 'System'];
   submitted = false;
   private index: number = 0;
 
@@ -107,28 +104,11 @@ export class CreateUserComponent implements OnInit {
       const formattedUser: QnbUser = {
         userId: profile.userId,
         firstName: profile.name,
-        // firstName: profile.firstName,
         lastName: 'Name',
         dob: '12-1-1999',
-        // mobileNumber: profile.mobile,
-        // userType: profile.userType,
         userStatus: profile.userStatus,
-        // bankSubType: 'SUB',
-        // corporateId: 'CORP1',
-        // entity: profile.entity,
         expiryDate: this.getFormattedDate(profile.expiryDate),
-        // timeZoneId: profile.timezone,
-        // language: profile.language,
-        // emailId: profile.email,
-        // sendPwdOnEmail: profile.sendPasswordOnEmail,
-        // userBranchCode: '-',
-        // authTypePrimary: 'LDAP',
-        // authTypeSecondary: 'DATABASE',
-        // optAuthTypePrimary: 'optAuthTypeP',
-        // optAuthTypeSecondary: 'ptAuthTypeS',
-        // authTypeAttribute: 'authTypeA',
         macId: 'id1',
-        // authApplyDayTimeBasedLogin: true,
         comment: profile.ttl,
         groups: profile.role,
       };
@@ -187,12 +167,10 @@ export class CreateUserComponent implements OnInit {
     this.signupForm = new FormGroup({
       'userId': new FormControl(null, [Validators.required, Validators.minLength(5)]),
       'name': new FormControl(null, [Validators.required]),
-      // 'dob': new FormControl(null, [Validators.required]),
       'userStatus': new FormControl('ENABLED', [Validators.required]),
-      // 'email': new FormControl(null, [Validators.required, Validators.email]),
-      // 'mobile': new FormControl(null, [Validators.required]),
       'expiryDate': new FormControl(null, [Validators.required]),
       'role': new FormControl([]),
+      't_role': new FormControl([]),
       'expiry_Date': new FormControl('not mandatory', [Validators.required]),
       'ttl': new FormControl(null),
     });
