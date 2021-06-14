@@ -61,7 +61,6 @@ export class QnbRoleService {
     return this.http.post('/auth/userGroups', role);
   }
   updateRole(role: QnbEditUserGroup) {
-    console.log(role);
     return this.http.post('/auth/userGroups/modify', role);
   }
   fetchRole(id: number) {
