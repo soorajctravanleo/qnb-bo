@@ -10,6 +10,7 @@ export interface QnbUserGroup {
   groupCode: string;
   groupDescription: string;
   roles: [];
+  groupId?: string;
 }
 
 @Injectable({
@@ -22,8 +23,12 @@ export class QnbRoleService {
     private http: HttpClient,
   ) { }
 
+  fetchMockRoles() {
+    return (this.http.get(GET_ROLES) as Observable<MockRole[]>);
+  }
+
   fetchRoles() {
-    // return (this.http.get(GET_ROLES) as Observable<MockRole[]>)
+    // return (this.http.get(GET_ROLES) as Observable<MockRole[]>);
     //   .pipe(
     //     tap(roles => {
     //       for (const role of roles) {
@@ -44,11 +49,15 @@ export class QnbRoleService {
     //   );
     return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
-
+  deleteRole(role_id: string) {
+    return this.http.post('/auth/userGroups/delete/' + role_id, {});
+  }
   createRole(role: QnbUserGroup) {
     return this.http.post('/auth/userGroups', role);
   }
-
+  updateRole(role: QnbUserGroup) {
+    return this.http.post('/auth/userGroups/modify', role);
+  }
   fetchRole(id: number) {
     const params = new HttpParams().append('id', id.toString());
     return (this.http.get(GET_ROLE, { params }) as Observable<MockRole>)
@@ -56,15 +65,6 @@ export class QnbRoleService {
         tap(role => this.updateRoleList(role)),
       );
   }
-
-  deleteRole(groupId: string) {
-    return this.http.post('/auth/userGroups/delete/'+groupId, {});
-  }
-
-  updateRole(role: QnbUserGroup) {
-    return this.http.post('/auth/userGroups/modify', role);
-  }
-
 
   getRoleById(id: number): Observable<MockRole> {
     const role = this.roles.find(rl => rl.id === id);
@@ -87,5 +87,4 @@ export class QnbRoleService {
       }
     }
   }
-
 }
