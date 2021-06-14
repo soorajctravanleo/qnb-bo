@@ -28,6 +28,6 @@ export const MOCK_PENDING_REQEUST_ROLES: MockPRRole[] = [
 ];
 
 export const MOCK_PENDING_REQEUST_USERS: MockPRUser[] = [
-  new MockPRUser('qb12489912', '131asp', 'Mahesh', 'Maker', '29/12/2020', 'Enabled', 'ADD', '29/12/2020', 'UD1001', 'PENDING'),
-  new MockPRUser('qb12489912', '131asp', 'Francis', 'Maker', '29/12/2020', 'Enabled', 'MODIFY', '29/12/2020', 'UD1001', 'RETURNED'),
+  new MockPRUser('qb12489912', '131asp', 'Mahesh', 'Maker', '29/12/2020', 'Enabled', 'ADD', '30/12/2020', 'UD1001', 'PENDING'),
+  new MockPRUser('qb12489912', '131asp', 'Francis', 'Maker', '23/12/2020', 'Enabled', 'MODIFY', '29/12/2020', 'UD1001', 'RETURNED'),
 ];

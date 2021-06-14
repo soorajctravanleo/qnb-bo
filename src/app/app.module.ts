@@ -12,7 +12,13 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NbDatepickerModule, NbMenuModule, NbSidebarModule, NbTimepickerModule, NbDialogModule } from '@nebular/theme';
+import {
+  NbDatepickerModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbTimepickerModule,
+  NbDialogModule,
+} from '@nebular/theme';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -20,10 +26,7 @@ import { QnbAuthModule } from './auth/auth.module';
 import { INTERCEPTORS } from './app-interceptors';
 import { PipeModule } from './_helpers/pipe/pipe.module';
 
-
-const SERVICES: Provider[] = [
-  CookieService,
-];
+const SERVICES: Provider[] = [CookieService];
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,11 +46,7 @@ const SERVICES: Provider[] = [
     NbDialogModule.forRoot(),
     PipeModule.forRoot(),
   ],
-  providers: [
-    ...SERVICES,
-    ...INTERCEPTORS,
-  ],
+  providers: [...SERVICES, ...INTERCEPTORS],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

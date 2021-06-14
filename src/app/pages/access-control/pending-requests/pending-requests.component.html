@@ -15,16 +15,14 @@
               <th
                 *ngFor="let head of headElements"
                 scope="col"
-                (click)="
-                  key = head.key; order = order === 'desc' ? 'asc' : 'desc'
-                "
+                (click)="filterChange(head)"
               >
                 {{ head.heading }} <i class="fas fa-sort"></i>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr mdbTableCol *ngFor="let user of users | tableSort: key:order">
+            <tr mdbTableCol *ngFor="let user of users | tableSort: filterObj">
               <th scope="row" (click)="openDetails(user)">
                 {{ user.requestNo }}
               </th>

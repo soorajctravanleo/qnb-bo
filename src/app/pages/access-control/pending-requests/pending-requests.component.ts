@@ -1,53 +1,87 @@
-import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { Component, OnInit } from "@angular/core";
+import { NbDialogService } from "@nebular/theme";
 
-import { QnbPendingRequestService } from '../../../services';
-import { MockPRRole, MockPRUser } from '../../../_helpers/models/backend';
+import { QnbPendingRequestService } from "../../../services";
+import { MockPRRole, MockPRUser } from "../../../_helpers/models/backend";
 
-import { RequestDetailsComponent } from './request-details/request-details.component';
-import { RequestRoleDetailsComponent } from './request-role-details/request-role-details.component';
+import { RequestDetailsComponent } from "./request-details/request-details.component";
+import { RequestRoleDetailsComponent } from "./request-role-details/request-role-details.component";
 
 @Component({
-  selector: 'qnb-pending-requests',
-  templateUrl: './pending-requests.component.html',
-  styleUrls: ['./pending-requests.component.scss'],
+  selector: "qnb-pending-requests",
+  templateUrl: "./pending-requests.component.html",
+  styleUrls: ["./pending-requests.component.scss"],
 })
 export class PendingRequestsComponent implements OnInit {
+  public filterObj: any = {
+    key: "requestNo",
+    type: "string",
+    filter: "asc",
+  };
   headElements: any = [
     {
-      heading :'Ref No.',
-      key: 'requestNo',
-    },{
-      heading :'User Id',
-      key: 'userId',
-    },{
-      heading :'Username',
-      key: 'userName',
-    },{
-      heading :'Role',
-      key: 'role',
-    },{
-      heading :'Expiry Date',
-      key: 'expiryDate',
-    },{
-      heading :'Status',
-      key: 'status',
-    },{
-      heading :'Request Type',
-      key: 'requestType',
-    },{
-      heading :'Requested Date',
-      key: 'requestedDate',
-    }      
-    ,{
-      heading :'Maker Id',
-      key: 'makerId',
-    },{
-      heading :'Request Status',
-      key: 'requestStatus',
-    } 
+      heading: "Ref No.",
+      key: "requestNo",
+      type: "string",
+    },
+    {
+      heading: "User Id",
+      key: "userId",
+      type: "string",
+    },
+    {
+      heading: "Username",
+      key: "userName",
+      type: "string",
+    },
+    {
+      heading: "Role",
+      key: "role",
+      type: "string",
+    },
+    {
+      heading: "Expiry Date",
+      key: "expiryDate",
+      type: "date",
+    },
+    {
+      heading: "Status",
+      key: "status",
+      type: "string",
+    },
+    {
+      heading: "Request Type",
+      key: "requestType",
+      type: "string",
+    },
+    {
+      heading: "Requested Date",
+      key: "requestedDate",
+      type: "date",
+    },
+    {
+      heading: "Maker Id",
+      key: "makerId",
+      type: "string",
+    },
+    {
+      heading: "Request Status",
+      key: "requestStatus",
+      type: "string",
+    },
   ];
-  roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
+  roleHeadElements = [
+    "Ref No",
+    "Role name",
+    "Description",
+    "Unit",
+    "Role Type",
+    "Access",
+    "Req Type",
+    "Req Date",
+    "Maker Id",
+    "Req Status",
+  ];
 
   // roles = [{
   //   requestNo: 'qb12489914',
@@ -101,8 +135,8 @@ export class PendingRequestsComponent implements OnInit {
 
   constructor(
     private dialogService: NbDialogService,
-    private qnbPrService: QnbPendingRequestService,
-  ) { }
+    private qnbPrService: QnbPendingRequestService
+  ) {}
 
   ngOnInit(): void {
     this.fetchPRRoles();
@@ -110,17 +144,13 @@ export class PendingRequestsComponent implements OnInit {
   }
 
   private fetchPRRoles() {
-    this.qnbPrService
-    .getPendingRequestRoles()
-    .subscribe(data => {
+    this.qnbPrService.getPendingRequestRoles().subscribe((data) => {
       this.roles = data;
     });
   }
 
   private fetchPRUsers() {
-    this.qnbPrService
-    .getPendingRequestUsers()
-    .subscribe(data => {
+    this.qnbPrService.getPendingRequestUsers().subscribe((data) => {
       this.users = data;
     });
   }
@@ -132,13 +162,10 @@ export class PendingRequestsComponent implements OnInit {
           data: data,
         },
       })
-      .onClose
-      .subscribe(event => {
+      .onClose.subscribe((event) => {
         if (event?.refreshList) {
-
         }
       });
-
   }
 
   openDetails(data) {
@@ -148,12 +175,22 @@ export class PendingRequestsComponent implements OnInit {
           data: data,
         },
       })
-      .onClose
-      .subscribe(event => {
+      .onClose.subscribe((event) => {
         if (event?.refreshList) {
-
         }
       });
+  }
 
+  filterChange(item: any) {
+    this.filterObj = {
+      key: item.key,
+      type: item.type,
+      filter:
+        this.filterObj.key === item.key
+          ? this.filterObj.filter === "asc"
+            ? "desc"
+            : "asc"
+          : "asc",
+    };
   }
 }
