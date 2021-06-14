@@ -1,86 +1,86 @@
-import { Component, OnInit } from "@angular/core";
-import { NbDialogService } from "@nebular/theme";
+import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 
-import { QnbPendingRequestService } from "../../../services";
-import { MockPRRole, MockPRUser } from "../../../_helpers/models/backend";
+import { QnbPendingRequestService } from '../../../services';
+import { MockPRRole, MockPRUser } from '../../../_helpers/models/backend';
 
-import { RequestDetailsComponent } from "./request-details/request-details.component";
-import { RequestRoleDetailsComponent } from "./request-role-details/request-role-details.component";
+import { RequestDetailsComponent } from './request-details/request-details.component';
+import { RequestRoleDetailsComponent } from './request-role-details/request-role-details.component';
 
 @Component({
-  selector: "qnb-pending-requests",
-  templateUrl: "./pending-requests.component.html",
-  styleUrls: ["./pending-requests.component.scss"],
+  selector: 'qnb-pending-requests',
+  templateUrl: './pending-requests.component.html',
+  styleUrls: ['./pending-requests.component.scss'],
 })
 export class PendingRequestsComponent implements OnInit {
   public filterObj: any = {
-    key: "requestNo",
-    type: "string",
-    filter: "asc",
+    key: 'requestNo',
+    type: 'string',
+    filter: 'asc',
   };
   headElements: any = [
     {
-      heading: "Ref No.",
-      key: "requestNo",
-      type: "string",
+      heading: 'Ref No.',
+      key: 'requestNo',
+      type: 'string',
     },
     {
-      heading: "User Id",
-      key: "userId",
-      type: "string",
+      heading: 'User Id',
+      key: 'userId',
+      type: 'string',
     },
     {
-      heading: "Username",
-      key: "userName",
-      type: "string",
+      heading: 'Username',
+      key: 'userName',
+      type: 'string',
     },
     {
-      heading: "Role",
-      key: "role",
-      type: "string",
+      heading: 'Role',
+      key: 'role',
+      type: 'string',
     },
     {
-      heading: "Expiry Date",
-      key: "expiryDate",
-      type: "date",
+      heading: 'Expiry Date',
+      key: 'expiryDate',
+      type: 'date',
     },
     {
-      heading: "Status",
-      key: "status",
-      type: "string",
+      heading: 'Status',
+      key: 'status',
+      type: 'string',
     },
     {
-      heading: "Request Type",
-      key: "requestType",
-      type: "string",
+      heading: 'Request Type',
+      key: 'requestType',
+      type: 'string',
     },
     {
-      heading: "Requested Date",
-      key: "requestedDate",
-      type: "date",
+      heading: 'Requested Date',
+      key: 'requestedDate',
+      type: 'date',
     },
     {
-      heading: "Maker Id",
-      key: "makerId",
-      type: "string",
+      heading: 'Maker Id',
+      key: 'makerId',
+      type: 'string',
     },
     {
-      heading: "Request Status",
-      key: "requestStatus",
-      type: "string",
+      heading: 'Request Status',
+      key: 'requestStatus',
+      type: 'string',
     },
   ];
   roleHeadElements = [
-    "Ref No",
-    "Role name",
-    "Description",
-    "Unit",
-    "Role Type",
-    "Access",
-    "Req Type",
-    "Req Date",
-    "Maker Id",
-    "Req Status",
+    'Ref No',
+    'Role name',
+    'Description',
+    'Unit',
+    'Role Type',
+    'Access',
+    'Req Type',
+    'Req Date',
+    'Maker Id',
+    'Req Status',
   ];
 
   // roles = [{
@@ -135,7 +135,7 @@ export class PendingRequestsComponent implements OnInit {
 
   constructor(
     private dialogService: NbDialogService,
-    private qnbPrService: QnbPendingRequestService
+    private qnbPrService: QnbPendingRequestService,
   ) {}
 
   ngOnInit(): void {
@@ -187,10 +187,10 @@ export class PendingRequestsComponent implements OnInit {
       type: item.type,
       filter:
         this.filterObj.key === item.key
-          ? this.filterObj.filter === "asc"
-            ? "desc"
-            : "asc"
-          : "asc",
+          ? this.filterObj.filter === 'asc'
+            ? 'desc'
+            : 'asc'
+          : 'asc',
     };
   }
 }
