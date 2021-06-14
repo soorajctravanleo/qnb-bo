@@ -49,7 +49,6 @@ export class CreateRoleComponent implements OnInit {
     });
 
     if (this.role) {
-      console.log(this.role);
       this.editMode = true;
       this.roleForm.setValue({
         role: this.role.groupCode,
@@ -73,7 +72,6 @@ export class CreateRoleComponent implements OnInit {
   onSubmit() {
     if (this.roleForm.valid) {
       let formValue = this.roleForm.value;
-      console.log(this.roleForm.value);
       // let fields = this.roleForm.values;
 
 
