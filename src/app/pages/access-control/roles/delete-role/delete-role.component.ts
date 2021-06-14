@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 
 import { QnbRoleService } from '../../../../services';
+=======
+import { QnbRoleService } from '../../../../services';
+import { NbDialogRef, NbToastrService } from '@nebular/theme';
+>>>>>>> 4ed731de05ffafb25b2c4f08f95a65cd5534890e
 
 @Component({
   selector: 'qnb-delete-role',
@@ -20,6 +25,14 @@ export class DeleteRoleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+  onDeleteRole() {
+    this.roleService.deleteRole(this.groupId).subscribe(res => {
+      this.showToast('top-right', 'success');
+
+      this.ref.close({ refreshList: true });
+    });
+
   }
 
   showToast(position, status) {

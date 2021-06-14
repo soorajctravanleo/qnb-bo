@@ -24,10 +24,11 @@ export class MockRole {
 
 export class MmockRole {
   constructor(
+    public id: number,
     public role: string,
     public unit: string,
     public description: string,
     public type: string,
-    public access_to: string,
+    public access_to: any= [],
   ) { }
 }

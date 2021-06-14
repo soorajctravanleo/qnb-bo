@@ -10,12 +10,13 @@ export interface MockUserProfileData {
   firstName?: string;
   lastName?: string;
   dob?: string;
+  userStatus?: string;
   userType?: MockUserTypeId;
   entity?: number;
   role: any;
   mobile?: string;
   email?: string;
-  expiryDate?: string;
+  expiryDate?: any;
   expiry_Date?: any;
   timezone?: number;
   language?: number;

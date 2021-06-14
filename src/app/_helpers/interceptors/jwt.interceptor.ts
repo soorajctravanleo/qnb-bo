@@ -25,7 +25,6 @@ export class QnbJwtInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url } = req;
-
     if (this.shouldAddJWT(url)) {
       const token = this.qnbAuthService.getToken();
       if (token) {

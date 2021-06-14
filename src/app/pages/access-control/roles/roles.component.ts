@@ -52,7 +52,7 @@ export class QnbRolesComponent implements OnInit {
         }
       });
   }
-
+  
   onDeleteRole(el) {
     const dialogRef = this.dialogService.open(DeleteRoleComponent, {
       context: { groupCode: el.groupCode, groupId: el.groupId },

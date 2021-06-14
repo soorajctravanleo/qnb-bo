@@ -1,9 +1,11 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
+
 import { QnbRoleService } from '../../../../services';
-import { MockRoleData } from '../../../../_helpers/models/backend';
-import { QnbUserGroup } from '../../../../services';
+// import { MockRoleData } from '../../../../_helpers/models/backend';
+import { QnbUserGroup, QnbEditUserGroup } from '../../../../services';
+
 @Component({
   selector: 'ngx-create-role',
   templateUrl: './create-role.component.html',
@@ -43,6 +45,7 @@ export class CreateRoleComponent implements OnInit {
 
     this.roleForm = new FormGroup({
       role: new FormControl(null, [Validators.required]),
+      group_id: new FormControl(''),
       description: new FormControl(null, [Validators.required]),
       access_to: new FormControl([], [Validators.required]),
       group_id: new FormControl(''),
@@ -56,6 +59,12 @@ export class CreateRoleComponent implements OnInit {
         access_to: this.role.roles,
         group_id: this.role.groupId,
       });
+      
+      // <nb-select> element is not updating the view.
+      // Hence, run the change detection cycle once more.
+      setTimeout(() => {
+        this.cdr.detectChanges();
+      }, 1500);
     }
   }
 
@@ -67,6 +76,8 @@ export class CreateRoleComponent implements OnInit {
   onSubmit() {
     if (this.roleForm.valid) {
       let formValue = this.roleForm.value;
+      // let fields = this.roleForm.values;
+
 
       if (!this.editMode) {
         const formattedRole: QnbUserGroup = {
@@ -80,14 +91,17 @@ export class CreateRoleComponent implements OnInit {
           this.ref.close({ refreshList: true });
         });
       } else {
+        
         const formattedRole: QnbUserGroup = {
           groupId: formValue.group_id,
           groupCode: formValue.role,
           groupDescription: formValue.description,
           roles: formValue.access_to,
         };
-        this.roleService.updateRole(formattedRole).subscribe( _ => {
+        
+        this.roleService.updateRole(formattedRole).subscribe(res => {
           this.showToast('top-right', 'success');
+          // this.fetchRoles();
           this.ref.close({ refreshList: true });
         });
       }

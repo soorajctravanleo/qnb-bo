@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
+import { QnbUserService } from '../../../../services';
 
 @Component({
   selector: 'qnb-delete-user',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteUserComponent implements OnInit {
   user: any;
-  constructor() { }
+  comment: string;
+  constructor( private userService: QnbUserService,
+  protected ref: NbDialogRef<DeleteUserComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  dismiss() { this.ref.close(); }
+
+  delete() {
+    const data = {
+      userId: this.user,
+      comment: this.comment,
+    };
+    this.userService.deleteUser(data).subscribe(res => {
+    });
   }
 
 }

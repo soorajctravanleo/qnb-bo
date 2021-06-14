@@ -32,7 +32,6 @@ export class QnbHttpInterceptor implements HttpInterceptor {
 
         return generateError(outcome.errorType, outcome.errorMessage);
       }
-
       req = req.clone({
         url: this.urlService.getHostURL() + url,
       });

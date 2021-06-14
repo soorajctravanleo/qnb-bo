@@ -9,15 +9,15 @@ import { ChangeUserStatusComponent } from '../change-user-status/change-user-sta
 
 interface UserTableRow {
   userId: string;
-  userType: string;
-  nickName: string;
   name: string;
-  email: string;
+  // email: string;
   ttl: string;
-  mobile: string;
-  dob: string;
+  // mobile: string;
+  // dob: string;
   role: any;
+  userStatus: string;
   expiryDate: any;
+  expiry_Date: string;
 }
 
 @Component({
@@ -27,7 +27,7 @@ interface UserTableRow {
 })
 export class ListUsersComponent implements OnInit {
   @ViewChild('disabledEsc', { read: TemplateRef }) disabledEscTemplate: TemplateRef<HTMLElement>;
-  headElements = ['User Id', 'UserName', 'Role', 'UserType', 'Expiry', 'Status'];
+  headElements = ['User Id', 'UserName', 'Role', 'Expiry', 'Status'];
   users: UserTableRow[] = [];
 
   constructor(
@@ -55,11 +55,11 @@ export class ListUsersComponent implements OnInit {
     return this.qnbRoleService.getRoleById(id);
   }
 
-  onEditUserStatus(id: any) {
+  onEditUserStatus(id: any, status: any) {
 
     this.dialogService
     .open(ChangeUserStatusComponent, {
-      context: { user: id },
+      context: { user: {userId: id, action: status} },
     });
   }
 
@@ -94,14 +94,14 @@ export class ListUsersComponent implements OnInit {
           user.expiryDate = parts[1].concat( '-' + parts[0] + '-' , parts[2] );
           this.users.push({
             userId: user.userId,
-            userType: user.userType,
-            dob: user.dob,
-            email: user.emailId,
+            // dob: user.dob,
+            // email: user.emailId,
             ttl: '',
+            userStatus: user.userStatus,
             expiryDate: user.expiryDate,
+            expiry_Date: user.expiryDate,
             name: `${user.firstName} ${user.lastName}`.trim(),
-            nickName: user.nickName,
-            mobile: user.mobileNumber,
+            // mobile: user.mobileNumber,
             role: user.groups,
           });
         }
