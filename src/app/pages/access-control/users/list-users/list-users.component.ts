@@ -102,8 +102,12 @@ export class ListUsersComponent implements OnInit {
             expiryDate: user.expiryDate,
             expiry_Date: user.expiryDate,
             name: user.firstName,
-            role: user.groups.map( (role: any) => { return role.groupId} ),
-            t_role: user.groups.map( (role: any) => { return role.groupCode} ),
+            role: user.groups.map( (role: any) => {
+              return role.groupId;
+              } ),
+            t_role: user.groups.map( (role: any) => {
+              return role.groupCode;
+            } ),
           });
         }
       });
