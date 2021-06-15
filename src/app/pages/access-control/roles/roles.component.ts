@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
+
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { DeleteRoleComponent } from './delete-role/delete-role.component';
 import { QnbRoleService } from '../../../services';
@@ -26,6 +27,7 @@ export class QnbRolesComponent implements OnInit {
   ngOnInit(): void {
     this.fetchGroups();
   }
+
   private fetchGroups() {
     this.roleService.fetchGroups().subscribe((res) => {
       this.elements = res;

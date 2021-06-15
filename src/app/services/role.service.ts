@@ -12,12 +12,6 @@ export interface QnbUserGroup {
   roles: [];
   groupId?: string;
 }
-export interface QnbEditUserGroup {
-  groupId: string;
-  groupCode: string;
-  groupDescription: string;
-  roles: [];
-}
 
 @Injectable({
   providedIn: 'root',

@@ -2,9 +2,8 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 
-import { QnbRoleService } from '../../../../services';
+import { QnbRoleService, QnbUserGroup } from '../../../../services';
 // import { MockRoleData } from '../../../../_helpers/models/backend';
-import { QnbUserGroup, QnbEditUserGroup } from '../../../../services';
 
 @Component({
   selector: 'ngx-create-role',
@@ -26,9 +25,11 @@ export class CreateRoleComponent implements OnInit {
     this.prepareForm();
     this.fetchRoles();
   }
+
   dismiss() {
     this.ref.close();
   }
+  
   private fetchRoles() {
 
     this.roleService.fetchRoles().subscribe(res => {
@@ -119,6 +120,7 @@ export class CreateRoleComponent implements OnInit {
       }
     });
   }
+
   showToast(position, status) {
     this.index += 1;
     this.toastrService.show(
