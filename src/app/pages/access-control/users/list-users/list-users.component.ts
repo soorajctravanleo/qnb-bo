@@ -10,11 +10,9 @@ import { ChangeUserStatusComponent } from '../change-user-status/change-user-sta
 interface UserTableRow {
   userId: string;
   name: string;
-  // email: string;
   ttl: string;
-  // mobile: string;
-  // dob: string;
   role: any;
+  t_role: any;
   userStatus: string;
   expiryDate: any;
   expiry_Date: string;
@@ -59,7 +57,12 @@ export class ListUsersComponent implements OnInit {
 
     this.dialogService
     .open(ChangeUserStatusComponent, {
-      context: { user: {userId: id, action: status} },
+      context: { user: {userId: id, status: status} },
+    }).onClose
+    .subscribe(event => {
+      if (event?.refreshList) {
+        this.fetchUsers();
+      }
     });
   }
 
@@ -94,15 +97,17 @@ export class ListUsersComponent implements OnInit {
           user.expiryDate = parts[1].concat( '-' + parts[0] + '-' , parts[2] );
           this.users.push({
             userId: user.userId,
-            // dob: user.dob,
-            // email: user.emailId,
             ttl: '',
             userStatus: user.userStatus,
             expiryDate: user.expiryDate,
             expiry_Date: user.expiryDate,
-            name: `${user.firstName} ${user.lastName}`.trim(),
-            // mobile: user.mobileNumber,
-            role: user.groups,
+            name: user.firstName,
+            role: user.groups.map( (role: any) => {
+              return role.groupId;
+              } ),
+            t_role: user.groups.map( (role: any) => {
+              return role.groupCode;
+            } ),
           });
         }
       });
