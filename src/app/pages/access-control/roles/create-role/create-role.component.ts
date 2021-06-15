@@ -29,7 +29,6 @@ export class CreateRoleComponent implements OnInit {
   dismiss() {
     this.ref.close();
   }
-  
   private fetchRoles() {
 
     this.roleService.fetchRoles().subscribe(res => {
@@ -59,7 +58,7 @@ export class CreateRoleComponent implements OnInit {
         access_to: this.role.roles,
         group_id: this.role.groupId,
       });
-      
+
       // <nb-select> element is not updating the view.
       // Hence, run the change detection cycle once more.
       setTimeout(() => {
@@ -91,7 +90,6 @@ export class CreateRoleComponent implements OnInit {
           this.ref.close({ refreshList: true });
         });
       } else {
-        
         const formattedRole: QnbUserGroup = {
           groupId: formValue.group_id,
           groupCode: formValue.role,

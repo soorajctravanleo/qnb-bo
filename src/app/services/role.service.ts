@@ -38,7 +38,6 @@ export class QnbRoleService {
     //   );
     return this.http.get('/auth/appRoles') as Observable<QnbUserGroup[]>;
   }
-  
   fetchGroups() {
     // return (this.http.get(GET_ROLES) as Observable<MockRole[]>)
     //   .pipe(

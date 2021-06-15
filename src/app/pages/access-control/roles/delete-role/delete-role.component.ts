@@ -12,7 +12,7 @@ export class DeleteRoleComponent implements OnInit {
   groupCode: string;
   groupId: string;
   comments: string;
-  private index:number = 0;
+  private index: number = 0;
 
   constructor(
     private roleService: QnbRoleService,
@@ -40,7 +40,7 @@ export class DeleteRoleComponent implements OnInit {
       { position, status });
   }
 
-  onClose(){
+  onClose() {
     this.ref.close();
   }
 

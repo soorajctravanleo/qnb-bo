@@ -42,19 +42,17 @@ export class QnbRolesComponent implements OnInit {
         }
       });
   }
-  
   onEditRole(data: any) {
     // console.log(data)
     const dialogRef = this.dialogService.open(CreateRoleComponent, {
       context: { role: data },
     }).onClose
-      .subscribe(event => {
-        if (event?.refreshList) {
-          this.fetchGroups();
-        }
-      });
+    .subscribe(event => {
+      if (event?.refreshList) {
+        this.fetchGroups();
+      }
+    });
   }
-  
   onDeleteRole(el) {
     const dialogRef = this.dialogService.open(DeleteRoleComponent, {
       context: { groupCode: el.groupCode, groupId: el.groupId },

@@ -19,6 +19,6 @@ export class MockBeneficiaryAuthorization {
     public routing: string,
     public sortOrChips: number,
     public mobileNo: number,
-    public customerNationalId: string
+    public customerNationalId: string,
   ) {}
 }

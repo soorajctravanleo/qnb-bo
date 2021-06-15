@@ -79,8 +79,7 @@ export class ListUsersComponent implements OnInit {
   onDeleteUser(id) {
     this.dialogService.open(DeleteUserComponent, {
       context: { user: id },
-    })
-
+    });
   }
 
   private fetchUsers() {
