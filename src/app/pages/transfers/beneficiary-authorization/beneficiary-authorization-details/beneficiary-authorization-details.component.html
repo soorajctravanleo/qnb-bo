@@ -17,11 +17,11 @@
         </tr>
         <tr>
           <th>Bank Name</th>
-          <td>ADIB UK Limited</td>
+          <td>{{ data.bankName }}</td>
         </tr>
         <tr>
           <th>Branch</th>
-          <td>_</td>
+          <td>{{ data.branch }}</td>
         </tr>
         <tr>
           <th>City</th>
@@ -29,34 +29,34 @@
         </tr>
         <tr>
           <th>Beneficiary Name</th>
-          <td>Francis</td>
+          <td>{{ data.beneficiaryName }}</td>
         </tr>
         <tr>
           <th>Beneficiary Account Number/IBAN Name</th>
-          <td>GB59BARC20740950590924 / -</td>
+          <td>{{ data.beneficiaryAccountNo }}</td>
         </tr>
         <tr>
           <th>Currency Of Beneficiary's Account</th>
-          <td>_</td>
+          <td>{{ data.currencyOfBeneficiaryAcc }}/td>
         </tr>
         <tr>
           <th>Intermediary Bank SWIFT Code</th>
-          <td>_</td>
+          <td>{{ data.intermediateBankSwiftAcc }}</td>
         </tr>
         <tr>
           <th>SWIFT Code</th>
           <td>
             <label style="font-weight: 600;">ABDI</label>
-            <input nbInput type="text" value="GB2LXXX">
+            <input nbInput type="text" value="{{ data.swiftCode }}">
           </td>
         </tr>
         <tr>
           <th>Routing</th>
-          <td>_</td>
+          <td>{{ data.routing }}</td>
         </tr>
         <tr>
           <th>SORT/CHIPS</th>
-          <td>657657</td>
+          <td>{{ data.sortOrChips }}</td>
         </tr>
         <tr>
           <th>Customer Name</th>
@@ -64,11 +64,11 @@
         </tr>
         <tr>
           <th>Customer Mobile Number</th>
-          <td>789456456</td>
+          <td>{{ data.mobileNo }}</td>
         </tr>
         <tr>
           <th>Customer National ID</th>
-          <td>D007227</td>
+          <td>{{ data.customerNationalId}}</td>
         </tr>
         <tr>
           <th>Rejection Remarks</th>
