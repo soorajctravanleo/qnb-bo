@@ -18,7 +18,7 @@
           <tbody>
             <tr mdbTableCol *ngFor="let user of users  | tableSort: key:order">
               <th scope=" row" (click)="openDetails(user)">
-                {{ user.requestNo }}
+                {{ user.requestId }}
               </th>
               <td>{{ user.userId }}</td>
               <td>{{ user.userName }}</td>

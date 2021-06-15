@@ -58,10 +58,10 @@
       </tbody>
     </table>
     <div class="buttons-group">
-      <button nbButton hero status="danger" style="background-color: #FE5578;">Decline</button>
-      <button nbButton hero status="normal">Return</button>
+      <button nbButton hero status="danger" style="background-color: #FE5578;" (click)="decline()">Decline</button>
+      <button nbButton hero status="normal" (click)="return()">Return</button>
 
-      <button type="submit" nbButton hero status="success">Approve</button>
+      <button type="submit" nbButton hero status="success" (click)="approve()">Approve</button>
     </div>
   </nb-card-body>
 </nb-card>
