@@ -1,7 +1,7 @@
 <form class="form-inline" [formGroup]="roleForm" (ngSubmit)="onSubmit()">
   <nb-card>
-    <nb-card-header *ngIf="editMode">Edit Role</nb-card-header>
-    <nb-card-header *ngIf="!editMode">Create Role</nb-card-header>
+    <!-- <nb-card-header *ngIf="editMode">Edit Role</nb-card-header> -->
+    <nb-card-header>{{!editMode ? 'Create Role' : 'Edit Role'}}</nb-card-header>
     <nb-card-body>
       <div class="col-md-12">
         <div class="row new-row">
@@ -13,7 +13,8 @@
               <input type="hidden" nbInput fullWidth placeholder="" formControlName="group_id">
               <span *ngIf="!roleForm.get('role').valid && roleForm.get('role').touched" class="help-block">
                 <span *ngIf="roleForm.get('role').errors['required']">This field is
-                  required!</span>
+                  required!
+                </span>
               </span>
             </div>
           </div>
@@ -55,4 +56,4 @@
       </div>
     </nb-card-footer>
   </nb-card>
-</form>
+</form> 

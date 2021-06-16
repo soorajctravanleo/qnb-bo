@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-import { ApprovalDetailsComponent } from '../pending-approvals/approval-details/approval-details.component';
-import { ApprovalRoleDetailsComponent } from '../pending-approvals/approval-role-details/approval-role-details.component';
+import { ApprovalDetailsComponent } from './approval-details/approval-details.component';
+import { ApprovalRoleDetailsComponent } from './approval-role-details/approval-role-details.component';
 import { QnbPendingApprovalService } from '../../../services';
 
 @Component({

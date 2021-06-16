@@ -10,12 +10,7 @@ export interface QnbUserGroup {
   groupCode: string;
   groupDescription: string;
   roles: [];
-}
-export interface QnbEditUserGroup {
-  groupId: string;
-  groupCode: string;
-  groupDescription: string;
-  roles: [];
+  groupId?: string;
 }
 
 @Injectable({
@@ -54,15 +49,19 @@ export class QnbRoleService {
     //   );
     return this.http.get('/auth/userGroups') as Observable<QnbUserGroup[]>;
   }
+
   deleteRole(role_id: string) {
     return this.http.post('/auth/userGroups/delete/' + role_id, {});
   }
+
   createRole(role: QnbUserGroup) {
     return this.http.post('/auth/userGroups', role);
   }
-  updateRole(role: QnbEditUserGroup) {
+
+  updateRole(role: QnbUserGroup) {
     return this.http.post('/auth/userGroups/modify', role);
   }
+
   fetchRole(id: number) {
     const params = new HttpParams().append('id', id.toString());
     return (this.http.get(GET_ROLE, { params }) as Observable<MockRole>)

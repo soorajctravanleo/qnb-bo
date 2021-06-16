@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
+
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { DeleteRoleComponent } from './delete-role/delete-role.component';
 import { QnbRoleService } from '../../../services';
@@ -26,6 +27,7 @@ export class QnbRolesComponent implements OnInit {
   ngOnInit(): void {
     this.fetchGroups();
   }
+
   private fetchGroups() {
     this.roleService.fetchGroups().subscribe((res) => {
       this.elements = res;
@@ -45,11 +47,11 @@ export class QnbRolesComponent implements OnInit {
     const dialogRef = this.dialogService.open(CreateRoleComponent, {
       context: { role: data },
     }).onClose
-      .subscribe(event => {
-        if (event?.refreshList) {
-          this.fetchGroups();
-        }
-      });
+    .subscribe(event => {
+      if (event?.refreshList) {
+        this.fetchGroups();
+      }
+    });
   }
   onDeleteRole(el) {
     const dialogRef = this.dialogService.open(DeleteRoleComponent, {

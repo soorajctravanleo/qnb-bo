@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
-import { QnbRoleService } from '../../../../services';
-import { MockRoleData } from '../../../../_helpers/models/backend';
-import { QnbUserGroup, QnbEditUserGroup } from '../../../../services';
+
+import { QnbRoleService, QnbUserGroup } from '../../../../services';
+// import { MockRoleData } from '../../../../_helpers/models/backend';
+
 @Component({
   selector: 'ngx-create-role',
   templateUrl: './create-role.component.html',
@@ -24,6 +25,7 @@ export class CreateRoleComponent implements OnInit {
     this.prepareForm();
     this.fetchRoles();
   }
+
   dismiss() {
     this.ref.close();
   }
@@ -43,9 +45,9 @@ export class CreateRoleComponent implements OnInit {
 
     this.roleForm = new FormGroup({
       role: new FormControl(null, [Validators.required]),
-      group_id: new FormControl(''),
       description: new FormControl(null, [Validators.required]),
       access_to: new FormControl([], [Validators.required]),
+      group_id: new FormControl(''),
     });
 
     if (this.role) {
@@ -56,6 +58,7 @@ export class CreateRoleComponent implements OnInit {
         access_to: this.role.roles,
         group_id: this.role.groupId,
       });
+
       // <nb-select> element is not updating the view.
       // Hence, run the change detection cycle once more.
       setTimeout(() => {
@@ -87,12 +90,13 @@ export class CreateRoleComponent implements OnInit {
           this.ref.close({ refreshList: true });
         });
       } else {
-        const formattedRole: QnbEditUserGroup = {
+        const formattedRole: QnbUserGroup = {
           groupId: formValue.group_id,
           groupCode: formValue.role,
           groupDescription: formValue.description,
           roles: formValue.access_to,
         };
+
         this.roleService.updateRole(formattedRole).subscribe(res => {
           this.showToast('top-right', 'success');
           // this.fetchRoles();
@@ -103,6 +107,7 @@ export class CreateRoleComponent implements OnInit {
       this.validateAllFormFields(this.roleForm);
     }
   }
+
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
@@ -113,6 +118,7 @@ export class CreateRoleComponent implements OnInit {
       }
     });
   }
+
   showToast(position, status) {
     this.index += 1;
     this.toastrService.show(
