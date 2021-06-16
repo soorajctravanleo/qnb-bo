@@ -50,7 +50,6 @@ export class PendingApprovalsComponent implements OnInit {
     this.pending_approval_service.
     getPendingRequestUsers().
     subscribe(res => {
-      console.log(res)
       this.users = res;
     });
   }
