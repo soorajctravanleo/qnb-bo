@@ -9,59 +9,75 @@
         </tr> -->
         <tr>
           <td>Reference Number</td>
-          <td>{{data.requestNo}}</td>
+          <td>{{ data.requestId }}</td>
         </tr>
         <tr>
           <td>User Id</td>
-          <td>{{data.userId}}</td>
+          <td>{{ data.userId }}</td>
         </tr>
         <tr>
           <td>Username</td>
-          <td>{{data.userName}}</td>
+          <td>{{ data.firstName }}</td>
         </tr>
         <tr>
           <td>Role</td>
-          <td>{{data.role}}</td>
+          <td>{{ data.groups }}</td>
         </tr>
         <tr>
           <td>User Type</td>
-          <td>{{data.type}}</td>
+          <td>{{ data.type }}</td>
         </tr>
         <tr>
           <td>Expiry Date</td>
-          <td>{{data.expiryDate}}</td>
+          <td>{{ data.expiryDate }}</td>
         </tr>
         <tr>
           <td>Status</td>
-          <td>{{data.status}}</td>
+          <td>{{ data.workFlowStatus }}</td>
         </tr>
         <tr>
           <td>Request Type</td>
-          <td>{{data.requestType}}</td>
+          <td>{{ data.requestType }}</td>
         </tr>
         <tr>
           <td>Request Date</td>
-          <td>{{data.requestedDate}}</td>
+          <td>{{ data.requestedDate }}</td>
         </tr>
         <tr>
           <td>Maker Id</td>
-          <td>{{data.makerId}}</td>
+          <td>{{ data.makerId }}</td>
         </tr>
         <tr>
           <td>Maker Comments</td>
-          <td>{{data.comments}}</td>
+          <td>{{ data.comments }}</td>
         </tr>
         <tr>
           <td>Checker Comments</td>
-          <td><textarea></textarea></td>
+          <td><textarea [(ngModel)]="comment"></textarea></td>
         </tr>
       </tbody>
     </table>
     <div class="buttons-group">
-      <button nbButton hero status="danger" style="background-color: #FE5578;">Decline</button>
-      <button nbButton hero status="normal">Return</button>
+      <button
+        nbButton
+        hero
+        status="danger"
+        style="background-color: #fe5578"
+        (click)="approve('REJECT')"
+      >
+        Reject
+      </button>
+      <button nbButton hero status="normal" (click)="approve('RETURN')">Return</button>
 
-      <button type="submit" nbButton hero status="success">Approve</button>
+      <button
+        type="submit"
+        nbButton
+        hero
+        status="success"
+        (click)="approve('APPROVE')"
+      >
+        Approve
+      </button>
     </div>
   </nb-card-body>
 </nb-card>
