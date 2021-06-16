@@ -17,11 +17,11 @@
         </tr>
         <tr>
           <td>Username</td>
-          <td>{{data.userName}}</td>
+          <td>{{data.firstName}}</td>
         </tr>
         <tr>
           <td>Role</td>
-          <td>{{data.role}}</td>
+          <td>-</td>
         </tr>
         <tr>
           <td>Expiry Date</td>
@@ -34,18 +34,18 @@
         <tr>
           <td>Request Type</td>
           <td>{{data.requestType}}</td>
-        </tr>
+        </tr>-->
         <tr>
           <td>Requested Date</td>
-          <td>{{data.requestedDate}}</td>
+          <td>{{data.createdTime}}</td>
         </tr>
         <tr>
           <td>Maker Id</td>
-          <td>{{data.makerId}}</td>
-        </tr> -->
+          <td>{{data.createdBy}}</td>
+        </tr>
         <tr>
           <td>Request Status</td>
-          <td>{{data.requestStatus}}</td>
+          <td>{{data.workflowStatus}}</td>
         </tr>
         <tr *ngIf="data.requestStatus!='PENDING'">
           <td>Checker Comments</td>
