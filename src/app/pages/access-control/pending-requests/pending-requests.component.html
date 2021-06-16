@@ -18,17 +18,16 @@
           <tbody>
             <tr mdbTableCol *ngFor="let user of users  | tableSort: key:order">
               <th scope=" row" (click)="openDetails(user)">
-                {{ user.requestNo }}
+                {{ user.requestId }}
               </th>
               <td>{{ user.userId }}</td>
-              <td>{{ user.userName }}</td>
-              <td>{{ user.role }}</td>
-              <td>{{ user.expiryDate }}</td>
-              <td>{{ user.status }}</td>
-              <td>{{ user.requestType }}</td>
-              <td>{{ user.requestedDate }}</td>
-              <td>{{ user.makerId }}</td>
-              <td style="white-space: nowrap">{{ user.requestStatus }}</td>
+              <td>{{ user.firstName }}</td>
+              <!-- <td>{{ user.role }}</td> -->
+              <td>{{ user.expiryDate  }}</td>
+
+              <td>{{ user.createdTime | date:'short' }}</td>
+              <td>{{ user.createdBy }}</td>
+              <td style="white-space: nowrap">{{ user.workflowStatus }}</td>
             </tr>
           </tbody>
         </table>

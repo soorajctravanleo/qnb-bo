@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { mergeMap, tap, map } from 'rxjs/operators';
 
-import { GET_PENDING_REQUEST_ROLES, GET_PENDING_REQUEST_USERS } from '../_helpers/apis';
+import {
+  GET_PENDING_REQUEST_ROLES,
+  GET_PENDING_MAKER_WORKFLOWS,
+  GET_PENDING_USER_APPROVALS,
+} from '../_helpers/apis';
 import { MockPRRole, MockPRUser } from '../_helpers/models/backend';
 
 @Injectable({
@@ -20,11 +24,11 @@ export class QnbPendingRequestService {
 
   fetchPendingRequestRoles() {
     return (this.http.get(GET_PENDING_REQUEST_ROLES) as Observable<MockPRRole[]>)
-    .pipe(
-      tap(roles => {
-        this.pendingRequestRoles = roles;
-      }),
-    );
+      .pipe(
+        tap(roles => {
+          this.pendingRequestRoles = roles;
+        }),
+      );
   }
 
   getPendingRequestRoles() {
@@ -34,18 +38,54 @@ export class QnbPendingRequestService {
     return of(this.pendingRequestRoles);
   }
 
-  fetchPendingRequestUsers() {
-    return (this.http.get(GET_PENDING_REQUEST_USERS) as Observable<MockPRUser[]>)
-    .pipe(
-      tap(users => {
-        this.pendingRequestUsers = users;
-      }),
-    );
+  fetchPendingRequests() {
+    const body = {
+      'workflowStatus': ['PENDING_ACTION'],
+    };
+    return this.http.post(GET_PENDING_MAKER_WORKFLOWS, body);
+  }
+  fetchDetailedRequest(ids) {
+    const body = {
+      'requestIds': ids,
+    };
+    return this.http.post(GET_PENDING_USER_APPROVALS, body);
   }
 
   getPendingRequestUsers() {
     if (this.pendingRequestUsers.length === 0) {
-      return this.fetchPendingRequestUsers();
+      return this.fetchPendingRequests().pipe(
+        mergeMap(res => {
+          const keys = [];
+          for (let key in res) {
+            keys.push(res[key].requestId);
+          }
+          return this.fetchDetailedRequest(keys).pipe(
+            map(response => {
+              let arr = [];
+              for (let key in response) {
+                let workflowId = response[key].workflowId;
+                let request = {
+                  requestId: response[key].requestId,
+                  workflowId: response[key].workflowId,
+                  expiryDate: response[key].expiryDate,
+                  firstName: response[key].firstName,
+                  userId: response[key].userId,
+                  groups: response[key].groups,
+                  workflowStatus: response[key].workFlowStatus,
+                };
+                for (let k in res) {
+                  if (res[k].workflowId === workflowId) {
+                    request['createdBy'] = res[k].createdBy;
+                    request['createdTime'] = res[k].createdTime;
+                  }
+                }
+                arr.push(request);
+              }
+              return arr;
+            }),
+          );
+        }),
+      );
     }
     return of(this.pendingRequestUsers);
   }
