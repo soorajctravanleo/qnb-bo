@@ -7,7 +7,8 @@ import { ApprovalDetailsComponent } from '../access-control/pending-approvals/ap
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class QnbDashboardComponent implements OnInit { 
+
+export class QnbDashboardComponent implements OnInit {
   userids = [];
   roles = [];
   users = [];
