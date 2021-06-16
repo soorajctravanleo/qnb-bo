@@ -13,6 +13,7 @@ import { ApprovalDetailsComponent } from './approval-details/approval-details.co
 import { RequestDetailsComponent } from '../pending-requests/request-details/request-details.component';
 import { ApprovalRoleDetailsComponent } from './approval-role-details/approval-role-details.component';
 import { FormsModule } from '@angular/forms';
+import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     NbButtonModule,
     CommonModule,
     PendingApprovalsRoutingModule,
+    QnbCustomComponentsModule
   ],
 })
 export class PendingApprovalsModule { }
