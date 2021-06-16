@@ -5,7 +5,7 @@ import { QnbCustomComponentsModule } from '../components/custom-components.modul
 
 import { PagesComponent } from './pages.component';
 import { QnbDashboardComponent } from './dashboard/dashboard.component';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule, NbDialogModule, NbToastrModule } from '@nebular/theme';
 
 // import { DashboardModule } from './dashboard/dashboard.module';
 // import { ECommerceModule } from './e-commerce/e-commerce.module';
@@ -25,6 +25,8 @@ import { NbTabsetModule } from '@nebular/theme';
     // DashboardModule,
     // ECommerceModule,
     // MiscellaneousModule,
+    NbDialogModule.forChild(),
+    NbToastrModule.forRoot(),
     QnbCustomComponentsModule,
     NbCardModule,
     NbRouteTabsetModule,
