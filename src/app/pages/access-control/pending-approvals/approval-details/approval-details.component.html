@@ -23,29 +23,29 @@
           <td>Role</td>
           <td>{{ data.groups }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>User Type</td>
           <td>{{ data.type }}</td>
-        </tr>
+        </tr> -->
         <tr>
           <td>Expiry Date</td>
           <td>{{ data.expiryDate }}</td>
         </tr>
         <tr>
           <td>Status</td>
-          <td>{{ data.workFlowStatus }}</td>
+          <td>{{ data.workflowStatus }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>Request Type</td>
           <td>{{ data.requestType }}</td>
-        </tr>
+        </tr> -->
         <tr>
           <td>Request Date</td>
-          <td>{{ data.requestedDate }}</td>
+          <td>{{ data.createdTime | date:'short' }}</td>
         </tr>
         <tr>
           <td>Maker Id</td>
-          <td>{{ data.makerId }}</td>
+          <td>{{ data.createdBy }}</td>
         </tr>
         <tr>
           <td>Maker Comments</td>
