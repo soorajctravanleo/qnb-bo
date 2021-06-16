@@ -1,2 +1,2 @@
 export const GET_PENDING_REQUEST_ROLES = '/pending-request-roles';
-export const GET_PENDING_REQUEST_USERS = '/pending-request-users';
+export const GET_PENDING_REQUEST_USERS = '/workflows';
