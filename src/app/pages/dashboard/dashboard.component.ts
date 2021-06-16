@@ -23,7 +23,6 @@ export class QnbDashboardComponent implements OnInit {
     this.Getpendingworkflows();
     this.pendingRequestService.getPendingRequestUsers()
       .subscribe(data => {
-        console.log(data);
         this.users = data;
       });
   }
