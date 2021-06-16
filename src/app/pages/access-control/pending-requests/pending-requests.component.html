@@ -9,16 +9,18 @@
         <table mdbTable class="table">
           <thead>
             <tr>
-              <th *ngFor="let head of headElements" scope="col" (click)="
-                  key = head.key; order = order === 'desc' ? 'asc' : 'desc'
-                ">
+              <th
+                *ngFor="let head of headElements"
+                scope="col"
+                (click)="filterChange(head)"
+              >
                 {{ head.heading }} <i class="fas fa-sort"></i>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr mdbTableCol *ngFor="let user of users  | tableSort: key:order">
-              <th scope=" row" (click)="openDetails(user)">
+            <tr mdbTableCol *ngFor="let user of users | tableSort: filterObj">
+              <th scope="row" (click)="openDetails(user)">
                 {{ user.requestId }}
               </th>
               <td>{{ user.userId }}</td>
