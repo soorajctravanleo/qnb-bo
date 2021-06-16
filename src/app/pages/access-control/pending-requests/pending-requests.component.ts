@@ -36,13 +36,14 @@ export class PendingRequestsComponent implements OnInit {
     // }, {
     //   heading: 'Request Type',
     //   key: 'requestType',
-    // }, {
-    //   heading: 'Requested Date',
-    //   key: 'requestedDate',
-    // }, {
-    //   heading: 'Maker Id',
-    //   key: 'makerId',
     // },
+    {
+      heading: 'Requested Date',
+      key: 'requestedDate',
+    }, {
+      heading: 'Maker Id',
+      key: 'makerId',
+    },
     {
       heading: 'Request Status',
       key: 'requestStatus',

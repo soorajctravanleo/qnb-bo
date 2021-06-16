@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { mergeMap, tap } from 'rxjs/operators';
+import { mergeMap, tap, map } from 'rxjs/operators';
 
-import { GET_PENDING_REQUEST_ROLES, GET_PENDING_REQUEST_USERS } from '../_helpers/apis';
+import {
+  GET_PENDING_REQUEST_ROLES,
+  GET_PENDING_MAKER_WORKFLOWS,
+  GET_PENDING_USER_APPROVALS
+} from '../_helpers/apis';
 import { MockPRRole, MockPRUser } from '../_helpers/models/backend';
 
 @Injectable({
@@ -38,14 +42,14 @@ export class QnbPendingRequestService {
     const body = {
       "workflowStatus": ["PENDING_ACTION"]
     };
-    return this.http.post("/workflows/search", body);
+    return this.http.post(GET_PENDING_MAKER_WORKFLOWS, body);
   }
   fetchDetailedRequest(ids) {
     const body = {
       "requestIds": ids
     };
     console.log(body);
-    return this.http.post("/usrMngmt/userRequest/details", body);
+    return this.http.post(GET_PENDING_USER_APPROVALS, body);
   }
 
   getPendingRequestUsers() {
@@ -56,8 +60,37 @@ export class QnbPendingRequestService {
           for (let key in res) {
             keys.push(res[key].requestId);
           }
-          return this.fetchDetailedRequest(keys);
-        })
+          return this.fetchDetailedRequest(keys).pipe(
+            map(response => {
+              let arr = [];
+              for (let key in response) {
+                console.log(response[key]);
+                let workflowId = response[key].workflowId;
+                let request = {
+                  requestId: response[key].requestId,
+                  workflowId: response[key].workflowId,
+                  expiryDate: response[key].expiryDate,
+                  firstName: response[key].firstName,
+                  userId: response[key].userId,
+                  groups: response[key].groups,
+                  workflowStatus: response[key].workFlowStatus,
+                }
+                for (let k in res) {
+                  console.log(res[k]);
+                  if (res[k].workflowId == workflowId) {
+                    request['createdBy'] = res[k].createdBy;
+                    request['createdTime'] = res[k].createdTime;
+                  }
+                }
+                arr.push(request);
+              }
+
+              console.log(arr);
+              return arr;
+            })
+          );
+        }),
+
       )
 
 
