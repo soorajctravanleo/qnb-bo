@@ -72,7 +72,7 @@ export class QnbPendingRequestService {
                   userId: response[key].userId,
                   groups: response[key].groups,
                   workflowStatus: response[key].workFlowStatus,
-                }
+                };
                 for (let k in res) {
                   if (res[k].workflowId === workflowId) {
                     request['createdBy'] = res[k].createdBy;
@@ -82,9 +82,8 @@ export class QnbPendingRequestService {
                 arr.push(request);
               }
 
-              console.log(arr);
               return arr;
-            })
+            }),
           );
         }),
       );
