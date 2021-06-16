@@ -4,6 +4,6 @@ export * from './user';
 export * from './entity';
 export * from './role';
 export * from './unit';
-export * from './pending_approval';
+export * from './pending-approval';
 export * from './pending-request';
 export * from './beneficiary-authorization';

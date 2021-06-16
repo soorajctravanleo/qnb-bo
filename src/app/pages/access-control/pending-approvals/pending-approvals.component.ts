@@ -14,14 +14,10 @@ export class PendingApprovalsComponent implements OnInit {
     'Ref No.',
     'User Id',
     'Username',
-    'Role',
-    'User Type',
     'Expiry Date',
     'Status',
-    'Req Type',
     'Req Date',
     'Maker Id',
-    'Maker Comments',
   ];
   roleHeadElements = [
     'Ref No',
@@ -46,21 +42,16 @@ export class PendingApprovalsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.GetpendingUsers();
     this.GetPendingRoles();
-    this.Getpendingworkflows();
   }
 
-  Getpendingworkflows() {
-    this.userids = [];
-    this.pending_approval_service.getPendingWorkflows().subscribe((res: any) => {
-      res.map(t => {
-        this.userids.push(t.requestId);
-      });
-    }).add(() => {
-      const data = { requestIds: this.userids };
-      this.pending_approval_service.fetchPendingUsers(data).subscribe(res => {
-        this.users = res;
-      });
+  GetpendingUsers() {
+    this.pending_approval_service.
+    getPendingRequestUsers().
+    subscribe(res => {
+      console.log(res)
+      this.users = res;
     });
   }
 
@@ -79,7 +70,7 @@ export class PendingApprovalsComponent implements OnInit {
       })
       .onClose.subscribe((event) => {
         if (event?.refreshList) {
-          this.Getpendingworkflows();
+          this.GetpendingUsers();
         }
       });
   }
