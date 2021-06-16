@@ -38,7 +38,6 @@ export class QnbPendingRequestService {
     return (this.http.get(GET_PENDING_REQUEST_USERS) as Observable<MockPRUser[]>)
     .pipe(
       tap(users => {
-        console.log(users)
         this.pendingRequestUsers = users;
       }),
     );

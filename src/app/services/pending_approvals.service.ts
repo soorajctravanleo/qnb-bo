@@ -21,11 +21,11 @@ export class QnbPendingApprovalService {
   }
 
   fetchPendingUsers(data) {
-    return this.http.post(GET_PENDING_USER_APPROVALS,data) as Observable<MockPendingUserApprovals[]>;
+    return this.http.post(GET_PENDING_USER_APPROVALS, data) as Observable<MockPendingUserApprovals[]>;
   }
 
   approveUser(data) {
-    return this.http.post(POST_APPROVE_USER,data);
+    return this.http.post(POST_APPROVE_USER, data);
   }
 
   getPendingWorkflows() {

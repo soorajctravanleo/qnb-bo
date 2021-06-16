@@ -16,7 +16,7 @@ export class ApprovalDetailsComponent implements OnInit {
     protected ref: NbDialogRef<ApprovalDetailsComponent>,
      ) { }
 
-  ngOnInit(): void { console.log(this.data)
+  ngOnInit(): void {
   }
 
   showToast(position, status, action) {

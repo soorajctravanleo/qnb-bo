@@ -36,7 +36,7 @@ export class PendingApprovalsComponent implements OnInit {
     'Comments',
     'Req Status',
   ];
-  userids=[]
+  userids = [];
   roles = [];
   users = [];
   selectedOption = 1;
@@ -54,10 +54,10 @@ export class PendingApprovalsComponent implements OnInit {
     this.userids = [];
     this.pending_approval_service.getPendingWorkflows().subscribe((res: any) => {
       res.map(t => {
-        this.userids.push(t.requestId)
+        this.userids.push(t.requestId);
       });
     }).add(() => {
-      const data = { requestIds: this.userids }
+      const data = { requestIds: this.userids };
       this.pending_approval_service.fetchPendingUsers(data).subscribe(res => {
         this.users = res;
       });

@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbIconModule, NbDialogModule, NbTabsetModule, NbCardModule, NbRadioModule, NbButtonModule, NbToastrModule } from '@nebular/theme';
+import { NbIconModule,
+  NbDialogModule,
+  NbTabsetModule,
+  NbCardModule,
+  NbRadioModule,
+  NbButtonModule,
+  NbToastrModule } from '@nebular/theme';
 import { PendingApprovalsRoutingModule } from './pending-approvals-routing.module';
 import { PendingApprovalsComponent } from './pending-approvals.component';
 import { ApprovalDetailsComponent } from './approval-details/approval-details.component';
