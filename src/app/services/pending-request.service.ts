@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { mergeMap, tap } from 'rxjs/operators';
 
 import { GET_PENDING_REQUEST_ROLES, GET_PENDING_REQUEST_USERS } from '../_helpers/apis';
 import { MockPRRole, MockPRUser } from '../_helpers/models/backend';
@@ -20,11 +20,11 @@ export class QnbPendingRequestService {
 
   fetchPendingRequestRoles() {
     return (this.http.get(GET_PENDING_REQUEST_ROLES) as Observable<MockPRRole[]>)
-    .pipe(
-      tap(roles => {
-        this.pendingRequestRoles = roles;
-      }),
-    );
+      .pipe(
+        tap(roles => {
+          this.pendingRequestRoles = roles;
+        }),
+      );
   }
 
   getPendingRequestRoles() {
@@ -34,18 +34,33 @@ export class QnbPendingRequestService {
     return of(this.pendingRequestRoles);
   }
 
-  fetchPendingRequestUsers() {
-    return (this.http.get(GET_PENDING_REQUEST_USERS) as Observable<MockPRUser[]>)
-    .pipe(
-      tap(users => {
-        this.pendingRequestUsers = users;
-      }),
-    );
+  fetchPendingRequests() {
+    const body = {
+      "workflowStatus": ["PENDING_ACTION"]
+    };
+    return this.http.post("/workflows/search", body);
+  }
+  fetchDetailedRequest(ids) {
+    const body = {
+      "requestIds": ids
+    };
+    console.log(body);
+    return this.http.post("/usrMngmt/userRequest/details", body);
   }
 
   getPendingRequestUsers() {
     if (this.pendingRequestUsers.length === 0) {
-      return this.fetchPendingRequestUsers();
+      return this.fetchPendingRequests().pipe(
+        mergeMap(res => {
+          const keys = [];
+          for (let key in res) {
+            keys.push(res[key].requestId);
+          }
+          return this.fetchDetailedRequest(keys);
+        })
+      )
+
+
     }
     return of(this.pendingRequestUsers);
   }

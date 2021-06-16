@@ -29,74 +29,29 @@ export class PendingRequestsComponent implements OnInit {
     }, {
       heading: 'Expiry Date',
       key: 'expiryDate',
-    }, {
-      heading: 'Status',
-      key: 'status',
-    }, {
-      heading: 'Request Type',
-      key: 'requestType',
-    }, {
-      heading: 'Requested Date',
-      key: 'requestedDate',
-    }, {
-      heading: 'Maker Id',
-      key: 'makerId',
-    }, {
+    },
+    // }, {
+    //   heading: 'Status',
+    //   key: 'status',
+    // }, {
+    //   heading: 'Request Type',
+    //   key: 'requestType',
+    // }, {
+    //   heading: 'Requested Date',
+    //   key: 'requestedDate',
+    // }, {
+    //   heading: 'Maker Id',
+    //   key: 'makerId',
+    // },
+    {
       heading: 'Request Status',
       key: 'requestStatus',
     },
   ];
   roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
 
-  // roles = [{
-  //   requestNo: 'qb12489914',
-  //   roleName: 'Test1',
-  //   roleDescription: 'This is a test Role',
-  //   unit: 'QATAR',
-  //   roleType: 'MAKER',
-  //   access: 'Enabled',
-  //   requestType: 'ADD',
-  //   requestDate: '29/12/2020',
-  //   makerId: 'UD1001',
-  //   requestStatus: 'PENDING',
-  // }, {
-  //   requestNo: 'qb12489914',
-  //   roleName: 'Test2',
-  //   roleDescription: 'This is a another test',
-  //   unit: 'QATAR',
-  //   roleType: 'MAKER',
-  //   access: 'Enabled',
-  //   requestType: 'ADD',
-  //   requestDate: '29/12/2020',
-  //   makerId: 'UD1001',
-  //   requestStatus: 'RETURNED',
-  // }];
-  // users = [{
-  //   requestNo: 'qb12489912',
-  //   userId: '131asp',
-  //   userName: 'Mahesh',
-  //   role: 'Maker',
-  //   expiryDate: '29/12/2020',
-  //   status: 'Enabled',
-  //   requestType: 'ADD',
-  //   requestedDate: '29/12/2020',
-  //   makerId: 'UD1001',
-  //   requestStatus: 'PENDING',
-  // }, {
-  //   requestNo: 'qb12489914',
-  //   userId: '131asp',
-  //   userName: 'Francis',
-  //   role: 'Maker',
-  //   expiryDate: '29/12/2020',
-  //   status: 'Enabled',
-  //   requestType: 'MODIFY',
-  //   requestedDate: '29/12/2020',
-  //   makerId: 'UD1001',
-  //   requestStatus: 'RETURNED',
-  // }];
-
-  roles: MockPRRole[] = [];
-  users: MockPRUser[] = [];
+  roles: any = [];
+  users: any = [];
 
   constructor(
     private dialogService: NbDialogService,
