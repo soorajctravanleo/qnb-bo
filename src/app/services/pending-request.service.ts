@@ -81,7 +81,6 @@ export class QnbPendingRequestService {
                 }
                 arr.push(request);
               }
-
               return arr;
             }),
           );
