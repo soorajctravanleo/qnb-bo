@@ -23,7 +23,8 @@ export class PendingRequestsComponent implements OnInit {
     }, {
       heading: 'Username',
       key: 'userName',
-    },// {
+    },
+    // {
     //   heading: 'Role',
     //   key: 'role',
     // },

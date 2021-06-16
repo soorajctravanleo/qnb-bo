@@ -6,7 +6,7 @@ import { mergeMap, tap, map } from 'rxjs/operators';
 import {
   GET_PENDING_REQUEST_ROLES,
   GET_PENDING_MAKER_WORKFLOWS,
-  GET_PENDING_USER_APPROVALS
+  GET_PENDING_USER_APPROVALS,
 } from '../_helpers/apis';
 import { MockPRRole, MockPRUser } from '../_helpers/models/backend';
 
@@ -40,15 +40,14 @@ export class QnbPendingRequestService {
 
   fetchPendingRequests() {
     const body = {
-      "workflowStatus": ["PENDING_ACTION"]
+      'workflowStatus': ['PENDING_ACTION'],
     };
     return this.http.post(GET_PENDING_MAKER_WORKFLOWS, body);
   }
   fetchDetailedRequest(ids) {
     const body = {
-      "requestIds": ids
+      'requestIds': ids,
     };
-    console.log(body);
     return this.http.post(GET_PENDING_USER_APPROVALS, body);
   }
 
@@ -64,7 +63,6 @@ export class QnbPendingRequestService {
             map(response => {
               let arr = [];
               for (let key in response) {
-                console.log(response[key]);
                 let workflowId = response[key].workflowId;
                 let request = {
                   requestId: response[key].requestId,
@@ -76,8 +74,7 @@ export class QnbPendingRequestService {
                   workflowStatus: response[key].workFlowStatus,
                 }
                 for (let k in res) {
-                  console.log(res[k]);
-                  if (res[k].workflowId == workflowId) {
+                  if (res[k].workflowId === workflowId) {
                     request['createdBy'] = res[k].createdBy;
                     request['createdTime'] = res[k].createdTime;
                   }
@@ -90,10 +87,7 @@ export class QnbPendingRequestService {
             })
           );
         }),
-
-      )
-
-
+      );
     }
     return of(this.pendingRequestUsers);
   }
