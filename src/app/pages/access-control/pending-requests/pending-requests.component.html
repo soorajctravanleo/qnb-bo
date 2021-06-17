@@ -9,11 +9,7 @@
         <table mdbTable class="table">
           <thead>
             <tr>
-              <th
-                *ngFor="let head of headElements"
-                scope="col"
-                (click)="filterChange(head)"
-              >
+              <th *ngFor="let head of headElements" scope="col" (click)="filterChange(head)">
                 {{ head.heading }} <i class="fas fa-sort"></i>
               </th>
             </tr>
@@ -27,7 +23,6 @@
               <td>{{ user.firstName }}</td>
               <td>{{ user.groups }}</td>
               <td>{{ user.expiryDate  }}</td>
-
               <td>{{ user.createdTime | date:'short' }}</td>
               <td>{{ user.createdBy }}</td>
               <td style="white-space: nowrap">{{ user.workFlowStatus }}</td>
