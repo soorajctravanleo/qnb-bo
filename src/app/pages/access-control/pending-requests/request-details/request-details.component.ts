@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'qnb-request-details',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestDetailsComponent implements OnInit {
   data: any;
-  constructor() { }
+  constructor(protected ref: NbDialogRef<RequestDetailsComponent>) { }
 
   ngOnInit(): void {
   }
+  dismiss() { this.ref.close(); }
+
 
 }

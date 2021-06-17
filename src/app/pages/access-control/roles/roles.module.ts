@@ -20,6 +20,7 @@ import { QnbRolesComponent } from './roles.component';
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { DeleteRoleComponent } from './delete-role/delete-role.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NbCardModule,
     NbCheckboxModule,
     ReactiveFormsModule,
+    QnbCustomComponentsModule,
   ],
 })
 export class QnbRolesModule { }

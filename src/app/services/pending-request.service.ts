@@ -60,28 +60,17 @@ export class QnbPendingRequestService {
             keys.push(res[key].requestId);
           }
           return this.fetchDetailedRequest(keys).pipe(
-            map(response => {
-              let arr = [];
-              for (let key in response) {
-                let workflowId = response[key].workflowId;
-                let request = {
-                  requestId: response[key].requestId,
-                  workflowId: response[key].workflowId,
-                  expiryDate: response[key].expiryDate,
-                  firstName: response[key].firstName,
-                  userId: response[key].userId,
-                  groups: response[key].groups,
-                  workflowStatus: response[key].workFlowStatus,
-                };
-                for (let k in res) {
-                  if (res[k].workflowId === workflowId) {
-                    request['createdBy'] = res[k].createdBy;
-                    request['createdTime'] = res[k].createdTime;
-                  }
+            map((resp: any) => {
+              for (let response of resp) {
+                if (response.groups.length > 1) {
+                  response.groups = response.groups.map((r) => {
+                    return r.groupCode;
+                  });
+                } else {
+                  response.groups = response.groups[0].groupCode;
                 }
-                arr.push(request);
               }
-              return arr;
+              return resp;
             }),
           );
         }),

@@ -11,10 +11,10 @@ export class ApprovalDetailsComponent implements OnInit {
   private index: number = 0;
   data: any;
   comment: string;
-  constructor( private pendingapprovalservice: QnbPendingApprovalService,
+  constructor(private pendingapprovalservice: QnbPendingApprovalService,
     private toastrService: NbToastrService,
     protected ref: NbDialogRef<ApprovalDetailsComponent>,
-     ) { }
+  ) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +23,7 @@ export class ApprovalDetailsComponent implements OnInit {
     this.index += 1;
     this.toastrService.show(
       status || 'Success',
-      `User ${action}`,
+      `User ${action}ED`,
       { position, status });
   }
 
@@ -39,6 +39,6 @@ export class ApprovalDetailsComponent implements OnInit {
     });
   }
 
-  return() {}
+  return() { }
 
 }

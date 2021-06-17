@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
+
 import { QnbPendingRequestService } from '../../../services';
 import { MockPRRole, MockPRUser } from '../../../_helpers/models/backend';
+
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import { RequestRoleDetailsComponent } from './request-role-details/request-role-details.component';
 
@@ -11,47 +13,74 @@ import { RequestRoleDetailsComponent } from './request-role-details/request-role
   styleUrls: ['./pending-requests.component.scss'],
 })
 export class PendingRequestsComponent implements OnInit {
-  key = 'requestNo';
-  order = 'asc';
+  public filterObj: any = {
+    key: 'requestNo',
+    type: 'string',
+    filter: 'asc',
+  };
   headElements: any = [
     {
       heading: 'Ref No.',
-      key: 'requestNo',
-    }, {
+      key: 'requestId',
+      type: 'string',
+    },
+    {
       heading: 'User Id',
       key: 'userId',
-    }, {
-      heading: 'Username',
-      key: 'userName',
+      type: 'string',
     },
-    // {
-    //   heading: 'Role',
-    //   key: 'role',
-    // },
+    {
+      heading: 'Username',
+      key: 'firstName',
+      type: 'string',
+    },
+    {
+      heading: 'Role',
+      key: 'role',
+    },
     {
       heading: 'Expiry Date',
       key: 'expiryDate',
+      type: 'date',
     },
-    // }, {
+    // {
     //   heading: 'Status',
     //   key: 'status',
-    // }, {
+    //   type: 'string',
+    // },
+    // {
     //   heading: 'Request Type',
     //   key: 'requestType',
+    //   type: 'string',
     // },
     {
       heading: 'Requested Date',
-      key: 'requestedDate',
-    }, {
+      key: 'createdTime',
+      type: 'dateTime',
+    },
+    {
       heading: 'Maker Id',
-      key: 'makerId',
+      key: 'createdBy',
+      type: 'string',
     },
     {
       heading: 'Request Status',
-      key: 'requestStatus',
+      key: 'workflowStatus',
+      type: 'string',
     },
   ];
-  roleHeadElements = ['Ref No', 'Role name', 'Description', 'Unit', 'Role Type', 'Access', 'Req Type', 'Req Date', 'Maker Id', 'Req Status'];
+  roleHeadElements = [
+    'Ref No',
+    'Role name',
+    'Description',
+    'Unit',
+    'Role Type',
+    'Access',
+    'Req Type',
+    'Req Date',
+    'Maker Id',
+    'Req Status',
+  ];
 
   roles: any = [];
   users: any = [];
@@ -59,7 +88,7 @@ export class PendingRequestsComponent implements OnInit {
   constructor(
     private dialogService: NbDialogService,
     private qnbPrService: QnbPendingRequestService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.fetchPRRoles();
@@ -67,19 +96,15 @@ export class PendingRequestsComponent implements OnInit {
   }
 
   private fetchPRRoles() {
-    this.qnbPrService
-      .getPendingRequestRoles()
-      .subscribe(data => {
-        this.roles = data;
-      });
+    this.qnbPrService.getPendingRequestRoles().subscribe((data) => {
+      this.roles = data;
+    });
   }
 
   private fetchPRUsers() {
-    this.qnbPrService
-      .getPendingRequestUsers()
-      .subscribe(data => {
-        this.users = data;
-      });
+    this.qnbPrService.getPendingRequestUsers().subscribe((data) => {
+      this.users = data;
+    });
   }
 
   openRoleDetails(data) {
@@ -89,13 +114,10 @@ export class PendingRequestsComponent implements OnInit {
           data: data,
         },
       })
-      .onClose
-      .subscribe(event => {
+      .onClose.subscribe((event) => {
         if (event?.refreshList) {
-
         }
       });
-
   }
 
   openDetails(data) {
@@ -105,12 +127,22 @@ export class PendingRequestsComponent implements OnInit {
           data: data,
         },
       })
-      .onClose
-      .subscribe(event => {
+      .onClose.subscribe((event) => {
         if (event?.refreshList) {
-
         }
       });
+  }
 
+  filterChange(item: any) {
+    this.filterObj = {
+      key: item.key,
+      type: item.type,
+      filter:
+        this.filterObj.key === item.key
+          ? this.filterObj.filter === 'asc'
+            ? 'desc'
+            : 'asc'
+          : 'asc',
+    };
   }
 }

@@ -1,11 +1,21 @@
-<div class="d-flex" style="justify-content: space-between;flex-wrap: wrap; align-items: center;">
+<div
+  class="d-flex"
+  style="justify-content: space-between; flex-wrap: wrap; align-items: center"
+>
   <h2 class="mb-3">{{ title }}</h2>
-  <div>
+  <div *ngIf="breadCampArray.length > 0">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Access-Control</a></li>
-        <li class="breadcrumb-item active" aria-current="page">User Mangement</li>
+        <li
+          *ngFor="let item of breadCampArray"
+          [ngClass]="item.path !== null ? 'breadcrumb-item' : 'breadcrumb-item active'"
+          [attr.aria-current]="item.path === null ? 'page' : ''"
+        >
+          <a *ngIf="item.path !== null" [attr.href]="item.path">{{
+            item.text
+          }}</a>
+          <label *ngIf="item.path === null">{{ item.text }}</label>
+        </li>
       </ol>
     </nav>
   </div>

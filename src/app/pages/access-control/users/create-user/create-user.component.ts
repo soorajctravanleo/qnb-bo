@@ -73,12 +73,12 @@ export class CreateUserComponent implements OnInit {
 
   dismiss() { this.ref.close(); }
 
-  showToast(position, status) {
+  showToast(message, position, status, duration) {
     this.index += 1;
     this.toastrService.show(
       status || 'Success',
-      `User Added`,
-      { position, status });
+      message,
+      { duration, position, status });
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -96,11 +96,11 @@ export class CreateUserComponent implements OnInit {
     return `${d.getDate()}-${(d.getMonth() + 1)}-${d.getFullYear()}`;
   }
 
-  reset() { this.signupForm.reset( { role: [] } ); }
+  reset() { this.signupForm.reset({ role: [] }); }
 
   onSubmit() {
     if (this.signupForm.valid) {
-      const profile  = this.signupForm.value;
+      const profile = this.signupForm.value;
       const formattedUser: QnbUser = {
         userId: profile.userId,
         firstName: profile.name,
@@ -115,16 +115,18 @@ export class CreateUserComponent implements OnInit {
 
       if (this.editMode) {
         this.qnbUserService
-          .editUser( formattedUser)
+          .editUser(formattedUser)
           .subscribe(res => {
-            this.showToast('top-right', 'success');
+            let message = 'User added successfully';
+            this.showToast(message, 'top-right', 'success', 8000);
             this.ref.close({ refreshList: true });
           });
       } else {
         this.qnbUserService
           .createUser(formattedUser)
           .subscribe(res => {
-            this.showToast('top-right', 'success');
+            let message = 'User added to checker queue with reference number ' + res['requestId'];
+            this.showToast(message, 'top-right', 'success', 8000);
             this.ref.close({ refreshList: true });
           });
       }

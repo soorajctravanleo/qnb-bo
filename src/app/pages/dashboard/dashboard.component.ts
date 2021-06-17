@@ -27,19 +27,11 @@ export class QnbDashboardComponent implements OnInit {
       });
   }
 
-  Getpendingworkflows() {
-    this.userids = [];
-    this.pending_approval_service.getPendingWorkflows().subscribe((res: any) => {
-      res.map(t => {
-        this.userids.push(t.requestId);
-      });
-    }).add(() => {
-      const data = { requestIds: this.userids };
-      this.pending_approval_service.fetchPendingUsers(data).subscribe(res => {
-        this.users = res;
-      });
-    });
-  }
+Getpendingworkflows() {
+  this.pending_approval_service.getPendingRequestUsers().subscribe((res: any) => {
+  this.users = res;
+  });
+}
 
   showDetails(data) {
     this.dialogService
