@@ -126,7 +126,6 @@ export class CreateUserComponent implements OnInit {
           .createUser(formattedUser)
           .subscribe(res => {
             let message = 'User added to checker queue with reference number ' + res['requestId'];
-            console.log(res);
             this.showToast(message, 'top-right', 'success', 8000);
             this.ref.close({ refreshList: true });
           });
