@@ -115,7 +115,14 @@ nb-select.appearance-outline .select-button {
   width: 1240px !important;
   max-width: 100vw !important;
 }
+.linkText{
+  cursor: pointer;
+  color: #76014f;
+}
 
+.linkText:hover{
+  color: #45002d;
+}
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
