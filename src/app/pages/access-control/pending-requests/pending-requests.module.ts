@@ -11,6 +11,7 @@ import { PendingRequestsRoutingModule } from './pending-requests-routing.module'
 import { PendingRequestsComponent } from './pending-requests.component';
 import { RequestRoleDetailsComponent } from './request-role-details/request-role-details.component';
 import { PipeModule } from '../../../_helpers/pipe/pipe.module';
+import { QnbCustomComponentsModule } from '../../../components/custom-components.module';
 
 @NgModule({
   declarations: [PendingRequestsComponent, RequestRoleDetailsComponent],
@@ -23,6 +24,7 @@ import { PipeModule } from '../../../_helpers/pipe/pipe.module';
     NbCardModule,
     PendingRequestsRoutingModule,
     PipeModule.forRoot(),
+    QnbCustomComponentsModule
   ],
 })
 export class PendingRequestsModule { }
