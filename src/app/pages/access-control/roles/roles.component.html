@@ -4,21 +4,22 @@
 </div>
 <nb-card>
   <nb-card-body>
-    <button nbButton class="m-3" style="float:right">
+    <button nbButton class="mb-3" style="float:right">
       <nb-icon icon="printer-outline"></nb-icon> Export
     </button>
     <table mdbTable class="table">
       <thead>
         <tr>
           <th></th>
-          <th></th>
           <th *ngFor="let head of headElements;" scope=" col">{{head}} <i class="fas fa-sort"></i></th>
         </tr>
       </thead>
       <tbody>
         <tr mdbTableCol *ngFor="let el of elements;let i = index">
-          <th class="px-1"><i class="icons fa fa-edit" (click)="onEditRole(el)"></i></th>
-          <th><i class="icons fa fa-trash-alt" (click)="onDeleteRole(el)"></i></th>
+          <th>
+            <i class="icons linkText fa fa-edit" (click)="onEditRole(el)"></i>
+            <i class="icons linkText fa fa-trash-alt px-3" (click)="onDeleteRole(el)"></i>
+          </th>
           <td>{{el.groupCode}}</td>
           <td>{{el.groupDefinition}}</td>
 
