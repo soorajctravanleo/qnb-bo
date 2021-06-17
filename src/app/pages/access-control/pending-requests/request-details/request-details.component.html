@@ -1,7 +1,7 @@
 <nb-card>
+  <nb-card-header>Request Details</nb-card-header>
   <nb-card-body>
     <table class="table">
-      <thead></thead>
       <tbody>
         <!-- <tr *ngFor="let item of data | keyvalue">
           <td>{{item.key}}</td>
@@ -17,35 +17,35 @@
         </tr>
         <tr>
           <td>Username</td>
-          <td>{{data.userName}}</td>
+          <td>{{data.firstName}}</td>
         </tr>
         <tr>
           <td>Role</td>
-          <td>{{data.role}}</td>
+          <td>{{data.groups}}</td>
         </tr>
         <tr>
           <td>Expiry Date</td>
           <td>{{data.expiryDate}}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>Status</td>
           <td>{{data.status}}</td>
         </tr>
         <tr>
           <td>Request Type</td>
           <td>{{data.requestType}}</td>
-        </tr>
+        </tr>-->
         <tr>
           <td>Requested Date</td>
-          <td>{{data.requestedDate}}</td>
+          <td>{{data.createdTime}}</td>
         </tr>
         <tr>
           <td>Maker Id</td>
-          <td>{{data.makerId}}</td>
+          <td>{{data.createdBy}}</td>
         </tr>
         <tr>
           <td>Request Status</td>
-          <td>{{data.requestStatus}}</td>
+          <td>{{data.workFlowStatus}}</td>
         </tr>
         <tr *ngIf="data.requestStatus!='PENDING'">
           <td>Checker Comments</td>
@@ -53,15 +53,14 @@
         </tr>
         <tr>
           <td>Maker Comments</td>
-          <td><textarea></textarea></td>
+          <td><textarea class="w-100"></textarea></td>
         </tr>
       </tbody>
     </table>
     <div class="buttons-group">
-      <button nbButton hero status="danger" style="background-color: #FE5578;">Cancel Request</button>
-      <button nbButton hero status="normal">Cancel</button>
-
-      <button type="submit" nbButton hero status="success">Edit Request</button>
+      <button nbButton hero status="danger">Cancel Request</button>
+      <button nbButton hero status="basic" (click)="dismiss()">Cancel</button>
+      <button nbButton hero status="success" type="submit">Edit Request</button>
     </div>
   </nb-card-body>
 </nb-card>

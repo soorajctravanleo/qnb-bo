@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'qnb-approval-role-details',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApprovalRoleDetailsComponent implements OnInit {
   data: any;
-  constructor() { }
+  constructor(protected ref: NbDialogRef<ApprovalRoleDetailsComponent>) { }
 
   ngOnInit(): void {
   }
-
+  dismiss() { this.ref.close(); }
 }

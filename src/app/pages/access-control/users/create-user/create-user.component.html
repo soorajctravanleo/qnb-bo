@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="p-3" style="max-width: 1240px;">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="p-3 standardModel">
   <nb-card style="max-height: 94vh;">
     <nb-card-body>
       <nb-tabset>
@@ -92,10 +92,9 @@
 
     <nb-card-footer>
       <div style="float:right">
-        <button nbButton hero status="danger" style="background-color: #FE5578;" (click)="dismiss()">Cancel</button>
-        <button nbButton hero status="normal" (click)="reset()">Reset</button>
-
-        <button type="submit" nbButton hero status="success">Submit</button>
+        <button nbButton hero status="danger" (click)="dismiss()">Cancel</button>
+        <button nbButton hero status="basic" (click)="reset()">Reset</button>
+        <button nbButton hero status="success" type="submit">Submit</button>
       </div>
     </nb-card-footer>
   </nb-card>

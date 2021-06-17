@@ -1,7 +1,7 @@
 <nb-card>
+  <nb-card-header>Request Details</nb-card-header>
   <nb-card-body>
     <table class="table">
-      <thead></thead>
       <tbody>
         <!-- <tr *ngFor="let item of data | keyvalue">
           <td>{{item.key}}</td>
@@ -9,59 +9,60 @@
         </tr> -->
         <tr>
           <td>Reference Number</td>
-          <td>{{data.requestNo}}</td>
+          <td>{{ data.requestId }}</td>
         </tr>
         <tr>
           <td>User Id</td>
-          <td>{{data.userId}}</td>
+          <td>{{ data.userId }}</td>
         </tr>
         <tr>
           <td>Username</td>
-          <td>{{data.userName}}</td>
+          <td>{{ data.firstName }}</td>
         </tr>
         <tr>
           <td>Role</td>
-          <td>{{data.role}}</td>
+          <td>{{ data.groups }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>User Type</td>
-          <td>{{data.type}}</td>
-        </tr>
+          <td>{{ data.type }}</td>
+        </tr> -->
         <tr>
           <td>Expiry Date</td>
-          <td>{{data.expiryDate}}</td>
+          <td>{{ data.expiryDate }}</td>
         </tr>
         <tr>
           <td>Status</td>
-          <td>{{data.status}}</td>
+          <td>{{ data.workFlowStatus }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>Request Type</td>
-          <td>{{data.requestType}}</td>
-        </tr>
+          <td>{{ data.requestType }}</td>
+        </tr> -->
         <tr>
           <td>Request Date</td>
-          <td>{{data.requestedDate}}</td>
+          <td>{{ data.createdTime | date:'short' }}</td>
         </tr>
         <tr>
           <td>Maker Id</td>
-          <td>{{data.makerId}}</td>
+          <td>{{ data.createdBy }}</td>
         </tr>
         <tr>
           <td>Maker Comments</td>
-          <td>{{data.comments}}</td>
+          <td>{{ data.comments }}</td>
         </tr>
         <tr>
           <td>Checker Comments</td>
-          <td><textarea></textarea></td>
+          <td><textarea [(ngModel)]="comment" class="w-100"></textarea></td>
         </tr>
       </tbody>
     </table>
     <div class="buttons-group">
-      <button nbButton hero status="danger" style="background-color: #FE5578;">Decline</button>
-      <button nbButton hero status="normal">Return</button>
-
-      <button type="submit" nbButton hero status="success">Approve</button>
+      <button nbButton hero status="danger" (click)="approve('REJECT')" >Reject</button>
+      <button nbButton hero status="basic" (click)="approve('RETURN')">Return</button>
+      <button type="submit" nbButton hero status="success" (click)="approve('APPROVE')" >
+        Approve
+      </button>
     </div>
   </nb-card-body>
 </nb-card>

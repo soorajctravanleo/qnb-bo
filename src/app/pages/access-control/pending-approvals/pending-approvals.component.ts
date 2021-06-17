@@ -15,13 +15,10 @@ export class PendingApprovalsComponent implements OnInit {
     'User Id',
     'Username',
     'Role',
-    'User Type',
     'Expiry Date',
     'Status',
-    'Req Type',
     'Req Date',
     'Maker Id',
-    'Maker Comments',
   ];
   roleHeadElements = [
     'Ref No',
@@ -36,61 +33,9 @@ export class PendingApprovalsComponent implements OnInit {
     'Comments',
     'Req Status',
   ];
-
-  roles = [
-    //   {
-    //   requestNo: 'qb12489914',
-    //   roleName: 'Test1',
-    //   roleDescription: 'This is a test Role',
-    //   unit: 'QATAR',
-    //   roleType: 'MAKER',
-    //   access: 'Enabled',
-    //   requestType: 'ADD',
-    //   requestDate: '29-12-2020',
-    //   makerId: 'UD1001',
-    //   comments: 'test comment',
-    //   requestStatus: 'PENDING',
-    // }, {
-    //   requestNo: 'qb12489914',
-    //   roleName: 'Test2',
-    //   roleDescription: 'This is a another test',
-    //   unit: 'QATAR',
-    //   roleType: 'MAKER',
-    //   access: 'Enabled',
-    //   requestType: 'ADD',
-    //   requestDate: '29-12-2020',
-    //   makerId: 'UD1001',
-    //   comments: 'test comment',
-    //   requestStatus: 'PENDING',
-    // }
-  ];
-  users = [
-    //   {
-    //   requestNo: 'qb12489912',
-    //   userId: '131asp',
-    //   userName: 'Mahesh',
-    //   role: 'Maker',
-    //   type: 'Test',
-    //   expiryDate: '29/12/2021',
-    //   status: 'Enabled',
-    //   requestType: 'ADD',
-    //   requestedDate: '29/12/2020',
-    //   makerId: 'UD1001',
-    //   comments: 'test comment3',
-    // }, {
-    //   requestNo: 'qb12489914',
-    //   userId: '131asp',
-    //   userName: 'Francis',
-    //   role: 'Maker',
-    //   type: 'Test',
-    //   expiryDate: '29/12/2021',
-    //   status: 'Enabled',
-    //   requestType: 'MODIFY',
-    //   requestedDate: '29/12/2020',
-    //   makerId: 'UD1001',
-    //   comments: 'test comment 4',
-    // }
-  ];
+  userids = [];
+  roles = [];
+  users: any = [];
   selectedOption = 1;
   constructor(
     private dialogService: NbDialogService,
@@ -98,19 +43,21 @@ export class PendingApprovalsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.GetpendingUsers();
     this.GetPendingRoles();
-    this.GetPendingUsers();
+  }
+
+  GetpendingUsers() {
+    this.pending_approval_service.
+    getPendingRequestUsers().
+    subscribe((res: any) => {
+      this.users = res;
+    });
   }
 
   GetPendingRoles() {
     this.pending_approval_service.fetchPendingRoles().subscribe((res: any) => {
       this.roles = res;
-    });
-  }
-
-  GetPendingUsers() {
-    this.pending_approval_service.fetchPendingUsers().subscribe((res: any) => {
-      this.users = res;
     });
   }
 
@@ -123,6 +70,7 @@ export class PendingApprovalsComponent implements OnInit {
       })
       .onClose.subscribe((event) => {
         if (event?.refreshList) {
+          this.GetpendingUsers();
         }
       });
   }

@@ -1,5 +1,6 @@
 <nb-card>
-  <div class="col-md-12 message">Do you want to enable the user? <br /></div>
+  <div *ngIf="user.status=='DISABLED'" class="col-md-12 message">Do you want to enable the user? <br /></div>
+  <div *ngIf="user.status=='ENABLED'" class="col-md-12 message">Do you want to disable the user? <br /></div>
   <textarea placeholder=" Maker comments" [(ngModel)]="comment"> </textarea>
 
   <div class="buttons-group">
@@ -13,7 +14,7 @@
       status="success"
       (click)="comment == null ? null : change_status()"
     >
-      Enable
+      {{user.status=="ENABLED"?'Disable':'Enable'}}
     </button>
   </div>
 </nb-card>

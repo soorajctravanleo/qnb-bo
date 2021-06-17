@@ -86,3 +86,20 @@ $nb-themes: nb-register-theme((
   slide-out-shadow-color: 0 4px 14px 0 #8f9bb3,
   slide-out-shadow-color-rtl: 0 4px 14px 0 #8f9bb3,
 ), dark, dark);
+
+$nb-themes: nb-register-theme((
+
+  color-success-500:  #25DEA8,
+  color-danger-500:   #FE5578,
+  color-info-500:     #116FC4,
+  color-primary-100:	#fff2fa,	
+  color-primary-200:	#ffd9ee,	
+  color-primary-300:	#d657b2,	
+  color-primary-400:	#ae2d89,	
+  color-primary-500:	#870052,	
+  color-primary-600:	#5c023b,	
+  color-primary-700:	#340023,	
+  color-primary-800:	#2b0016,	
+  color-primary-900:  #1d0012,
+
+), qnbtheme, default);

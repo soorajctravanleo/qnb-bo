@@ -33,7 +33,7 @@ export class ChangeUserStatusComponent implements OnInit {
     this.user.status === 'ENABLED' ? this.user.status = 'DISABLED' : this.user.status = 'ENABLED';
     this.user.comments = this.comment;
     this.userService.changeStatus(this.user).subscribe(res => {
-      this.showToast('top-right', 'success', this.user.action);
+      this.showToast('top-right', 'success', this.user.status);
       this.ref.close({ refreshList: true });
     });
   }

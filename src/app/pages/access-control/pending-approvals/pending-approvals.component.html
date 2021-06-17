@@ -1,8 +1,9 @@
+<qnb-section-header title="Pending Approvals"></qnb-section-header>
 <nb-card>
   <nb-card-body>
     <nb-tabset>
       <nb-tab tabTitle="User" badgeText="{{users.length}}" badgeStatus="danger">
-        <button nbButton class="m-3" style="float:right">
+        <button nbButton class="mb-3" style="float:right">
           <nb-icon icon="printer-outline"></nb-icon> Export
         </button>
         <table mdbTable class="table">
@@ -18,17 +19,17 @@
                 <nb-radio class="col-md-3 col-md-push-4 mx-2" value="search" checked (valueChange)="onChange($event)">
                 </nb-radio>
               </td> -->
-              <th scope="row" (click)="showDetails(user)">{{ user.requestNo }}</th>
+              <th scope="row" (click)="showDetails(user)" class="linkText">{{ user.requestId }}</th>
               <td>{{ user.userId }}</td>
-              <td>{{ user.userName }}</td>
-              <td>{{ user.role }}</td>
-              <td>{{ user.type }}</td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.groups }}</td>
+              <!-- <td>{{ user.type }}</td> -->
               <td>{{ user.expiryDate }}</td>
-              <td>{{ user.status }}</td>
-              <td>{{ user.requestType }}</td>
-              <td>{{ user.requestedDate }}</td>
-              <td>{{ user.makerId }}</td>
-              <td style="white-space: nowrap;">{{ user.comments }}</td>
+              <td>{{ user.workFlowStatus }}</td>
+              <!-- <td>{{ user.requestType }}</td> -->
+              <td>{{ user.createdTime | date:'short' }}</td>
+              <td>{{ user.createdBy }}</td>
+              <!-- <td style="white-space: nowrap;">{{ user.comments }}</td> -->
             </tr>
           </tbody>
         </table>

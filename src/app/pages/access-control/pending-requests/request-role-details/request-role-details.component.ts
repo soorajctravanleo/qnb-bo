@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NbDialogRef } from '@nebular/theme';
 @Component({
   selector: 'qnb-request-role-details',
   templateUrl: './request-role-details.component.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestRoleDetailsComponent implements OnInit {
   data: any;
-  constructor() { }
+  constructor(protected ref: NbDialogRef<RequestRoleDetailsComponent>) { }
 
   ngOnInit(): void {
   }
+  dismiss() { this.ref.close(); }
 
 }

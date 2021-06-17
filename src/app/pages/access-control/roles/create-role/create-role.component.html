@@ -27,7 +27,7 @@
               <textarea type="text" nbInput fullWidth placeholder="" formControlName="description"></textarea>
               <span *ngIf="!roleForm.get('description').valid && roleForm.get('description').touched"
                 class="help-block">
-                <span *ngIf="roleForm.get('description').errors['required']">This field is
+                <span *ngIf="roleForm.get('description').errors['required']" status="warning">This field is
                   required!</span>
               </span>
             </div>
@@ -49,8 +49,8 @@
     </nb-card-body>
     <nb-card-footer>
       <div style="float:right">
-        <button nbButton hero status="danger" style="background-color: #FE5578;" (click)="dismiss()">Cancel</button>
-        <button nbButton hero status="normal" (click)="reset()">Reset</button>
+        <button nbButton hero status="danger" (click)="dismiss()">Cancel</button>
+        <button nbButton hero status="basic" (click)="reset()">Reset</button>
         <button nbButton hero status="success">Submit</button>
       </div>
     </nb-card-footer>

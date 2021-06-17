@@ -37,31 +37,48 @@
 .text-success {
   color: #2ce69b !important;
 }
-
-.nb-theme-default nb-sidebar {
+.text-primary {
+  color: #9B4F96 !important;
+}
+.bg-primary{
+  background-color: #9B4F96 !important;
+}
+.bg-info{
+  background-color: #2DC6D6 !important;
+}
+.bg-danger{
+  background-color:  #FE5578 !important;
+}
+.bg-success{
+  background-color:  #25DEA8 !important;
+}
+.bg-warning{
+  background-color:  #FF9600 !important;
+}
+.nb-theme-qnbtheme nb-sidebar .main-container-fixed {
   background-color: #000f33;
   background: linear-gradient(127deg, #000f33, #78014f);
 }
 
-.nb-theme-default nb-menu .menu-item {
+.nb-theme-qnbtheme nb-menu .menu-item {
   border-bottom: 1px solid #4e4057;
 }
 
-.nb-theme-default nb-menu .menu-item a {
+.nb-theme-qnbtheme nb-menu .menu-item a {
   color: #dadada;
 }
 
-.nb-theme-default nb-menu .menu-item a.active,
-.nb-theme-default nb-menu .menu-item a:hover,
-.nb-theme-default nb-menu .menu-item>.menu-items>.menu-item a:hover,
-.nb-theme-default nb-menu .menu-item a.active .menu-icon,
-.nb-theme-default nb-menu .menu-item a:hover .menu-icon,
-.nb-theme-default nb-menu .menu-item>.menu-items>.menu-item a.active,
-.nb-theme-default nb-menu .menu-item>.menu-items>.menu-item a.active:hover {
+.nb-theme-qnbtheme nb-menu .menu-item a.active,
+.nb-theme-qnbtheme nb-menu .menu-item a:hover,
+.nb-theme-qnbtheme nb-menu .menu-item>.menu-items>.menu-item a:hover,
+.nb-theme-qnbtheme nb-menu .menu-item a.active .menu-icon,
+.nb-theme-qnbtheme nb-menu .menu-item a:hover .menu-icon,
+.nb-theme-qnbtheme nb-menu .menu-item>.menu-items>.menu-item a.active,
+.nb-theme-qnbtheme nb-menu .menu-item>.menu-items>.menu-item a.active:hover {
   color: #fff;
 }
 
-.nb-theme-default nb-search-field.modal-half .search::before {
+.nb-theme-qnbtheme nb-search-field.modal-half .search::before {
   opacity: 0 !important;
 }
 
@@ -86,9 +103,33 @@ nb-select.appearance-outline .select-button {
   white-space: normal !important;
 }
 
+.nb-theme-qnbtheme nb-card-header{
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+
 // Non theme styles
 
 .standardModel {
   width: 1240px !important;
   max-width: 100vw !important;
+}
+.linkText{
+  cursor: pointer;
+  color: #76014f;
+}
+
+.linkText:hover{
+  color: #45002d;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.help-block{
+  color: red;
+}
+.table{
+  width: max-content;
+  min-width: 100%;
 }
