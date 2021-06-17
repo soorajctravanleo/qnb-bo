@@ -9,7 +9,7 @@ export class QnbSectionHeaderComponent implements OnChanges {
   @Input() title: string;
   public breadCampArray: Array<any> = [];
   ngOnChanges(changes: SimpleChanges): void {
-    debugger;
+    // debugger;
     if (typeof changes['title'] !== 'undefined') {
       if (
         typeof changes['title'].currentValue !== 'undefined' &&
