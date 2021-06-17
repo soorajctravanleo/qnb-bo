@@ -21,7 +21,7 @@
         </tr>
         <tr>
           <td>Role</td>
-          <td>-</td>
+          <td>{{data.groups}}</td>
         </tr>
         <tr>
           <td>Expiry Date</td>
@@ -45,7 +45,7 @@
         </tr>
         <tr>
           <td>Request Status</td>
-          <td>{{data.workflowStatus}}</td>
+          <td>{{data.workFlowStatus}}</td>
         </tr>
         <tr *ngIf="data.requestStatus!='PENDING'">
           <td>Checker Comments</td>

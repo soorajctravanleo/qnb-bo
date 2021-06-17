@@ -22,12 +22,12 @@
               </th>
               <td>{{ user.userId }}</td>
               <td>{{ user.firstName }}</td>
-              <!-- <td>{{ user.role }}</td> -->
+              <td>{{ user.groups }}</td>
               <td>{{ user.expiryDate  }}</td>
 
               <td>{{ user.createdTime | date:'short' }}</td>
               <td>{{ user.createdBy }}</td>
-              <td style="white-space: nowrap">{{ user.workflowStatus }}</td>
+              <td style="white-space: nowrap">{{ user.workFlowStatus }}</td>
             </tr>
           </tbody>
         </table>

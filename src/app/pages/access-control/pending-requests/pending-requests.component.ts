@@ -24,10 +24,10 @@ export class PendingRequestsComponent implements OnInit {
       heading: 'Username',
       key: 'userName',
     },
-    // {
-    //   heading: 'Role',
-    //   key: 'role',
-    // },
+    {
+      heading: 'Role',
+      key: 'role',
+    },
     {
       heading: 'Expiry Date',
       key: 'expiryDate',

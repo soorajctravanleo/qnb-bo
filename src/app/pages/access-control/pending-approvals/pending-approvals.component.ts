@@ -14,6 +14,7 @@ export class PendingApprovalsComponent implements OnInit {
     'Ref No.',
     'User Id',
     'Username',
+    'Role',
     'Expiry Date',
     'Status',
     'Req Date',
@@ -34,7 +35,7 @@ export class PendingApprovalsComponent implements OnInit {
   ];
   userids = [];
   roles = [];
-  users = [];
+  users: any = [];
   selectedOption = 1;
   constructor(
     private dialogService: NbDialogService,
@@ -49,8 +50,9 @@ export class PendingApprovalsComponent implements OnInit {
   GetpendingUsers() {
     this.pending_approval_service.
     getPendingRequestUsers().
-    subscribe(res => {
+    subscribe((res: any) => {
       this.users = res;
+      console.log(this.users)
     });
   }
 
