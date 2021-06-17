@@ -117,14 +117,17 @@ export class CreateUserComponent implements OnInit {
         this.qnbUserService
           .editUser(formattedUser)
           .subscribe(res => {
-            this.showToast('top-right', 'success');
+            let message = 'User added successfully';
+            this.showToast(message, 'top-right', 'success', 8000);
             this.ref.close({ refreshList: true });
           });
       } else {
         this.qnbUserService
           .createUser(formattedUser)
           .subscribe(res => {
-            this.showToast('top-right', 'success');
+            let message = 'User added to checker queue with reference number ' + res['requestId'];
+            console.log(res);
+            this.showToast(message, 'top-right', 'success', 8000);
             this.ref.close({ refreshList: true });
           });
       }
