@@ -24,7 +24,7 @@ import { QnbCustomComponentsModule } from '../../../components/custom-components
     NbCardModule,
     PendingRequestsRoutingModule,
     PipeModule.forRoot(),
-    QnbCustomComponentsModule
+    QnbCustomComponentsModule,
   ],
 })
 export class PendingRequestsModule { }

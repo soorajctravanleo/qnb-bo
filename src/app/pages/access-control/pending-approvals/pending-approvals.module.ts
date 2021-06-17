@@ -34,7 +34,7 @@ import { QnbCustomComponentsModule } from '../../../components/custom-components
     NbButtonModule,
     CommonModule,
     PendingApprovalsRoutingModule,
-    QnbCustomComponentsModule
+    QnbCustomComponentsModule,
   ],
 })
 export class PendingApprovalsModule { }
