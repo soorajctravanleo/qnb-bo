@@ -52,8 +52,8 @@ export class QnbPendingApprovalService {
           }
           const data = { requestIds: keys };
           return this.fetchPendingUsers(data).pipe(
-            map((res: any) => {
-              for (let response of res) {
+            map((resp: any) => {
+              for (let response of resp) {
                 if (response.groups.length > 1) {
                   response.groups = response.groups.map((r) => {
                     return r.groupCode;
@@ -62,10 +62,10 @@ export class QnbPendingApprovalService {
                   response.groups = response.groups[0].groupCode;
                 }
               }
-              return res;
-            })
+              return resp;
+            }),
           );
-        })
+        }),
       );
     }
     return of(this.pendingRequestUsers);

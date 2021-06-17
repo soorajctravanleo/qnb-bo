@@ -23,7 +23,7 @@ export class ApprovalDetailsComponent implements OnInit {
     this.index += 1;
     this.toastrService.show(
       status || 'Success',
-      `User ${action}`,
+      `User ${action}ED`,
       { position, status });
   }
 

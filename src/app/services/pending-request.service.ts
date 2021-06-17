@@ -60,8 +60,8 @@ export class QnbPendingRequestService {
             keys.push(res[key].requestId);
           }
           return this.fetchDetailedRequest(keys).pipe(
-            map((res: any) => {
-              for (let response of res) {
+            map((resp: any) => {
+              for (let response of resp) {
                 if (response.groups.length > 1) {
                   response.groups = response.groups.map((r) => {
                     return r.groupCode;
@@ -70,8 +70,8 @@ export class QnbPendingRequestService {
                   response.groups = response.groups[0].groupCode;
                 }
               }
-              return res;
-            })
+              return resp;
+            }),
           );
         }),
       );
