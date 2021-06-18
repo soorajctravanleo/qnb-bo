@@ -79,8 +79,8 @@
                         <p class="title">Req. No:</p>
                       </div>
                       <div class="col">
-                        <p class="d-flex"><b>{{user.requestId}} </b><span
-                          class="badge bg-info text-light float-right ml-2">NEW</span>
+                        <p class="d-flex" (click)="showPendingDetails(user)"><b>{{user.requestId}} </b><span
+                            class="badge bg-info text-light float-right ml-2">NEW</span>
                         </p>
                       </div>
                     </div>
@@ -146,7 +146,7 @@
             </ul>
             <div>
               <div class="flexTable">
-<!-- 
+                <!--
                 <div class="tableRow pt-1" *ngFor="let user of users">
 
                   <div class="tableCell row m-0" style="width: 50%;">
@@ -191,7 +191,7 @@
                       </div>
                       <div class="col">
                         <p class="d-flex" (click)="showDetails(user)"><b>{{user.requestId}} </b><span
-                          class="badge bg-danger text-light float-right ml-2">OLD</span>
+                            class="badge bg-danger text-light float-right ml-2">OLD</span>
                         </p>
                       </div>
                     </div>
