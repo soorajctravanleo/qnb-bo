@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { QnbPendingApprovalService, QnbPendingRequestService } from '../../services';
 import { ApprovalDetailsComponent } from '../access-control/pending-approvals/approval-details/approval-details.component';
-import { RequestDetailsComponent } from '../access-control/pending-requests/request-details/request-details.component'
+import { RequestDetailsComponent } from '../access-control/pending-requests/request-details/request-details.component';
 @Component({
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
