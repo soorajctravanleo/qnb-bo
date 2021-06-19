@@ -45,7 +45,7 @@ export class QnbAuthService {
           let decodedJwt = JSON.parse(atob(access_token.split('.')[1]));
           this.access = decodedJwt['authorities'];
           let userName = decodedJwt['user_name'];
-          let firstName = "";
+          let firstName = '';
           this.currentAccount = new QnbAccount(1, userName, access_token, userName, '');
           this.setAuthKey(access_token);
           return of(this.currentAccount);
@@ -53,17 +53,22 @@ export class QnbAuthService {
       );
   }
   hasPermission(type: PermissionTypes) {
-    if (this.access.length == 0) {
+    if (this.access.length === 0) {
       let decodedJwt = JSON.parse(atob(this.cookieService.get(this.AUTH_KEY_KEY).split('.')[1]));
       this.access = decodedJwt['authorities'];
     }
-    return this.access.includes(type)
+    return this.access.includes(type);
   }
   authenticateToken() {
     const tokenFromStorage = this.cookieService.get(this.AUTH_KEY_KEY);
     if (tokenFromStorage) {
       let details = this.getUserDetails();
-      this.currentAccount = new QnbAccount(1, details.userName, details.accessToken, details.firstName, details.lastName);
+      this.currentAccount = new QnbAccount(1,
+        details.userName,
+        details.accessToken,
+        details.firstName,
+        details.lastName
+      );
     }
 
     return of(tokenFromStorage ? true : false);
@@ -71,7 +76,6 @@ export class QnbAuthService {
   getUserDetails() {
     let authKey = this.cookieService.get(this.AUTH_KEY_KEY);
     let decodedJwt = JSON.parse(atob(authKey.split('.')[1]));
-    console.log(decodedJwt);
     return {
       userName: decodedJwt['user_name'],
       firstName: decodedJwt['user_name'],

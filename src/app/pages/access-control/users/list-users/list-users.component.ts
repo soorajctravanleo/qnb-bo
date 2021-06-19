@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-import { QnbAuthService } from '../../../../auth/auth.service'
+import { QnbAuthService } from '../../../../auth/auth.service';
 import { QnbUserService, QnbRoleService, QnbUser } from '../../../../services';
 import { MockUser } from '../../../../_helpers/models/backend';
 import { CreateUserComponent } from '../create-user/create-user.component';

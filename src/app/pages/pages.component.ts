@@ -16,6 +16,6 @@ export class PagesComponent {
   menu = [];
 
   constructor(private pageMenuService: PageMenuService) {
-    this.menu = pageMenuService.getPages()
+    this.menu = pageMenuService.getPages();
   }
 }

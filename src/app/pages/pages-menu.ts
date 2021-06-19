@@ -93,7 +93,7 @@ import { rootCertificates } from 'tls';
   providedIn: 'root',
 })
 export class PageMenuService {
-  //pages = [];
+  // pages = [];
   constructor(private authService: QnbAuthService) {
 
   }
@@ -114,7 +114,7 @@ export class PageMenuService {
       }, {
         title: 'Role Managment',
         link: '/pages/access-control/roles',
-      },]
+      }],
     };
 
 
@@ -122,13 +122,13 @@ export class PageMenuService {
       ACCESS_CONTROL_MENU.children.push({
         title: 'My Pending Requests',
         link: '/pages/access-control/pending-requests',
-      })
+      });
     }
     if (this.authService.hasPermission('USER_MANAGEMENT_CHECKER')) {
       ACCESS_CONTROL_MENU.children.push({
         title: 'Pending Approvals',
         link: '/pages/access-control/pending-approvals',
-      })
+      });
     }
 
     MENU_ITEMS.push(ACCESS_CONTROL_MENU);
