@@ -67,7 +67,7 @@ export class QnbAuthService {
         details.userName,
         details.accessToken,
         details.firstName,
-        details.lastName
+        details.lastName,
       );
     }
 
@@ -81,7 +81,7 @@ export class QnbAuthService {
       firstName: decodedJwt['user_name'],
       lastName: '',
       accessToken: decodedJwt['access_token'],
-    }
+    };
   }
   logout() {
     this.cookieService.delete(this.AUTH_KEY_KEY, '/');
