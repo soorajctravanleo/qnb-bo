@@ -15,6 +15,9 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td colspan="8" *ngIf="users.length==0">No requests found!!</td>
+            </tr>
             <tr mdbTableCol *ngFor="let user of users | tableSort: filterObj">
               <th scope="row" (click)="openDetails(user)" class="linkText">
                 {{ user.requestId }}
@@ -43,6 +46,7 @@
             </tr>
           </thead>
           <tbody>
+
             <tr mdbTableCol *ngFor="let role of roles">
               <th scope="row" (click)="openRoleDetails(role)">
                 {{ role.requestNo }}

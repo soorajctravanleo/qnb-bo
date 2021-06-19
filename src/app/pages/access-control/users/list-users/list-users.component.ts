@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-
+import { QnbAuthService } from '../../../../auth/auth.service'
 import { QnbUserService, QnbRoleService, QnbUser } from '../../../../services';
 import { MockUser } from '../../../../_helpers/models/backend';
 import { CreateUserComponent } from '../create-user/create-user.component';
@@ -32,10 +32,21 @@ export class ListUsersComponent implements OnInit {
     private qnbUserService: QnbUserService,
     private qnbRoleService: QnbRoleService,
     private dialogService: NbDialogService,
+    private authService: QnbAuthService,
   ) { }
 
   ngOnInit() {
     this.fetchUsers();
+  }
+
+  get hasMakerPermission() {
+    return this.authService.hasPermission('USER_MANAGEMENT_ADD_MAKER');
+  }
+  get hasDeletePermission() {
+    return this.authService.hasPermission('USER_MANAGEMENT_DELETE_MAKER');
+  }
+  get hasModifyPermission() {
+    return this.authService.hasPermission('USER_MANAGEMENT_MODIFY_MAKER');
   }
 
   open() {
@@ -56,14 +67,14 @@ export class ListUsersComponent implements OnInit {
   onEditUserStatus(id: any, status: any) {
 
     this.dialogService
-    .open(ChangeUserStatusComponent, {
-      context: { user: {userId: id, status: status} },
-    }).onClose
-    .subscribe(event => {
-      if (event?.refreshList) {
-        this.fetchUsers();
-      }
-    });
+      .open(ChangeUserStatusComponent, {
+        context: { user: { userId: id, status: status } },
+      }).onClose
+      .subscribe(event => {
+        if (event?.refreshList) {
+          this.fetchUsers();
+        }
+      });
   }
 
   onEditUser(data) {
@@ -93,7 +104,7 @@ export class ListUsersComponent implements OnInit {
 
         for (const user of users) {
           const parts = user.expiryDate.split('-');
-          user.expiryDate = parts[1].concat( '-' + parts[0] + '-' , parts[2] );
+          user.expiryDate = parts[1].concat('-' + parts[0] + '-', parts[2]);
           this.users.push({
             userId: user.userId,
             ttl: '',
@@ -101,14 +112,15 @@ export class ListUsersComponent implements OnInit {
             expiryDate: user.expiryDate,
             expiry_Date: user.expiryDate,
             name: user.firstName,
-            role: user.groups.map( (role: any) => {
+            role: user.groups.map((role: any) => {
               return role.groupId;
-              } ),
-            t_role: user.groups.map( (role: any) => {
+            }),
+            t_role: user.groups.map((role: any) => {
               return role.groupCode;
-            } ),
+            }),
           });
         }
       });
   }
+
 }

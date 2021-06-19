@@ -14,6 +14,9 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td colspan="8" *ngIf="users.length==0">No Approval Requests Pending!!</td>
+            </tr>
             <tr mdbTableCol *ngFor="let user of users">
               <!-- <td>
                 <nb-radio class="col-md-3 col-md-push-4 mx-2" value="search" checked (valueChange)="onChange($event)">

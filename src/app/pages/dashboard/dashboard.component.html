@@ -1,5 +1,5 @@
 <qnb-section-header title="Dashboard"></qnb-section-header>
-<div class="row">
+<div class="row" *ngIf="account.usrname!='sysadmin'">
   <div class="col-12 col-md-3">
     <nb-card>
       <nb-card-header>Active Session <span class="badge bg-primary text-light float-right mt-1">Current</span>
@@ -63,9 +63,7 @@
               <li class="nav-item">
                 <p class="nav-link" data>Role</p>
               </li>
-              <li class="nav-item">
-                <p class="nav-link">Access Control</p>
-              </li>
+
 
             </ul>
             <div>
@@ -139,9 +137,7 @@
               <li class="nav-item">
                 <p class="nav-link">Role</p>
               </li>
-              <li class="nav-item">
-                <p class="nav-link">Access Control</p>
-              </li>
+
 
             </ul>
             <div>

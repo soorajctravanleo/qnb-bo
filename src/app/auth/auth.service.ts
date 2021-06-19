@@ -10,13 +10,15 @@ import { QnbAccount } from '../_helpers/models/frontend';
 import { LoginResponse } from '../_helpers/types/backend/index';
 import * as API from '../_helpers/apis';
 
+export type PermissionTypes = 'USER_MANAGEMENT_ADD_MAKER' | 'USER_MANAGEMENT_MODIFY_MAKER' | 'USER_MANAGEMENT_DELETE_MAKER' | 'USER_MANAGEMENT_CHECKER';
+
 @Injectable({
   providedIn: 'root',
 })
 export class QnbAuthService {
   private readonly AUTH_KEY_KEY = 'ak';
   private currentAccount?: QnbAccount = null;
-
+  private access = [];
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
@@ -40,33 +42,43 @@ export class QnbAuthService {
       .pipe(
         mergeMap(data => {
           const { access_token } = data as LoginResponse;
-          this.currentAccount = new QnbAccount(1, 'sysadmin', access_token, 'System', 'admin');
+          let decodedJwt = JSON.parse(atob(access_token.split('.')[1]));
+          this.access = decodedJwt['authorities'];
+          let userName = decodedJwt['user_name'];
+          let firstName = "";
+          this.currentAccount = new QnbAccount(1, userName, access_token, userName, '');
           this.setAuthKey(access_token);
           return of(this.currentAccount);
         }),
       );
   }
-
+  hasPermission(type: PermissionTypes) {
+    if (this.access.length == 0) {
+      let decodedJwt = JSON.parse(atob(this.cookieService.get(this.AUTH_KEY_KEY).split('.')[1]));
+      this.access = decodedJwt['authorities'];
+    }
+    return this.access.includes(type)
+  }
   authenticateToken() {
     const tokenFromStorage = this.cookieService.get(this.AUTH_KEY_KEY);
-
-    // return this.http
-    //   .post(API.AUTHENTICATE, { token: tokenFromStorage })
-    //   .pipe(
-    //     mergeMap(data => {
-    //       const { access_token } = data as LoginResponse;
-    //       this.currentAccount = new QnbAccount(1, 'sysadmin', access_token, 'System', 'admin');
-    //       return of(true);
-    //     }),
-    //   );
-
     if (tokenFromStorage) {
-      this.currentAccount = new QnbAccount(1, 'sysadmin', tokenFromStorage, 'System', 'admin');
+      let details = this.getUserDetails();
+      this.currentAccount = new QnbAccount(1, details.userName, details.accessToken, details.firstName, details.lastName);
     }
 
     return of(tokenFromStorage ? true : false);
   }
-
+  getUserDetails() {
+    let authKey = this.cookieService.get(this.AUTH_KEY_KEY);
+    let decodedJwt = JSON.parse(atob(authKey.split('.')[1]));
+    console.log(decodedJwt);
+    return {
+      userName: decodedJwt['user_name'],
+      firstName: decodedJwt['user_name'],
+      lastName: '',
+      accessToken: decodedJwt['access_token'],
+    }
+  }
   logout() {
     this.cookieService.delete(this.AUTH_KEY_KEY, '/');
     this.router.navigateByUrl('/');

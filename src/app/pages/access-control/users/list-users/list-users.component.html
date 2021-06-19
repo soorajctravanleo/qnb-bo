@@ -1,5 +1,6 @@
 <div align="right" class="pb-3 ">
-  <button id="create-user-button" (click)="open()" nbButton status="success">Add User</button>
+  <button id="create-user-button" (click)="open()" nbButton status="success" *ngIf="hasMakerPermission">Add
+    User</button>
 </div>
 <nb-card>
   <nb-card-body>
@@ -16,11 +17,14 @@
       <tbody>
         <tr mdbTableCol *ngFor="let user of users">
           <th>
-            <i class="icons linkText fa fa-edit" (click)="onEditUser(user)"></i>
-            <i class="icons linkText fa fa-trash-alt px-3" (click)="onDeleteUser(user.userId)"></i>
-            <i class="icons linkText fa fa-ban" (click)="onEditUserStatus(user.userId,user.userStatus)"></i>
+
+            <i class="icons linkText fa fa-edit" (click)="onEditUser(user)" *ngIf="hasModifyPermission"></i>
+            <i class="icons linkText fa fa-trash-alt px-3" (click)="onDeleteUser(user.userId)"
+              *ngIf="hasDeletePermission"></i>
+            <i class="icons linkText fa fa-ban" (click)="onEditUserStatus(user.userId,user.userStatus)"
+              *ngIf="hasModifyPermission"></i>
           </th>
-          
+
           <th scope="row">{{ user.userId }}</th>
           <td>{{ user.name }}</td>
           <!-- <td>{{ user.name }}</td>
