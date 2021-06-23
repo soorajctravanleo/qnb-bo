@@ -42,7 +42,7 @@ import { QnbCustomComponentsModule } from '../../../components/custom-components
     NbCardModule,
     NbCheckboxModule,
     ReactiveFormsModule,
-    QnbCustomComponentsModule
+    QnbCustomComponentsModule,
   ],
 })
 export class QnbRolesModule { }

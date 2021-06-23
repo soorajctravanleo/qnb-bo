@@ -47,9 +47,7 @@ export class PendingApprovalsComponent implements OnInit {
   }
 
   GetpendingUsers() {
-    this.pending_approval_service.
-    getPendingRequestUsers().
-    subscribe(res => {
+    this.pending_approval_service.getPendingRequestUsers().subscribe((res) => {
       this.users = res;
     });
   }

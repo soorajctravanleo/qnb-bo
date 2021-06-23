@@ -56,7 +56,7 @@ export class TableSortPipe implements PipeTransform {
                   .getTime();
                 return first - second > 0 ? -1 * _direction : 1 * _direction;
               });
-              break
+              break;
         }
       } else {
         const _direction = filterObj.filter === 'asc' ? -1 : 1,
