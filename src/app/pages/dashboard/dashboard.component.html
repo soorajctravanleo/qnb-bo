@@ -2,8 +2,7 @@
 <div class="row">
   <div class="col-12 col-md-3">
     <nb-card>
-      <nb-card-header>Active Session <span class="badge bg-primary text-light float-right mt-1">Current</span>
-      </nb-card-header>
+      <nb-card-header>Active Session <span class="badge bg-primary text-light float-right mt-1">Current</span></nb-card-header>
       <nb-card-body>
         <div class="col-12 p-0">
           <h3 class="m-0">#40,200</h3>
@@ -66,8 +65,8 @@
               <li class="nav-item">
                 <p class="nav-link">Access Control</p>
               </li>
-
             </ul>
+
             <div>
               <div class="flexTable">
 
@@ -79,8 +78,8 @@
                         <p class="title">Req. No:</p>
                       </div>
                       <div class="col">
-                        <p class="d-flex" (click)="showPendingDetails(user)"><b>{{user.requestId}} </b><span
-                            class="badge bg-info text-light float-right ml-2">NEW</span>
+                        <p class="d-flex" (click)="showPendingDetails(user)"><b>{{user.requestId}} </b>
+                          <span class="badge bg-info text-light float-right ml-2">NEW</span>
                         </p>
                       </div>
                     </div>
@@ -142,45 +141,10 @@
               <li class="nav-item">
                 <p class="nav-link">Access Control</p>
               </li>
-
             </ul>
+            
             <div>
               <div class="flexTable">
-                <!--
-                <div class="tableRow pt-1" *ngFor="let user of users">
-
-                  <div class="tableCell row m-0" style="width: 50%;">
-                    <div class="col p-0 title">
-                      <p>Req. No:</p>
-                      <p>Maker ID:</p>
-                    </div>
-                    <div class="col-10">
-                      <p class="d-flex" (click)="showDetails(user)"><b>{{user.requestId}} </b><span
-                          class="badge bg-info text-light float-right ml-2">ADD</span></p>
-                      <p> TQA0041</p>
-                    </div>
-                  </div>
-                  <div class="tableCell row m-0">
-                    <div class="col p-0 title">
-                      <p>Role:</p>
-                      <p>Entity:</p>
-                    </div>
-                    <div class="col">
-                      <p class="d-flex"><b>{{user.groups}} </b><span
-                          class="badge bg-danger text-light float-right ml-2">RETAIL</span></p>
-                      <p> Bank, QNBDEV</p>
-                    </div>
-                  </div>
-                  <div class="tableCell">
-                    <br>
-                    <p class="title"> Maker IP:</p>
-                    <p>10.46.2.84</p>
-                  </div>
-                  <div class="tableCell">
-                    <br>
-                    <p><span>24 Sep 2020, 10:00 AM</span></p>
-                  </div>
-                </div> -->
 
                 <div class="tableRow pt-1" *ngFor="let user of users">
 

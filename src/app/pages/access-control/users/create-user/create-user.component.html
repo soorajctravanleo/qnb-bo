@@ -1,9 +1,8 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="p-3 standardModel">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="p-3 standardModal">
   <nb-card style="max-height: 94vh;">
     <nb-card-body>
       <nb-tabset>
         <nb-tab [tabTitle]="user?'Update User':'Create User'">
-          <!-- <div formGroupName="profile"> -->
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-6">
@@ -71,10 +70,8 @@
                     </span>
                   </div>
                 </div>
-
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="row new-row">
                 <div class="col-md-6">
@@ -84,9 +81,7 @@
                 </div>
               </div>
             </div>
-          <!-- </div> -->
         </nb-tab>
-
       </nb-tabset>
     </nb-card-body>
 

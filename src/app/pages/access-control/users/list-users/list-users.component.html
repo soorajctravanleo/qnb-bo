@@ -1,6 +1,7 @@
 <div align="right" class="pb-3 ">
   <button id="create-user-button" (click)="open()" nbButton status="success">Add User</button>
 </div>
+
 <nb-card>
   <nb-card-body>
     <button nbButton class="mb-3" style="float:right">
@@ -20,7 +21,6 @@
             <i class="icons linkText fa fa-trash-alt px-3" (click)="onDeleteUser(user.userId)"></i>
             <i class="icons linkText fa fa-ban" (click)="onEditUserStatus(user.userId,user.userStatus)"></i>
           </th>
-          
           <th scope="row">{{ user.userId }}</th>
           <td>{{ user.name }}</td>
           <!-- <td>{{ user.name }}</td>

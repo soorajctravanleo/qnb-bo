@@ -44,9 +44,7 @@
           </thead>
           <tbody>
             <tr mdbTableCol *ngFor="let role of roles">
-              <th scope="row" (click)="openRoleDetails(role)">
-                {{ role.requestNo }}
-              </th>
+              <th scope="row" (click)="openRoleDetails(role)" class="linkText">{{ role.requestNo }}</th>
               <td>{{ role.roleName }}</td>
               <td>{{ role.roleDescription }}</td>
               <td>{{ role.unit }}</td>

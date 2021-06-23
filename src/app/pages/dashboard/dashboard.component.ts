@@ -13,8 +13,8 @@ export class QnbDashboardComponent implements OnInit {
   roles = [];
   users = [];
 
-
-  constructor(private pending_approval_service: QnbPendingApprovalService,
+  constructor(
+    private pending_approval_service: QnbPendingApprovalService,
     private pendingRequestService: QnbPendingRequestService,
     private dialogService: NbDialogService,
   ) { }
@@ -61,5 +61,4 @@ export class QnbDashboardComponent implements OnInit {
         }
       });
   }
-
 }
