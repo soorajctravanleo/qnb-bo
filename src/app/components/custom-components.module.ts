@@ -5,8 +5,14 @@ import { QnbSectionHeaderComponent } from './section-header/section-header.compo
 const COMPONENTS = [QnbSectionHeaderComponent];
 
 @NgModule({
-  declarations: [...COMPONENTS],
-  exports: [...COMPONENTS],
-  imports: [CommonModule],
+  declarations: [
+    ...COMPONENTS,
+  ],
+  exports: [
+    ...COMPONENTS,
+  ],
+  imports: [
+    CommonModule,
+  ],
 })
 export class QnbCustomComponentsModule {}

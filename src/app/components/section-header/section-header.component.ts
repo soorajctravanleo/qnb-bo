@@ -9,6 +9,7 @@ export class QnbSectionHeaderComponent implements OnChanges {
   @Input() title: string;
   public breadCampArray: Array<any> = [];
   ngOnChanges(changes: SimpleChanges): void {
+    // debugger;
     if (typeof changes['title'] !== 'undefined') {
       if (
         typeof changes['title'].currentValue !== 'undefined' &&
@@ -62,12 +63,19 @@ export class QnbSectionHeaderComponent implements OnChanges {
         });
         break;
       case 'Dashboard':
+<<<<<<< HEAD
         return [
           {
             text: 'Home',
             path: null,
           },
         ];
+=======
+        return [{
+          text: 'Home',
+          path: null,
+        }];
+>>>>>>> 6368cecc7cca1dbc106e584901a8ad0a553f7648
       default:
         return [];
     }

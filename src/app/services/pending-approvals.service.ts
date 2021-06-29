@@ -8,7 +8,12 @@ import {
   GET_PENDING_WORKFLOWS,
   POST_APPROVE_USER,
 } from '../_helpers/apis';
-import { MockPendingRoleApprovals, MockPendingUserApprovals, MockPRRole, MockPRUser } from '../_helpers/models/backend';
+import {
+  MockPendingRoleApprovals,
+  MockPendingUserApprovals,
+  MockPRRole,
+  MockPRUser,
+} from '../_helpers/models/backend';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Injectable({
@@ -20,7 +25,9 @@ export class QnbPendingApprovalService {
   constructor(private http: HttpClient) {}
 
   fetchPendingRoles() {
-    return this.http.get(GET_PENDING_ROLE_APPROVALS) as Observable<MockPendingRoleApprovals[]>;
+    return this.http.get(GET_PENDING_ROLE_APPROVALS) as Observable<
+      MockPendingRoleApprovals[]
+    >;
   }
 
   fetchPendingUsers(data) {
@@ -38,35 +45,24 @@ export class QnbPendingApprovalService {
   getPendingRequestUsers() {
     if (this.pendingRequestUsers.length === 0) {
       return this.getPendingWorkflows().pipe(
-        mergeMap(res => {
+        mergeMap((res) => {
           const keys = [];
           for (let key in res) {
             keys.push(res[key].requestId);
           }
           const data = { requestIds: keys };
           return this.fetchPendingUsers(data).pipe(
-            map(response => {
-              let arr = [];
-              for (let key in response) {
-                let workflowId = response[key].workflowId;
-                let request = {
-                  requestId: response[key].requestId,
-                  workflowId: response[key].workflowId,
-                  expiryDate: response[key].expiryDate,
-                  firstName: response[key].firstName,
-                  userId: response[key].userId,
-                  groups: response[key].groups,
-                  workflowStatus: response[key].workFlowStatus,
-                };
-                for (let k in res) {
-                  if (res[k].workflowId === workflowId) {
-                    request['createdBy'] = res[k].createdBy;
-                    request['createdTime'] = res[k].createdTime;
-                  }
+            map((resp: any) => {
+              for (let response of resp) {
+                if (response.groups.length > 1) {
+                  response.groups = response.groups.map((r) => {
+                    return r.groupCode;
+                  });
+                } else {
+                  response.groups = response.groups[0].groupCode;
                 }
-                arr.push(request);
               }
-              return arr;
+              return resp;
             }),
           );
         }),
@@ -74,5 +70,4 @@ export class QnbPendingApprovalService {
     }
     return of(this.pendingRequestUsers);
   }
-
 }

@@ -1,7 +1,7 @@
 <nb-card>
+  <nb-card-header>Request Details</nb-card-header>
   <nb-card-body>
     <table class="table">
-      <thead></thead>
       <tbody>
         <!-- <tr *ngFor="let item of data | keyvalue">
           <td>{{item.key}}</td>
@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td>Status</td>
-          <td>{{ data.workflowStatus }}</td>
+          <td>{{ data.workFlowStatus }}</td>
         </tr>
         <!-- <tr>
           <td>Request Type</td>
@@ -53,29 +53,14 @@
         </tr>
         <tr>
           <td>Checker Comments</td>
-          <td><textarea [(ngModel)]="comment"></textarea></td>
+          <td><textarea [(ngModel)]="comment" class="w-100"></textarea></td>
         </tr>
       </tbody>
     </table>
     <div class="buttons-group">
-      <button
-        nbButton
-        hero
-        status="danger"
-        style="background-color: #fe5578"
-        (click)="approve('REJECT')"
-      >
-        Reject
-      </button>
-      <button nbButton hero status="normal" (click)="approve('RETURN')">Return</button>
-
-      <button
-        type="submit"
-        nbButton
-        hero
-        status="success"
-        (click)="approve('APPROVE')"
-      >
+      <button nbButton hero status="danger" (click)="approve('REJECT')" >Reject</button>
+      <button nbButton hero status="basic" (click)="approve('RETURN')">Return</button>
+      <button type="submit" nbButton hero status="success" (click)="approve('APPROVE')" >
         Approve
       </button>
     </div>
